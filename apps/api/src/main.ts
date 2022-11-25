@@ -1,9 +1,12 @@
 import * as express from 'express';
 import { Message } from '@topfolio/api-interfaces';
+import cors = require('cors');
 
 const app = express();
 
 const greeting: Message = { message: 'Welcome to api!' };
+
+app.use(cors());
 
 app.get('/api', (req, res) => {
   res.send(greeting);
