@@ -5,6 +5,9 @@ dist
 tmp
 /out-tsc
 
+apps/api/src/environments/environment.ts
+apps/topfolio/src/environments/environment.ts
+
 # dependencies
 node_modules
 
