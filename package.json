@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@material/list": "^14.0.0",
     "@mui/material": "^5.10.15",
     "commitizen": "^4.2.5",
     "concurrently": "^7.6.0",
