@@ -20,6 +20,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "mongoose": "^6.7.3",
+    "node-fetch": "^3.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
@@ -39,6 +40,7 @@
     "@nrwl/react": "15.1.1",
     "@nrwl/web": "15.1.1",
     "@nrwl/workspace": "15.1.1",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "13.4.0",
     "@types/cors": "^2.8.12",
     "@types/express": "4.17.13",
@@ -60,6 +62,7 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
+    "jest-fetch-mock": "^3.0.3",
     "nx": "15.1.1",
     "prettier": "^2.6.2",
     "react-test-renderer": "18.2.0",
@@ -71,5 +74,11 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "jest": {
+    "automock": false,
+    "setupFiles": [
+      "./apps/topfolio/src/setupJest.ts"
+    ]
   }
 }

@@ -13,7 +13,7 @@ export function LandingPage(props: LandingPageProps) {
         <h2>Easy to create unique portfolios ,free and simple</h2>
         <Button variant="contained">Let's Start</Button>
       </div>
-      <Footer />
+      <Footer github="" facebook="" linkedin="" />
     </div>
   );
 }
