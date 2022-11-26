@@ -5,7 +5,7 @@
 
 audio,
 video {
- display: inline-block;
+  display: inline-block;
 }
 
 /**
@@ -13,5 +13,11 @@ video {
 */
 
 img {
- border-style: none;
+  border-style: none;
+}
+
+:root {
+  --primary-background: #151619;
+  --secondary-background: #1e1f23;
+  --primary-text: #ffffff;
 }
