@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Message } from '@topfolio/api-interfaces';
+import LandingPage from './landing-page/landing-page';
 
 export const App = () => {
-  return <div>APP</div>;
+  return (
+    <div>
+      <LandingPage />
+    </div>
+  );
 };
 
 export default App;
