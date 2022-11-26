@@ -5,6 +5,14 @@ export interface User {
   name: string;
   portfolio: Portfolio;
 }
+
+// Contact Me Interface
+export interface Contact {
+  phone: string;
+  email: string;
+  social_media: Socials[];
+}
+
 export interface Portfolio {
   description: string;
   hero_image: string;

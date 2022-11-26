@@ -7,6 +7,12 @@ html {
   font-size: 62.5%;
 }
 
+* {
+  padding: 0rem;
+  margin: 0rem;
+  box-sizing: border-box;
+}
+
 audio,
 video {
   display: inline-block;
