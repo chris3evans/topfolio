@@ -28,8 +28,8 @@ export const App = () => {
           <Switch>
             <Route path="/" exact component={LandingPage} />
             <ProtectedRoute path="/dashboard" component={Dashboard} />
+            <ProtectedRoute path="/dashboard/:section" component={Dashboard} />
             <Route path="/callback" component={CallbackPage} />
-            {/* <Route path="*" component={LandingPage} /> */}
           </Switch>
         </Auth0ProviderWithHistory>
       </BrowserRouter>
