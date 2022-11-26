@@ -1,18 +1,16 @@
-// require('dotenv').config()
+import { environment } from "../environments/environment";
+const uri = environment.DB_URI
+console.log(uri)
+import { connect } from "mongoose";
 
-// import * as dotenv from 'dotenv'
-// dotenv.config();
+export async function dbConnection() {
+    try {
 
-// const uri = process.env.DB_URI
-// console.log(uri)
-// import mongoose from "mongoose";
+        await connect(uri);
+        console.log('Successfully connected to MongoDB');
 
-// mongoose.connect(uri)
-//     .then(() => {
-//         console.log('Successfully connected to MongoDB');
-//     })
-//     .catch((error) => console.log(error));
+    } catch (error) {
+        console.log(error)
+    }
 
-
-
-// module.exports = mongoose;
+}
