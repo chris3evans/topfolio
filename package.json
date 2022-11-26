@@ -10,9 +10,15 @@
   },
   "private": true,
   "dependencies": {
+    "@auth0/auth0-react": "^1.12.0",
+    "@auth0/auth0-spa-js": "github:auth0/auth0-spa-js",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.10.15",
     "@mui/material": "^5.10.15",
+    "@types/auth0": "^2.35.7",
+    "@types/react-router-dom": "^5.3.3",
+    "auth0": "^2.44.0",
     "commitizen": "^4.2.5",
     "concurrently": "^7.6.0",
     "core-js": "^3.6.5",
@@ -25,6 +31,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
+    "react-router-dom": "^5.3.3",
     "regenerator-runtime": "0.13.7",
     "supertest": "^6.3.1",
     "tslib": "^2.3.0"
