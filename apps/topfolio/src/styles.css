@@ -11,7 +11,23 @@ video {
 /**
 * Remove the border on images inside links in IE 10-.
 */
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html body  {
+  height: 100vh;
+}
+body{
+  min-height: 100vh;
+}
 img {
  border-style: none;
+}
+:root {
+  --primary-background :#151619;
+  --secondary-background :#1E1F23;
+  --primary-text: #ffffff;
+  --primary: #1976d3;
 }
