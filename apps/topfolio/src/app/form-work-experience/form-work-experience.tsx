@@ -2,16 +2,29 @@ import styles from './form-work-experience.module.css';
 import TextField from '@mui/material/TextField';
 import TextareaAutoSize from '@mui/material/TextareaAutosize';
 import Button from '@mui/material/Button';
-import { useState } from 'react';
+import React, { HTMLInputTypeAttribute, useState } from 'react';
 
 /* eslint-disable-next-line */
 export interface FormWorkExperienceProps {}
 
 export function FormWorkExperience(props: FormWorkExperienceProps) {
+  const formSumbitHandler = function (event: any) {
+    event.preventDefault();
+
+    const formData = {
+      companyName: event.target.companyName.value,
+      description: event.target.description.value,
+      startDate: event.target.startDate.value,
+      endDate: event.target.finishDate.value,
+    };
+
+    console.log(formData);
+  };
+
   return (
     <div className={styles['form']}>
       <h2 className={styles['heading-2']}>Work Experience</h2>
-      <form className={styles['form-we']}>
+      <form onSubmit={formSumbitHandler} className={styles['form-we']}>
         <div className={styles['form-we-fields']}>
           <div className={styles['form-we-company-field']}>
             <label htmlFor="company-name" className={styles['form-we-label']}>
