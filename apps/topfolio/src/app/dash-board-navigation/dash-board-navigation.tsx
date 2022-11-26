@@ -7,8 +7,8 @@ export interface DashBoardNavigationProps {}
 export function DashBoardNavigation(props: DashBoardNavigationProps) {
   return (
     <div className={styles['dashboardNavigation']}>
-      <div className={styles['dashboardNavigation-logo']}>
-        {/* <img>*TOPFOLIO LOGO*</img> */}
+      <div className={styles['dashboardNavigation-main']}>
+        {/* <img className={styles['dashboardNavigation-logo']}>*TOPFOLIO LOGO*</img> */}
         <p className={styles['dashboardNavigation-heading']}>Topfolio</p>
       </div>
 
