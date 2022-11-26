@@ -1,7 +1,11 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+.dashboardNavigation {
+  background-color: var(--primary-background);
+}
+
+.dashBoardNavigation-logo {
+}
+
+.dashboardNavigation-heading {
+  font-size: 3rem;
+  color: var(--primary-text);
+}

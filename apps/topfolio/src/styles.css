@@ -3,6 +3,10 @@
 * Add the correct display in IE 9-.
 */
 
+html {
+  font-size: 62.5%;
+}
+
 audio,
 video {
   display: inline-block;
