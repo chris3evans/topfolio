@@ -1,4 +1,7 @@
 .form-container {
   background-color: var(--primary-background);
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
