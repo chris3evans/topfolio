@@ -1,5 +1,4 @@
-import { cleanup, getByText, render, waitFor } from '@testing-library/react';
-import React from 'react';
+import { cleanup, render } from '@testing-library/react';
 import App from './app';
 
 describe('App', () => {
@@ -7,14 +6,8 @@ describe('App', () => {
     cleanup();
   });
 
-  it('should render successfully', async () => {
-    global['fetch'] = jest.fn().mockResolvedValueOnce({
-      json: () => ({
-        message: 'my message',
-      }),
-    });
-
+  it('should render successfully', () => {
     const { baseElement } = render(<App />);
-    await waitFor(() => getByText(baseElement, 'my message'));
+    expect(baseElement).toBeTruthy();
   });
 });
