@@ -1,7 +1,12 @@
 {
   "/api/": {
+<<<<<<< HEAD
     "target": "http://localhost:3333",
     "secure": true,
     "changeOrigin": true
+=======
+    "target": "http://localhost:3333/",
+    "secure": false
+>>>>>>> development
   }
 }
