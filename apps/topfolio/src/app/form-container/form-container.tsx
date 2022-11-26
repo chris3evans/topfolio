@@ -5,8 +5,8 @@ export interface FormContainerProps {}
 
 export function FormContainer(props: FormContainerProps) {
   return (
-    <div className={styles['container']}>
-      <h1>Welcome to FormContainer!</h1>
+    <div className={styles['form-container']}>
+      *THIS IS WHERE FORM WILL BE RENDERED*
     </div>
   );
 }
