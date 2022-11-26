@@ -6,9 +6,9 @@ export interface DashBoardPageProps {}
 
 export function DashBoardPage(props: DashBoardPageProps) {
   return (
-    <div className={styles['container']}>
-      <h1>Welcome to DashBoardPage!</h1>
+    <div className={styles['dashboardPage']}>
       <DashBoardNavigation></DashBoardNavigation>
+      <div className={styles['form-container']}>*FORMS ARE RENDERED HERE*</div>
     </div>
   );
 }

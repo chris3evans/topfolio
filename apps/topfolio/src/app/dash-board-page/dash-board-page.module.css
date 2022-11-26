@@ -1,7 +1,9 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+.dashboardPage {
+  display: grid;
+  grid-template-columns: 10% 90%;
+}
+
+.form-container {
+  background-color: var(--primary-background);
+  color: white;
+}
