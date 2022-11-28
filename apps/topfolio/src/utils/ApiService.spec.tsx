@@ -12,3 +12,4 @@ describe('ApiService & Fetcher', () => {
     expect(fakeFetch.mock.calls[0][1].body).toBe(undefined);
   });
 });
+

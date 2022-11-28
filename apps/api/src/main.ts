@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const router = require('./router');
-import { dbConnection } from "./models/dbConnection";
-import { errorHandler } from "./middleware/error.middleware";
-
+const errorHandler = require('./middleware/error.middleware');
+import { dbConnection } from './models/dbConnection';
+// import { errorHandler } from "./middleware/error.middleware";
 
 const app = express();
 app.use(cors());
@@ -20,4 +20,4 @@ const server = app.listen(port, () => {
 });
 server.on('error', console.error);
 
-export { }
+export {};

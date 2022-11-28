@@ -30,8 +30,8 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
       end_date: event.target.finishDate.value,
     };
     console.log(context);
-    // console.log(formData);
-    updateUser(formData);
+    // // console.log(formData);
+    // updateUser(formData);
   };
 
   return (
