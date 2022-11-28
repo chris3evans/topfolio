@@ -11,7 +11,6 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 
 import Typography from '@mui/material/Typography';
-import { Hidden } from '@mui/material';
 /* eslint-disable-next-line */
 export interface WorkHistoryComponentProps {}
 

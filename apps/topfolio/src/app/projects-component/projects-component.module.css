@@ -4,5 +4,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5em;
+  gap: 2em;
+}
+.project-cont{
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
 }

@@ -9,9 +9,11 @@ export function ProjectsComponent(props: ProjectsComponentProps) {
   return (
     <div className={styles['container']}>
       <h3>Projects</h3>
-      {projects.map((project, index) => (
-        <SingleProject project={project} key={`key${index}`} />
-      ))}
+      <div className={styles['project-cont']}>
+        {projects.map((project, index) => (
+          <SingleProject project={project} key={`key${index}`} />
+        ))}
+      </div>
     </div>
   );
 }
