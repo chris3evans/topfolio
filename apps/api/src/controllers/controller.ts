@@ -24,7 +24,6 @@ const createUser = async (req: express.Request, res: express.Response) => {
   try {
     // const userId= req.auth.payload.sub;
     const newdata = req.body;
-    console.log(req.body, 'req.body');
     const data = await getuser(newdata.userId); //function to try find user with id as param
     if (!data) {
       const user = await addUser(newdata); //create user here with newdata and id for params

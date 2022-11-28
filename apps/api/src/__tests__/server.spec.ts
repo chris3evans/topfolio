@@ -1,7 +1,7 @@
 import express = require('express');
-const router = require('./router') 
+const router = require('../router') 
 const supertest = require('supertest');
-const User = require('./schemas/user');
+const model = require('../schemas/user')
 
 const mongoose = require('mongoose');
 const databaseName = 'test';
@@ -14,28 +14,27 @@ describe('server intergration tests', () => {
   const request = supertest(app)
 
   beforeAll(async () => { 
-    // const url = `mongodb://127.0.0.1/${databaseName}`
-    // await mongoose.connect(url, {useNewUrlParser: true})
+    const url = `mongodb://127.0.0.1/${databaseName}`
+    await mongoose.connect(url, { useNewUrlParser: true })
+    await model.remove()
   })
 
   afterEach(async () => { 
-    await User.deletemany()
+    await model.remove()
   })
 
-  it('should be able to create a user', async (done) => {
+  it('should be able to create a user', async () => {
     const user = {
     userId: "123",
     slug_url: "1234",
     name: "bob",
     }
-    const res = await request.post('/user').send(user)
-
-    const found = await User.findOne({ name: "bob" })
+    await request.post('/user').send(user)
+    const found = await model.findOne({ name: "bob" })
     expect(found.slug_url).toBe('1234')
-    done()
    })
 
-  it('shouldnt be able to create a user twice', async (done) => {
+  it('shouldnt be able to create a user twice', async () => {
 
     const user = {
     userId: "123",
@@ -44,30 +43,27 @@ describe('server intergration tests', () => {
     }
     await request.post('/user').send(user)
     const res = await request.post('/user').send(user)
-    expect(res.message).toEqual('User already exists')
-    done()
+    expect(res.body.message).toEqual('User already exists')
    })
   
 
-  it('should return user if user exists', async (done) => {
+  it('should return user if user exists', async () => {
     const user = {
     userId: "123",
     slug_url: "1234",
     name: "bob",
     }
     await request.post('/user').send(user)
-    const res = await request.post('/user/123')
-    expect(res.data.name).toEqual('bob')
-    done()
+    const res = await request.get('/user/123')
+    expect(res.body.data.name).toEqual('bob')
    })
   
-  it('should return error if user doesnt exist', async (done) => {
-    const res = await request.post('/user/123')
-    expect(res.message).toEqual("User Not found")
-    done()
+  it('should return error if user doesnt exist', async () => {
+    const res = await request.get('/user/123')
+    expect(res.body.message).toEqual("User Not found")
    })
   
-  it('should update user', async (done) => {
+  it('should update user', async () => {
     const user = {
     userId: "123",
     slug_url: "1234",
@@ -76,23 +72,14 @@ describe('server intergration tests', () => {
     const res = {
       "userId": "123",
       "slug_url": "12",
-      "name": "bob",
-        "portfolio": {
-            "layout": [],
-            "projects": [],
-            "work_history": [],
-            "social_media": []
-        },
-        "_id": "63822e370eeee5251e2b1af5",
-        "__v": 0
+      "name": "bob"
     }
     await request.post('/user').send(user)
     const data = await request.put('/user/123').send(res)
-    expect(data.data.slug_url).toEqual('12')
-    done()
+    expect(data.body.data.slug_url).toEqual('12')
   })
 
-  it('shouldnt be able to update user that doesnt exist', async (done) => {
+  it('shouldnt be able to update user that doesnt exist', async () => {
     const res = {
       "userId": "123",
       "slug_url": "12",
@@ -107,8 +94,7 @@ describe('server intergration tests', () => {
         "__v": 0
     }
   const data = await request.put('/user/123').send()
-    expect(data.message).toEqual("User doesn't exist")
-    done()
+    expect(data.body.message).toEqual("User doesn't exist")
   })
   
 })
