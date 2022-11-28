@@ -1,8 +1,6 @@
 import { User } from "../../../../libs/api-interfaces/src/lib/api-interfaces"
 import mongoose from "mongoose";
 
-import mongoose from "../models/dbConnection";
-
 const userSchema = new mongoose.Schema({
     userId: String,
     slug_url: String,
