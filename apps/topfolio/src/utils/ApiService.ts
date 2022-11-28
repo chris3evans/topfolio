@@ -1,4 +1,5 @@
-import { User } from '@topfolio/api-interfaces';
+// import { User } from '@topfolio/api-interfaces';
+import { WorkExperience, User } from '../../../../libs/api-interfaces/src';
 import { environment } from '../environments/environment';
 import { fetcher } from './fetcher';
 

@@ -20,7 +20,7 @@ export interface Portfolio {
   theme: Theme;
   layout: string[];
   projects: Project[];
-  work_history: Works[];
+  work_history: WorkExperience[];
   social_media: Socials[];
 }
 // TODO CHANGE COLORS NAME
@@ -38,9 +38,8 @@ export interface Project {
   github_url: string;
   app_url: string;
 }
-export interface Works {
+export interface WorkExperience {
   company_name: string;
-  image: string;
   description: string;
   start_date: Date;
   end_date: Date;

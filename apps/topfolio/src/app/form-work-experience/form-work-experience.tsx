@@ -10,23 +10,28 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import React, { HTMLInputTypeAttribute, useState } from 'react';
+import { updateUser } from '../../utils/ApiService';
+import { UserContext } from '../../utils/UserContext';
+import { useContext } from 'react';
 
 /* eslint-disable-next-line */
 export interface FormWorkExperienceProps {}
 
 export function FormWorkExperience(props: FormWorkExperienceProps) {
+  const context = useContext(UserContext);
+
   const formSumbitHandler = function (event: any) {
     event.preventDefault();
 
     const formData = {
-      companyName: event.target.companyName.value,
+      company_name: event.target.companyName.value,
       description: event.target.description.value,
-      startDate: event.target.startDate.value,
-      endDate: event.target.finishDate.value,
+      start_date: event.target.startDate.value,
+      end_date: event.target.finishDate.value,
     };
-
-    console.log(formData);
+    console.log(context);
+    // console.log(formData);
+    updateUser(formData);
   };
 
   return (
@@ -39,7 +44,12 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
           <Box sx={muiStyles.companyField}>
             <FormControl fullWidth={true}>
               <InputLabel htmlFor="company-name">Company Name:</InputLabel>
-              <Input id="company name" name="companyName"></Input>
+              <Input
+                type="text"
+                required
+                id="company name"
+                name="companyName"
+              ></Input>
             </FormControl>
           </Box>
 
@@ -47,6 +57,8 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
             <FormControl>
               <InputLabel htmlFor="description">Description:</InputLabel>
               <Input
+                type="text"
+                required
                 id="description"
                 name="description"
                 multiline={true}
@@ -63,6 +75,8 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
                     onChange={() => console.log('hi')}
                     renderInput={(props) => (
                       <TextField
+                        required
+                        type="date"
                         name="startDate"
                         variant="standard"
                         {...props}
@@ -86,6 +100,8 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
                     }}
                     renderInput={(props) => (
                       <TextField
+                        type="date"
+                        required
                         name="finishDate"
                         variant="standard"
                         {...props}
