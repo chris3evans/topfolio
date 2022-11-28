@@ -2,8 +2,15 @@ import { User } from "../../../../libs/api-interfaces/src/lib/api-interfaces"
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-    userId: String,
-    slug_url: String,
+    userId: {
+        type: String,
+        unique: true,
+        required: true
+    },
+    slug_url: {
+        type: String,
+        unique: true
+    },
     name: String,
     portfolio: {
         description: String,
