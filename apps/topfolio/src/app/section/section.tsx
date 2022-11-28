@@ -1,5 +1,8 @@
 import styles from './section.module.css';
 import { Draggable } from 'react-beautiful-dnd';
+import WorkHistoryComponent from '../work-history-component/work-history-component';
+import ProjectsComponent from '../projects-component/projects-component';
+import BioComponent from '../bio-component/bio-component';
 
 /* eslint-disable-next-line */
 export interface SectionProps {
@@ -9,6 +12,20 @@ export interface SectionProps {
 }
 
 export function Section(props: SectionProps) {
+  const type = props.sectionType;
+  const componentMapper = (type: string) => {
+    switch (type) {
+      case 'WorkHistory':
+        return <WorkHistoryComponent />;
+      case 'Projects':
+        return <ProjectsComponent />;
+      case 'Bio':
+        return <BioComponent />;
+      default:
+        return;
+    }
+  };
+
   return (
     <Draggable
       isDragDisabled={props.editMode}
@@ -23,7 +40,7 @@ export function Section(props: SectionProps) {
           {...provided.dragHandleProps}
           ref={provided.innerRef}
         >
-          <h1>{props.sectionType}</h1>
+          {componentMapper(type)}
         </div>
       )}
     </Draggable>
