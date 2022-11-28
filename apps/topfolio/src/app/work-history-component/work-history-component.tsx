@@ -9,7 +9,9 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
+
 import Typography from '@mui/material/Typography';
+import { Hidden } from '@mui/material';
 /* eslint-disable-next-line */
 export interface WorkHistoryComponentProps {}
 
@@ -17,13 +19,20 @@ export function WorkHistoryComponent(props: WorkHistoryComponentProps) {
   const { user, setUser } = useContext(UserContext);
 
   return (
-    <div className={styles['container']}>
+    <div className={styles['work-container']}>
       <h3>Work experience</h3>
       <Timeline position="alternate">
-        {mockUserState.portfolio.work_history.map((work) => (
-          <TimelineItem>
+        {mockUserState.portfolio.work_history.map((work, index) => (
+          <TimelineItem
+            key={`key${index}`}
+            sx={{ visibility: 'hidden' }}
+            id="WorkHistory"
+          >
             <TimelineOppositeContent color="text.secondary">
-              <Typography variant="h6">{`${work.start_date} - ${work.end_date}`}</Typography>
+              <Typography
+                variant="h6"
+                sx={{ fontSize: 15, fontWeight: 'medium' }}
+              >{`${work.start_date} - ${work.end_date}`}</Typography>
             </TimelineOppositeContent>
             <TimelineSeparator>
               <TimelineDot color="primary" />
@@ -47,13 +56,5 @@ export function WorkHistoryComponent(props: WorkHistoryComponentProps) {
       </Timeline>
     </div>
   );
-}
-
-{
-  //   /
-  // <div className={styles['work-history']}>
-  //   {mockUserState.portfolio.work_history.map((work) => (
-  //   ))}
-  // </div>
 }
 export default WorkHistoryComponent;

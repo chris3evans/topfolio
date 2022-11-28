@@ -1,5 +1,6 @@
 import styles from './bio-component.module.css';
 import { mockUserState } from '../mockUser';
+import Button from '@mui/material/Button';
 
 /* eslint-disable-next-line */
 export interface BioComponentProps {}
@@ -9,6 +10,7 @@ export function BioComponent(props: BioComponentProps) {
     <div className={styles['container']}>
       <h4>{`Hi, I'm ${mockUserState.name}`}</h4>
       <p>{mockUserState.portfolio.description}</p>
+      <Button>Contact me</Button>
     </div>
   );
 }
