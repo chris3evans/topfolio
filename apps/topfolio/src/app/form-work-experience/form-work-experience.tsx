@@ -20,18 +20,22 @@ export interface FormWorkExperienceProps {}
 export function FormWorkExperience(props: FormWorkExperienceProps) {
   const context = useContext(UserContext);
 
-  const formSumbitHandler = function (event: any) {
-    event.preventDefault();
+  const formSumbitHandler = async function (event: any) {
+    try {
+      event.preventDefault();
 
-    const formData = {
-      company_name: event.target.companyName.value,
-      description: event.target.description.value,
-      start_date: event.target.startDate.value,
-      end_date: event.target.finishDate.value,
-    };
-    console.log(context);
-    // // console.log(formData);
-    // updateUser(formData);
+      const formData = {
+        company_name: event.target.companyName.value,
+        description: event.target.description.value,
+        start_date: event.target.startDate.value,
+        end_date: event.target.finishDate.value,
+      };
+
+      const response = await updateUser(formData, '');
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

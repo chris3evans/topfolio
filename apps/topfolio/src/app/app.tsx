@@ -34,7 +34,7 @@ export const App = () => {
             <UserContext.Provider value={{ user, setUser }}>
               <DashBoardPage></DashBoardPage>
               <Route path="/" exact component={LandingPage} />
-              <ProtectedRoute path="/dashboard" component={Dashboard} />
+              <ProtectedRoute path="/dashboard" component={DashBoardPage} />
               <ProtectedRoute
                 path="/dashboard/:section"
                 component={Dashboard}
