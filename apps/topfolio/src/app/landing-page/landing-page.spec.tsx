@@ -7,4 +7,5 @@ describe('LandingPage', () => {
     const { baseElement } = render(<LandingPage />);
     expect(baseElement).toBeTruthy();
   });
+  // TODO test button on click
 });

@@ -1,10 +1,12 @@
 import { environment } from "../environments/environment";
-const {
+
+import {
   auth,
   claimCheck,
   InsufficientScopeError,
-} = require("express-oauth2-jwt-bearer");
-const dotenv = require("dotenv");
+} from "express-oauth2-jwt-bearer";
+
+import * as dotenv from "dotenv";
 
 dotenv.config();
 
@@ -14,6 +16,5 @@ const validateAccessToken = auth({
 });
 
 
-module.exports = {
-  validateAccessToken,
-};
+
+export { validateAccessToken }
