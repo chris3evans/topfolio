@@ -20,7 +20,7 @@ export interface FormWorkExperienceProps {}
 export function FormWorkExperience(props: FormWorkExperienceProps) {
   const context = useContext(UserContext);
 
-  const formSumbitHandler = async function (event: any) {
+  const formSubmitHandler = async function (event: any) {
     try {
       event.preventDefault();
 
@@ -43,7 +43,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
       <Typography align="center" sx={muiStyles.formTitle} variant="h2">
         Work Experience
       </Typography>
-      <form onSubmit={formSumbitHandler} className={styles['form-we']}>
+      <form onSubmit={formSubmitHandler} className={styles['form-we']}>
         <Box sx={muiStyles.formFields}>
           <Box sx={muiStyles.companyField}>
             <FormControl fullWidth={true}>
