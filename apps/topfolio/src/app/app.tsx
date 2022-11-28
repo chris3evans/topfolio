@@ -9,6 +9,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { User } from '@topfolio/api-interfaces';
+import PortfolioPage from './portfolio-page/portfolio-page';
 
 export const App = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -32,6 +33,7 @@ export const App = () => {
           <Switch>
             <UserContext.Provider value={{ user, setUser }}>
               <Route path="/" exact component={LandingPage} />
+              <Route path="/portfolio/" exact component={PortfolioPage}/>
               <ProtectedRoute path="/dashboard" component={Dashboard} />
               <ProtectedRoute
                 path="/dashboard/:section"
