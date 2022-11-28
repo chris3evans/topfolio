@@ -36,7 +36,6 @@ const userSchema = new mongoose.Schema({
         work_history: [
             {
                 company_name: String,
-                image: String,
                 description: String,
                 start_date: Date,
                 end_date: Date
