@@ -9,4 +9,4 @@ router.put('/user/:userId', saveUser);
 //Adding middleware in protected routes:
 //router.put('/user/:userId', validateAccessToken, saveUser);
 
-module.exports = router;
+export { router }
