@@ -1,7 +1,25 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+  .container {
+    background-color: var(--primary-background);
+    color: var(--primary-text);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+  }
+  h1{
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+  Button{
+    transform: scale(1.2)
+  }
+

@@ -1,0 +1,20 @@
+.container{
+  bottom: 0;
+  position:absolute;
+  width: 100%;
+  background-color: var(--primary-background);
+  color: var(--primary-text);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2em;
+  padding: 2em;
+}
+.links {
+  display: flex;
+  gap: 2em;
+}
+a{
+  transform:scale(1.5);
+  color: var(--primary);
+}
