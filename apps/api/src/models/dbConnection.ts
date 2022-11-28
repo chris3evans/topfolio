@@ -1,5 +1,6 @@
 import { environment } from "../environments/environment";
 const uri = environment.DB_URI
+console.log(uri)
 import { connect } from "mongoose";
 
 export async function dbConnection() {
