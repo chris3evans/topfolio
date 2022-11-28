@@ -5,8 +5,8 @@ import styles from './portfolio-page.module.css';
 import { mockUserState } from '../mockUser';
 import { gsap } from 'gsap';
 import { useLayoutEffect } from 'react';
+import { workHistoryAnimation, projectsAnimation } from './animations';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
 /* eslint-disable-next-line */
 export interface PortfolioPageProps {}
 const editMode = false;
@@ -14,20 +14,8 @@ const editMode = false;
 export function PortfolioPage(props: PortfolioPageProps) {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.utils
-        .toArray<HTMLElement>('#WorkHistory')
-        .forEach((element: any) => {
-          gsap.registerPlugin(ScrollTrigger);
-          gsap.to(element, {
-            scrollTrigger: {
-              trigger: element,
-              start: 'top center',
-              toggleActions: 'play none none none',
-            },
-            duration: 2,
-            autoAlpha: 1,
-          });
-        });
+      workHistoryAnimation('#WorkHistory');
+      projectsAnimation('#project-div');
     });
 
     return () => ctx.revert(); // cleanup
