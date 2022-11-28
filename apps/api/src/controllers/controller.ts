@@ -22,7 +22,8 @@ const userInfo = async (req: express.Request, res: express.Response) => {
 
 const createUser = async (req: express.Request, res: express.Response) => {
   try {
-    // const userId= req.auth.payload.sub;
+    const userId = req.auth.payload.sub;
+    console.log("TOKUSER ID:", userId);
     const newdata = req.body;
     console.log(req.body, 'req.body');
     const data = await getuser(newdata.userId); //function to try find user with id as param
