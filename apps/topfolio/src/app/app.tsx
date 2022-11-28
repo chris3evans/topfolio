@@ -27,8 +27,8 @@ export const App = () => {
 
   return (
     <div>
-      <Auth0ProviderWithHistory>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Auth0ProviderWithHistory>
           <Switch>
             <UserContext.Provider value={{ user, setUser }}>
               <Route path="/" exact component={LandingPage} />
@@ -40,8 +40,8 @@ export const App = () => {
               <Route path="/callback" component={CallbackPage} />
             </UserContext.Provider>
           </Switch>
-        </BrowserRouter>
-      </Auth0ProviderWithHistory>
+        </Auth0ProviderWithHistory>
+      </BrowserRouter>
     </div>
   );
 };

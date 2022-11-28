@@ -23,17 +23,18 @@ const userInfo = async (req: express.Request, res: express.Response) => {
 const createUser = async (req: express.Request, res: express.Response) => {
   try {
     const userId = req.auth.payload.sub;
-    console.log("TOKUSER ID:", userId);
+    console.log("USER ID:", userId);
     const newdata = req.body;
+    newdata.userId = userId;
     console.log(req.body, 'req.body');
-    const data = await getuser(newdata.userId); //function to try find user with id as param
+    const data = await getuser(userId); //function to try find user with id as param
     if (!data) {
       const user = await addUser(newdata); //create user here with newdata and id for params
       res.status(201);
       res.send({ status: 'success', data: user });
     } else {
       res.status(201);
-      res.send({ status: 'error', message: 'User already exists' });
+      res.send({ status: 'Success: user already exists', data });
     }
   } catch (error) {
     console.log('error: ' + error);
