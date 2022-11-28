@@ -1,4 +1,4 @@
-import { environment } from "../environments/environment.prod";
+import { environment } from "../environments/environment";
 const uri = environment.DB_URI
 import { connect } from "mongoose";
 
