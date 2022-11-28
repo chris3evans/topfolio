@@ -1,0 +1,9 @@
+.dashboardPage {
+  display: grid;
+  grid-template-columns: 15% 85%;
+}
+
+.form-container {
+  background-color: var(--primary-background);
+  color: white;
+}

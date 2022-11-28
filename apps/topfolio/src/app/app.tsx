@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { UserContext } from '../utils/UserContext';
 import LandingPage from './landing-page/landing-page';
+import DashBoardPage from './dash-board-page/dash-board-page';
 import Dashboard from './dashboard/dashboard';
 import CallbackPage from './callback/callback';
 import { Auth0ProviderWithHistory } from '../utils/auth0/auth0-provider-with-history';
@@ -31,6 +32,7 @@ export const App = () => {
         <Auth0ProviderWithHistory>
           <Switch>
             <UserContext.Provider value={{ user, setUser }}>
+              <DashBoardPage></DashBoardPage>
               <Route path="/" exact component={LandingPage} />
               <ProtectedRoute path="/dashboard" component={Dashboard} />
               <ProtectedRoute
