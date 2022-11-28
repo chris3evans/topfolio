@@ -1,7 +1,6 @@
-import { Button } from '@mui/material';
+import { LoginButton } from '../../utils/auth0/login-button';
 import Footer from '../footer/footer';
 import styles from './landing-page.module.css';
-import { LoginButton } from '../../utils/auth0/login-button';
 
 /* eslint-disable-next-line */
 export interface LandingPageProps {}
