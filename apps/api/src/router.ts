@@ -6,4 +6,4 @@ router.get('/user/:userId', userInfo);
 router.post('/user', createUser);
 router.put('/user/:userId', saveUser);
 
-module.exports = router;
+export { router }
