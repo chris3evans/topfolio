@@ -2,6 +2,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import styles from './dash-board-navigation-list.module.css';
+import { Link } from 'react-router-dom';
 
 /* eslint-disable-next-line */
 export interface DashBoardNavigationListProps {}
@@ -22,16 +23,20 @@ export function DashBoardNavigationList(props: DashBoardNavigationListProps) {
         ></ListItemText>
       </ListItem>
       <ListItem className={styles['dashboardNavigation-item']}>
-        <ListItemText
-          className={styles['dashboardNavigation-item-text']}
-          primary="Contact Me"
-        ></ListItemText>
+        <Link to="/dashboard/contact-me">
+          <ListItemText
+            className={styles['dashboardNavigation-item-text']}
+            primary="Contact Me"
+          ></ListItemText>
+        </Link>
       </ListItem>
       <ListItem className={styles['dashboardNavigation-item']}>
-        <ListItemText
-          className={styles['dashboardNavigation-item-text']}
-          primary="Work Experience"
-        ></ListItemText>
+        <Link to="/dashboard/work-experience">
+          <ListItemText
+            className={styles['dashboardNavigation-item-text']}
+            primary="Work Experience"
+          ></ListItemText>
+        </Link>
       </ListItem>
       <ListItem className={styles['dashboardNavigation-item']}>
         <ListItemText

@@ -1,13 +1,21 @@
 import styles from './dashboard.module.css';
 import { useAuth0 } from "@auth0/auth0-react";
 import { postUser } from "../../utils/ApiService";
+import { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../utils/UserContext';
+import { Link, useParams } from "react-router-dom";
 
-/* eslint-disable-next-line */
 export interface DashboardProps { }
 
 export function Dashboard(props: DashboardProps) {
 
+  const { userDetails, setUser } = useContext(UserContext);
+
   const { user, getAccessTokenSilently } = useAuth0();
+
+  useEffect(() => {
+    if (user) registerUser();
+  }, [user]);
 
   const registerUser = async () => {
     const accessToken = await getAccessTokenSilently();
@@ -19,14 +27,14 @@ export function Dashboard(props: DashboardProps) {
       },
       accessToken);
     console.log("API RESPONSE:", response);
+    setUser(response);
   }
-
-  registerUser();
 
   return (
     <div className={styles['container']}>
       <h1>Welcome to Dashboard!</h1>
-      {JSON.stringify(user)}
+      {/* {JSON.stringify(user)} */}
+      <Link to="/">Home</Link>
     </div>
   );
 }
