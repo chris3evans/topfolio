@@ -5,14 +5,26 @@ export interface User {
   name: string;
   portfolio: Portfolio;
 }
+
+// Contact Me Interface
+export interface ContactMe {
+  phone: string;
+  email: string;
+  social_media: Socials;
+  location: string;
+}
+
 export interface Portfolio {
-  description: string;
+  bio: string;
+  bio_title: string;
   hero_image: string;
+  hero_title: string;
   profile_image: string;
   theme: Theme;
   layout: string[];
-  projects: Project[];
-  work_history: Works[];
+  projects: MyProjects[];
+  contact_me: ContactMe;
+  work_history: WorkExperience[];
   social_media: Socials;
 }
 // TODO CHANGE COLORS NAME
@@ -23,14 +35,14 @@ export interface Theme {
   '4': string;
   '5': string;
 }
-export interface Project {
+export interface MyProjects {
   name: string;
   images: string[];
   description: string;
   github_url: string;
   app_url: string;
 }
-export interface Works {
+export interface WorkExperience {
   company_name: string;
   image: string;
   description: string;
@@ -41,4 +53,9 @@ export interface Socials {
   github: string;
   facebook: string;
   linkedin: string;
+}
+
+export interface info_about_me {
+  title: string;
+  body: string;
 }

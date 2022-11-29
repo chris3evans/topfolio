@@ -10,7 +10,7 @@ export function Callback(props: CallbackProps) {
 
   return (
     <div className={styles['container']}>
-      <h2>Error</h2>
+      <h2>Logging in...</h2>
       {JSON.stringify(error)}
     </div>
   );

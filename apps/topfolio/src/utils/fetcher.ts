@@ -9,12 +9,12 @@ export const fetcher = async (
   try {
     const res = await fetch(url, {
       method: `${method}`,
-      credentials: 'include',
+      /* credentials: 'include', */
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
         //prettier-ignore
-        'Authentication': `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`,
       },
       body: JSON.stringify(body),
     });
