@@ -1,9 +1,9 @@
-import { Project } from '@topfolio/api-interfaces';
+import { MyProjects, User } from '@topfolio/api-interfaces';
 import styles from './single-project.module.css';
 
 /* eslint-disable-next-line */
 export interface SingleProjectProps {
-  project: Project;
+  project: MyProjects;
 }
 
 export function SingleProject(props: SingleProjectProps) {

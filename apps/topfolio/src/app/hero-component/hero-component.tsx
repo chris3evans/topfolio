@@ -18,7 +18,7 @@ export function HeroComponent(props: HeroComponentProps) {
       </div>
       <div className={styles['hero-text']}>
         <h1>{props.user.name}</h1>
-        <p>{props.user.portfolio.description}</p>
+        <p>{props.user.portfolio.bio}</p>
       </div>
     </div>
   );

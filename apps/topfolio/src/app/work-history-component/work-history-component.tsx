@@ -18,7 +18,7 @@ export interface WorkHistoryComponentProps {
 }
 
 export function WorkHistoryComponent(props: WorkHistoryComponentProps) {
-  const { user, setUser } = useContext(UserContext);
+  const { userDetails, setUser } = useContext(UserContext);
 
   return (
     <div className={styles['work-container']}>

@@ -10,7 +10,7 @@ export interface User {
 export interface ContactMe {
   phone: string;
   email: string;
-  social_media: Socials[];
+  social_media: Socials;
   location: string;
 }
 
@@ -23,9 +23,9 @@ export interface Portfolio {
   theme: Theme;
   layout: string[];
   projects: MyProjects[];
-  contact_me: ContactMe[];
+  contact_me: ContactMe;
   work_history: WorkExperience[];
-  social_media: Socials[];
+  social_media: Socials;
 }
 // TODO CHANGE COLORS NAME
 export interface Theme {
