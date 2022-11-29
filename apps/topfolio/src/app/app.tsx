@@ -4,6 +4,7 @@ import LandingPage from './landing-page/landing-page';
 import DashBoardPage from './dash-board-page/dash-board-page';
 import Dashboard from './dashboard/dashboard';
 import CallbackPage from './callback/callback';
+import FormWorkExperience from './form-work-experience/form-work-experience';
 import { Auth0ProviderWithHistory } from '../utils/auth0/auth0-provider-with-history';
 import { ProtectedRoute } from '../utils/auth0/protected-route';
 import { BrowserRouter } from 'react-router-dom';
@@ -13,11 +14,11 @@ import { User } from '@topfolio/api-interfaces';
 
 
 export const App = () => {
-  const [user, setUser] = useState<User | null>(null);
+  const [userDetails, setUser] = useState<User | null | object>(null);
 
-  /* const { isLoading } = useAuth0(); */
+  /*   const { isLoading } = useAuth0();
 
-  /*   if (isLoading) {
+    if (isLoading) {
       return (
         <>
           <div>
@@ -32,14 +33,14 @@ export const App = () => {
       <BrowserRouter>
         <Auth0ProviderWithHistory>
           <Switch>
-            <UserContext.Provider value={{ user, setUser }}>
-              <DashBoardPage></DashBoardPage>
+            <UserContext.Provider value={{ userDetails, setUser }}>
               <Route path="/" exact component={LandingPage} />
-              <ProtectedRoute path="/dashboard" component={DashBoardPage} />
-              <ProtectedRoute
-                path="/dashboard/:section"
-                component={Dashboard}
-              />
+              <Route path="/dashboard" exact component={DashBoardPage} />
+              <Route
+                path="/work-experience"
+                component={FormWorkExperience}
+              ></Route>
+              <Route path="/dashboard/:section" component={DashBoardPage} />
               <Route path="/callback" component={CallbackPage} />
             </UserContext.Provider>
           </Switch>

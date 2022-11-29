@@ -10,13 +10,14 @@ app.use(express.json());
 app.use(router);
 app.use(errorHandler);
 
-dbConnection();
-
-const port = process.env.port || 3333;
-
-const server = app.listen(port, () => {
-  console.log('Listening at http://localhost:' + port);
+dbConnection().then(() => {
+  const port = process.env.port || 3333;
+  const server = app.listen(port, () => {
+    console.log('Listening at http://localhost:' + port);
+  });
+  server.on('error', console.error);
+}).catch((error) => {
+  console.log("ERROR: ", error);
 });
-server.on('error', console.error);
 
 export {};

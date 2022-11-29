@@ -7,19 +7,23 @@ export interface User {
 }
 
 // Contact Me Interface
-export interface Contact {
+export interface ContactMe {
   phone: string;
   email: string;
   social_media: Socials[];
+  location: string;
 }
 
 export interface Portfolio {
-  description: string;
+  bio: string;
+  bio_title: string;
   hero_image: string;
+  hero_title: string;
   profile_image: string;
   theme: Theme;
   layout: string[];
-  projects: Project[];
+  projects: MyProjects[];
+  contact_me: ContactMe[];
   work_history: WorkExperience[];
   social_media: Socials[];
 }
@@ -31,7 +35,7 @@ export interface Theme {
   '4': string;
   '5': string;
 }
-export interface Project {
+export interface MyProjects {
   name: string;
   images: string[];
   description: string;
@@ -40,11 +44,18 @@ export interface Project {
 }
 export interface WorkExperience {
   company_name: string;
+  image: string;
   description: string;
   start_date: Date;
   end_date: Date;
 }
 export interface Socials {
-  name: string;
-  url: string;
+  github: string;
+  facebook: string;
+  linkedin: string;
+}
+
+export interface info_about_me {
+  title: string;
+  body: string;
 }

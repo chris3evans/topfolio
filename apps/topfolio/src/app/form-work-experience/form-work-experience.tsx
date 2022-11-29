@@ -11,30 +11,42 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { updateUser } from '../../utils/ApiService';
-import { UserContext } from '../../utils/UserContext';
 import { useContext } from 'react';
+import { UserContext } from '../../utils/UserContext';
+// import { User } from '../../../../../libs/api-interfaces/src';
 
 /* eslint-disable-next-line */
-export interface FormWorkExperienceProps {}
+export interface FormWorkExperienceProps {
+  token: string;
+}
 
 export function FormWorkExperience(props: FormWorkExperienceProps) {
-  const context = useContext(UserContext);
+  const { userDetails, setUser } = useContext(UserContext);
 
-  const formSumbitHandler = async function (event: any) {
+  const formSubmitHandler = async function (event: any) {
     try {
       event.preventDefault();
 
       const formData = {
         company_name: event.target.companyName.value,
         description: event.target.description.value,
+        image: '',
         start_date: event.target.startDate.value,
         end_date: event.target.finishDate.value,
       };
 
-      const response = await updateUser(formData, '');
+      setUser((current) => {
+        // @ts-ignore
+        current.portfolio.work_history.push(formData);
+        return current;
+      });
+      console.log(userDetails, 'data to send backend');
+      console.log(props.token, 'token');
+      // @ts-ignore
+      const response = await updateUser(userDetails, props.token);
       console.log(response);
     } catch (error) {
-      console.error(error);
+      console.error(error, 'front end error');
     }
   };
 
@@ -43,7 +55,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
       <Typography align="center" sx={muiStyles.formTitle} variant="h2">
         Work Experience
       </Typography>
-      <form onSubmit={formSumbitHandler} className={styles['form-we']}>
+      <form onSubmit={formSubmitHandler} className={styles['form-we']}>
         <Box sx={muiStyles.formFields}>
           <Box sx={muiStyles.companyField}>
             <FormControl fullWidth={true}>
@@ -77,7 +89,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
                   <DatePicker
                     value={Date.now()}
                     onChange={() => console.log('hi')}
-                    renderInput={(props) => (
+                    renderInput={(props: any) => (
                       <TextField
                         required
                         type="date"
@@ -102,7 +114,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
                     onChange={() => {
                       console.log('hello');
                     }}
-                    renderInput={(props) => (
+                    renderInput={(props: any) => (
                       <TextField
                         type="date"
                         required
