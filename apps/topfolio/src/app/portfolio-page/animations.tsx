@@ -61,3 +61,18 @@ export const pageScrollAnimation = () => {
     },
   });
 };
+export const buttonRollOnScroll = (buttonClass: string) => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.to(buttonClass, {
+    scrollTrigger: {
+      trigger: buttonClass,
+      // scrub: 2,
+    },
+    x: 450,
+    y: 130,
+    rotation: 360,
+    ease: 'none',
+    duration: 1,
+  });
+};

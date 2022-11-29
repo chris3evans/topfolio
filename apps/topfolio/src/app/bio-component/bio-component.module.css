@@ -1,8 +1,32 @@
 
   .container {
     width: 100%;
+    height: 100%;
     margin: 1em;
     padding: 1em;
     background: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 4em;
 
+ }
+
+ .text  {
+  width: 70%;
+  padding: 1em;
+  margin: 1em;
+ }
+.span{  display: inline-block;
+  margin-right: 0.25em;
+  white-space: nowrap;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+ .container p{
+  font-size: 1.3em;
+ }
+ .container h2 {
+  font-size: 2em;
  }

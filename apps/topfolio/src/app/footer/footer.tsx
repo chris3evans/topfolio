@@ -13,6 +13,7 @@ export interface FooterProps {
 export function Footer(props: FooterProps) {
   const Footer = () => (
     <>
+      <h3>TopFolio</h3>
       <div className={styles['links']}>
         <a aria-label="Topfolio Facebook link" href={props.facebook || ''}>
           <AiFillFacebook />
