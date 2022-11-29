@@ -11,6 +11,7 @@ export interface SectionsComponentProps {
 
 export function SectionsComponent(props: SectionsComponentProps) {
   const [tempLayout, setLayout] = useState([...props.user.portfolio.layout]);
+
   const onDragEnd = (result: any) => {
     const { destination, source, draggableId } = result;
     if (!destination) return;

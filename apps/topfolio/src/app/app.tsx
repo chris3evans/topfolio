@@ -35,9 +35,7 @@ export const App = () => {
               <Route path="/" exact component={LandingPage} />
               <Route
                 path="/portfolio/"
-                render={(props) => (
-                  <PortfolioPage viewMode={false} {...props} />
-                )}
+                render={(props) => <PortfolioPage viewMode={true} {...props} />}
               />
               <ProtectedRoute path="/dashboard" component={Dashboard} />
               <ProtectedRoute

@@ -9,7 +9,7 @@ export function BioComponent(props: BioComponentProps) {
   return (
     <div className={styles['container']}>
       <h2>{`Hi, I'm ${mockUserState.name}`}</h2>
-      <p>{mockUserState.portfolio.description}</p>
+      <p>{mockUserState.portfolio.bio}</p>
       <Button>Contact me</Button>
     </div>
   );

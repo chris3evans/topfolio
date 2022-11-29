@@ -6,8 +6,7 @@ export const mockUserState: User = {
   slug_url: '',
   name: 'Marco',
   portfolio: {
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?',
     hero_image: '../.././assets/hero.jpg',
     profile_image: '../../assets/profile-img.jpg',
     theme: {

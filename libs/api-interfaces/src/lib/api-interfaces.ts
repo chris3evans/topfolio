@@ -6,7 +6,7 @@ export interface User {
   portfolio: Portfolio;
 }
 export interface Portfolio {
-  description: string;
+  bio: string;
   hero_image: string;
   profile_image: string;
   theme: Theme;
