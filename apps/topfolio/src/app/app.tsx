@@ -4,6 +4,7 @@ import LandingPage from './landing-page/landing-page';
 import DashBoardPage from './dash-board-page/dash-board-page';
 import Dashboard from './dashboard/dashboard';
 import CallbackPage from './callback/callback';
+import FormWorkExperience from './form-work-experience/form-work-experience';
 import { Auth0ProviderWithHistory } from '../utils/auth0/auth0-provider-with-history';
 import { ProtectedRoute } from '../utils/auth0/protected-route';
 import { BrowserRouter } from 'react-router-dom';
@@ -15,7 +16,7 @@ export const App = () => {
   const [userDetails, setUser] = useState<User | null | object>(null);
 
   /*   const { isLoading } = useAuth0();
-  
+
     if (isLoading) {
       return (
         <>
@@ -32,13 +33,13 @@ export const App = () => {
         <Auth0ProviderWithHistory>
           <Switch>
             <UserContext.Provider value={{ userDetails, setUser }}>
-              <DashBoardPage></DashBoardPage>
               <Route path="/" exact component={LandingPage} />
-              <Route path="/dashboard" component={DashBoardPage} />
+              <Route path="/dashboard" exact component={DashBoardPage} />
               <Route
-                path="/dashboard/:section"
-                component={Dashboard}
-              />
+                path="/work-experience"
+                component={FormWorkExperience}
+              ></Route>
+              <Route path="/dashboard/:section" component={DashBoardPage} />
               <Route path="/callback" component={CallbackPage} />
             </UserContext.Provider>
           </Switch>

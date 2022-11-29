@@ -3,13 +3,20 @@ import FormWorkExperience from '../form-work-experience/form-work-experience';
 import ContactMeForm from '../contact-me-form/contact-me-form';
 
 /* eslint-disable-next-line */
-export interface FormContainerProps {}
+export interface FormContainerProps {
+  token: string;
+  sectionName: string;
+}
 
 export function FormContainer(props: FormContainerProps) {
   return (
     <div className={styles['form-container']}>
-      {/* <FormWorkExperience></FormWorkExperience> */}
-      <ContactMeForm></ContactMeForm>
+      {props.sectionName == 'work-experience' ? (
+        <FormWorkExperience token={props.token}></FormWorkExperience>
+      ) : (
+        ''
+      )}
+      {props.sectionName == 'contact-me' ? <ContactMeForm></ContactMeForm> : ''}
     </div>
   );
 }

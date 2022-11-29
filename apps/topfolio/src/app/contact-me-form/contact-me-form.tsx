@@ -27,6 +27,8 @@ export function ContactMeForm(props: ContactMeFormProps) {
     setShowSocials(!showSocials);
   };
 
+  const submitHandler = function (event: any) {};
+
   return (
     <Box sx={muiStyles.form}>
       <Typography variant="h2">Contact Me:</Typography>

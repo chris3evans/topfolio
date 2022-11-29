@@ -11,15 +11,19 @@ export interface ContactMe {
   phone: string;
   email: string;
   social_media: Socials[];
+  location: string;
 }
 
 export interface Portfolio {
-  description: string;
+  bio: string;
+  bio_title: string;
   hero_image: string;
+  hero_title: string;
   profile_image: string;
   theme: Theme;
   layout: string[];
   projects: MyProjects[];
+  contact_me: ContactMe[];
   work_history: WorkExperience[];
   social_media: Socials[];
 }
@@ -40,11 +44,13 @@ export interface MyProjects {
 }
 export interface WorkExperience {
   company_name: string;
+  image: string;
   description: string;
   start_date: Date;
   end_date: Date;
 }
 export interface Socials {
-  name: string;
-  url: string;
+  github: string;
+  facebook: string;
+  linkedin: string;
 }
