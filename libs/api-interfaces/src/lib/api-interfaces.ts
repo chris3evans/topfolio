@@ -54,3 +54,8 @@ export interface Socials {
   facebook: string;
   linkedin: string;
 }
+
+export interface info_about_me {
+  title: string;
+  body: string;
+}
