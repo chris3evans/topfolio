@@ -12,7 +12,6 @@ import { Switch, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { User } from '@topfolio/api-interfaces';
 
-
 export const App = () => {
   const [userDetails, setUser] = useState<User | null | object>(null);
 
@@ -36,10 +35,6 @@ export const App = () => {
             <UserContext.Provider value={{ userDetails, setUser }}>
               <Route path="/" exact component={LandingPage} />
               <Route path="/dashboard" exact component={DashBoardPage} />
-              <Route
-                path="/work-experience"
-                component={FormWorkExperience}
-              ></Route>
               <Route path="/dashboard/:section" component={DashBoardPage} />
               <Route path="/callback" component={CallbackPage} />
             </UserContext.Provider>

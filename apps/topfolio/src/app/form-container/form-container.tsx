@@ -13,12 +13,14 @@ export interface FormContainerProps {
 export function FormContainer(props: FormContainerProps) {
   return (
     <div className={styles['form-container']}>
+      {props.sectionName == 'about-me' ? <InfoAboutMe></InfoAboutMe> : ''}
       {props.sectionName == 'work-experience' ? (
         <FormWorkExperience token={props.token}></FormWorkExperience>
       ) : (
         ''
       )}
       {props.sectionName == 'contact-me' ? <ContactMeForm></ContactMeForm> : ''}
+      {props.sectionName == 'projects' ? <FormProjects></FormProjects> : ''}
     </div>
   );
 }

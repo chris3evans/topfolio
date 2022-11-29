@@ -11,16 +11,12 @@ export function DashBoardNavigationList(props: DashBoardNavigationListProps) {
   return (
     <List>
       <ListItem className={styles['dashboardNavigation-item']}>
-        <ListItemText
-          className={styles['dashboardNavigation-item-text']}
-          primary="Infos"
-        ></ListItemText>
-      </ListItem>
-      <ListItem className={styles['dashboardNavigation-item']}>
-        <ListItemText
-          className={styles['dashboardNavigation-item-text']}
-          primary="About Me"
-        ></ListItemText>
+        <Link to="/dashboard/about-me">
+          <ListItemText
+            className={styles['dashboardNavigation-item-text']}
+            primary="About Me"
+          ></ListItemText>
+        </Link>
       </ListItem>
       <ListItem className={styles['dashboardNavigation-item']}>
         <Link to="/dashboard/contact-me">
@@ -39,10 +35,12 @@ export function DashBoardNavigationList(props: DashBoardNavigationListProps) {
         </Link>
       </ListItem>
       <ListItem className={styles['dashboardNavigation-item']}>
-        <ListItemText
-          className={styles['dashboardNavigation-item-text']}
-          primary="My Projects"
-        ></ListItemText>
+        <Link to="/dashboard/projects">
+          <ListItemText
+            className={styles['dashboardNavigation-item-text']}
+            primary="My Projects"
+          ></ListItemText>
+        </Link>
       </ListItem>
       <ListItem className={styles['dashboardNavigation-item']}>
         <ListItemText
