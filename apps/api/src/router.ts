@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/user/:userId', userInfo);
 router.post('/user', validateAccessToken, createUser);
-router.put('/user/:userId', saveUser);
+router.put('/user', validateAccessToken, saveUser);
 //Adding middleware in protected routes:
 //router.put('/user/:userId', validateAccessToken, saveUser);
 

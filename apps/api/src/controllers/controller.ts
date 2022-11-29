@@ -23,10 +23,10 @@ const userInfo = async (req: express.Request, res: express.Response) => {
 const createUser = async (req: express.Request, res: express.Response) => {
   try {
     const userId = req.auth.payload.sub;
-    console.log("USER ID:", userId);
+    // console.log("USER ID:", userId);
     const newdata = req.body;
     newdata.userId = userId;
-    console.log(req.body, 'req.body');
+    // console.log(req.body, 'req.body');
     const data = await getuser(userId); //function to try find user with id as param
     if (!data) {
       const user = await addUser(newdata); //create user here with newdata and id for params
@@ -43,12 +43,14 @@ const createUser = async (req: express.Request, res: express.Response) => {
   }
 };
 
+//updating function
 const saveUser = async (req: express.Request, res: express.Response) => {
   try {
-    const { userId } = req.params;
+    const userId = req.auth.payload.sub;
     const data = await getuser(userId); //function to try find user with id as param
     if (data) {
       let newdata = req.body;
+      newdata.userId = userId;
       await updateUser(newdata, userId); //update user here with newdata and id as params
       const user = await getuser(userId);
       res.status(200);
