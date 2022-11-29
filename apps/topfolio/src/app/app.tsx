@@ -12,11 +12,11 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { User } from '@topfolio/api-interfaces';
 
 export const App = () => {
-  const [user, setUser] = useState<User | null>(null);
+  const [userDetails, setUser] = useState<User | null | object>(null);
 
-  /* const { isLoading } = useAuth0(); */
-
-  /*   if (isLoading) {
+  /*   const { isLoading } = useAuth0();
+  
+    if (isLoading) {
       return (
         <>
           <div>
@@ -31,11 +31,11 @@ export const App = () => {
       <BrowserRouter>
         <Auth0ProviderWithHistory>
           <Switch>
-            <UserContext.Provider value={{ user, setUser }}>
+            <UserContext.Provider value={{ userDetails, setUser }}>
               <DashBoardPage></DashBoardPage>
               <Route path="/" exact component={LandingPage} />
-              <ProtectedRoute path="/dashboard" component={DashBoardPage} />
-              <ProtectedRoute
+              <Route path="/dashboard" component={DashBoardPage} />
+              <Route
                 path="/dashboard/:section"
                 component={Dashboard}
               />
