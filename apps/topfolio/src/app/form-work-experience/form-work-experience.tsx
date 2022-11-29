@@ -77,7 +77,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
                   <DatePicker
                     value={Date.now()}
                     onChange={() => console.log('hi')}
-                    renderInput={(props) => (
+                    renderInput={(props: any) => (
                       <TextField
                         required
                         type="date"
@@ -102,7 +102,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
                     onChange={() => {
                       console.log('hello');
                     }}
-                    renderInput={(props) => (
+                    renderInput={(props: any) => (
                       <TextField
                         type="date"
                         required

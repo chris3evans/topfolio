@@ -48,3 +48,8 @@ export interface Socials {
   name: string;
   url: string;
 }
+
+export interface info_about_me {
+  title: string;
+  body: string;
+}
