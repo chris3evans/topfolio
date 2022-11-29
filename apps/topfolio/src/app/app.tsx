@@ -33,7 +33,12 @@ export const App = () => {
           <Switch>
             <UserContext.Provider value={{ user, setUser }}>
               <Route path="/" exact component={LandingPage} />
-              <Route path="/portfolio/" exact component={PortfolioPage}/>
+              <Route
+                path="/portfolio/"
+                render={(props) => (
+                  <PortfolioPage viewMode={false} {...props} />
+                )}
+              />
               <ProtectedRoute path="/dashboard" component={Dashboard} />
               <ProtectedRoute
                 path="/dashboard/:section"

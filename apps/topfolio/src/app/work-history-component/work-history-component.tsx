@@ -41,7 +41,15 @@ export function WorkHistoryComponent(props: WorkHistoryComponentProps) {
                 }}
               />
             </TimelineSeparator>
-            <TimelineContent>
+            <TimelineContent
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                flexDirection: 'column',
+                marginLeft: 3,
+                marginRight: 3,
+              }}
+            >
               <div className={styles['box']}>
                 {' '}
                 <img src={work.image} alt="logo" />
