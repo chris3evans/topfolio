@@ -1,7 +1,7 @@
 import { User } from "../../../../libs/api-interfaces/src/lib/api-interfaces"
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema<User>({
     userId: {
         type: String,
         unique: true,
@@ -15,6 +15,7 @@ const userSchema = new mongoose.Schema({
     portfolio: {
         description: String,
         hero_image: String,
+        hero_title: String,
         profile_image: String,
         theme: {
             '1': String,
