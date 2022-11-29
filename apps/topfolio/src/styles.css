@@ -3,9 +3,19 @@
 * Add the correct display in IE 9-.
 */
 
+html {
+  font-size: 62.5%;
+}
+
+* {
+  padding: 0rem;
+  margin: 0rem;
+  box-sizing: border-box;
+}
+
 audio,
 video {
- display: inline-block;
+  display: inline-block;
 }
 
 /**
@@ -16,18 +26,19 @@ video {
   padding: 0;
   box-sizing: border-box;
 }
-html body  {
+html body {
   height: 100vh;
 }
-body{
+body {
   min-height: 100vh;
 }
 img {
- border-style: none;
+  border-style: none;
 }
+
 :root {
-  --primary-background :#151619;
-  --secondary-background :#1E1F23;
+  --primary-background: #151619;
+  --secondary-background: #1e1f23;
   --primary-text: #ffffff;
   --primary: #1976d3;
 }
