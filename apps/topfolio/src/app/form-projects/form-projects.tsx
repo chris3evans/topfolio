@@ -13,10 +13,24 @@ import Typography from '@mui/material/Typography';
 import { updateUser } from '../../utils/ApiService';
 import { UserContext } from '../../utils/UserContext';
 import { useContext } from 'react';
+import { Cloudinary } from "@cloudinary/url-gen";
+import { AdvancedImage } from '@cloudinary/react';
+import { fill } from "@cloudinary/url-gen/actions/resize";
+import UploadImageWidget from '../upload-image-widget/upload-image-widget';
 
 export interface FormProjectsProps { }
 export function FormProjects(props: FormProjectsProps) {
   const context = useContext(UserContext);
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: 'divt6a0ys'
+    }
+  })
+  // Instantiate a CloudinaryImage object for the image with the public ID, 'docs/models'.
+  const myImage = cld.image('hefrxnlroorhexwk6gwx');
+
+  // Resize to 250 x 250 pixels using the 'fill' crop mode.
+  myImage.resize(fill().width(250).height(250));
 
   const formSubmitHandler = async function (event: any) {
     try {
@@ -37,6 +51,7 @@ export function FormProjects(props: FormProjectsProps) {
   };
 
   return (
+
     <Box sx={muiStyles.form}>
       <Typography align="center" sx={muiStyles.formTitle} variant="h2">
         My Projects
@@ -48,6 +63,8 @@ export function FormProjects(props: FormProjectsProps) {
   app_url: string; */}
       <form onSubmit={formSubmitHandler} className={styles['form-we']}>
         <Box sx={muiStyles.formFields}>
+          <AdvancedImage cldImg={myImage} />
+          <UploadImageWidget />
           <Box sx={muiStyles.projectField}>
             <FormControl fullWidth={true}>
               <InputLabel htmlFor="project-name">Project Name:</InputLabel>
