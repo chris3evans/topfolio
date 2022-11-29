@@ -31,10 +31,10 @@ const createUser = async (req: express.Request, res: express.Response) => {
     if (!data) {
       const user = await addUser(newdata); //create user here with newdata and id for params
       res.status(201);
-      res.send({ status: 'success', data: user });
+      res.send(user);//{ status: 'success', data: user }
     } else {
       res.status(201);
-      res.send({ status: 'Success: user already exists', data });
+      res.send(data);//{ status: 'Success: user already exists', data }
     }
   } catch (error) {
     console.log('error: ' + error);
