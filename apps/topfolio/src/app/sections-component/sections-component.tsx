@@ -30,9 +30,11 @@ export function SectionsComponent(props: SectionsComponentProps) {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="uniqueId">
-        {(provided) => (
+        {(provided, snapshot) => (
           <div
-            className={styles['container']}
+            className={
+              snapshot.isDraggingOver ? styles['dragging'] : styles['container']
+            }
             ref={provided.innerRef}
             {...provided.droppableProps}
           >

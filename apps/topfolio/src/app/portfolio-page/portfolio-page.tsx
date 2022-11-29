@@ -12,12 +12,14 @@ export interface PortfolioPageProps {
 
 export function PortfolioPage(props: PortfolioPageProps) {
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      workHistoryAnimation('#WorkHistory');
-      pageScrollAnimation();
-    });
-
-    return () => ctx.revert(); // cleanup
+    if (props.viewMode) {
+      const ctx = gsap.context(() => {
+        workHistoryAnimation('#WorkHistory');
+        pageScrollAnimation();
+      });
+      return () => ctx.revert(); // cleanup
+    }
+    return;
   });
   return (
     <div className={styles['body']}>

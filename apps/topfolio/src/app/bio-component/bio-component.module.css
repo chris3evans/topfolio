@@ -1,6 +1,8 @@
 
   .container {
-    width: 50%;
+    width: 100%;
     margin: 1em;
     padding: 1em;
+    background: white;
+
  }

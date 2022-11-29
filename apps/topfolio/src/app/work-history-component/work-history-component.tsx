@@ -11,8 +11,11 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 
 import Typography from '@mui/material/Typography';
+import { display } from '@mui/system';
 /* eslint-disable-next-line */
-export interface WorkHistoryComponentProps {}
+export interface WorkHistoryComponentProps {
+  viewMode: boolean;
+}
 
 export function WorkHistoryComponent(props: WorkHistoryComponentProps) {
   const { user, setUser } = useContext(UserContext);
@@ -24,7 +27,7 @@ export function WorkHistoryComponent(props: WorkHistoryComponentProps) {
         {mockUserState.portfolio.work_history.map((work, index) => (
           <TimelineItem
             key={`key${index}`}
-            sx={{ visibility: 'hidden' }}
+            sx={props.viewMode ? { visibility: 'hidden' } : {}}
             id="WorkHistory"
           >
             <TimelineOppositeContent color="text.secondary">
@@ -44,11 +47,10 @@ export function WorkHistoryComponent(props: WorkHistoryComponentProps) {
             <TimelineContent
               sx={{
                 display: 'flex',
-                alignItems: 'center',
                 flexDirection: 'column',
-                marginLeft: 3,
-                marginRight: 3,
+                alignItems: 'center',
               }}
+              className={index % 2 ? styles['left'] : styles['right']}
             >
               <div className={styles['box']}>
                 {' '}

@@ -8,7 +8,7 @@ export interface BioComponentProps {}
 export function BioComponent(props: BioComponentProps) {
   return (
     <div className={styles['container']}>
-      <h4>{`Hi, I'm ${mockUserState.name}`}</h4>
+      <h2>{`Hi, I'm ${mockUserState.name}`}</h2>
       <p>{mockUserState.portfolio.description}</p>
       <Button>Contact me</Button>
     </div>
