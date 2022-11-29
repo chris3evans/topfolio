@@ -32,7 +32,7 @@ export const App = () => {
           <Switch>
             <UserContext.Provider value={{ userDetails, setUser }}>
               <Route path="/" exact component={LandingPage} />
-              <Route path="/dashboard" component={Dashboard} />
+              <ProtectedRoute path="/dashboard" component={Dashboard} />
               <Route path="/callback" component={CallbackPage} />
             </UserContext.Provider>
           </Switch>
