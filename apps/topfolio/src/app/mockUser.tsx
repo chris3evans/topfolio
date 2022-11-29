@@ -7,7 +7,9 @@ export const mockUserState: User = {
   name: 'Marco',
   portfolio: {
     bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?',
+    bio_title: 'hello there',
     hero_image: '../.././assets/hero.jpg',
+    hero_title: 'Mock hero title',
     profile_image: '../../assets/profile-img.jpg',
     theme: {
       1: '',
@@ -40,6 +42,16 @@ export const mockUserState: User = {
         app_url: '',
       },
     ],
+    contact_me: {
+      phone: 'number',
+      email: 'test@email.com',
+      social_media: {
+        github: 'github link',
+        facebook: 'facebook link',
+        linkedin: 'linkedin link',
+      },
+      location: 'UK',
+    },
     work_history: [
       {
         company_name: 'google',

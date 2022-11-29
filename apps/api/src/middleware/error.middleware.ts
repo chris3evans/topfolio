@@ -1,8 +1,8 @@
-const {
+import {
   InvalidTokenError,
   UnauthorizedError,
   InsufficientScopeError,
-} = require("express-oauth2-jwt-bearer");
+} from "express-oauth2-jwt-bearer";
 
 const errorHandler = (error, request, response, next) => {
 
@@ -38,6 +38,4 @@ const errorHandler = (error, request, response, next) => {
   response.status(status_code).json({ status, message });
 };
 
-module.exports = {
-  errorHandler,
-};
+export { errorHandler };

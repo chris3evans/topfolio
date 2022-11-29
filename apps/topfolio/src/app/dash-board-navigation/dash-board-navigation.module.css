@@ -1,0 +1,18 @@
+.dashboardNavigation {
+  background-color: var(--secondary-background);
+}
+
+.dashboardNavigation-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashBoardNavigation-logo {
+}
+
+.dashboardNavigation-heading {
+  font-size: 3rem;
+  color: var(--primary-text);
+  font-family: Arial, Helvetica, sans-serif;
+}
