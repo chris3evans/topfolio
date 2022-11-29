@@ -37,11 +37,12 @@ export function ContactMeForm(props: ContactMeFormProps) {
               <FormControl fullWidth={true}>
                 <InputLabel htmlFor="phone">Phone Number</InputLabel>
                 <Input
+                  required={true}
                   id="phone"
                   type="number"
                   startAdornment={
                     <InputAdornment position="start">
-                      <PhoneIcon></PhoneIcon>
+                      <PhoneIcon sx={muiStyles.contactIcon}></PhoneIcon>
                     </InputAdornment>
                   }
                 ></Input>
@@ -52,11 +53,12 @@ export function ContactMeForm(props: ContactMeFormProps) {
               <FormControl fullWidth={true}>
                 <InputLabel htmlFor="email">Email</InputLabel>
                 <Input
+                  required={true}
                   id="email"
                   type="email"
                   startAdornment={
                     <InputAdornment position="start">
-                      <EmailIcon></EmailIcon>
+                      <EmailIcon sx={muiStyles.contactIcon}></EmailIcon>
                     </InputAdornment>
                   }
                 ></Input>
@@ -83,7 +85,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                     name="facebook"
                     startAdornment={
                       <InputAdornment position="start">
-                        <FacebookIcon></FacebookIcon>
+                        <FacebookIcon sx={muiStyles.contactIcon}></FacebookIcon>
                       </InputAdornment>
                     }
                   ></Input>
@@ -98,7 +100,9 @@ export function ContactMeForm(props: ContactMeFormProps) {
                     name="instagram"
                     startAdornment={
                       <InputAdornment position="start">
-                        <InstagramIcon></InstagramIcon>
+                        <InstagramIcon
+                          sx={muiStyles.contactIcon}
+                        ></InstagramIcon>
                       </InputAdornment>
                     }
                   ></Input>
@@ -113,7 +117,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                     name="twitter"
                     startAdornment={
                       <InputAdornment position="start">
-                        <TwitterIcon></TwitterIcon>
+                        <TwitterIcon sx={muiStyles.contactIcon}></TwitterIcon>
                       </InputAdornment>
                     }
                   ></Input>
@@ -128,7 +132,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                     name="youtube"
                     startAdornment={
                       <InputAdornment position="start">
-                        <YouTubeIcon></YouTubeIcon>
+                        <YouTubeIcon sx={muiStyles.contactIcon}></YouTubeIcon>
                       </InputAdornment>
                     }
                   ></Input>

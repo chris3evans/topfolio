@@ -22,12 +22,15 @@ const muiStyles = {
   contactGrid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
-    gridColumnGap: '7.5rem',
+    gridColumnGap: '5rem',
   },
 
   switchContainer: {
     display: 'flex',
     justifyContent: 'right',
+  },
+  switchLabel: {
+    fontSize: '3rem',
   },
 
   socialsGrid: {
@@ -35,6 +38,10 @@ const muiStyles = {
     gridTemplateRows: 'repeat(2, min-content)',
     gridTemplateColumns: 'repeat(2, 1fr)',
     gridGap: '5rem',
+  },
+
+  contactIcon: {
+    fontSize: '3rem',
   },
 
   saveButton: {
