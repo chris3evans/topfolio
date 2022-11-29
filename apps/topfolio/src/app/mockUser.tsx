@@ -21,14 +21,14 @@ export const mockUserState: User = {
     projects: [
       {
         name: 'topfolio',
-        images: ['../assets/project_img.png'],
+        images: ['../assets/project2.jpg'],
         description: 'description',
         github_url: 'https://github.com/chris3evans/topfolio',
         app_url: '',
       },
       {
         name: 'coolfolio',
-        images: ['../assets/project_img.png'],
+        images: ['../assets/project3.jpg'],
         description: 'description',
         github_url: 'https://github.com/chris3evans/topfolio',
         app_url: '',

@@ -16,7 +16,7 @@ export function Section(props: SectionProps) {
   const componentMapper = (type: string) => {
     switch (type) {
       case 'WorkHistory':
-        return <WorkHistoryComponent />;
+        return <WorkHistoryComponent viewMode={props.viewMode} />;
       case 'Projects':
         return <ProjectsComponent />;
       case 'Bio':
@@ -33,9 +33,9 @@ export function Section(props: SectionProps) {
       index={props.index}
       key={`key${props.index}`}
     >
-      {(provided) => (
+      {(provided, snapshot) => (
         <div
-          className={styles['container']}
+          className={snapshot.isDragging ? styles['container'] : styles['']}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}

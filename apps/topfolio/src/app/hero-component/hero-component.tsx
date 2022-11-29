@@ -1,5 +1,4 @@
 import { User } from '@topfolio/api-interfaces';
-import { userInfo } from 'os';
 import styles from './hero-component.module.css';
 
 /* eslint-disable-next-line */

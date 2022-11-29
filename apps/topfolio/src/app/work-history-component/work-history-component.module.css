@@ -3,14 +3,35 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2em;
+  gap: 5em;
+  padding: 5em;
   width:99.2vw;
+  background: white;
+
 }
 .box{
-  width:10%;
+  width:20%;
+  transform: translateY(-15%)
 
 }
 img{
   max-width: 60px;
   max-height: 50%;
 }
+.left{
+  transform: translate(35%);
+
+}
+.right{
+  transform: translate(-35%);
+
+}
+@media only screen and (max-width: 600px){
+  .left{
+    transform: translate(10%);
+  }
+  .right{
+    transform: translate(-10%);
+
+  }
+  }
