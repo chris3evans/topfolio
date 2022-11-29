@@ -13,7 +13,7 @@ export interface Portfolio {
   layout: string[];
   projects: Project[];
   work_history: Works[];
-  social_media: Socials[];
+  social_media: Socials;
 }
 // TODO CHANGE COLORS NAME
 export interface Theme {
@@ -38,6 +38,7 @@ export interface Works {
   end_date: Date;
 }
 export interface Socials {
-  name: string;
-  url: string;
+  github: string;
+  facebook: string;
+  linkedin: string;
 }

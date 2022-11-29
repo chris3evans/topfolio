@@ -1,0 +1,4 @@
+.container {
+  border: 3px solid var(--primary) ;
+  background: white;
+}

@@ -1,0 +1,18 @@
+
+ .project-container {
+  width:100vw;
+  height:100vh;
+  flex-shrink: 0;
+}
+
+  img {
+    max-width: 50%;
+    height: auto;
+    display: block;
+  }
+.infos {
+  /* display: none; */
+}
+.infos:hover {
+  display: block;
+}

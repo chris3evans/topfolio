@@ -1,0 +1,8 @@
+.body{
+  color: var(--primary-background);
+  background-color:white;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+
+}
