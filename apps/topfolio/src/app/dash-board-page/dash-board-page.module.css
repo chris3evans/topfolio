@@ -1,0 +1,10 @@
+.dashboardPage {
+  display: grid;
+  grid-template-columns: 15% 85%;
+  height: 100vh;
+}
+
+.form-container {
+  background-color: var(--primary-background);
+  color: white;
+}
