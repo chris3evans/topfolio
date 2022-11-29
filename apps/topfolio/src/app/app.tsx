@@ -12,6 +12,7 @@ import { Switch, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { User } from '@topfolio/api-interfaces';
 
+
 export const App = () => {
   const [userDetails, setUser] = useState<User | null | object>(null);
 
