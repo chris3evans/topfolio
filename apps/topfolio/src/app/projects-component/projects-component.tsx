@@ -7,13 +7,10 @@ export interface ProjectsComponentProps {}
 const projects = [...mockUserState.portfolio.projects];
 export function ProjectsComponent(props: ProjectsComponentProps) {
   return (
-    <div className={styles['container']}>
-      <h3>Projects</h3>
-      <div className={styles['project-cont']}>
-        {projects.map((project, index) => (
-          <SingleProject project={project} key={`key${index}`} />
-        ))}
-      </div>
+    <div className={styles['projects-cont']} id="projects-cont">
+      {projects.map((project, index) => (
+        <SingleProject project={project} key={`key${index}`} />
+      ))}
     </div>
   );
 }

@@ -6,7 +6,7 @@ import { useState } from 'react';
 /* eslint-disable-next-line */
 export interface SectionsComponentProps {
   user: User;
-  editMode: boolean;
+  viewMode: boolean;
 }
 
 export function SectionsComponent(props: SectionsComponentProps) {
@@ -41,7 +41,7 @@ export function SectionsComponent(props: SectionsComponentProps) {
                 sectionType={section}
                 index={index}
                 key={`key${index}`}
-                editMode={props.editMode}
+                viewMode={props.viewMode}
               />
             ))}
             {provided.placeholder}

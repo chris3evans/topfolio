@@ -8,7 +8,7 @@ import BioComponent from '../bio-component/bio-component';
 export interface SectionProps {
   sectionType: string;
   index: number;
-  editMode: boolean;
+  viewMode: boolean;
 }
 
 export function Section(props: SectionProps) {
@@ -28,7 +28,7 @@ export function Section(props: SectionProps) {
 
   return (
     <Draggable
-      isDragDisabled={props.editMode}
+      isDragDisabled={props.viewMode}
       draggableId={props.index + ''}
       index={props.index}
       key={`key${props.index}`}

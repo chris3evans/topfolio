@@ -1,4 +1,6 @@
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
 import { gsap } from 'gsap';
 
 export const workHistoryAnimation = (id: string) => {
@@ -21,19 +23,42 @@ export const projectsAnimation = (id: string) => {
     gsap.to(element, {
       scrollTrigger: {
         trigger: element,
-        toggleActions: 'restart pause reverse none',
+        toggleActions: 'play none none none',
       },
-      x: 1500,
-      duration: 3,
+      xPercent: 80,
+      duration: 2,
     });
   });
 };
-// VERTICAL SCROLL
-// gsap.utils.toArray<HTMLElement>('#project-div').forEach((panel, i) => {
-//   ScrollTrigger.create({
-//     trigger: panel,
-//     start: 'top top',
-//     pin: true,
-//     pinSpacing: false,
-//   });
-// });
+export const pageScrollAnimation = () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const sections = gsap.utils.toArray('#project-div');
+  let maxWidth = 0;
+
+  const getMaxWidth = () => {
+    maxWidth = 0;
+    sections.forEach((section: any) => {
+      maxWidth += section.offsetWidth;
+    });
+  };
+  getMaxWidth();
+  ScrollTrigger.addEventListener('refreshInit', getMaxWidth);
+
+  gsap.to(sections, {
+    x: () => `-${maxWidth - window.innerWidth}`,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#projects-cont',
+      pin: true,
+      scrub: true,
+      snap: {
+        snapTo: 1 / (sections.length - 1),
+        inertia: true,
+        duration: { min: 2, max: 2 },
+      },
+      end: () => `+=${maxWidth / 3}`,
+      invalidateOnRefresh: true,
+    },
+  });
+};
