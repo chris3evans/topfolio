@@ -13,7 +13,7 @@ export interface FormContainerProps {
 export function FormContainer(props: FormContainerProps) {
   return (
     <div className={styles['form-container']}>
-      {props.sectionName == 'about-me' ? <InfoAboutMe></InfoAboutMe> : ''}
+      {props.sectionName == 'about-me' ? <InfoAboutMe token={props.token}></InfoAboutMe> : ''}
       {props.sectionName == 'work-experience' ? (
         <FormWorkExperience token={props.token}></FormWorkExperience>
       ) : (

@@ -55,7 +55,15 @@ export interface Socials {
   linkedin: string;
 }
 
-export interface info_about_me {
+export interface CustomText {
   title: string;
   body: string;
+}
+
+export interface InfoAboutMe {
+  bio: string;
+  bio_title: string;
+  hero_image: string;
+  hero_title: string;
+  profile_image: string;
 }
