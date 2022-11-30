@@ -35,7 +35,7 @@ export function ListWorkExperience(props: ListWorkExperienceProps) {
                 <ItemWorkExperience
                   workXp={workExperience}
                   listener={setEditItemId}
-                  key={workExperience._id}
+                  key={`${workExperience._id} + ${Math.random()}`}
                 ></ItemWorkExperience>
               );
             }

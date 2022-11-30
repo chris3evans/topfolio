@@ -11,7 +11,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { updateUser } from '../../utils/ApiService';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import { WorkExperience } from '@topfolio/api-interfaces';
 // import { User } from '../../../../../libs/api-interfaces/src';
@@ -28,26 +28,67 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
   const [startDate, setStartDate] = useState(props.existingData?.start_date);
   const [endDate, setEndDate] = useState(props.existingData?.end_date);
 
+  useEffect(() => {
+    if (userDetails) {
+      updateUser(userDetails, props.token).then((response) => {
+        console.log(response, 'here');
+      });
+    }
+  }, [userDetails]);
+
   const formSubmitHandler = async function (event: any) {
     try {
-      event.preventDefault();
+      if (props.existingData) {
+        event.preventDefault();
 
-      const formData = {
-        company_name: event.target.companyName.value,
-        description: event.target.description.value,
-        image: '',
-        start_date: startDate,
-        end_date: endDate,
-      };
+        const formExistingData = {
+          company_name: event.target.companyName.value,
+          description: event.target.description.value,
+          image: '',
+          start_date: startDate,
+          end_date: endDate,
+          _id: props.existingData._id,
+        };
 
-      setUser((current) => {
+        setUser((current: any) => {
+          return {
+            ...current,
+            portfolio: {
+              ...current.portfolio,
+              work_history: [
+                ...current.portfolio.work_history.map(
+                  (workExperience: WorkExperience) => {
+                    if (workExperience._id === props.existingData?._id) {
+                      return formExistingData;
+                    } else {
+                      return workExperience;
+                    }
+                  }
+                ),
+              ],
+            },
+          };
+        });
+      } else {
+        event.preventDefault();
+
+        const formData = {
+          company_name: event.target.companyName.value,
+          description: event.target.description.value,
+          image: '',
+          start_date: startDate,
+          end_date: endDate,
+        };
+
+        setUser((current) => {
+          // @ts-ignore
+          current.portfolio.work_history.push(formData);
+          return current;
+        });
         // @ts-ignore
-        current.portfolio.work_history.push(formData);
-        return current;
-      });
-      // @ts-ignore
-      const response = await updateUser(userDetails, props.token);
-      console.log(response);
+        const response = await updateUser(userDetails, props.token);
+        console.log(response);
+      }
     } catch (error) {
       console.error(error, 'front end error');
     }
