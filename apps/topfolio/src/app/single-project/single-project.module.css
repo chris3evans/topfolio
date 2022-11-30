@@ -1,11 +1,17 @@
+.laptop-bg >
 img
 {
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
   max-width: 100%;
 }
 
 .projects-cont{
   flex-shrink: 0;
   width:100%;
+
 }
 .laptop-bg
 {
@@ -14,28 +20,42 @@ img
   position:relative;
   background-position: center center;
   background-repeat: no-repeat;
+
 }
 
 .laptop-bg > .laptop-content-bg
 {
-    background-color: blue;
-   /* background-image(url:...); */
    background-repeat: no-repeat;
    background-size:cover;
    background-position: center;
-
    position: absolute;
-   /* % to outer border */
    left:23%;
    top: 7%;
    bottom: 28%;
    right: 23%;
    z-index: -1;
+
 }
 .infos {
   position: absolute;
-  left:50%;
-  top: 50%;
-  background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:1em;
+  padding: 1em;
+  width: 30%;
+  left:36%;
+  top: 55%;
+  border-radius: 10px;
+  background-color:var(--secondary-background);
+  color: white;
 
+}
+.links {
+  display: flex;
+  gap: 1em;
+  color: white;
+}
+.links > a{
+  color: white;
 }

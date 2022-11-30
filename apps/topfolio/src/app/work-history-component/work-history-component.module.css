@@ -14,7 +14,7 @@
   transform: translateY(-15%)
 
 }
-img{
+.box img{
   max-width: 60px;
   max-height: 50%;
 }

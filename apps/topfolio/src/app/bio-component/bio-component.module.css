@@ -24,9 +24,9 @@
   font-weight: 600;
 }
 
- .container p{
+ .container > p{
   font-size: 1.3em;
  }
- .container h2 {
+ .container > h2 {
   font-size: 2em;
  }

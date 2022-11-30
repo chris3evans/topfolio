@@ -12,14 +12,14 @@
     align-items: center;
     gap: 2em;
   }
-  h1{
+  .hero>h1{
     font-size: 4rem;
   }
-  h2 {
+  .hero> h2 {
     font-size: 1.5rem;
     font-weight: 300;
   }
-  Button{
+  .hero> Button{
     transform: scale(1.2)
   }
 

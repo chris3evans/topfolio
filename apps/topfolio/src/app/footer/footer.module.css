@@ -14,7 +14,7 @@
   display: flex;
   gap: 2em;
 }
-a{
+.links  > a{
   transform:scale(1.5);
   color: var(--primary);
 }
