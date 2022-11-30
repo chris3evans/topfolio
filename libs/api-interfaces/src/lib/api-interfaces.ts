@@ -46,8 +46,9 @@ export interface WorkExperience {
   company_name: string;
   image: string;
   description: string;
-  start_date: Date;
-  end_date: Date;
+  start_date: string;
+  end_date: string;
+  _id: string;
 }
 export interface Socials {
   github: string;

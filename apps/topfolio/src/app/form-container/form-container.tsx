@@ -15,13 +15,15 @@ export interface FormContainerProps {
 
 export function FormContainer(props: FormContainerProps) {
   const userContext = useContext(UserContext);
+  console.log(userContext);
 
   return (
     <div className={styles['form-container']}>
       {props.sectionName == 'about-me' ? <InfoAboutMe></InfoAboutMe> : ''}
       {props.sectionName == 'work-experience' ? (
         /* @ts-ignore */
-        userContext.userDetails.portfolio.work_history ? (
+        userContext.userDetails &&
+        userContext.userDetails.portfolio.work_history.length ? (
           <ListWorkExperience></ListWorkExperience>
         ) : (
           <FormWorkExperience token={props.token}></FormWorkExperience>
