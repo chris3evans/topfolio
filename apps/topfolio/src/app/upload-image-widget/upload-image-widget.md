@@ -23,9 +23,9 @@ const getUploadedImage = (img: { url: string, id: string }) => {
  ```
 ## Or if you just want to use one img:
 ```javascript
- const [img, setImage] = useState<string>('');
+ const [img, setImage] = useState({ url: '', id: '' });
  const getUploadedImage = (img: { url: string, id: string }) => {
-     setImageArray(img)
+     setImage(img)
      };
  ```
 img.url is what you need to display img directly. 
