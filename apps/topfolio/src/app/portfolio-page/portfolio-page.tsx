@@ -20,7 +20,7 @@ export function PortfolioPage(props: PortfolioPageProps) {
       const ctx = gsap.context(() => {
         workHistoryAnimation('#WorkHistory');
         pageScrollAnimation();
-        buttonRollOnScroll('.animated-button');
+        buttonRollOnScroll('.animated-button', '#bio-component');
       });
       return () => ctx.revert(); // cleanup
     }

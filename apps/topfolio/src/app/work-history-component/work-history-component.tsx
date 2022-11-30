@@ -32,7 +32,7 @@ export function WorkHistoryComponent(props: WorkHistoryComponentProps) {
           >
             <TimelineOppositeContent color="text.secondary">
               <Typography
-                variant="h6"
+                variant="h5"
                 sx={{ fontSize: 15, fontWeight: 'medium' }}
               >{`${work.start_date} - ${work.end_date}`}</Typography>
             </TimelineOppositeContent>
@@ -44,19 +44,12 @@ export function WorkHistoryComponent(props: WorkHistoryComponentProps) {
                 }}
               />
             </TimelineSeparator>
-            <TimelineContent
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-              className={index % 2 ? styles['left'] : styles['right']}
-            >
+            <TimelineContent>
               <div className={styles['box']}>
                 {' '}
                 <img src={work.image} alt="logo" />
               </div>
-              <Typography variant="h6">
+              <Typography variant="h3">
                 {`${work.description} at ${work.company_name}`}{' '}
               </Typography>
             </TimelineContent>

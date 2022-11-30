@@ -43,7 +43,7 @@ export function SingleProject(props: SingleProjectProps) {
               ? {
                   opacity: 1,
                   transition: {
-                    type: 'tween',
+                    type: 'spring',
                     delay: 1.5,
                     duration: 1,
                   },
