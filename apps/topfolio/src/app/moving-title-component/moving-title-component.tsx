@@ -26,6 +26,8 @@ export function MovingTitleComponent(props: MovingTitleComponentProps) {
 
   const characterAnimation = {
     hidden: {
+      margin: '1px',
+
       opacity: 0,
       y: `0.25em`,
     },
@@ -73,7 +75,10 @@ export function MovingTitleComponent(props: MovingTitleComponentProps) {
                     aria-hidden="true"
                     key={index}
                     variants={characterAnimation}
-                    whileHover={{ scale: 1.3, color: 'var(--primary)' }}
+                    whileHover={{
+                      scale: 1.3,
+                      color: 'var(--primary)',
+                    }}
                     transition={{
                       type: 'spring',
                       stiffness: 400,

@@ -4,13 +4,13 @@ export const mockUserState: User = {
   _id: '1',
   userId: '2',
   slug_url: '',
-  name: 'Marco',
+  name: 'Doge Woofson',
   portfolio: {
     bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?',
     bio_title: 'hello there',
     hero_image: '../.././assets/hero.jpg',
     hero_title: 'Mock hero title',
-    profile_image: '../../assets/profile-img.jpg',
+    profile_image: '../../assets/hero-transparenty.png',
     theme: {
       1: '',
       2: '',
