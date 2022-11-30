@@ -52,12 +52,28 @@ export const pageScrollAnimation = () => {
       pin: true,
       scrub: true,
       snap: {
+        delay: 0.5,
         snapTo: 1 / (sections.length - 1),
         inertia: true,
         duration: { min: 2, max: 2 },
       },
-      end: () => `+=${maxWidth / 3}`,
+      end: () => `+=${maxWidth / 2}`,
       invalidateOnRefresh: true,
     },
   });
 };
+// export const buttonRollOnScroll = (buttonClass: string, trigger: string) => {
+//   gsap.registerPlugin(ScrollTrigger);
+//   gsap.to(buttonClass, { x: 200 });
+//   gsap.to(buttonClass, {
+//     scrollTrigger: {
+//       start: 'top center',
+//       toggleActions: 'restart pause reverse pause',
+//       trigger: trigger,
+//     },
+//     x: 200,
+//     rotation: 360,
+//     ease: 'none',
+//     duration: 1,
+//   });
+// };

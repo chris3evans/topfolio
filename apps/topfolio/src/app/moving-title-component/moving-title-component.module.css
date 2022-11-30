@@ -1,0 +1,7 @@
+
+.span{  display: inline-block;
+  margin-right: 0.15em;
+  white-space: nowrap;
+  font-size: 1.5em;
+  font-weight: 600;
+}

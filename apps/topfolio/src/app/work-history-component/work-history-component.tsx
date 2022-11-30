@@ -12,17 +12,18 @@ import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 
 import Typography from '@mui/material/Typography';
 import { display } from '@mui/system';
+import MovingTitleComponent from '../moving-title-component/moving-title-component';
 /* eslint-disable-next-line */
 export interface WorkHistoryComponentProps {
   viewMode: boolean;
 }
 
 export function WorkHistoryComponent(props: WorkHistoryComponentProps) {
-  const { userDetails, setUser } = useContext(UserContext);
+  // const { user, setUser } = useContext(UserContext);
 
   return (
     <div className={styles['work-container']}>
-      <h3>Work experience</h3>
+      <MovingTitleComponent text={'Work Experience'} alignCenter={false} />
       <Timeline position="alternate">
         {mockUserState.portfolio.work_history.map((work, index) => (
           <TimelineItem
@@ -32,7 +33,7 @@ export function WorkHistoryComponent(props: WorkHistoryComponentProps) {
           >
             <TimelineOppositeContent color="text.secondary">
               <Typography
-                variant="h6"
+                variant="h5"
                 sx={{ fontSize: 15, fontWeight: 'medium' }}
               >{`${work.start_date} - ${work.end_date}`}</Typography>
             </TimelineOppositeContent>
@@ -44,19 +45,12 @@ export function WorkHistoryComponent(props: WorkHistoryComponentProps) {
                 }}
               />
             </TimelineSeparator>
-            <TimelineContent
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-              className={index % 2 ? styles['left'] : styles['right']}
-            >
+            <TimelineContent>
               <div className={styles['box']}>
                 {' '}
                 <img src={work.image} alt="logo" />
               </div>
-              <Typography variant="h6">
+              <Typography variant="h3">
                 {`${work.description} at ${work.company_name}`}{' '}
               </Typography>
             </TimelineContent>

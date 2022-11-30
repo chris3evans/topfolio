@@ -25,11 +25,12 @@ export function PortfolioPage(props: PortfolioPageProps) {
     <div className={styles['body']}>
       <HeroComponent user={mockUserState} />
       <SectionsComponent user={mockUserState} viewMode={props.viewMode} />
-      {/* <Footer
+      <Footer
+        viewMode={props.viewMode}
         github={mockUserState.portfolio.social_media.github}
         facebook={mockUserState.portfolio.social_media.facebook}
         linkedin={mockUserState.portfolio.social_media.linkedin}
-      /> */}
+      />
       {/* TODO MAKE THIS WORK WITH REAL USER */}
     </div>
   );

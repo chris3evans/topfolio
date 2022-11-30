@@ -1,6 +1,6 @@
 .container{
   bottom: 0;
-  position:absolute;
+  position:fixed;
   width: 100%;
   background-color: var(--primary-background);
   color: var(--primary-text);
@@ -14,7 +14,39 @@
   display: flex;
   gap: 2em;
 }
-a{
+.links  > a{
   transform:scale(1.5);
   color: var(--primary);
+}
+
+
+.view-mode{
+  bottom: 0;
+  position:relative;
+  width: 100%;
+  background-color: var(--primary-background);
+  color: var(--primary-text);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5em;
+  padding: 2em;
+}
+.contact-me{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6em;
+}
+.infos {
+  font-size: 1.2em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+}
+.links-vertical {
+  display: flex;
+  gap: 2em;
+flex-direction: column;
 }

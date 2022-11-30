@@ -18,7 +18,7 @@ export const mockUserState: User = {
       4: '',
       5: '',
     },
-    layout: ['WorkHistory', 'Projects', 'Bio'],
+    layout: ['Work Experience', 'Projects', 'About me'],
     projects: [
       {
         name: 'topfolio',
