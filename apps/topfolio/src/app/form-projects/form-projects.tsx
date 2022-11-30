@@ -12,11 +12,13 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { updateUser } from '../../utils/ApiService';
 import { UserContext } from '../../utils/UserContext';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Cloudinary } from "@cloudinary/url-gen";
 import { AdvancedImage } from '@cloudinary/react';
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import UploadImageWidget from '../upload-image-widget/upload-image-widget';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 
 export interface FormProjectsProps { }
 export function FormProjects(props: FormProjectsProps) {
@@ -26,11 +28,35 @@ export function FormProjects(props: FormProjectsProps) {
       cloudName: 'divt6a0ys'
     }
   })
+
+  const [imgArray, setImageArray] = useState<{ url: string, id: string }[]>([]);
   // Instantiate a CloudinaryImage object for the image with the public ID, 'docs/models'.
   const myImage = cld.image('hefrxnlroorhexwk6gwx');
+  console.log(myImage, "myImage")
+  // // Resize to 250 x 250 pixels using the 'fill' crop mode.
+  // myImage.resize(fill().width(250).height(250));
+  //const imgArray: string[] = [];
+  const getUploadedImage = (img: { url: string, id: string }) => {
 
-  // Resize to 250 x 250 pixels using the 'fill' crop mode.
-  myImage.resize(fill().width(250).height(250));
+    //imgArray.push(url);
+    setImageArray(array => {
+      return [
+        ...array,
+        img
+      ]
+    });
+
+  }
+
+  const deleteImage = (id: string) => {
+    setImageArray(array => {
+      return array.filter(img => img.id !== id);
+    });
+  }
+
+  useEffect(() => {
+    console.log("IMAGE ARRAY:", imgArray);
+  }, [imgArray])
 
   const formSubmitHandler = async function (event: any) {
     try {
@@ -51,6 +77,10 @@ export function FormProjects(props: FormProjectsProps) {
   };
 
   return (
+    //Display all images in array
+    //Allow to delete one of the uploaded images
+    //Remove the deleted image from the image array
+    //send the form with the remaining images
 
     <Box sx={muiStyles.form}>
       <Typography align="center" sx={muiStyles.formTitle} variant="h2">
@@ -61,10 +91,26 @@ export function FormProjects(props: FormProjectsProps) {
   description: string;
   github_url: string;
   app_url: string; */}
+      <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+        {imgArray.map((img, index) => (
+          <ImageListItem key={index}>
+            <img
+              src={`${img.url}?w=164&h=164&fit=crop&auto=format`}
+              srcSet={`${img.url}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+              loading="lazy"
+              onClick={() => deleteImage(img.id)}
+            />
+          </ImageListItem>
+        ))}
+      </ImageList>
+      {/* <AdvancedImage cldImg={myImage} /> */}
+      {
+        //@ts-ignore
+      }
+      <UploadImageWidget callback={getUploadedImage} />
       <form onSubmit={formSubmitHandler} className={styles['form-we']}>
         <Box sx={muiStyles.formFields}>
-          <AdvancedImage cldImg={myImage} />
-          <UploadImageWidget />
+
           <Box sx={muiStyles.projectField}>
             <FormControl fullWidth={true}>
               <InputLabel htmlFor="project-name">Project Name:</InputLabel>
