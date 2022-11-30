@@ -1,6 +1,10 @@
 .container {
   bottom: 0;
+<<<<<<< HEAD
   position: relative;
+=======
+  position:relative;
+>>>>>>> 7c17c31 (feat(css/landing page): made landing page responsive and modified font sizes)
   width: 100%;
   background-color: var(--primary-background);
   color: var(--primary-text);
@@ -8,16 +12,26 @@
   align-items: center;
   flex-direction: column;
   gap: 2em;
-  padding: 2em;
+
 }
 
 .links {
   display: flex;
   gap: 2em;
+  color: var(--primary);
+  font-size: 1.3em;
+
+
 }
+<<<<<<< HEAD
 
 .links>a {
   transform: scale(1.5);
+=======
+.links  > a{
+  color: var(--primary);
+  font-size: 1.5em;
+>>>>>>> 7c17c31 (feat(css/landing page): made landing page responsive and modified font sizes)
   color: var(--primary);
 }
 
@@ -33,6 +47,7 @@
   flex-direction: column;
   gap: 5em;
   padding: 2em;
+
 }
 
 .contact-me {
@@ -53,5 +68,14 @@
 .links-vertical {
   display: flex;
   gap: 2em;
+<<<<<<< HEAD
   flex-direction: column;
+=======
+flex-direction: column;
+
+}
+.links-vertical a{
+  color: var(--primary);
+  font-size: 1.5em;
+>>>>>>> 7c17c31 (feat(css/landing page): made landing page responsive and modified font sizes)
 }

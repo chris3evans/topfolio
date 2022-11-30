@@ -11,6 +11,7 @@ export function HeroComponent(props: HeroComponentProps) {
     <div
       className={styles['container']}
       style={{ backgroundImage: `url(${props.user.portfolio.hero_image})` }}
+      id="hero-component"
     >
       <div className={styles['box']}>
         {' '}

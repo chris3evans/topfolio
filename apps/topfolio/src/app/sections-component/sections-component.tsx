@@ -3,7 +3,7 @@ import styles from './sections-component.module.css';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import Section from '../section/section';
 import { useContext, useState } from 'react';
-import { UserContext } from '../../utils/UserContext';
+import { UserContext, UserContextType } from '../../utils/UserContext';
 /* eslint-disable-next-line */
 export interface SectionsComponentProps {
   user: User;
@@ -27,8 +27,13 @@ export function SectionsComponent(props: SectionsComponentProps) {
     setLayout([...newLayout]);
 
     setUser((current) => {
+<<<<<<< HEAD
       //@ts-ignore
       current.portfolio.layout = [...newLayout];
+=======
+      // @ts-ignore
+      current.portfolio.layout = [...tempLayout];
+>>>>>>> 7c17c31 (feat(css/landing page): made landing page responsive and modified font sizes)
       return current;
     });
 

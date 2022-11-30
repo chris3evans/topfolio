@@ -1,7 +1,10 @@
 import styles from './footer.module.css';
-import { AiFillFacebook, AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
+import { FaFacebook, FaLinkedin } from 'react-icons/fa';
+import { FiGithub } from 'react-icons/fi';
+
 import { mockUserState } from '../mockUser';
 import { FcPhoneAndroid, FcInvite } from 'react-icons/fc';
+import { motion } from 'framer-motion';
 /* eslint-disable-next-line */
 export interface FooterProps {
   github: string;
@@ -9,23 +12,28 @@ export interface FooterProps {
   linkedin: string;
   viewMode: boolean;
 }
+const transition = {
+  type: 'spring',
+  stiffness: 400,
+  damping: 10,
+};
 
 export function Footer(props: FooterProps) {
   const Footer = () => (
     <>
-      <h3>TopFolio</h3>
+      <h3 style={{ fontSize: '2em' }}>TopFolio</h3>
       <div className={styles['links']}>
         <a aria-label="Topfolio Facebook link" href={props.facebook || ''}>
-          <AiFillFacebook />
+          <FaFacebook />
         </a>
         <a aria-label="Topfolio Github link" href={props.github || ''}>
-          <AiFillGithub />
+          <FiGithub />
         </a>
         <a aria-label="Topfolio Linkedin link" href={props.linkedin || ''}>
-          <AiFillLinkedin />
+          <FaLinkedin />
         </a>
       </div>
-      <p>© 2022 TopFolio. All rights reserved.</p>
+      <p style={{ fontSize: '2em' }}>© 2022 TopFolio. All rights reserved.</p>
     </>
   );
   const FooterView = () => (
@@ -34,15 +42,30 @@ export function Footer(props: FooterProps) {
       <div className={styles['contact-me']}>
         <div className={styles['links-vertical']}>
           {' '}
-          <a aria-label="Topfolio Facebook link" href={props.facebook || ''}>
-            <AiFillFacebook />
-          </a>
-          <a aria-label="Topfolio Github link" href={props.github || ''}>
-            <AiFillGithub />
-          </a>
-          <a aria-label="Topfolio Linkedin link" href={props.linkedin || ''}>
-            <AiFillLinkedin />
-          </a>
+          <motion.a
+            aria-label="Topfolio Facebook link"
+            href={props.facebook || ''}
+            whileHover={{ scale: 2 }}
+            transition={transition}
+          >
+            <FaFacebook />
+          </motion.a>
+          <motion.a
+            aria-label="Topfolio Github link"
+            href={props.github || ''}
+            whileHover={{ scale: 2 }}
+            transition={transition}
+          >
+            <FiGithub />
+          </motion.a>
+          <motion.a
+            aria-label="Topfolio Linkedin link"
+            href={props.linkedin || ''}
+            whileHover={{ scale: 2 }}
+            transition={transition}
+          >
+            <FaLinkedin />
+          </motion.a>
         </div>
         <div className={styles['infos']}>
           <p>{mockUserState.name}</p>
@@ -62,7 +85,10 @@ export function Footer(props: FooterProps) {
     </>
   );
   return (
-    <div className={props.viewMode ? styles['view-mode'] : styles['container']}>
+    <div
+      className={props.viewMode ? styles['view-mode'] : styles['container']}
+      id="footer"
+    >
       {props.viewMode ? FooterView() : Footer()}{' '}
     </div>
   );

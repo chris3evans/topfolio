@@ -1,5 +1,5 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import React from "react";
+import { useAuth0 } from '@auth0/auth0-react';
+import React from 'react';
 import Button from '@mui/material/Button';
 
 export const LoginButton = () => {
@@ -7,16 +7,16 @@ export const LoginButton = () => {
 
   const handleLogin = async () => {
     await loginWithRedirect({
-      prompt: "login",
+      prompt: 'login',
       appState: {
-        returnTo: "/dashboard",
+        returnTo: '/dashboard',
       },
     });
   };
 
   return (
     <Button color="primary" variant="contained" onClick={handleLogin}>
-      Login
+      Get Started
     </Button>
   );
 };
