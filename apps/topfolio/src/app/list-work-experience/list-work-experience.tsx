@@ -1,16 +1,22 @@
 import styles from './list-work-experience.module.css';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import ItemWorkExperience from '../item-work-experience/item-work-experience';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import { WorkExperience } from '@topfolio/api-interfaces';
+import FormWorkExperience from '../form-work-experience/form-work-experience';
 
 /* eslint-disable-next-line */
-export interface ListWorkExperienceProps {}
+export interface ListWorkExperienceProps {
+  token: string;
+}
 
 export function ListWorkExperience(props: ListWorkExperienceProps) {
   const userContext = useContext(UserContext);
+
+  const [editItemId, setEditItemId] = useState('');
+  console.log(editItemId, '123');
 
   return (
     <Box className={styles['container']}>
@@ -19,9 +25,12 @@ export function ListWorkExperience(props: ListWorkExperienceProps) {
           /* @ts-ignore */
           userContext.userDetails.portfolio.work_history.map(
             (workExperience: WorkExperience) => {
-              return (
+              return editItemId === workExperience._id ? (
+                <FormWorkExperience token={props.token}></FormWorkExperience>
+              ) : (
                 <ItemWorkExperience
                   workXp={workExperience}
+                  listener={setEditItemId}
                 ></ItemWorkExperience>
               );
             }

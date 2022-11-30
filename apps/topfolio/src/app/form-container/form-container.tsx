@@ -24,7 +24,7 @@ export function FormContainer(props: FormContainerProps) {
         /* @ts-ignore */
         userContext.userDetails &&
         userContext.userDetails.portfolio.work_history.length ? (
-          <ListWorkExperience></ListWorkExperience>
+          <ListWorkExperience token={props.token}></ListWorkExperience>
         ) : (
           <FormWorkExperience token={props.token}></FormWorkExperience>
         )

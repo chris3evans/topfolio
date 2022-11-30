@@ -5,16 +5,24 @@ import { Box } from '@mui/material';
 import { ListItem } from '@mui/material';
 import { WorkExperience } from '@topfolio/api-interfaces';
 import EditIcon from '@mui/icons-material/Create';
+import FormWorkExperience from '../form-work-experience/form-work-experience';
+import { listenerCount } from 'process';
 
 /* eslint-disable-next-line */
 export interface ItemWorkExperienceProps {
   workXp: WorkExperience;
+  listener: Function;
 }
 
 export function ItemWorkExperience(props: ItemWorkExperienceProps) {
+  const openEditHandler = function () {
+    // setEditItemId(props.workXp._id);
+    props.listener(props.workXp._id);
+  };
+
   return (
     <ListItem sx={muiStyles.listItem} key={props.workXp._id}>
-      <button className={styles['editButton']}>
+      <button onClick={openEditHandler} className={styles['editButton']}>
         <EditIcon sx={muiStyles.editIcon}></EditIcon>
       </button>
       <Box sx={muiStyles.listItemGrid}>
@@ -47,7 +55,7 @@ export function ItemWorkExperience(props: ItemWorkExperienceProps) {
           <Box>
             <Box>
               <Typography sx={muiStyles.subHeading} variant="h6">
-                End:
+                Finish:
                 <span className={styles['text']}>{props.workXp.end_date}</span>
               </Typography>
             </Box>
