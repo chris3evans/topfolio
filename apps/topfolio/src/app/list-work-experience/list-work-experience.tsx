@@ -1,5 +1,5 @@
 import styles from './list-work-experience.module.css';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import ItemWorkExperience from '../item-work-experience/item-work-experience';
 import Box from '@mui/material/Box';
@@ -16,7 +16,6 @@ export function ListWorkExperience(props: ListWorkExperienceProps) {
   const userContext = useContext(UserContext);
 
   const [editItemId, setEditItemId] = useState('');
-  console.log(editItemId, '123');
 
   return (
     <Box className={styles['container']}>
@@ -29,6 +28,7 @@ export function ListWorkExperience(props: ListWorkExperienceProps) {
                 <FormWorkExperience
                   existingData={workExperience}
                   token={props.token}
+                  listener={setEditItemId}
                   key={workExperience._id}
                 ></FormWorkExperience>
               ) : (
@@ -41,6 +41,12 @@ export function ListWorkExperience(props: ListWorkExperienceProps) {
             }
           )
         }
+        <FormWorkExperience
+          existingData={null}
+          token={props.token}
+          listener={null}
+          key={null}
+        ></FormWorkExperience>
       </List>
     </Box>
   );

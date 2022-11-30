@@ -14,12 +14,12 @@ import { updateUser } from '../../utils/ApiService';
 import { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import { WorkExperience } from '@topfolio/api-interfaces';
-// import { User } from '../../../../../libs/api-interfaces/src';
 
 /* eslint-disable-next-line */
 export interface FormWorkExperienceProps {
   token: string;
   existingData: WorkExperience | null;
+  listener: Function | null;
 }
 
 export function FormWorkExperience(props: FormWorkExperienceProps) {
@@ -34,7 +34,13 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
         console.log(response, 'here');
       });
     }
-  }, [userDetails]);
+  }, [userDetails?.portfolio.work_history]);
+
+  const closeEditHandler = function () {
+    if (props.listener) {
+      props.listener('1');
+    }
+  };
 
   const formSubmitHandler = async function (event: any) {
     try {
@@ -69,6 +75,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
             },
           };
         });
+        closeEditHandler();
       } else {
         event.preventDefault();
 
@@ -88,6 +95,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
         // @ts-ignore
         const response = await updateUser(userDetails, props.token);
         console.log(response);
+        closeEditHandler();
       }
     } catch (error) {
       console.error(error, 'front end error');

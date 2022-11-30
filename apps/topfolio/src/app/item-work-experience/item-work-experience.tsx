@@ -5,8 +5,7 @@ import { Box } from '@mui/material';
 import { ListItem } from '@mui/material';
 import { WorkExperience } from '@topfolio/api-interfaces';
 import EditIcon from '@mui/icons-material/Create';
-import FormWorkExperience from '../form-work-experience/form-work-experience';
-import { listenerCount } from 'process';
+import convertIsoToDateString from '../../utils/DateFormatterService';
 
 /* eslint-disable-next-line */
 export interface ItemWorkExperienceProps {
@@ -16,7 +15,6 @@ export interface ItemWorkExperienceProps {
 
 export function ItemWorkExperience(props: ItemWorkExperienceProps) {
   const openEditHandler = function () {
-    // setEditItemId(props.workXp._id);
     props.listener(props.workXp._id);
   };
 
@@ -48,7 +46,12 @@ export function ItemWorkExperience(props: ItemWorkExperienceProps) {
           <Box>
             <Typography variant="h6" sx={muiStyles.subHeading}>
               Start:
-              <span className={styles['text']}>{props.workXp.start_date}</span>
+              <span className={styles['text']}>
+                {
+                  props.workXp.start_date
+                  // ? convertIsoToDateString(props.workXp.start_date)
+                }
+              </span>
             </Typography>
           </Box>
 
