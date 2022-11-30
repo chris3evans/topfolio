@@ -71,10 +71,21 @@ export function Footer(props: FooterProps) {
           <p>{mockUserState.name}</p>
           {/* TODO ADD PROPER USER CONNECTION */}
           <p>Manchester,Uk</p>
-          <div style={{ display: 'flex', gap: '0.3em' }}>
+          <motion.div
+            style={{ display: 'flex', gap: '0.3em' }}
+            whileHover={{ scale: 2, color: 'var(--primary)', margin: '1em' }}
+            transition={transition}
+          >
             <FcInvite />
-            <p>TestEmail@gmail.com</p>
-          </div>
+            <motion.a
+              href={`mailto:${mockUserState.portfolio.contact_me.email}`}
+              className={styles['email-me']}
+              whileHover={{ color: 'var(--primary)' }}
+              transition={transition}
+            >
+              {mockUserState.portfolio.contact_me.email}
+            </motion.a>
+          </motion.div>
           <div style={{ display: 'flex', gap: '0.3em' }}>
             <FcPhoneAndroid />
             <p>+44 12300011</p>

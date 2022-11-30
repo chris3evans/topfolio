@@ -38,7 +38,7 @@ export function WorkHistoryComponent(props: WorkHistoryComponentProps) {
               >{`${work.start_date} - ${work.end_date}`}</Typography>
               <Typography variant="h3"></Typography>
             </TimelineOppositeContent>
-            <TimelineSeparator sx={{ height: 400 }}>
+            <TimelineSeparator sx={{ height: 500 }}>
               <TimelineDot color="primary" />
               <TimelineConnector
                 sx={{

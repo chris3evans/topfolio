@@ -46,7 +46,7 @@ export function MovingParagraphComponent(props: MovingParagraphComponentProps) {
         {props.text.split(' ').map((word, index) => {
           return (
             <motion.span
-              className={styles['span']}
+              className={styles['span-words']}
               ref={ref}
               aria-hidden="true"
               key={index}
@@ -61,7 +61,7 @@ export function MovingParagraphComponent(props: MovingParagraphComponentProps) {
               {word.split('').map((character, index) => {
                 return (
                   <motion.span
-                    className={styles['span']}
+                    className={styles['span-letters']}
                     aria-hidden="true"
                     key={index}
                     variants={characterAnimation}

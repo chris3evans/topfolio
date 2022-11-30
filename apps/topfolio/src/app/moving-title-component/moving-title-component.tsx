@@ -54,7 +54,7 @@ export function MovingTitleComponent(props: MovingTitleComponentProps) {
         {props.text.split(' ').map((word, index) => {
           return (
             <motion.span
-              className={styles['span']}
+              className={styles['span-words']}
               ref={ref}
               aria-hidden="true"
               key={index}
@@ -69,7 +69,7 @@ export function MovingTitleComponent(props: MovingTitleComponentProps) {
               {word.split('').map((character, index) => {
                 return (
                   <motion.span
-                    className={styles['span']}
+                    className={styles['span-letters']}
                     aria-hidden="true"
                     key={index}
                     variants={characterAnimation}
