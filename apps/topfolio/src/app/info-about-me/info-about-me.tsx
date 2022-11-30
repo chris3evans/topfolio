@@ -24,22 +24,14 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
     try {
       event.preventDefault();
 
-      const formData = {
-        bio: event.target.bio.value,
-        bio_title: event.target.bio_title.value,
-        hero_image: event.target.hero_image.value,
-        hero_title: event.target.hero_title.value,
-        profile_image: event.target.profile_image.value,
-      };
-
      setUser((current: any) => {
         // @ts-ignore
-       current.portfolio.bio = formData.bio
-       current.portfolio.bio_title = formData.bio_title
-       current.portfolio.hero_image = formData.hero_image
-       current.portfolio.hero_title = formData.hero_title
-        current.portfolio.profile_image = formData.profile_image;
-        return current;
+       current.portfolio.bio = event.target.bio.value
+       current.portfolio.bio_title = event.target.bio_title.value
+       current.portfolio.hero_image = event.target.hero_image.value
+       current.portfolio.hero_title = event.target.hero_title.value
+       current.portfolio.profile_image = event.target.profile_image.value;
+       return current;
       });
       console.log(userDetails, 'data to send backend');
       console.log(props.token, 'token');
