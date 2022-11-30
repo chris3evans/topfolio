@@ -54,6 +54,7 @@ export const mockUserState: User = {
     },
     work_history: [
       {
+        id: 1,
         company_name: 'google',
         image: '../assets/google.png',
         description: 'engineer',
@@ -61,6 +62,7 @@ export const mockUserState: User = {
         end_date: new Date(),
       },
       {
+        id: 2,
         company_name: 'netflix',
         image: '../assets/google.png',
         description: 'engineer',
@@ -68,6 +70,7 @@ export const mockUserState: User = {
         end_date: new Date(),
       },
       {
+        id: 3,
         company_name: 'meta',
         image: '../assets/google.png',
         description: 'engineer',

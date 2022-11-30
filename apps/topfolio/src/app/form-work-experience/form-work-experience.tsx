@@ -40,8 +40,6 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
         current.portfolio.work_history.push(formData);
         return current;
       });
-      console.log(userDetails, 'data to send backend');
-      console.log(props.token, 'token');
       // @ts-ignore
       const response = await updateUser(userDetails, props.token);
       console.log(response);
