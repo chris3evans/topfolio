@@ -46,6 +46,9 @@ export const mockUserState: User = {
       phone: 'number',
       email: 'test@email.com',
       social_media: {
+        instagram: '',
+        twitter: '',
+        youtube: '',
         github: 'github link',
         facebook: 'facebook link',
         linkedin: 'linkedin link',
@@ -76,6 +79,9 @@ export const mockUserState: User = {
       },
     ],
     social_media: {
+      instagram: '',
+      twitter: '',
+      youtube: '',
       github: 'https://github.com/',
       linkedin: 'https://www.linkedin.com/',
       facebook: 'https://en-gb.facebook.com/',

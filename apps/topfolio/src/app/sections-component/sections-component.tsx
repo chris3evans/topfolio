@@ -27,13 +27,8 @@ export function SectionsComponent(props: SectionsComponentProps) {
     setLayout([...newLayout]);
 
     setUser((current) => {
-<<<<<<< HEAD
-      //@ts-ignore
-      current.portfolio.layout = [...newLayout];
-=======
       // @ts-ignore
       current.portfolio.layout = [...tempLayout];
->>>>>>> 7c17c31 (feat(css/landing page): made landing page responsive and modified font sizes)
       return current;
     });
 

@@ -1,10 +1,6 @@
 .container {
   bottom: 0;
-<<<<<<< HEAD
-  position: relative;
-=======
   position:relative;
->>>>>>> 7c17c31 (feat(css/landing page): made landing page responsive and modified font sizes)
   width: 100%;
   background-color: var(--primary-background);
   color: var(--primary-text);
@@ -23,15 +19,9 @@
 
 
 }
-<<<<<<< HEAD
-
-.links>a {
-  transform: scale(1.5);
-=======
 .links  > a{
   color: var(--primary);
   font-size: 1.5em;
->>>>>>> 7c17c31 (feat(css/landing page): made landing page responsive and modified font sizes)
   color: var(--primary);
 }
 
@@ -68,22 +58,10 @@
 .links-vertical {
   display: flex;
   gap: 2em;
-<<<<<<< HEAD
-  flex-direction: column;
-=======
 flex-direction: column;
 
 }
 .links-vertical a{
   color: var(--primary);
   font-size: 1.5em;
-<<<<<<< HEAD
->>>>>>> 7c17c31 (feat(css/landing page): made landing page responsive and modified font sizes)
 }
-=======
-}
-.email-me {
-  color: #FFFFFF;
-  text-decoration: none;
-}
->>>>>>> a3106ed (feat(component/contactform): added modal Contact-Form)
