@@ -36,15 +36,10 @@ export const App = () => {
               <Route path="/" exact component={LandingPage} />
               <Route
                 path="/portfolio/"
-                render={(props) => (
-                  <PortfolioPage viewMode={false} {...props} />
-                )}
+                render={(props) => <PortfolioPage viewMode={true} {...props} />}
               />
               <Route exact path="/dashboard" component={DashBoardPage} />
-              <Route
-                path="/dashboard/:section"
-                component={DashBoardPage}
-              />
+              <Route path="/dashboard/:section" component={DashBoardPage} />
               <Route path="/callback" component={CallbackPage} />
             </UserContext.Provider>
           </Switch>
