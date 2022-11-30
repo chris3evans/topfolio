@@ -5,40 +5,33 @@ import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { updateUser } from '../../utils/ApiService';
 import { UserContext } from '../../utils/UserContext';
 import { useContext, useEffect, useState } from 'react';
-import { Cloudinary } from "@cloudinary/url-gen";
-import { AdvancedImage } from '@cloudinary/react';
-import { fill } from "@cloudinary/url-gen/actions/resize";
 import UploadImageWidget from '../upload-image-widget/upload-image-widget';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+// import { Cloudinary } from "@cloudinary/url-gen";
 
-export interface FormProjectsProps { }
+export interface FormProjectsProps {
+  token: string
+}
+
+
 export function FormProjects(props: FormProjectsProps) {
-  const context = useContext(UserContext);
-  const cld = new Cloudinary({
-    cloud: {
-      cloudName: 'divt6a0ys'
-    }
-  })
-
+  const { userDetails, setUser } = useContext(UserContext);
   const [imgArray, setImageArray] = useState<{ url: string, id: string }[]>([]);
   // Instantiate a CloudinaryImage object for the image with the public ID, 'docs/models'.
-  const myImage = cld.image('hefrxnlroorhexwk6gwx');
-  console.log(myImage, "myImage")
+  // const cld = new Cloudinary({
+  //   cloud: {
+  //     cloudName: 'divt6a0ys'
+  //   }
+  // })
+  // const myImage = cld.image('hefrxnlroorhexwk6gwx');
   // // Resize to 250 x 250 pixels using the 'fill' crop mode.
   // myImage.resize(fill().width(250).height(250));
-  //const imgArray: string[] = [];
   const getUploadedImage = (img: { url: string, id: string }) => {
-
-    //imgArray.push(url);
     setImageArray(array => {
       return [
         ...array,
@@ -64,12 +57,14 @@ export function FormProjects(props: FormProjectsProps) {
 
       const formData = {
         company_name: event.target.projectName.value,
+        images: imgArray,
         description: event.target.description.value,
         start_date: event.target.gitUrl.value,
         end_date: event.target.appUrl.value,
-      };
 
-      const response = await updateUser(formData, '');
+      };
+      // setUser()
+      const response = await updateUser(formData, props.token);
       console.log(response);
     } catch (error) {
       console.error(error);
@@ -77,21 +72,11 @@ export function FormProjects(props: FormProjectsProps) {
   };
 
   return (
-    //Display all images in array
-    //Allow to delete one of the uploaded images
-    //Remove the deleted image from the image array
-    //send the form with the remaining images
-
     <Box sx={muiStyles.form}>
       <Typography align="center" sx={muiStyles.formTitle} variant="h2">
         My Projects
       </Typography>
-      {/* name: string;
-  images: string[];
-  description: string;
-  github_url: string;
-  app_url: string; */}
-      <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+      <ImageList sx={{ width: 300, height: 250 }} cols={1} rowHeight={120}>
         {imgArray.map((img, index) => (
           <ImageListItem key={index}>
             <img
@@ -103,10 +88,6 @@ export function FormProjects(props: FormProjectsProps) {
           </ImageListItem>
         ))}
       </ImageList>
-      {/* <AdvancedImage cldImg={myImage} /> */}
-      {
-        //@ts-ignore
-      }
       <UploadImageWidget callback={getUploadedImage} />
       <form onSubmit={formSubmitHandler} className={styles['form-we']}>
         <Box sx={muiStyles.formFields}>
@@ -166,10 +147,6 @@ export function FormProjects(props: FormProjectsProps) {
               ></Input>
             </FormControl>
           </Box>
-          <Button variant="contained" component="label">
-            Upload Picture
-            <input hidden accept="image/*" multiple type="file" />
-          </Button>
           <Button sx={muiStyles.saveButton} type="submit" variant="contained">
             Save
           </Button>

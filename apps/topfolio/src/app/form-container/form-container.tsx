@@ -20,7 +20,7 @@ export function FormContainer(props: FormContainerProps) {
         ''
       )}
       {props.sectionName == 'contact-me' ? <ContactMeForm></ContactMeForm> : ''}
-      {props.sectionName == 'projects' ? <FormProjects></FormProjects> : ''}
+      {props.sectionName == 'projects' ? <FormProjects token={props.token}></FormProjects> : ''}
     </div>
   );
 }
