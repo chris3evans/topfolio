@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography';
 import { updateUser } from '../../utils/ApiService';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
+import UploadImageWidget from '../upload-image-widget/upload-image-widget';
+import { useState } from 'react';
 
 /* eslint-disable-next-line */
 export interface InfoAboutMeProps {
@@ -18,7 +20,10 @@ export interface InfoAboutMeProps {
 export function InfoAboutMe(props: InfoAboutMeProps) {
 
   const { userDetails, setUser } = useContext(UserContext);
-
+  const [img, setImage] = useState('');
+  const getUploadedImage = (img: any) => {
+     setImage(img.url)
+     };
 
   const formSumbitHandler = async function (event: any) {
     try {
@@ -30,7 +35,7 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
        current.portfolio.bio_title = event.target.bio_title.value
        current.portfolio.hero_image = event.target.hero_image.value
        current.portfolio.hero_title = event.target.hero_title.value
-       current.portfolio.profile_image = event.target.profile_image.value;
+       current.portfolio.profile_image = img
        return current;
       });
       console.log(userDetails, 'data to send backend');
@@ -46,8 +51,8 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
    return (
     <Box sx={muiStyles.form}>
       <Typography align="center" sx={muiStyles.formTitle} variant="h2">
-        Custom text
-      </Typography>
+      About me
+       </Typography>
       <form onSubmit={formSumbitHandler} className={styles['form-we']}>
         <Box sx={muiStyles.formFields}>
           <Box sx={muiStyles.titleField}>
@@ -101,18 +106,11 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
            
            
           <Box sx={muiStyles.bodyField}>
-            <FormControl>
-              <InputLabel htmlFor="profile_image">Profile image:</InputLabel>
-              <Input
-                type="text"
-                id="profile_image"
-                name="profile_image"
-                multiline={true}
-              ></Input>
-            </FormControl>
+             <UploadImageWidget callback={getUploadedImage} />
           </Box>
 
-
+           
+           
         </Box>
         <Button sx={muiStyles.saveButton} type="submit" variant="contained">
           Save
