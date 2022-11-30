@@ -41,10 +41,7 @@ export const App = () => {
                 )}
               />
               <Route exact path="/dashboard" component={DashBoardPage} />
-              <Route
-                path="/dashboard/:section"
-                component={DashBoardPage}
-              />
+              <Route path="/dashboard/:section" component={DashBoardPage} />
               <Route path="/callback" component={CallbackPage} />
             </UserContext.Provider>
           </Switch>

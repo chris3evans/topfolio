@@ -2,7 +2,8 @@ import { User } from '@topfolio/api-interfaces';
 import styles from './sections-component.module.css';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import Section from '../section/section';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { UserContext } from '../../utils/UserContext';
 /* eslint-disable-next-line */
 export interface SectionsComponentProps {
   user: User;
@@ -11,6 +12,7 @@ export interface SectionsComponentProps {
 
 export function SectionsComponent(props: SectionsComponentProps) {
   const [tempLayout, setLayout] = useState([...props.user.portfolio.layout]);
+  const { userDetails, setUser } = useContext(UserContext);
   const onDragEnd = (result: any) => {
     const { destination, source, draggableId } = result;
     if (!destination) return;
@@ -23,6 +25,12 @@ export function SectionsComponent(props: SectionsComponentProps) {
     newLayout.splice(source.index, 1);
     newLayout.splice(destination.index, 0, tempLayout[+draggableId]);
     setLayout([...newLayout]);
+
+    setUser((current) => {
+      //@ts-ignore
+      current.portfolio.layout = [...newLayout];
+      return current;
+    });
 
     return;
   };

@@ -5,7 +5,7 @@ import styles from './dash-board-navigation-list.module.css';
 import { Link } from 'react-router-dom';
 
 /* eslint-disable-next-line */
-export interface DashBoardNavigationListProps {}
+export interface DashBoardNavigationListProps { }
 
 export function DashBoardNavigationList(props: DashBoardNavigationListProps) {
   return (
@@ -43,10 +43,12 @@ export function DashBoardNavigationList(props: DashBoardNavigationListProps) {
         </Link>
       </ListItem>
       <ListItem className={styles['dashboardNavigation-item']}>
-        <ListItemText
-          className={styles['dashboardNavigation-item-text']}
-          primary="Layout"
-        ></ListItemText>
+        <Link to="/dashboard/layout">
+          <ListItemText
+            className={styles['dashboardNavigation-item-text']}
+            primary="Layout"
+          ></ListItemText>
+        </Link>
       </ListItem>
     </List>
   );

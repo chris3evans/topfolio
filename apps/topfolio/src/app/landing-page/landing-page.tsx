@@ -23,7 +23,7 @@ export function LandingPage(props: LandingPageProps) {
         <h2>Easy to create unique portfolios ,free and simple</h2>
         <LoginButton />
       </div>
-      <Footer github="" facebook="" linkedin="" />
+      <Footer viewMode={false} github="" facebook="" linkedin="" />
     </div>
   );
 }

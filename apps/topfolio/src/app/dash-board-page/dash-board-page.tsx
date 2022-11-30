@@ -8,7 +8,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { postUser } from '../../utils/ApiService';
 
 /* eslint-disable-next-line */
-export interface DashBoardPageProps {}
+export interface DashBoardPageProps { }
 
 export function DashBoardPage(props: DashBoardPageProps) {
   const [token, setToken] = useState('');
@@ -16,8 +16,7 @@ export function DashBoardPage(props: DashBoardPageProps) {
 
   const { user, getAccessTokenSilently } = useAuth0();
 
-  // @ts-ignore
-  let { section } = useParams();
+  let { section } = useParams<{ section: string }>();
 
   useEffect(() => {
     if (user) registerUser();
@@ -27,8 +26,8 @@ export function DashBoardPage(props: DashBoardPageProps) {
     const accessToken = await getAccessTokenSilently();
     const response = await postUser(
       {
-        slug_url: 'my-portfolio-page',
-        name: 'test name',
+        slug_url: user?.nickname,
+        name: user?.name,
       },
       accessToken
     );

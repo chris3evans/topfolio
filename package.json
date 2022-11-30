@@ -41,6 +41,7 @@
     "react-beautiful-dnd": "^13.1.1",
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
+    "react-intersection-observer": "^9.4.1",
     "react-router-dom": "^5.3.3",
     "regenerator-runtime": "0.13.7",
     "supertest": "^6.3.1",
