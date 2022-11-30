@@ -8,7 +8,6 @@ import { UserContext } from '../../utils/UserContext';
 export interface SectionsComponentProps {
   user: User;
   viewMode: boolean;
-  saveLayout(layout: string[]): string[];
 }
 
 export function SectionsComponent(props: SectionsComponentProps) {
@@ -26,8 +25,10 @@ export function SectionsComponent(props: SectionsComponentProps) {
     newLayout.splice(source.index, 1);
     newLayout.splice(destination.index, 0, tempLayout[+draggableId]);
     setLayout([...newLayout]);
+
     setUser((current) => {
-      current.portfolio = [...tempLayout];
+      //@ts-ignore
+      current.portfolio.layout = [...newLayout];
       return current;
     });
 
