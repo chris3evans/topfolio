@@ -1,6 +1,6 @@
 .container {
   bottom: 0;
-  position: relative;
+  position:relative;
   width: 100%;
   background-color: var(--primary-background);
   color: var(--primary-text);
@@ -8,16 +8,20 @@
   align-items: center;
   flex-direction: column;
   gap: 2em;
-  padding: 2em;
+
 }
 
 .links {
   display: flex;
   gap: 2em;
-}
+  color: var(--primary);
+  font-size: 1.3em;
 
-.links>a {
-  transform: scale(1.5);
+
+}
+.links  > a{
+  color: var(--primary);
+  font-size: 1.5em;
   color: var(--primary);
 }
 
@@ -33,6 +37,7 @@
   flex-direction: column;
   gap: 5em;
   padding: 2em;
+
 }
 
 .contact-me {
@@ -53,5 +58,10 @@
 .links-vertical {
   display: flex;
   gap: 2em;
-  flex-direction: column;
+flex-direction: column;
+
+}
+.links-vertical a{
+  color: var(--primary);
+  font-size: 1.5em;
 }

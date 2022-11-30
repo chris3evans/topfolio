@@ -26,6 +26,8 @@ export function MovingTitleComponent(props: MovingTitleComponentProps) {
 
   const characterAnimation = {
     hidden: {
+      margin: '1px',
+
       opacity: 0,
       y: `0.25em`,
     },
@@ -54,7 +56,7 @@ export function MovingTitleComponent(props: MovingTitleComponentProps) {
         {props.text.split(' ').map((word, index) => {
           return (
             <motion.span
-              className={styles['span']}
+              className={styles['span-words']}
               ref={ref}
               aria-hidden="true"
               key={index}
@@ -69,11 +71,14 @@ export function MovingTitleComponent(props: MovingTitleComponentProps) {
               {word.split('').map((character, index) => {
                 return (
                   <motion.span
-                    className={styles['span']}
+                    className={styles['span-letters']}
                     aria-hidden="true"
                     key={index}
                     variants={characterAnimation}
-                    whileHover={{ scale: 1.3, color: 'var(--primary)' }}
+                    whileHover={{
+                      scale: 1.3,
+                      color: 'var(--primary)',
+                    }}
                     transition={{
                       type: 'spring',
                       stiffness: 400,
