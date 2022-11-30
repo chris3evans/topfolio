@@ -26,11 +26,16 @@ export function ListWorkExperience(props: ListWorkExperienceProps) {
           userContext.userDetails.portfolio.work_history.map(
             (workExperience: WorkExperience) => {
               return editItemId === workExperience._id ? (
-                <FormWorkExperience token={props.token}></FormWorkExperience>
+                <FormWorkExperience
+                  existingData={workExperience}
+                  token={props.token}
+                  key={workExperience._id}
+                ></FormWorkExperience>
               ) : (
                 <ItemWorkExperience
                   workXp={workExperience}
                   listener={setEditItemId}
+                  key={workExperience._id}
                 ></ItemWorkExperience>
               );
             }

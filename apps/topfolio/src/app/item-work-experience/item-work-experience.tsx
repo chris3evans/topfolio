@@ -21,7 +21,7 @@ export function ItemWorkExperience(props: ItemWorkExperienceProps) {
   };
 
   return (
-    <ListItem sx={muiStyles.listItem} key={props.workXp._id}>
+    <ListItem sx={muiStyles.listItem}>
       <button onClick={openEditHandler} className={styles['editButton']}>
         <EditIcon sx={muiStyles.editIcon}></EditIcon>
       </button>

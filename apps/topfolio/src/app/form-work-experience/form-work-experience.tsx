@@ -11,17 +11,32 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { updateUser } from '../../utils/ApiService';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { UserContext } from '../../utils/UserContext';
+import { WorkExperience } from '@topfolio/api-interfaces';
 // import { User } from '../../../../../libs/api-interfaces/src';
 
 /* eslint-disable-next-line */
 export interface FormWorkExperienceProps {
   token: string;
+  existingData: WorkExperience | null;
 }
 
 export function FormWorkExperience(props: FormWorkExperienceProps) {
   const { userDetails, setUser } = useContext(UserContext);
+  const [companyField, setCompanyField] = useState('');
+
+  // const companyName = userDetails?.portfolio.work_history.find(
+  //   (workHistory: WorkExperience) => {
+  //     return workHistory._id === props.existingData?._id;
+  //   }
+  // );
+  // console.log(companyName?.company_name, 'company name');
+
+  const companyFieldChangeHandler = function (event: any) {
+    console.log(event.target.value);
+    setCompanyField(event.target.value);
+  };
 
   const formSubmitHandler = async function (event: any) {
     try {
@@ -63,6 +78,8 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
                 required
                 id="company name"
                 name="companyName"
+                value={props.existingData?.company_name}
+                onChange={companyFieldChangeHandler}
               ></Input>
             </FormControl>
           </Box>

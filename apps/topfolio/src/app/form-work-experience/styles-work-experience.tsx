@@ -1,14 +1,14 @@
 const muiStyles = {
   form: {
     backgroundColor: 'white',
-    borderRadius: '0.3rem',
-    padding: '7.5rem',
-    height: '85%',
-    width: '65%',
+    borderRadius: '0.5rem',
+    padding: '5rem',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
+    marginBottom: '5rem',
+    width: '100%',
   },
   formTitle: {
     color: 'black',
