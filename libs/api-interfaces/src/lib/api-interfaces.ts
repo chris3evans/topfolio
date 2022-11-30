@@ -53,6 +53,9 @@ export interface Socials {
   github: string;
   facebook: string;
   linkedin: string;
+  instagram: string,
+  twitter: string,
+  youtube: string
 }
 
 export interface CustomText {

@@ -38,7 +38,14 @@ const userSchema = new mongoose.Schema({
     contact_me: {
       phone: String,
       email: String,
-      social_media: [String],
+      social_media: {
+        github: String,
+        facebook: String,
+        linkedin: String,
+        instagram: String,
+        twitter: String,
+        youtube: String
+      },
       location: String,
     },
     work_history: [
@@ -50,11 +57,6 @@ const userSchema = new mongoose.Schema({
         end_date: String,
       },
     ],
-    social_media: {
-      github: String,
-      facebook: String,
-      linkedin: String,
-    },
   },
 });
 

@@ -15,10 +15,16 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import { useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
+import { UserContext } from '../../utils/UserContext';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { updateUser } from '../../utils/ApiService';
+import { User } from '@topfolio/api-interfaces';
 
 /* eslint-disable-next-line */
-export interface ContactMeFormProps {}
+export interface ContactMeFormProps {
+  token: string;
+}
 
 export function ContactMeForm(props: ContactMeFormProps) {
   const [showSocials, setShowSocials] = useState(false);
@@ -27,21 +33,58 @@ export function ContactMeForm(props: ContactMeFormProps) {
     setShowSocials(!showSocials);
   };
 
-  const submitHandler = function (event: any) {};
+  const submitHandler = function (event: any) { };
 
+  const { userDetails, setUser } = useContext(UserContext);
+
+  console.log("USER DETAILS:", userDetails);
+
+  const formSubmitHandler = async function (event: any) {
+    try {
+      event.preventDefault();
+
+      setUser((current) => {
+        // @ts-ignore
+        current.portfolio.contact_me = {
+          phone: event.target.phone.value,
+          email: event.target.email.value,
+          social_media: {
+            github: event.target.github.value,
+            facebook: event.target.facebook.value,
+            linkedin: event.target.linkedin.value,
+            instagram: event.target.instagram.value,
+            twitter: event.target.twitter.value,
+            youtube: event.target.youtube.value,
+          },
+          location: event.target.location.value
+        }
+        return current;
+      });
+      // @ts-ignore
+      //console.log(userDetails, 'data to send backend', props.token);
+      //@ts-ignore
+      const response = await updateUser(userDetails, props.token);
+      console.log(response);
+    } catch (error) {
+      console.error(error, 'front end error');
+    }
+  };
+  /* userDetails.portfolio.contact_me.phone */
   return (
     <Box sx={muiStyles.form}>
       <Typography variant="h2">Contact Me:</Typography>
-      <form className={styles['form']}>
+      <form className={styles['form']} onSubmit={formSubmitHandler}>
         <Box sx={muiStyles.mainGrid}>
-          <Box sx={muiStyles.contactGrid}>
+          <Box sx={muiStyles.socialsGrid}>
             <Box>
               <FormControl fullWidth={true}>
                 <InputLabel htmlFor="phone">Phone Number</InputLabel>
                 <Input
                   required={true}
                   id="phone"
+                  name="phone"
                   type="number"
+                  defaultValue=''
                   startAdornment={
                     <InputAdornment position="start">
                       <PhoneIcon sx={muiStyles.contactIcon}></PhoneIcon>
@@ -57,10 +100,28 @@ export function ContactMeForm(props: ContactMeFormProps) {
                 <Input
                   required={true}
                   id="email"
+                  name="email"
                   type="email"
                   startAdornment={
                     <InputAdornment position="start">
                       <EmailIcon sx={muiStyles.contactIcon}></EmailIcon>
+                    </InputAdornment>
+                  }
+                ></Input>
+              </FormControl>
+            </Box>
+
+            <Box>
+              <FormControl fullWidth={true}>
+                <InputLabel htmlFor="location">Location</InputLabel>
+                <Input
+                  required={true}
+                  id="location"
+                  name="location"
+                  type="location"
+                  startAdornment={
+                    <InputAdornment position="start">
+                      <LocationOnIcon sx={muiStyles.contactIcon}></LocationOnIcon>
                     </InputAdornment>
                   }
                 ></Input>
@@ -80,11 +141,41 @@ export function ContactMeForm(props: ContactMeFormProps) {
             <Box sx={muiStyles.socialsGrid}>
               <Box>
                 <FormControl fullWidth={true}>
+                  <InputLabel htmlFor="github">GitHub</InputLabel>
+                  <Input
+                    id="github"
+                    type="text"
+                    name="github"
+                    startAdornment={
+                      <InputAdornment position="start">
+                        <FacebookIcon sx={muiStyles.contactIcon}></FacebookIcon>
+                      </InputAdornment>
+                    }
+                  ></Input>
+                </FormControl>
+              </Box>
+              <Box>
+                <FormControl fullWidth={true}>
                   <InputLabel htmlFor="facebook">Facebook</InputLabel>
                   <Input
                     id="facebook"
                     type="text"
                     name="facebook"
+                    startAdornment={
+                      <InputAdornment position="start">
+                        <FacebookIcon sx={muiStyles.contactIcon}></FacebookIcon>
+                      </InputAdornment>
+                    }
+                  ></Input>
+                </FormControl>
+              </Box>
+              <Box>
+                <FormControl fullWidth={true}>
+                  <InputLabel htmlFor="facebook">Linkedin</InputLabel>
+                  <Input
+                    id="linkedin"
+                    type="text"
+                    name="linkedin"
                     startAdornment={
                       <InputAdornment position="start">
                         <FacebookIcon sx={muiStyles.contactIcon}></FacebookIcon>
