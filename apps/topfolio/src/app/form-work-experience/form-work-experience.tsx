@@ -24,19 +24,9 @@ export interface FormWorkExperienceProps {
 
 export function FormWorkExperience(props: FormWorkExperienceProps) {
   const { userDetails, setUser } = useContext(UserContext);
-  const [companyField, setCompanyField] = useState('');
 
-  // const companyName = userDetails?.portfolio.work_history.find(
-  //   (workHistory: WorkExperience) => {
-  //     return workHistory._id === props.existingData?._id;
-  //   }
-  // );
-  // console.log(companyName?.company_name, 'company name');
-
-  const companyFieldChangeHandler = function (event: any) {
-    console.log(event.target.value);
-    setCompanyField(event.target.value);
-  };
+  const [startDate, setStartDate] = useState(props.existingData?.start_date);
+  const [endDate, setEndDate] = useState(props.existingData?.end_date);
 
   const formSubmitHandler = async function (event: any) {
     try {
@@ -46,8 +36,8 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
         company_name: event.target.companyName.value,
         description: event.target.description.value,
         image: '',
-        start_date: event.target.startDate.value,
-        end_date: event.target.finishDate.value,
+        start_date: startDate,
+        end_date: endDate,
       };
 
       setUser((current) => {
@@ -78,8 +68,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
                 required
                 id="company name"
                 name="companyName"
-                value={props.existingData?.company_name}
-                onChange={companyFieldChangeHandler}
+                defaultValue={props.existingData?.company_name}
               ></Input>
             </FormControl>
           </Box>
@@ -93,6 +82,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
                 id="description"
                 name="description"
                 multiline={true}
+                defaultValue={props.existingData?.description}
               ></Input>
             </FormControl>
           </Box>
@@ -102,8 +92,11 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
               <FormControl>
                 <LocalizationProvider dateAdapter={AdapterMoment}>
                   <DatePicker
-                    value={Date.now()}
-                    onChange={() => console.log('hi')}
+                    value={startDate}
+                    onChange={(newValue: any) => {
+                      console.log(newValue);
+                      setStartDate(newValue);
+                    }}
                     renderInput={(props: any) => (
                       <TextField
                         required
@@ -125,9 +118,10 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
                 <LocalizationProvider dateAdapter={AdapterMoment}>
                   <DatePicker
                     label="Finish"
-                    value={Date.now()}
-                    onChange={() => {
-                      console.log('hello');
+                    value={endDate}
+                    onChange={(newValue: any) => {
+                      console.log(newValue);
+                      setEndDate(newValue._d);
                     }}
                     renderInput={(props: any) => (
                       <TextField
