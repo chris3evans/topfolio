@@ -24,8 +24,9 @@
  .text-cont  h2{
   font-size: 2em;}
 
-  .container > Button{
-    position: relative;
-    right: 50%;
-    font-size: 1em;
-  }
+.button-box {
+  display: flex;
+  justify-content: center;
+}
+.button-box > button{
+  font-size: 1em;}

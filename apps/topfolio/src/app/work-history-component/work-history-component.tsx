@@ -12,6 +12,7 @@ import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 
 import Typography from '@mui/material/Typography';
 import { display } from '@mui/system';
+import MovingTitleComponent from '../moving-title-component/moving-title-component';
 /* eslint-disable-next-line */
 export interface WorkHistoryComponentProps {
   viewMode: boolean;
@@ -22,7 +23,7 @@ export function WorkHistoryComponent(props: WorkHistoryComponentProps) {
 
   return (
     <div className={styles['work-container']}>
-      <h3>Work experience</h3>
+      <MovingTitleComponent text={'Work Experience'} alignCenter={false} />
       <Timeline position="alternate">
         {mockUserState.portfolio.work_history.map((work, index) => (
           <TimelineItem

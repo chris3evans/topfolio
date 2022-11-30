@@ -15,11 +15,11 @@ export function Section(props: SectionProps) {
   const type = props.sectionType;
   const componentMapper = (type: string) => {
     switch (type) {
-      case 'WorkHistory':
+      case 'Work Experience':
         return <WorkHistoryComponent viewMode={props.viewMode} />;
       case 'Projects':
         return <ProjectsComponent />;
-      case 'Bio':
+      case 'About me':
         return <BioComponent />;
       default:
         return;

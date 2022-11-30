@@ -2,9 +2,11 @@ import styles from './moving-title-component.module.css';
 import { useEffect } from 'react';
 import { useAnimation, motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { flexbox } from '@mui/system';
 /* eslint-disable-next-line */
 export interface MovingTitleComponentProps {
   text: string;
+  alignCenter: boolean;
 }
 
 export function MovingTitleComponent(props: MovingTitleComponentProps) {
@@ -41,7 +43,13 @@ export function MovingTitleComponent(props: MovingTitleComponentProps) {
     visible: {},
   };
   return (
-    <div className={styles['text']} aria-label={props.text}>
+    <div
+      className={styles['text']}
+      aria-label={props.text}
+      style={
+        props.alignCenter ? { display: 'flex', justifyContent: 'center' } : {}
+      }
+    >
       <h2>
         {props.text.split(' ').map((word, index) => {
           return (

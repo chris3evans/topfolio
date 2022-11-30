@@ -3,6 +3,7 @@ import { mockUserState } from '../mockUser';
 import Button from '@mui/material/Button';
 import MovingTitleComponent from '../moving-title-component/moving-title-component';
 import MovingParagraphComponent from '../moving-paragraph-component/moving-paragraph-component';
+import { motion } from 'framer-motion';
 
 /* eslint-disable-next-line */
 export interface BioComponentProps {}
@@ -14,16 +15,23 @@ export function BioComponent(props: BioComponentProps) {
   return (
     <div className={styles['container']} id="bio-component">
       <div className={styles['text-cont']}>
-        <MovingTitleComponent text={title} />
+        <MovingTitleComponent text={title} alignCenter={false} />
         <MovingParagraphComponent text={bio} />
       </div>
-      <Button
-        variant="contained"
-        className="animated-button"
-        sx={{ width: 200, height: 50 }}
+      <motion.div
+        className={styles['button-box']}
+        whileHover={{ scale: 1.1 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+        whileTap={{ scale: 0.8 }}
       >
-        Contact me
-      </Button>
+        <Button
+          variant="contained"
+          className="animated-button"
+          sx={{ width: 200, height: 50 }}
+        >
+          Contact me
+        </Button>{' '}
+      </motion.div>
     </div>
   );
 }

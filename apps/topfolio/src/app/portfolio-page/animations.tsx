@@ -62,18 +62,18 @@ export const pageScrollAnimation = () => {
     },
   });
 };
-export const buttonRollOnScroll = (buttonClass: string, trigger: string) => {
-  gsap.registerPlugin(ScrollTrigger);
-
-  gsap.to(buttonClass, {
-    scrollTrigger: {
-      start: 'top center',
-      toggleActions: 'restart pause reverse pause',
-      trigger: trigger,
-    },
-    x: '330%',
-    rotation: 360,
-    ease: 'none',
-    duration: 1,
-  });
-};
+// export const buttonRollOnScroll = (buttonClass: string, trigger: string) => {
+//   gsap.registerPlugin(ScrollTrigger);
+//   gsap.to(buttonClass, { x: 200 });
+//   gsap.to(buttonClass, {
+//     scrollTrigger: {
+//       start: 'top center',
+//       toggleActions: 'restart pause reverse pause',
+//       trigger: trigger,
+//     },
+//     x: 200,
+//     rotation: 360,
+//     ease: 'none',
+//     duration: 1,
+//   });
+// };

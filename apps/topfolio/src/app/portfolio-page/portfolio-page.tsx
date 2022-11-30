@@ -5,11 +5,7 @@ import styles from './portfolio-page.module.css';
 import { mockUserState } from '../mockUser';
 import { gsap } from 'gsap';
 import { useLayoutEffect } from 'react';
-import {
-  workHistoryAnimation,
-  pageScrollAnimation,
-  buttonRollOnScroll,
-} from './animations';
+import { workHistoryAnimation, pageScrollAnimation } from './animations';
 export interface PortfolioPageProps {
   viewMode: boolean;
 }
@@ -20,7 +16,6 @@ export function PortfolioPage(props: PortfolioPageProps) {
       const ctx = gsap.context(() => {
         workHistoryAnimation('#WorkHistory');
         pageScrollAnimation();
-        buttonRollOnScroll('.animated-button', '#bio-component');
       });
       return () => ctx.revert(); // cleanup
     }
