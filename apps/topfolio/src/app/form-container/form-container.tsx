@@ -20,7 +20,7 @@ export function FormContainer(props: FormContainerProps) {
       ) : (
         ''
       )}
-      {props.sectionName == 'contact-me' ? <ContactMeForm></ContactMeForm> : ''}
+      {props.sectionName == 'contact-me' ? <ContactMeForm token={props.token}></ContactMeForm> : ''}
       {props.sectionName == 'projects' ? <FormProjects></FormProjects> : ''}
       {props.sectionName == 'layout' ? <Layout token={props.token}></Layout> : ''}
     </div>
