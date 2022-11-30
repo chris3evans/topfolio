@@ -13,7 +13,8 @@ import { User } from '@topfolio/api-interfaces';
 import PortfolioPage from './portfolio-page/portfolio-page';
 
 export const App = () => {
-  const [userDetails, setUser] = useState<User | null | object>(null);
+  // Removed type "object"
+  const [userDetails, setUser] = useState<User | null>(null);
 
   /*   const { isLoading } = useAuth0();
 
@@ -41,10 +42,7 @@ export const App = () => {
                 )}
               />
               <Route exact path="/dashboard" component={DashBoardPage} />
-              <Route
-                path="/dashboard/:section"
-                component={DashBoardPage}
-              />
+              <Route path="/dashboard/:section" component={DashBoardPage} />
               <Route path="/callback" component={CallbackPage} />
             </UserContext.Provider>
           </Switch>

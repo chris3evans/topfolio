@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { postUser } from '../../utils/ApiService';
+import { User } from '@topfolio/api-interfaces';
 
 /* eslint-disable-next-line */
 export interface DashBoardPageProps {}
@@ -33,7 +34,7 @@ export function DashBoardPage(props: DashBoardPageProps) {
       accessToken
     );
     console.log('API RESPONSE:', response);
-    setUser(response);
+    setUser(response as User);
     setToken(accessToken);
   };
 
