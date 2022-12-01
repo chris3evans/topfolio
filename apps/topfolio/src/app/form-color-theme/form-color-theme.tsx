@@ -4,8 +4,10 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import GenerateIcon from '@mui/icons-material/Cached';
 import muiStyles from './styles-form-color-theme';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../../utils/UserContext';
 import { colorApi } from '../../utils/ApiService';
+import { updateUser } from '../../utils/ApiService';
 
 /* eslint-disable-next-line */
 export interface FormColorThemeProps {
@@ -31,6 +33,8 @@ export function FormColorTheme(props: FormColorThemeProps) {
   useEffect(() => {
     changeColorSelection();
   }, []);
+
+  const { userDetails, setUser } = useContext(UserContext);
 
   const changeColorSelection = async function () {
     try {
@@ -58,9 +62,33 @@ export function FormColorTheme(props: FormColorThemeProps) {
     changeColorSelection();
   };
 
+  const onSubmitHandler = async function (event: any) {
+    try {
+      event.preventDefault();
+      const colorData = {
+        background: event.target.backgroundColor.value,
+        primary: event.target.primaryColor.value,
+        secondary: event.target.secondaryColor.value,
+        tertiary: event.target.tertiaryColor.value,
+        background_secondary: event.target.secondaryBackgroundColor.value,
+      };
+
+      setUser((current) => {
+        // @ts-ignore
+        current.portfolio.theme = colorData;
+        return current;
+      });
+      // @ts-ignore
+      const response = await updateUser(userDetails, props.token);
+      console.log(response, 'form sent');
+    } catch (error) {
+      console.log(error, 'error in saving color theme to database');
+    }
+  };
+
   return (
     <Box sx={muiStyles['colorThemeForm']}>
-      <form className={styles['color-theme-form']}>
+      <form onSubmit={onSubmitHandler} className={styles['color-theme-form']}>
         <Box sx={muiStyles['colorSelection']}>
           <Box sx={muiStyles['colorItem']}>
             <Box
@@ -75,6 +103,7 @@ export function FormColorTheme(props: FormColorThemeProps) {
               label="Background Color"
               variant="standard"
               type="color"
+              name="backgroundColor"
               value={`#${colorBackground}`}
               onChange={(event: any) => {
                 setColorBackground(event.target.value.replace('#', ''));
@@ -94,6 +123,7 @@ export function FormColorTheme(props: FormColorThemeProps) {
               sx={muiStyles['colorInput']}
               variant="standard"
               type="color"
+              name="primaryColor"
               value={`#${colorPrimary}`}
               onInputCapture={(event: any) => {
                 setColorPrimary(event.target.value.replace('#', ''));
@@ -113,6 +143,7 @@ export function FormColorTheme(props: FormColorThemeProps) {
               label="Secondary Color"
               variant="standard"
               type="color"
+              name="secondaryColor"
               value={`#${colorSecondary}`}
               onInputCapture={(event: any) => {
                 setColorSecondary(event.target.value.replace('#', ''));
@@ -132,6 +163,7 @@ export function FormColorTheme(props: FormColorThemeProps) {
               label="Tertiary Color"
               variant="standard"
               type="color"
+              name="tertiaryColor"
               value={`#${colorTertiary}`}
               onInputCapture={(event: any) => {
                 setColorTertiary(event.target.value.replace('#', ''));
@@ -151,6 +183,7 @@ export function FormColorTheme(props: FormColorThemeProps) {
               label="Secondary Background Color"
               variant="standard"
               type="color"
+              name="secondaryBackgroundColor"
               value={`#${colorBackground2}`}
               onInputCapture={(event: any) => {
                 setColorBackground2(event.target.value.replace('#', ''));

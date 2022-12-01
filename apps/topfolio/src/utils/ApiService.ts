@@ -10,7 +10,6 @@ export const postUser = async (body: User | object, token: string) => {
   return await fetcher(environment.API_URL, 'POST', body, token);
 };
 export const updateUser = async (body: User | object, token: string) => {
-  console.log('updated');
   return await fetcher(environment.API_URL, 'PUT', body, token);
 };
 export const colorApi = async () => {
