@@ -24,7 +24,8 @@ export interface FormProjectsProps {
 
 export function FormProjects(props: FormProjectsProps) {
   const { userDetails, setUser } = useContext(UserContext);
-  const [imgArray, setImageArray] = useState<{ url: string, id: string }[]>([]);
+  // const [imgArray, setImageArray] = useState<{ url: string, id: string }[]>([]);
+  const [imgArray, setImageArray] = useState<string[]>([]);
   // Instantiate a CloudinaryImage object for the image with the public ID, 'docs/models'.
   // const cld = new Cloudinary({
   //   cloud: {
@@ -35,18 +36,19 @@ export function FormProjects(props: FormProjectsProps) {
   // // Resize to 250 x 250 pixels using the 'fill' crop mode.
   // myImage.resize(fill().width(250).height(250));
   const getUploadedImage = (img: { url: string, id: string }) => {
+    const imgurl = img.url
     setImageArray(array => {
       return [
         ...array,
-        img
+        imgurl
       ]
     });
 
   }
 
-  const deleteImage = (id: string) => {
+  const deleteImage = (img: string) => {
     setImageArray(array => {
-      return array.filter(img => img.id !== id);
+      return array.filter(url => url !== img);
     });
   }
 
@@ -57,6 +59,12 @@ export function FormProjects(props: FormProjectsProps) {
       });
     }
   }, [userDetails?.portfolio.projects])
+
+  const closeEditHandler = function () {
+    if (props.listener) {
+      props.listener('1');
+    }
+  };
 
   const formSubmitHandler = async function (event: any) {
     try {
@@ -89,7 +97,8 @@ export function FormProjects(props: FormProjectsProps) {
               ],
             },
           };
-        });
+        }); closeEditHandler();
+
       } else {
         event.preventDefault();
         const formData = {
@@ -108,6 +117,7 @@ export function FormProjects(props: FormProjectsProps) {
           }
         }
         )
+        closeEditHandler();
       }
 
       // if (userDetails) {
@@ -130,10 +140,10 @@ export function FormProjects(props: FormProjectsProps) {
         {imgArray.map((img, index) => (
           <ImageListItem key={index}>
             <img
-              src={`${img.url}?w=164&h=164&fit=crop&auto=format`}
-              srcSet={`${img.url}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+              src={`${img}?w=164&h=164&fit=crop&auto=format`}
+              srcSet={`${img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
               loading="lazy"
-              onClick={() => deleteImage(img.id)}
+              onClick={() => deleteImage(img)}
             />
           </ImageListItem>
         ))}

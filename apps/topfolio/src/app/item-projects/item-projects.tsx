@@ -29,7 +29,7 @@ export function ItemProjects(props: ItemProjectsProps) {
           </Typography>
           <img
             className={styles['listItemImage']}
-            src="../assets/google.png"
+            src={props.project.images[0]}
           ></img>
         </Box>
 

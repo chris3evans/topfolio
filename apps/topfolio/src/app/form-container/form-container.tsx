@@ -21,22 +21,8 @@ export function FormContainer(props: FormContainerProps) {
   return (
     <div className={styles['form-container']}>
       {props.sectionName == 'about-me' ? <InfoAboutMe token={props.token}></InfoAboutMe> : ''}
-      {props.sectionName == 'work-experience' ? (
-        /* @ts-ignore */
-        userContext.userDetails &&
-          userContext.userDetails.portfolio.work_history.length ? (
-          <ListWorkExperience token={props.token}></ListWorkExperience>
-        ) : (
-          <FormWorkExperience
-            existingData={null}
-            token={props.token}
-            key={null}
-            listener={null}
-          ></FormWorkExperience>
-        )
-      ) : (
-        ''
-      )}
+      {props.sectionName == 'work-experience' ? <ListWorkExperience token={props.token}></ListWorkExperience> : ''
+      }
       {props.sectionName == 'contact-me' ? <ContactMeForm></ContactMeForm> : ''}
       {props.sectionName == 'projects' ? <ListProjects token={props.token}></ListProjects>
         : ""}

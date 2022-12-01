@@ -87,14 +87,18 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
           end_date: endDate,
         };
 
-        setUser((current) => {
-          // @ts-ignore
-          current.portfolio.work_history.push(formData);
-          return current;
-        });
-        // @ts-ignore
-        const response = await updateUser(userDetails, props.token);
-        console.log(response);
+        setUser((current: any) => {
+          return {
+            ...current, portfolio: {
+              ...current.portfolio, work_history: [
+                ...current.portfolio.work_history, formData]
+            }
+          }
+        }
+        )
+        // // @ts-ignore
+        // const response = await updateUser(userDetails, props.token);
+        // console.log(response);
         closeEditHandler();
       }
     } catch (error) {

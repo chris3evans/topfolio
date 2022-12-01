@@ -13,16 +13,15 @@ export interface ListWorkExperienceProps {
 }
 
 export function ListWorkExperience(props: ListWorkExperienceProps) {
-  const userContext = useContext(UserContext);
+  const { userDetails, setUser } = useContext(UserContext);
 
   const [editItemId, setEditItemId] = useState('');
 
   return (
     <Box className={styles['container']}>
       <List>
-        {
-          /* @ts-ignore */
-          userContext.userDetails.portfolio.work_history.map(
+        {userDetails ?
+          userDetails.portfolio.work_history.map(
             (workExperience: WorkExperience) => {
               return editItemId === workExperience._id ? (
                 <FormWorkExperience
@@ -39,7 +38,7 @@ export function ListWorkExperience(props: ListWorkExperienceProps) {
                 ></ItemWorkExperience>
               );
             }
-          )
+          ) : ""
         }
         <FormWorkExperience
           existingData={null}
