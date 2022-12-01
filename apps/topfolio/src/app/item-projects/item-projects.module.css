@@ -1,6 +1,11 @@
 .listItemImage {
-    height: 100%;
-    width: 100%;
+    height: auto;
+
+}
+
+.iconButtons {
+    display: flex;
+    justify-self: right;
 }
 
 .text {

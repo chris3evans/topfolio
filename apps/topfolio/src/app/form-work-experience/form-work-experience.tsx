@@ -14,6 +14,7 @@ import { updateUser } from '../../utils/ApiService';
 import { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import { WorkExperience } from '@topfolio/api-interfaces';
+import UploadImageWidget from '../upload-image-widget/upload-image-widget';
 
 /* eslint-disable-next-line */
 export interface FormWorkExperienceProps {
@@ -24,17 +25,22 @@ export interface FormWorkExperienceProps {
 
 export function FormWorkExperience(props: FormWorkExperienceProps) {
   const { userDetails, setUser } = useContext(UserContext);
+  const [img, setImg] = useState<string>('');
+  const getUploadedImage = (img: { url: string, id: string }) => {
+    setImg(img.url);
+  }
 
-  const [startDate, setStartDate] = useState(props.existingData?.start_date);
-  const [endDate, setEndDate] = useState(props.existingData?.end_date);
+  // const [startDate, setStartDate] = useState(props.existingData?.start_date);
+  // const [endDate, setEndDate] = useState(props.existingData?.end_date);
 
   useEffect(() => {
     if (userDetails) {
+      console.log(userDetails, 'context here!!!')
       updateUser(userDetails, props.token).then((response) => {
-        console.log(response, 'here');
+        console.log(response, 'after context here');
       });
     }
-  }, [userDetails?.portfolio.work_history]);
+  }, [userDetails]);
 
   const closeEditHandler = function () {
     if (props.listener) {
@@ -50,9 +56,9 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
         const formExistingData = {
           company_name: event.target.companyName.value,
           description: event.target.description.value,
-          image: '',
-          start_date: startDate,
-          end_date: endDate,
+          image: img,
+          start_date: event.target.startDate.value,
+          end_date: event.target.endDate.value,
           _id: props.existingData._id,
         };
 
@@ -64,7 +70,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
               work_history: [
                 ...current.portfolio.work_history.map(
                   (workExperience: WorkExperience) => {
-                    if (workExperience._id === props.existingData?._id) {
+                    if (workExperience.company_name === props.existingData?.company_name) {
                       return formExistingData;
                     } else {
                       return workExperience;
@@ -82,9 +88,9 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
         const formData = {
           company_name: event.target.companyName.value,
           description: event.target.description.value,
-          image: '',
-          start_date: startDate,
-          end_date: endDate,
+          image: img,
+          start_date: event.target.startDate.value,
+          end_date: event.target.endDate.value
         };
 
         setUser((current: any) => {
@@ -111,6 +117,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
       <Typography align="center" sx={muiStyles.formTitle} variant="h2">
         Work Experience
       </Typography>
+      <UploadImageWidget callback={getUploadedImage} />
       <form onSubmit={formSubmitHandler} className={styles['form-we']}>
         <Box sx={muiStyles.formFields}>
           <Box sx={muiStyles.companyField}>
@@ -142,7 +149,13 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
 
           <Box sx={muiStyles.datesContainer}>
             <Box sx={muiStyles.dateField}>
-              <FormControl>
+              <TextField
+                variant="standard"
+                label="Start Date"
+                name="startDate"
+                defaultValue={props.existingData?.start_date}
+              ></TextField>
+              {/* <FormControl>
                 <LocalizationProvider dateAdapter={AdapterMoment}>
                   <DatePicker
                     value={startDate}
@@ -163,11 +176,17 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
                     inputFormat="DD/MM/YYYY"
                   ></DatePicker>
                 </LocalizationProvider>
-              </FormControl>
+              </FormControl> */}
             </Box>
 
             <Box sx={muiStyles.dateField}>
-              <FormControl>
+              <TextField
+                variant="standard"
+                label="End Date"
+                name="endDate"
+                defaultValue={props.existingData?.end_date}
+              ></TextField>
+              {/* <FormControl>
                 <LocalizationProvider dateAdapter={AdapterMoment}>
                   <DatePicker
                     label="Finish"
@@ -188,7 +207,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
                     inputFormat="DD/MM/YYYY"
                   ></DatePicker>
                 </LocalizationProvider>
-              </FormControl>
+              </FormControl> */}
             </Box>
           </Box>
         </Box>

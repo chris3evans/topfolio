@@ -6,6 +6,18 @@
   color: gray;
 }
 
+.iconButtons {
+  display: flex;
+  justify-self: right;
+}
+
+.deleteButton {
+  width: 3rem;
+  background-color: transparent;
+  border: none;
+  justify-self: right;
+}
+
 .editButton {
   width: 3rem;
   background-color: transparent;

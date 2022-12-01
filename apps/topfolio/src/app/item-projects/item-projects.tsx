@@ -7,12 +7,13 @@ import { MyProjects } from '@topfolio/api-interfaces';
 import EditIcon from '@mui/icons-material/Create';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { UserContext } from '../../utils/UserContext';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 
 /* eslint-disable-next-line */
 export interface ItemProjectsProps {
   project: MyProjects;
   listener: Function;
+  name: String;
 }
 
 export function ItemProjects(props: ItemProjectsProps) {
@@ -21,7 +22,9 @@ export function ItemProjects(props: ItemProjectsProps) {
     props.listener(props.project._id);
   };
 
-  const deleteHandler = async function (event: any) {
+  const deleteHandler = async function () {
+    // console.log(props.name, 'props.editItemId')
+    // console.log(props.project._id, 'props.project._id')
     setUser((current: any) => {
       return {
         ...current,
@@ -29,7 +32,7 @@ export function ItemProjects(props: ItemProjectsProps) {
           ...current.portfolio,
           projects: [
             ...current.portfolio.projects.filter((projects: MyProjects) => {
-              return projects._id !== props.project._id
+              return projects.name !== props.name
             })
           ]
         }
@@ -39,12 +42,14 @@ export function ItemProjects(props: ItemProjectsProps) {
 
   return (
     <ListItem sx={muiStyles.listItem}>
-      <button onClick={deleteHandler} className={styles['deleteButton']}>
-        <DeleteIcon sx={muiStyles.editIcon}></DeleteIcon>
-      </button>
-      <button onClick={openEditHandler} className={styles['editButton']}>
-        <EditIcon sx={muiStyles.editIcon}></EditIcon>
-      </button>
+      <div className={styles['iconButtons']} >
+        <button onClick={deleteHandler} className={styles['deleteButton']}>
+          <DeleteIcon sx={muiStyles.editIcon}></DeleteIcon>
+        </button>
+        <button onClick={openEditHandler} className={styles['editButton']}>
+          <EditIcon sx={muiStyles.editIcon}></EditIcon>
+        </button>
+      </div>
       <Box sx={muiStyles.listItemGrid}>
         <Box sx={muiStyles.listItemGrid2}>
           <Typography sx={muiStyles.subHeading} variant="h6">
@@ -71,7 +76,7 @@ export function ItemProjects(props: ItemProjectsProps) {
               <span className={styles['text']}>
                 {
                   props.project.github_url
-                  // ? convertIsoToDateString(props.workXp.start_date)
+
                 }
               </span>
             </Typography>

@@ -25,12 +25,13 @@ export function ListProjects(props: ListProjectsProps) {
                   existingData={project}
                   token={props.token}
                   listener={setEditItemId}
-                  key={project._id}
+                  key={project.name}
                 ></FormProjects>
               ) : (
                 <ItemProjects
                   project={project}
                   listener={setEditItemId}
+                  name={project.name}
                   key={`${project._id} + ${Math.random()}`}
                 ></ItemProjects>
               );

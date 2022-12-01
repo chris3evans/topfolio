@@ -28,12 +28,13 @@ export function ListWorkExperience(props: ListWorkExperienceProps) {
                   existingData={workExperience}
                   token={props.token}
                   listener={setEditItemId}
-                  key={workExperience._id}
+                  key={workExperience.company_name}
                 ></FormWorkExperience>
               ) : (
                 <ItemWorkExperience
                   workXp={workExperience}
                   listener={setEditItemId}
+                  company_name={workExperience.company_name}
                   key={`${workExperience._id} + ${Math.random()}`}
                 ></ItemWorkExperience>
               );

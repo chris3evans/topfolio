@@ -10,8 +10,6 @@ import { updateUser } from '../../utils/ApiService';
 import { UserContext } from '../../utils/UserContext';
 import { useContext, useEffect, useState } from 'react';
 import UploadImageWidget from '../upload-image-widget/upload-image-widget';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
 import { MyProjects } from '@topfolio/api-interfaces';
 // import { Cloudinary } from "@cloudinary/url-gen";
 
@@ -24,20 +22,10 @@ export interface FormProjectsProps {
 
 export function FormProjects(props: FormProjectsProps) {
   const { userDetails, setUser } = useContext(UserContext);
-  // const [imgArray, setImageArray] = useState<{ url: string, id: string }[]>([]);
-  const [imgArray, setImageArray] = useState<string[]>([]);
-  // Instantiate a CloudinaryImage object for the image with the public ID, 'docs/models'.
-  // const cld = new Cloudinary({
-  //   cloud: {
-  //     cloudName: 'divt6a0ys'
-  //   }
-  // })
-  // const myImage = cld.image('hefrxnlroorhexwk6gwx');
-  // // Resize to 250 x 250 pixels using the 'fill' crop mode.
-  // myImage.resize(fill().width(250).height(250));
+  const [imgArray, setImgArray] = useState<string[]>([]);
   const getUploadedImage = (img: { url: string, id: string }) => {
     const imgurl = img.url
-    setImageArray(array => {
+    setImgArray(array => {
       return [
         ...array,
         imgurl
@@ -46,16 +34,14 @@ export function FormProjects(props: FormProjectsProps) {
 
   }
 
-  // const deleteImage = (img: string) => {
-  //   setImageArray(array => {
-  //     return array.filter(url => url !== img);
-  //   });
-  // }
-
   useEffect(() => {
     if (userDetails) {
+      console.log(userDetails, 'here!!!')
       updateUser(userDetails, props.token).then((response) => {
-        console.log(response, 'here')
+        setImgArray([])
+        // @ts-ignore
+        // setUser(response.data)
+        console.log(response, 'response is here!!!')
       });
     }
   }, [userDetails?.portfolio.projects])
@@ -65,14 +51,6 @@ export function FormProjects(props: FormProjectsProps) {
       props.listener('1');
     }
   };
-
-
-
-  // const handleRemove = (removeIndex) => {
-  //   setValue(oldArray => {
-  //     return oldArray.filter((value, i) => i !== removeIndex)
-  //   })
-  // }
 
   const formSubmitHandler = async function (event: any) {
     try {
@@ -87,6 +65,7 @@ export function FormProjects(props: FormProjectsProps) {
           app_url: event.target.appUrl.value,
           _id: props.existingData._id
         };
+
         setUser((current: any) => {
           return {
             ...current,
@@ -95,7 +74,7 @@ export function FormProjects(props: FormProjectsProps) {
               projects: [
                 ...current.portfolio.projects.map(
                   (projects: MyProjects) => {
-                    if (projects._id === props.existingData?._id) {
+                    if (projects.name === props.existingData?.name) {
                       return formExistingData;
                     } else {
                       return projects;
@@ -140,28 +119,6 @@ export function FormProjects(props: FormProjectsProps) {
       <Typography align="center" sx={muiStyles.formTitle} variant="h2">
         My Projects
       </Typography>
-      {/* <ImageList sx={{ width: 300, height: 250 }} cols={1} rowHeight={120}>
-        {userDetails?.portfolio.projects ? imgArray.map((img, index) => (
-          <ImageListItem key={index}>
-            <img
-              src={`${img}?w=164&h=164&fit=crop&auto=format`}
-              srcSet={`${img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-              loading="lazy"
-              onClick={() => deleteImage(img)}
-            />
-          </ImageListItem>
-
-        )) : userDetails?.portfolio.projects.images.map((img: any, index: any) => (
-          <ImageListItem key={index}>
-            <img
-              src={`${img}?w=164&h=164&fit=crop&auto=format`}
-              srcSet={`${img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-              loading="lazy"
-              onClick={() => deleteImage(img)}
-            />
-          </ImageListItem>
-        ))}
-      </ImageList> */}
       <UploadImageWidget callback={getUploadedImage} />
       <form onSubmit={formSubmitHandler} className={styles['form-we']}>
         <Box sx={muiStyles.formFields}>
