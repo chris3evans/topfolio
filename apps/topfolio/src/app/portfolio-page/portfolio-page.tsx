@@ -33,9 +33,9 @@ export function PortfolioPage(props: PortfolioPageProps) {
         <SectionsComponent user={mockUserState} viewMode={props.viewMode} />
         <Footer
           viewMode={props.viewMode}
-          github={mockUserState.portfolio.social_media.github}
-          facebook={mockUserState.portfolio.social_media.facebook}
-          linkedin={mockUserState.portfolio.social_media.linkedin}
+          github={mockUserState.portfolio.contact_me.social_media.github}
+          facebook={mockUserState.portfolio.contact_me.social_media.facebook}
+          linkedin={mockUserState.portfolio.contact_me.social_media.linkedin}
         />
         {/* TODO MAKE THIS WORK WITH REAL USER */}
       </div>

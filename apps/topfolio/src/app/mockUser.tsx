@@ -51,9 +51,6 @@ export const mockUserState: User = {
         github: 'github link',
         facebook: 'facebook link',
         linkedin: 'linkedin link',
-        instagram: '',
-        twitter: '',
-        youtube: '',
       },
       location: 'UK',
     },
@@ -62,51 +59,26 @@ export const mockUserState: User = {
         company_name: 'Google',
         image: '../assets/google.png',
         description: 'Lead Software Engineer',
-<<<<<<< HEAD
-        start_date: new Date(),
-        end_date: new Date(),
-=======
         start_date: '12/12/2022',
         end_date: '12/12/2022',
         _id: '123',
->>>>>>> development
       },
       {
         company_name: 'Netflix',
         image: '../assets/google.png',
         description: 'Junior Software Engineer',
-<<<<<<< HEAD
-        start_date: new Date(),
-        end_date: new Date(),
-=======
         start_date: '12/12/2022',
         end_date: '12/12/2022',
         _id: '456',
->>>>>>> development
       },
       {
         company_name: 'Meta',
         image: '../assets/google.png',
         description: 'Junior Software Engineer',
-<<<<<<< HEAD
-        start_date: new Date(),
-        end_date: new Date(),
-      },
-    ],
-    social_media: {
-      instagram: '',
-      twitter: '',
-      youtube: '',
-      github: 'https://github.com/',
-      linkedin: 'https://www.linkedin.com/',
-      facebook: 'https://en-gb.facebook.com/',
-    },
-=======
         start_date: '12/12/2022',
         end_date: '12/12/2022',
         _id: '789',
       },
     ],
->>>>>>> development
   },
 };
