@@ -1,9 +1,17 @@
 .listItemImage {
-    height: auto;
+    height: 100%;
+    width: 100%;
 }
 
 .text {
     color: gray;
+}
+
+.deleteButton {
+    width: 3rem;
+    background-color: transparent;
+    border: none;
+    justify-self: right;
 }
 
 .editButton {

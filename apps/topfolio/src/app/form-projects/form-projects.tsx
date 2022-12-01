@@ -46,11 +46,11 @@ export function FormProjects(props: FormProjectsProps) {
 
   }
 
-  const deleteImage = (img: string) => {
-    setImageArray(array => {
-      return array.filter(url => url !== img);
-    });
-  }
+  // const deleteImage = (img: string) => {
+  //   setImageArray(array => {
+  //     return array.filter(url => url !== img);
+  //   });
+  // }
 
   useEffect(() => {
     if (userDetails) {
@@ -65,6 +65,14 @@ export function FormProjects(props: FormProjectsProps) {
       props.listener('1');
     }
   };
+
+
+
+  // const handleRemove = (removeIndex) => {
+  //   setValue(oldArray => {
+  //     return oldArray.filter((value, i) => i !== removeIndex)
+  //   })
+  // }
 
   const formSubmitHandler = async function (event: any) {
     try {
@@ -120,15 +128,11 @@ export function FormProjects(props: FormProjectsProps) {
         closeEditHandler();
       }
 
-      // if (userDetails) {
-      //   const response = await updateUser(userDetails, props.token);
-      //   console.log(response);
-      // }
-
     } catch (error) {
       console.error(error, 'front end error');
     }
   };
+
 
 
   return (
@@ -136,8 +140,18 @@ export function FormProjects(props: FormProjectsProps) {
       <Typography align="center" sx={muiStyles.formTitle} variant="h2">
         My Projects
       </Typography>
-      <ImageList sx={{ width: 300, height: 250 }} cols={1} rowHeight={120}>
-        {imgArray.map((img, index) => (
+      {/* <ImageList sx={{ width: 300, height: 250 }} cols={1} rowHeight={120}>
+        {userDetails?.portfolio.projects ? imgArray.map((img, index) => (
+          <ImageListItem key={index}>
+            <img
+              src={`${img}?w=164&h=164&fit=crop&auto=format`}
+              srcSet={`${img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+              loading="lazy"
+              onClick={() => deleteImage(img)}
+            />
+          </ImageListItem>
+
+        )) : userDetails?.portfolio.projects.images.map((img: any, index: any) => (
           <ImageListItem key={index}>
             <img
               src={`${img}?w=164&h=164&fit=crop&auto=format`}
@@ -147,7 +161,7 @@ export function FormProjects(props: FormProjectsProps) {
             />
           </ImageListItem>
         ))}
-      </ImageList>
+      </ImageList> */}
       <UploadImageWidget callback={getUploadedImage} />
       <form onSubmit={formSubmitHandler} className={styles['form-we']}>
         <Box sx={muiStyles.formFields}>

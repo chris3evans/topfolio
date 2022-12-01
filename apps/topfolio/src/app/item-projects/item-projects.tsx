@@ -5,6 +5,9 @@ import { Box } from '@mui/material';
 import { ListItem } from '@mui/material';
 import { MyProjects } from '@topfolio/api-interfaces';
 import EditIcon from '@mui/icons-material/Create';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { UserContext } from '../../utils/UserContext';
+import { useContext, useEffect, useState } from 'react';
 
 /* eslint-disable-next-line */
 export interface ItemProjectsProps {
@@ -13,11 +16,32 @@ export interface ItemProjectsProps {
 }
 
 export function ItemProjects(props: ItemProjectsProps) {
+  const { userDetails, setUser } = useContext(UserContext);
   const openEditHandler = function () {
     props.listener(props.project._id);
   };
+
+  const deleteHandler = async function (event: any) {
+    setUser((current: any) => {
+      return {
+        ...current,
+        portfolio: {
+          ...current.portfolio,
+          projects: [
+            ...current.portfolio.projects.filter((projects: MyProjects) => {
+              return projects._id !== props.project._id
+            })
+          ]
+        }
+      }
+    })
+  }
+
   return (
     <ListItem sx={muiStyles.listItem}>
+      <button onClick={deleteHandler} className={styles['deleteButton']}>
+        <DeleteIcon sx={muiStyles.editIcon}></DeleteIcon>
+      </button>
       <button onClick={openEditHandler} className={styles['editButton']}>
         <EditIcon sx={muiStyles.editIcon}></EditIcon>
       </button>
@@ -44,7 +68,7 @@ export function ItemProjects(props: ItemProjectsProps) {
           <Box>
             <Typography variant="h6" sx={muiStyles.subHeading}>
               Github Link:
-              <span className={styles['text']}>`\n`
+              <span className={styles['text']}>
                 {
                   props.project.github_url
                   // ? convertIsoToDateString(props.workXp.start_date)

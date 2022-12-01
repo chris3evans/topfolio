@@ -11,6 +11,7 @@ const muiStyles = {
   },
   formTitle: {
     color: 'black',
+    marginBottom: '2rem',
   },
 
   formFields: {
@@ -31,7 +32,12 @@ const muiStyles = {
     padding: '2rem',
     width: '100%',
   },
-
+  deleteButton: {
+    fontSize: '1.6rem',
+    height: '3.5rem',
+    width: '10rem',
+    marginTop: '2rem',
+  },
   saveButton: {
     fontSize: '1.6rem',
     height: '3.5rem',
@@ -39,14 +45,10 @@ const muiStyles = {
     marginTop: '2rem',
   },
   gitUrlField: {
-    // display: 'flex',
-    // alignItems: 'center',
     padding: '2rem',
     width: '100%',
   },
   appUrlField: {
-    // display: 'flex',
-    // alignItems: 'center',
     padding: '2rem',
     width: '100%',
   }
