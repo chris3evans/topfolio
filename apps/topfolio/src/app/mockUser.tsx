@@ -11,11 +11,11 @@ export const mockUserState: User = {
     hero_title: 'Mock hero title',
     profile_image: '../../assets/hero-transparenty.png',
     theme: {
-      1: '',
-      2: '',
-      3: '',
-      4: '',
-      5: '',
+      background: '',
+      primary: '',
+      secondary: '',
+      tertiary: '',
+      background_secondary: '',
     },
     layout: ['Work Experience', 'Projects', 'About me'],
     projects: [

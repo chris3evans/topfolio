@@ -8,6 +8,8 @@ const muiStyles = {
     borderRadius: '0.5rem',
     justifyContent: 'center',
     padding: '1rem 0rem',
+    width: '60%',
+    justifySelf: 'center',
   },
   editIcon: {
     justifySelf: 'right',

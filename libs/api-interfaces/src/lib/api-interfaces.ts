@@ -28,11 +28,11 @@ export interface Portfolio {
 }
 // TODO CHANGE COLORS NAME
 export interface Theme {
-  '1': string;
-  '2': string;
-  '3': string;
-  '4': string;
-  '5': string;
+  background: string;
+  primary: string;
+  secondary: string;
+  tertiary: string;
+  background_secondary: string;
 }
 export interface MyProjects {
   name: string;
