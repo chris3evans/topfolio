@@ -28,7 +28,7 @@ export function SectionsComponent(props: SectionsComponentProps) {
 
     setUser((current) => {
       // @ts-ignore
-      current.portfolio.layout = [...tempLayout];
+      current.portfolio.layout = [...newLayout];
       return current;
     });
 

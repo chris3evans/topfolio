@@ -3,7 +3,7 @@ const { userInfo, createUser, saveUser } = require('./controllers/controller');
 const { validateAccessToken } = require('./middleware/auth0.middleware');
 const router = express.Router();
 
-router.get('/user/:userId', userInfo);
+router.get('/user/:slug_url', userInfo);
 router.post('/user', validateAccessToken, createUser);
 router.put('/user', validateAccessToken, saveUser);
 //Adding middleware in protected routes:
