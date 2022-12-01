@@ -19,11 +19,11 @@ const userSchema = new mongoose.Schema({
     hero_title: String,
     profile_image: String,
     theme: {
-      '1': String,
-      '2': String,
-      '3': String,
-      '4': String,
-      '5': String,
+      background: String,
+      primary: String,
+      secondary: String,
+      tertiary: String,
+      background_secondary: String,
     },
     layout: [String],
     projects: [

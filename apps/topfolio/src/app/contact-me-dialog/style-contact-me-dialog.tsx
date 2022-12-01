@@ -1,6 +1,5 @@
 const muiStyles = {
   form: {
-    backgroundColor: 'white',
     borderRadius: '0.3rem',
     height: 'fit',
     width: 'fit',
@@ -8,9 +7,7 @@ const muiStyles = {
     alignItems: 'center',
     flexDirection: 'column',
   },
-  formTitle: {
-    color: 'black',
-  },
+  formTitle: {},
 
   formFields: {
     fontSize: '2rem',

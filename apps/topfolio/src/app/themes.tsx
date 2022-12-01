@@ -1,6 +1,6 @@
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import type {} from '@mui/x-date-pickers/themeAugmentation';
-
+import { Theme } from '@topfolio/api-interfaces';
 export const workExperienceFormTheme = createTheme({
   components: {
     MuiDatePicker: {
@@ -26,3 +26,25 @@ export const workExperienceFormTheme = createTheme({
     },
   },
 });
+// theme: Theme
+export const themeGenerator = (theme: Theme) => {
+  changeCssVariablesByTheme(theme);
+  return createTheme({
+    palette: {
+      primary: {
+        main: theme.primary,
+      },
+      secondary: {
+        main: theme.secondary,
+      },
+      warning: { main: theme.tertiary },
+    },
+  });
+};
+export const changeCssVariablesByTheme = (theme: Theme) => {
+  const root: HTMLElement = document.querySelector(':root')!;
+  root.style.setProperty('--primary-background', theme.background);
+  root.style.setProperty('--secondary-background', theme.background_secondary);
+  root.style.setProperty('--primary-text', '#151619');
+  root.style.setProperty('--primary', theme.primary);
+};
