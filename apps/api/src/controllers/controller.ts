@@ -20,6 +20,7 @@ const userInfo = async (req: express.Request, res: express.Response) => {
   }
 };
 
+
 const createUser = async (req: express.Request, res: express.Response) => {
   try {
     const userId = req.auth.payload.sub;
