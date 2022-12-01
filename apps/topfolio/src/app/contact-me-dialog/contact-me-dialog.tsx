@@ -1,13 +1,15 @@
 import styles from './contact-me-dialog.module.css';
+import muiStyles from './style-contact-me-dialog';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import MovingTitleComponent from '../moving-title-component/moving-title-component';
-import { useState } from 'react';
+import FormControl from '@mui/material/FormControl';
+import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
 /* eslint-disable-next-line */
 export interface ContactMeDialogProps {
   open: boolean;
@@ -15,77 +17,81 @@ export interface ContactMeDialogProps {
 }
 
 export function ContactMeDialog(props: ContactMeDialogProps) {
+
   const formMsg = 'If you have any request or question please fill the form';
-  const [form, setForm] = useState({});
-  const handleChange = (e: any) => {};
-  const handleSubmit = (form: object) => {};
+  
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+      const formData = {
+        name: event.target.name.value,
+        email: event.target.email.value,
+        subject: event.target.subject.value,
+        message: event.target.message.value,
+      };
+    //send form data here
+    console.log(formData);
+  };
 
   return (
-    <Dialog open={props.open}>
+    <Dialog open={props.open} sx={muiStyles.form}>
       <DialogTitle>
         <MovingTitleComponent text={'Contact me'} alignCenter={false} />
       </DialogTitle>
-      <DialogContent>
-        <DialogContentText sx={{ fontSize: 20, fontWeight: 600 }}>
-          {formMsg}
-        </DialogContentText>
-        <div style={{ display: 'flex', gap: '2em', fontSize: '1em' }}>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Name"
-            type="text"
-            variant="outlined"
-            onChange={handleChange}
-          />
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Email Address"
-            type="email"
-            variant="outlined"
-          />
-        </div>
-        <TextField
-          autoFocus
-          margin="dense"
-          id="name"
-          label="Subject"
-          type="text"
-          fullWidth
-          variant="outlined"
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="name"
-          label="Message"
-          type="text"
-          fullWidth
-          variant="outlined"
-          multiline
-          rows={4}
-        />
-      </DialogContent>
-      <DialogActions>
-        <Button
-          onClick={props.onClose}
-          variant="contained"
-          color="warning"
-          sx={{ fontSize: 10, fontWeight: 600 }}
-        >
-          Cancel
+    <form onSubmit={handleSubmit} className={styles['form-we']}>
+      <Typography sx={muiStyles.formTitle}>
+      {formMsg}
+        </Typography>
+        <Box sx={muiStyles.formFields}>
+             <Box sx={muiStyles.inputField}>
+              <FormControl fullWidth={true}>
+              <InputLabel htmlFor="name">Name:</InputLabel>
+              <Input
+                type="text"
+                id="name"
+                name="name"
+              ></Input>
+        </FormControl>
+          </Box>
+          <Box sx={muiStyles.inputField}>
+              <FormControl fullWidth={true}>
+              <InputLabel htmlFor="email">Email:</InputLabel>
+              <Input
+                type="text"
+                id="email"
+                name="email"
+              ></Input>
+        </FormControl>
+          </Box>
+          <Box sx={muiStyles.inputField}>
+          <FormControl fullWidth={true}>
+              <InputLabel htmlFor="subject">Subject:</InputLabel>
+              <Input
+                type="text"
+                id="subject"
+                name="subject"
+              ></Input>
+            </FormControl>
+          </Box>
+          <Box sx={muiStyles.inputField}>
+            <FormControl fullWidth={true}>
+              <InputLabel htmlFor="message">Message:</InputLabel>
+              <Input
+                type="text"
+                id="message"
+                name="message"
+              ></Input>
+            </FormControl>
+          </Box>
+        </Box>
+        <Box sx={muiStyles.buttons}>
+         <Button sx={muiStyles.button} onClick={props.onClose} variant="contained">
+          cancel
         </Button>
-        <Button
-          onClick={props.onClose}
-          variant="contained"
-          sx={{ fontSize: 10, fontWeight: 600 }}
-        >
-          Send message!
+          <Button sx={muiStyles.button} onClick={props.onClose} type="submit" variant="contained">
+          Save
         </Button>
-      </DialogActions>
+      </Box>
+      </form>
     </Dialog>
   );
 }

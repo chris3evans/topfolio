@@ -1,5 +1,5 @@
 import { fetcher } from './fetcher';
-import { environment } from '../src/environments/environment';
+import { environment } from '../../src/environments/environment';
 import fetch from 'jest-fetch-mock';
 // TODO add more tests
 
