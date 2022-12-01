@@ -42,6 +42,7 @@ export function PortfolioPage(props: PortfolioPageProps) {
       })
       .catch((e) => console.error(e));
   }, []);
+
   useLayoutEffect(() => {
     if (props.viewMode) {
       const ctx = gsap.context(() => {

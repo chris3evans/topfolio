@@ -20,7 +20,6 @@ const transition = {
 
 export function Footer(props: FooterProps) {
   const { userDetails } = useContext(UserContext);
-  console.log(userDetails);
   const Footer = () => (
     <>
       <h3 style={{ fontSize: '2em' }}>TopFolio</h3>
