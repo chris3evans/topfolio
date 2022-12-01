@@ -7,7 +7,11 @@ import Layout from '../form-layout/form-layout';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import ListWorkExperience from '../list-work-experience/list-work-experience';
+<<<<<<< HEAD
 import FormColorTheme from '../form-color-theme/form-color-theme';
+=======
+import Button from '@mui/material/Button';
+>>>>>>> portfolioPage
 
 /* eslint-disable-next-line */
 export interface FormContainerProps {
@@ -19,8 +23,21 @@ export function FormContainer(props: FormContainerProps) {
   const userContext = useContext(UserContext);
   console.log(userContext);
 
+  const preview = () => {
+    window.open(
+      '/' + userContext.userDetails?.slug_url + '-portfolio',
+      '_blank'
+    );
+  };
+
   return (
     <div className={styles['form-container']}>
+      <div className={styles['preview']}>
+        <Button onClick={preview} variant="contained">
+          Go to your Portfolio Page
+        </Button>
+      </div>
+
       {props.sectionName == 'about-me' ? (
         <InfoAboutMe token={props.token}></InfoAboutMe>
       ) : (

@@ -4,9 +4,9 @@ import { Colors } from '../../../../libs/api-interfaces/src';
 export const fetcher = async (
   url: string,
   method: string,
-  body?: User | object,
+  body?: object,
   token?: string
-): Promise<User | object> => {
+): Promise<object> => {
   try {
     const res = await fetch(url, {
       method: `${method}`,

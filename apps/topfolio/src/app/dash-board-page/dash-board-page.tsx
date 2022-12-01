@@ -25,6 +25,7 @@ export function DashBoardPage(props: DashBoardPageProps) {
 
   const registerUser = async () => {
     const accessToken = await getAccessTokenSilently();
+    console.log(accessToken)
     const response = await postUser(
       {
         slug_url: user?.nickname,

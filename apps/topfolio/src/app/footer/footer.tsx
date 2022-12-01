@@ -5,11 +5,11 @@ import { FiGithub } from 'react-icons/fi';
 import { mockUserState } from '../mockUser';
 import { FcPhoneAndroid, FcInvite } from 'react-icons/fc';
 import { motion } from 'framer-motion';
+import { User } from '@topfolio/api-interfaces';
+import { useContext } from 'react';
+import { UserContext } from '../../utils/UserContext';
 /* eslint-disable-next-line */
 export interface FooterProps {
-  github: string;
-  facebook: string;
-  linkedin: string;
   viewMode: boolean;
 }
 const transition = {
@@ -19,17 +19,18 @@ const transition = {
 };
 
 export function Footer(props: FooterProps) {
+  const { userDetails } = useContext(UserContext);
   const Footer = () => (
     <>
       <h3 style={{ fontSize: '2em' }}>TopFolio</h3>
       <div className={styles['links']}>
-        <a aria-label="Topfolio Facebook link" href={props.facebook || ''}>
+        <a aria-label="Topfolio Facebook link" href={''}>
           <FaFacebook />
         </a>
-        <a aria-label="Topfolio Github link" href={props.github || ''}>
+        <a aria-label="Topfolio Github link" href={''}>
           <FiGithub />
         </a>
-        <a aria-label="Topfolio Linkedin link" href={props.linkedin || ''}>
+        <a aria-label="Topfolio Linkedin link" href={''}>
           <FaLinkedin />
         </a>
       </div>
@@ -44,7 +45,7 @@ export function Footer(props: FooterProps) {
           {' '}
           <motion.a
             aria-label="Topfolio Facebook link"
-            href={props.facebook || ''}
+            href={userDetails.portfolio.contact_me.social_media.facebook || ''}
             whileHover={{ scale: 2 }}
             transition={transition}
           >
@@ -52,7 +53,7 @@ export function Footer(props: FooterProps) {
           </motion.a>
           <motion.a
             aria-label="Topfolio Github link"
-            href={props.github || ''}
+            href={userDetails.portfolio.contact_me.social_media.github || ''}
             whileHover={{ scale: 2 }}
             transition={transition}
           >
@@ -60,7 +61,7 @@ export function Footer(props: FooterProps) {
           </motion.a>
           <motion.a
             aria-label="Topfolio Linkedin link"
-            href={props.linkedin || ''}
+            href={userDetails.portfolio.contact_me.social_media.linkedin || ''}
             whileHover={{ scale: 2 }}
             transition={transition}
           >
@@ -78,7 +79,7 @@ export function Footer(props: FooterProps) {
           >
             <FcInvite />
             <motion.a
-              href={`mailto:${mockUserState.portfolio.contact_me.email}`}
+              href={`mailto:${userDetails.portfolio.contact_me.email}`}
               className={styles['email-me']}
               whileHover={{ color: 'var(--primary)' }}
               transition={transition}

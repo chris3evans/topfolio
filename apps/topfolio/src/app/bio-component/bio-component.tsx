@@ -1,18 +1,21 @@
 import styles from './bio-component.module.css';
-import { mockUserState } from '../mockUser';
 import Button from '@mui/material/Button';
 import MovingTitleComponent from '../moving-title-component/moving-title-component';
 import MovingParagraphComponent from '../moving-paragraph-component/moving-paragraph-component';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import ContactMeDialog from '../contact-me-dialog/contact-me-dialog';
+import { UserContext } from '../../utils/UserContext';
+import { mockUserState } from '../mockUser';
 
 /* eslint-disable-next-line */
 export interface BioComponentProps {}
 
 export function BioComponent(props: BioComponentProps) {
-  const title = mockUserState.name;
-  const bio = mockUserState.portfolio.bio;
+  const { userDetails } = useContext(UserContext);
+
+  const title = userDetails.portfolio.bio_title || mockUserState.name;
+  const bio = userDetails.portfolio.bio || mockUserState.portfolio.bio;
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {

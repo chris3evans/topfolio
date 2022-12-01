@@ -41,7 +41,7 @@ export function SingleProject(props: SingleProjectProps) {
           animate={
             isInView
               ? {
-                  opacity: 1,
+                  opacity: 0.95,
                   transition: {
                     type: 'spring',
                     delay: 1.5,
@@ -53,14 +53,31 @@ export function SingleProject(props: SingleProjectProps) {
         >
           <p>{props.project.description}</p>
           <div className={styles['links']}>
-            <a href={props.project.github_url}>
+            <motion.a
+              href={props.project.github_url}
+              whileHover={{ scale: 2, color: 'var(--primary)', margin: '1em' }}
+              transition={{
+                type: 'spring',
+                stiffness: 200,
+                damping: 10,
+                duration: 0.5,
+              }}
+            >
               <FiGithub />
               Github
-            </a>
-            <a href={props.project.app_url}>
+            </motion.a>
+            <motion.a
+              href={props.project.app_url}
+              whileHover={{ scale: 2, color: 'var(--primary)', margin: '1em' }}
+              transition={{
+                type: 'spring',
+                stiffness: 200,
+                damping: 10,
+              }}
+            >
               <FaAppStore />
               App
-            </a>
+            </motion.a>
           </div>
         </motion.div>
       </motion.div>

@@ -6,11 +6,11 @@ import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import Typography from '@mui/material/Typography';
-import { updateUser } from '../../utils/ApiService';
+import { updateUser, getUser } from '../../utils/ApiService';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import UploadImageWidget from '../upload-image-widget/upload-image-widget';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 /* eslint-disable-next-line */
 export interface InfoAboutMeProps {
@@ -21,14 +21,15 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
 
   const { userDetails, setUser } = useContext(UserContext);
   const [img, setImage] = useState('');
+
   const getUploadedImage = (img: any) => {
      setImage(img.url)
      };
 
+    
   const formSumbitHandler = async function (event: any) {
     try {
       event.preventDefault();
-
      setUser((current: any) => {
         // @ts-ignore
        current.portfolio.bio = event.target.bio.value
