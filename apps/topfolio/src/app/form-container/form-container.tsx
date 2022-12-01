@@ -7,6 +7,7 @@ import Layout from '../form-layout/form-layout';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import ListWorkExperience from '../list-work-experience/list-work-experience';
+import FormColorTheme from '../form-color-theme/form-color-theme';
 
 /* eslint-disable-next-line */
 export interface FormContainerProps {
@@ -49,6 +50,11 @@ export function FormContainer(props: FormContainerProps) {
       {props.sectionName == 'projects' ? <FormProjects></FormProjects> : ''}
       {props.sectionName == 'layout' ? (
         <Layout token={props.token}></Layout>
+      ) : (
+        ''
+      )}
+      {props.sectionName == 'color-theme' ? (
+        <FormColorTheme token={props.token}></FormColorTheme>
       ) : (
         ''
       )}
