@@ -1,6 +1,6 @@
   .container {
-    background-color: var(--primary-background);
-    color: var(--primary-text);
+    background-color: var(--primary-background-app);
+    color: var(--primary-text-app);
     height: 100vh;
     padding: 2em;
 

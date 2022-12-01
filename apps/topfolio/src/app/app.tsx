@@ -36,12 +36,18 @@ export const App = () => {
             <UserContext.Provider value={{ userDetails, setUser }}>
               <Route path="/" exact component={LandingPage} />
               <Route
+                exact
                 path="/portfolio/"
                 render={(props) => <PortfolioPage viewMode={true} {...props} />}
               />
               <Route exact path="/dashboard" component={DashBoardPage} />
               <Route path="/dashboard/:section" component={DashBoardPage} />
               <Route path="/callback" component={CallbackPage} />
+              <Route
+                exact
+                path="/:slug-portfolio"
+                render={(props) => <PortfolioPage viewMode={true} {...props} />}
+              />
             </UserContext.Provider>
           </Switch>
         </Auth0ProviderWithHistory>

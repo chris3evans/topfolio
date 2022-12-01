@@ -9,13 +9,20 @@ import { workHistoryAnimation, pageScrollAnimation } from './animations';
 import { ThemeProvider } from '@emotion/react';
 import { Theme } from '@mui/material';
 import { themeGenerator } from '../themes';
+import { getUser } from '../../utils/ApiService';
+import { useParams } from 'react-router-dom';
 
 export interface PortfolioPageProps {
   viewMode: boolean;
 }
 
 export function PortfolioPage(props: PortfolioPageProps) {
+  const { slug } = useParams<{ slug: string }>();
   const theme: Theme = themeGenerator(mockUserState.portfolio.theme);
+  useEffect(() => {
+    console.log(slug);
+    getUser(slug).then((res) => console.log(res));
+  });
   useLayoutEffect(() => {
     if (props.viewMode) {
       const ctx = gsap.context(() => {
