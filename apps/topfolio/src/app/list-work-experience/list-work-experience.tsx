@@ -44,7 +44,7 @@ export function ListWorkExperience(props: ListWorkExperienceProps) {
         <FormWorkExperience
           existingData={null}
           token={props.token}
-          listener={null}
+          listener={setEditItemId}
           key={null}
         ></FormWorkExperience>
       </List>
