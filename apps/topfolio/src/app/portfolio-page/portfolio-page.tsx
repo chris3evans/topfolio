@@ -36,7 +36,7 @@ export function PortfolioPage(props: PortfolioPageProps) {
   useEffect(() => {
     serverCall()
       .then((res) => {
-        // setTheme(themeGenerator(res.data.portfolio.theme));
+        setTheme(themeGenerator(res.data.portfolio.theme));
         setUser({ ...res.data });
         setLoading(true);
       })

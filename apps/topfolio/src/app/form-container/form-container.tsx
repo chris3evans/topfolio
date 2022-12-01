@@ -7,11 +7,8 @@ import Layout from '../form-layout/form-layout';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import ListWorkExperience from '../list-work-experience/list-work-experience';
-<<<<<<< HEAD
 import FormColorTheme from '../form-color-theme/form-color-theme';
-=======
 import Button from '@mui/material/Button';
->>>>>>> portfolioPage
 
 /* eslint-disable-next-line */
 export interface FormContainerProps {

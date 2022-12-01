@@ -10,14 +10,10 @@ export const postUser = async (body: User | object, token: string) => {
   return await fetcher(environment.API_URL, 'POST', body, token);
 };
 export const updateUser = async (body: User | object, token: string) => {
-<<<<<<< HEAD
-=======
-  console.log(body);
->>>>>>> portfolioPage
   return await fetcher(environment.API_URL, 'PUT', body, token);
 };
 export const colorApi = async () => {
   return await fetcherColors('http://colormind.io/api/', 'POST', {
-    model: 'default',
+    model: 'ui',
   });
 };
