@@ -6,3 +6,8 @@
   align-items: flex-start;
   padding: 5rem;
 }
+
+.preview {
+  padding: 20px;
+  text-align: right;
+}
