@@ -6,17 +6,17 @@ export const mockUserState: User = {
   slug_url: '',
   name: 'Doge Woofson',
   portfolio: {
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?',
+    bio: 'Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof',
     bio_title: 'hello there',
     hero_image: '../.././assets/hero.jpg',
     hero_title: 'Mock hero title',
     profile_image: '../../assets/hero-transparenty.png',
     theme: {
-      1: '',
-      2: '',
-      3: '',
-      4: '',
-      5: '',
+      background: '#F7F3F3',
+      primary: '#AFA448',
+      secondary: '#61B1CF',
+      tertiary: '#B04EB8',
+      background_secondary: '#405FBE',
     },
     layout: ['Work Experience', 'Projects', 'About me'],
     projects: [

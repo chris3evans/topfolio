@@ -4,7 +4,6 @@
     height: 100vh;
     margin: 1em;
     padding: 1em;
-    background: white;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -15,7 +14,6 @@
  .text-cont{
   margin: 1em;
   padding: 1em;
-  background: white;
   display: flex;
   flex-direction: column;
   padding: 4em;
