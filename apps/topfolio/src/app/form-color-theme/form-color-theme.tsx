@@ -54,6 +54,10 @@ export function FormColorTheme(props: FormColorThemeProps) {
     }
   };
 
+  const onGenerateHandler = function () {
+    changeColorSelection();
+  };
+
   return (
     <Box sx={muiStyles['colorThemeForm']}>
       <form className={styles['color-theme-form']}>
@@ -161,6 +165,7 @@ export function FormColorTheme(props: FormColorThemeProps) {
               startIcon={<GenerateIcon></GenerateIcon>}
               type="button"
               sx={muiStyles['button']}
+              onClick={onGenerateHandler}
             >
               Generate
             </Button>
