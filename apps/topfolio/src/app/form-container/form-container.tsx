@@ -6,6 +6,7 @@ import ContactMeForm from '../contact-me-form/contact-me-form';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import ListWorkExperience from '../list-work-experience/list-work-experience';
+import ListProjects from '../list-projects/list-projects';
 
 /* eslint-disable-next-line */
 export interface FormContainerProps {
@@ -23,7 +24,7 @@ export function FormContainer(props: FormContainerProps) {
       {props.sectionName == 'work-experience' ? (
         /* @ts-ignore */
         userContext.userDetails &&
-        userContext.userDetails.portfolio.work_history.length ? (
+          userContext.userDetails.portfolio.work_history.length ? (
           <ListWorkExperience token={props.token}></ListWorkExperience>
         ) : (
           <FormWorkExperience
@@ -37,7 +38,8 @@ export function FormContainer(props: FormContainerProps) {
         ''
       )}
       {props.sectionName == 'contact-me' ? <ContactMeForm></ContactMeForm> : ''}
-      {props.sectionName == 'projects' ? <FormProjects token={props.token}></FormProjects> : ''}
+      {props.sectionName == 'projects' ? <ListProjects token={props.token}></ListProjects>
+        : ""}
     </div>
   );
 }

@@ -12,10 +12,13 @@ import { useContext, useEffect, useState } from 'react';
 import UploadImageWidget from '../upload-image-widget/upload-image-widget';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import { MyProjects } from '@topfolio/api-interfaces';
 // import { Cloudinary } from "@cloudinary/url-gen";
 
 export interface FormProjectsProps {
-  token: string
+  token: string;
+  existingData: MyProjects | null;
+  listener: Function | null;
 }
 
 
@@ -48,28 +51,75 @@ export function FormProjects(props: FormProjectsProps) {
   }
 
   useEffect(() => {
-    console.log("IMAGE ARRAY:", imgArray);
-  }, [imgArray])
+    if (userDetails) {
+      updateUser(userDetails, props.token).then((response) => {
+        console.log(response, 'here')
+      });
+    }
+  }, [userDetails?.portfolio.projects])
 
   const formSubmitHandler = async function (event: any) {
     try {
-      event.preventDefault();
+      if (props.existingData) {
+        event.preventDefault();
 
-      const formData = {
-        company_name: event.target.projectName.value,
-        images: imgArray,
-        description: event.target.description.value,
-        start_date: event.target.gitUrl.value,
-        end_date: event.target.appUrl.value,
+        const formExistingData = {
+          name: event.target.projectName.value,
+          images: imgArray,
+          description: event.target.description.value,
+          github_url: event.target.gitUrl.value,
+          app_url: event.target.appUrl.value,
+          _id: props.existingData._id
+        };
+        setUser((current: any) => {
+          return {
+            ...current,
+            portfolio: {
+              ...current.portfolio,
+              projects: [
+                ...current.portfolio.projects.map(
+                  (projects: MyProjects) => {
+                    if (projects._id === props.existingData?._id) {
+                      return formExistingData;
+                    } else {
+                      return projects;
+                    }
+                  }
+                ),
+              ],
+            },
+          };
+        });
+      } else {
+        event.preventDefault();
+        const formData = {
+          name: event.target.projectName.value,
+          images: imgArray,
+          description: event.target.description.value,
+          github_url: event.target.gitUrl.value,
+          app_url: event.target.appUrl.value,
+        };
+        setUser((current: any) => {
+          return {
+            ...current, portfolio: {
+              ...current.portfolio, projects: [
+                ...current.portfolio.projects, formData]
+            }
+          }
+        }
+        )
+      }
 
-      };
-      // setUser()
-      const response = await updateUser(formData, props.token);
-      console.log(response);
+      // if (userDetails) {
+      //   const response = await updateUser(userDetails, props.token);
+      //   console.log(response);
+      // }
+
     } catch (error) {
-      console.error(error);
+      console.error(error, 'front end error');
     }
   };
+
 
   return (
     <Box sx={muiStyles.form}>
@@ -100,6 +150,7 @@ export function FormProjects(props: FormProjectsProps) {
                 required
                 id="project name"
                 name="projectName"
+                defaultValue={props.existingData?.name}
               ></Input>
             </FormControl>
 
@@ -116,6 +167,7 @@ export function FormProjects(props: FormProjectsProps) {
                 id="description"
                 name="description"
                 multiline={true}
+                defaultValue={props.existingData?.description}
               ></Input>
             </FormControl>
           </Box>
@@ -131,6 +183,7 @@ export function FormProjects(props: FormProjectsProps) {
                 id="git url"
                 name="gitUrl"
                 multiline={true}
+                defaultValue={props.existingData?.github_url}
               ></Input>
             </FormControl>
           </Box>
@@ -144,6 +197,7 @@ export function FormProjects(props: FormProjectsProps) {
                 id="app url"
                 name="appUrl"
                 multiline={true}
+                defaultValue={props.existingData?.app_url}
               ></Input>
             </FormControl>
           </Box>

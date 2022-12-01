@@ -4,7 +4,7 @@ const muiStyles = {
     borderRadius: '0.3rem',
     padding: '7.5rem',
     height: '85%',
-    width: '65%',
+    width: '100%',
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',

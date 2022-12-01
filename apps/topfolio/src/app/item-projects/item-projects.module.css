@@ -1,0 +1,14 @@
+.listItemImage {
+    height: auto;
+}
+
+.text {
+    color: gray;
+}
+
+.editButton {
+    width: 3rem;
+    background-color: transparent;
+    border: none;
+    justify-self: right;
+}
