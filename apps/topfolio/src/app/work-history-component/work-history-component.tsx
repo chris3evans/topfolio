@@ -47,7 +47,7 @@ export function WorkHistoryComponent(props: WorkHistoryComponentProps) {
             <TimelineContent>
               <div className={styles['box']}>
                 {' '}
-                <img src={work.image} alt="logo" />
+                <img src={'../../assets/google.png'} alt="logo" />
                 <Typography variant="h3">{`${work.description}`}</Typography>
                 <Typography variant="h4">{` ${work.company_name}`}</Typography>
               </div>

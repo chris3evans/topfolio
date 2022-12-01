@@ -12,13 +12,11 @@ import {
 } from 'react';
 import { workHistoryAnimation, pageScrollAnimation } from './animations';
 import { ThemeProvider } from '@emotion/react';
-import { Theme, useTheme } from '@mui/material';
 import { themeGenerator, workExperienceFormTheme } from '../themes';
 import { getUser } from '../../utils/ApiService';
 import { useParams } from 'react-router-dom';
 import { UserContext } from '../../utils/UserContext';
 import { mockUserState } from '../mockUser';
-import { User } from '@topfolio/api-interfaces';
 
 export interface PortfolioPageProps {
   viewMode: boolean;
@@ -28,21 +26,21 @@ export function PortfolioPage(props: PortfolioPageProps) {
   const { slug } = useParams<{ slug: string }>();
   const { userDetails, setUser } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
-  let user: User;
   const [theme, setTheme] = useState(workExperienceFormTheme);
 
-  const serverCall = useCallback(async () => {
+  const serverCall = async () => {
     const res: any = await getUser(slug);
-    console.log(res.data);
-    user = { ...res.data };
-    setTheme(themeGenerator(mockUserState.portfolio.theme));
-    console.log(userDetails);
-    setLoading(true);
-  }, []);
+    return res;
+  };
+
   useEffect(() => {
-    serverCall().then(() => {
-      setUser({ ...mockUserState });
-    });
+    serverCall()
+      .then((res) => {
+        setTheme(themeGenerator(mockUserState.portfolio.theme));
+        setUser({ ...res.data });
+        setLoading(true);
+      })
+      .catch((e) => console.error(e));
   }, []);
   useLayoutEffect(() => {
     if (props.viewMode) {
