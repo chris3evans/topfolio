@@ -13,7 +13,8 @@ import { User } from '@topfolio/api-interfaces';
 import { PortfolioPage } from './portfolio-page/portfolio-page';
 
 export const App = () => {
-  const [userDetails, setUser] = useState<User | null | object>(null);
+  // Removed type "object"
+  const [userDetails, setUser] = useState<User | null>(null);
 
   /*   const { isLoading } = useAuth0();
 

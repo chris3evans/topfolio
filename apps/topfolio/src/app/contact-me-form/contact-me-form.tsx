@@ -33,11 +33,11 @@ export function ContactMeForm(props: ContactMeFormProps) {
     setShowSocials(!showSocials);
   };
 
-  const submitHandler = function (event: any) { };
+  const submitHandler = function (event: any) {};
 
   const { userDetails, setUser } = useContext(UserContext);
 
-  console.log("USER DETAILS:", userDetails);
+  console.log('USER DETAILS:', userDetails);
 
   const formSubmitHandler = async function (event: any) {
     try {
@@ -56,8 +56,8 @@ export function ContactMeForm(props: ContactMeFormProps) {
             twitter: event.target.twitter.value,
             youtube: event.target.youtube.value,
           },
-          location: event.target.location.value
-        }
+          location: event.target.location.value,
+        };
         return current;
       });
       // @ts-ignore
@@ -84,7 +84,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                   id="phone"
                   name="phone"
                   type="number"
-                  defaultValue=''
+                  defaultValue=""
                   startAdornment={
                     <InputAdornment position="start">
                       <PhoneIcon sx={muiStyles.contactIcon}></PhoneIcon>
@@ -121,7 +121,9 @@ export function ContactMeForm(props: ContactMeFormProps) {
                   type="location"
                   startAdornment={
                     <InputAdornment position="start">
-                      <LocationOnIcon sx={muiStyles.contactIcon}></LocationOnIcon>
+                      <LocationOnIcon
+                        sx={muiStyles.contactIcon}
+                      ></LocationOnIcon>
                     </InputAdornment>
                   }
                 ></Input>

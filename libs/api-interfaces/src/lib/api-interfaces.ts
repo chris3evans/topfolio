@@ -25,7 +25,6 @@ export interface Portfolio {
   projects: MyProjects[];
   contact_me: ContactMe;
   work_history: WorkExperience[];
-  social_media: Socials;
 }
 // TODO CHANGE COLORS NAME
 export interface Theme {
@@ -46,8 +45,9 @@ export interface WorkExperience {
   company_name: string;
   image: string;
   description: string;
-  start_date: Date;
-  end_date: Date;
+  start_date: string;
+  end_date: string;
+  _id: string;
 }
 export interface Socials {
   github: string;
