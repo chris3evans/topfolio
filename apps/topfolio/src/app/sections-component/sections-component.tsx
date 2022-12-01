@@ -3,16 +3,15 @@ import styles from './sections-component.module.css';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import Section from '../section/section';
 import { useContext, useState } from 'react';
-import { UserContext, UserContextType } from '../../utils/UserContext';
+import { UserContext } from '../../utils/UserContext';
 /* eslint-disable-next-line */
 export interface SectionsComponentProps {
-  user: User;
   viewMode: boolean;
 }
 
 export function SectionsComponent(props: SectionsComponentProps) {
-  const [tempLayout, setLayout] = useState([...props.user.portfolio.layout]);
   const { userDetails, setUser } = useContext(UserContext);
+  const [tempLayout, setLayout] = useState([...userDetails.portfolio.layout]);
   const onDragEnd = (result: any) => {
     const { destination, source, draggableId } = result;
     if (!destination) return;
@@ -27,7 +26,6 @@ export function SectionsComponent(props: SectionsComponentProps) {
     setLayout([...newLayout]);
 
     setUser((current) => {
-      // @ts-ignore
       current.portfolio.layout = [...newLayout];
       return current;
     });

@@ -11,10 +11,11 @@ import { Switch, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { User } from '@topfolio/api-interfaces';
 import { PortfolioPage } from './portfolio-page/portfolio-page';
+import { mockUserState } from './mockUser';
 
 export const App = () => {
   // Removed type "object"
-  const [userDetails, setUser] = useState<User | null>(null);
+  const [userDetails, setUser] = useState<User>(mockUserState);
 
   /*   const { isLoading } = useAuth0();
 
