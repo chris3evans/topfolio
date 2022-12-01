@@ -70,3 +70,7 @@ export interface InfoAboutMe {
   hero_title: string;
   profile_image: string;
 }
+
+export interface Colors {
+  result: any;
+}
