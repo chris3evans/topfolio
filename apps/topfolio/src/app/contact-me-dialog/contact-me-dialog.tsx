@@ -22,10 +22,10 @@ export function ContactMeDialog(props: ContactMeDialogProps) {
   const handleSubmit = (event: any) => {
     event.preventDefault();
     const formData = {
-      name: event.target.name.value,
-      email: event.target.email.value,
-      subject: event.target.subject.value,
-      message: event.target.message.value,
+      name: event.target.name?.value,
+      email: event.target.email?.value,
+      subject: event.target.subject?.value,
+      message: event.target.message?.value,
     };
     //send form data here
     console.log(formData);
@@ -69,6 +69,7 @@ export function ContactMeDialog(props: ContactMeDialogProps) {
             sx={muiStyles.button}
             onClick={props.onClose}
             variant="contained"
+            data-testid="close-button"
           >
             cancel
           </Button>
@@ -77,6 +78,7 @@ export function ContactMeDialog(props: ContactMeDialogProps) {
             onClick={props.onClose}
             type="submit"
             variant="contained"
+            data-testid="submit-button"
           >
             Save
           </Button>

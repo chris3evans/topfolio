@@ -21,6 +21,7 @@
     "@mui/lab": "^5.0.0-alpha.109",
     "@mui/material": "^5.10.16",
     "@mui/x-date-pickers": "^5.0.9",
+    "@testing-library/user-event": "^14.4.3",
     "@types/auth0": "^2.35.7",
     "@types/react-router-dom": "^5.3.3",
     "auth0": "^2.44.0",
@@ -49,6 +50,7 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.18.6",
     "@mui/x-date-pickers": "^5.0.9",
     "@nrwl/cli": "15.1.1",
     "@nrwl/cypress": "15.1.1",

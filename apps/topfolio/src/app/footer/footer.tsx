@@ -73,9 +73,8 @@ export function Footer(props: FooterProps) {
           </motion.a>
         </div>
         <div className={styles['infos']}>
-          <p>{mockUserState.name}</p>
-          {/* TODO ADD PROPER USER CONNECTION */}
-          <p>Manchester,Uk</p>
+          <p>{userDetails.name}</p>
+          <p>{userDetails.portfolio.contact_me.location}</p>
           <motion.div
             style={{ display: 'flex', gap: '0.3em' }}
             whileHover={{ scale: 2, color: 'var(--primary)', margin: '1em' }}

@@ -1,5 +1,4 @@
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { gsap } from 'gsap';
 
 export const workHistoryAnimation = (id: string) => {
