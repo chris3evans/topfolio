@@ -17,7 +17,7 @@ describe('ListProjects', () => {
 
   it('should render a FormProjects component when context is empty', async () => {
     const { baseElement } = render(<ListProjects token={'testToken'} />);
-    const aFormProjectsLabel = await screen.findAllByTestId('projectNameLabel')
+    const aFormProjectsLabel = await screen.findByTestId('projectNameLabel')
     expect(aFormProjectsLabel).toBeTruthy();
   });
 
@@ -27,7 +27,20 @@ describe('ListProjects', () => {
         <ListProjects token={'testToken'} />
       </UserContext.Provider>
     );
-    const aFormProjectsLabel = await screen.findAllByTestId('projectNameLabel')
     expect(baseElement).toBeTruthy();
+  });
+
+  it('should render an ItemProjects and a FormProjects component with context provided userDetails', async () => {
+    const { baseElement } = render(
+      <UserContext.Provider value={{ userDetails, setUser }}>
+        <ListProjects token={'testToken'} />
+      </UserContext.Provider>
+    );
+    const aItemProjectsLabel = await screen.findAllByTestId('projectName')
+    const aFormProjectsLabel = await screen.findAllByTestId('projectNameLabel')
+
+    expect(aItemProjectsLabel).toBeTruthy();
+    expect(aFormProjectsLabel).toBeTruthy();
   })
+
 });
