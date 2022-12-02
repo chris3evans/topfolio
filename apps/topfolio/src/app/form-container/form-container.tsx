@@ -7,6 +7,7 @@ import Layout from '../form-layout/form-layout';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import ListWorkExperience from '../list-work-experience/list-work-experience';
+import ListProjects from '../list-projects/list-projects';
 import FormColorTheme from '../form-color-theme/form-color-theme';
 import Button from '@mui/material/Button';
 
@@ -41,18 +42,7 @@ export function FormContainer(props: FormContainerProps) {
         ''
       )}
       {props.sectionName == 'work-experience' ? (
-        /* @ts-ignore */
-        userContext.userDetails &&
-        userContext.userDetails.portfolio.work_history.length ? (
-          <ListWorkExperience token={props.token}></ListWorkExperience>
-        ) : (
-          <FormWorkExperience
-            existingData={null}
-            token={props.token}
-            key={null}
-            listener={null}
-          ></FormWorkExperience>
-        )
+        <ListWorkExperience token={props.token}></ListWorkExperience>
       ) : (
         ''
       )}
@@ -61,7 +51,11 @@ export function FormContainer(props: FormContainerProps) {
       ) : (
         ''
       )}
-      {props.sectionName == 'projects' ? <FormProjects></FormProjects> : ''}
+      {props.sectionName == 'projects' ? (
+        <ListProjects token={props.token}></ListProjects>
+      ) : (
+        ''
+      )}
       {props.sectionName == 'layout' ? (
         <Layout token={props.token}></Layout>
       ) : (

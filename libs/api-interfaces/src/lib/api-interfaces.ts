@@ -40,6 +40,7 @@ export interface MyProjects {
   description: string;
   github_url: string;
   app_url: string;
+  _id: string;
 }
 export interface WorkExperience {
   company_name: string;

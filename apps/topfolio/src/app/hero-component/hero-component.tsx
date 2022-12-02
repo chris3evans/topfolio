@@ -37,7 +37,7 @@ export function HeroComponent(props: HeroComponentProps) {
           alignCenter={false}
         />
         <MovingParagraphComponent
-          text={userDetails.portfolio.bio || mockUserState.portfolio.bio}
+          text={userDetails.portfolio.hero_title || mockUserState.portfolio.bio}
         />
       </div>
     </div>
