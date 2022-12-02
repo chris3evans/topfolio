@@ -4,62 +4,94 @@ import json from './mocks/mock-result';
 
 import FormWorkExperience from './form-work-experience';
 
+const mockExistingData = {
+  company_name: 'Google',
+  image: 'http://localhost/Image.png',
+  description: 'Mock description',
+  start_date: '11/09/2022',
+  end_date: '11/12/2022',
+  _id: '123',
+};
+
 describe('FormWorkExperience', () => {
-  // jest.mock('../mocks/fetcherMock');
-  // jest.mock<typeof import('../mocks/fetcherMock')>(
-  //   '../mocks/fetcherMock',
-  //   () => {
-  //     console.log(json);
-  //     return json;
-  //   }
-  // );
+  const mockFn = jest.fn();
+  const { baseElement } = render(
+    <FormWorkExperience
+      token="123"
+      listener={mockFn}
+      existingData={mockExistingData}
+    />
+  );
+
+  const companyNameInput = screen.getByTestId(
+    'test-company-name'
+  ) as HTMLInputElement;
+  const descriptionInput = screen.getByTestId(
+    'test-description'
+  ) as HTMLInputElement;
+  const startDateInput = screen.getByTestId(
+    'test-start-date'
+  ) as HTMLInputElement;
+  const endDateInput = screen.getByTestId('test-end-date') as HTMLInputElement;
 
   it('should render successfully', () => {
-    const { baseElement } = render(<FormWorkExperience />);
     expect(baseElement).toBeTruthy();
   });
 
-  // it('should update inputs on type', async () => {
-  //   type TestElement = Element;
+  describe('Edit existing work experience data', () => {
+    describe('Inputs are filled with correct data', () => {
+      it('should fill company name input with existing data', () => {
+        fireEvent.input(companyNameInput, {
+          target: {
+            defaultValue: mockExistingData.company_name,
+          },
+        });
+        expect(companyNameInput.defaultValue).toBe(
+          mockExistingData.company_name
+        );
+      });
 
-  //   function hasInputValue(e: TestElement, inputValue: string) {
-  //     return screen.getByDisplayValue(inputValue) === e;
-  //   }
-  //   const { baseElement } = render(<FormWorkExperience />);
+      it('should fill description input with existing data', () => {
+        fireEvent.input(descriptionInput, {
+          target: {
+            defaultValue: mockExistingData.description,
+          },
+        });
+        expect(descriptionInput.defaultValue).toBe(
+          mockExistingData.description
+        );
+      });
 
-  //   const companyNameInput = await screen.findByTestId('test-company-name');
-  //   const descriptionInput = await screen.findByTestId('test-description');
-  //   const startDateInput = await screen.findByTestId('test-start-date');
-  //   const endDateInput = await screen.findByTestId('test-end-date');
+      it('should fill start date input with existing data', () => {
+        fireEvent.input(startDateInput, {
+          target: {
+            defaultValue: mockExistingData.start_date,
+          },
+        });
+        expect(startDateInput.defaultValue).toBe(mockExistingData.start_date);
+      });
 
-  //   expect(companyNameInput).toBeTruthy();
-  //   expect(descriptionInput).toBeTruthy();
-  //   expect(startDateInput).toBeTruthy();
-  //   expect(endDateInput).toBeTruthy();
+      it('should fill the end date input with existing data', () => {
+        fireEvent.input(endDateInput, {
+          target: {
+            defaultValue: mockExistingData.end_date,
+          },
+        });
+        expect(endDateInput.defaultValue).toBe(mockExistingData.end_date);
+      });
+    });
 
-  //   fireEvent.change(companyNameInput, { target: { value: 'Google' } });
-  //   fireEvent.change(descriptionInput, {
-  //     target: {
-  //       value:
-  //         'I worked as a front end developer at Google using React and TypeScript',
-  //     },
-  //   });
-  //   fireEvent.change(startDateInput, { target: { value: '12/10/2022' } });
-  //   fireEvent.change(endDateInput, { target: { value: '12/11/2022' } });
-
-  //   expect(hasInputValue(companyNameInput, 'Google')).toBeTruthy();
-  //   expect(
-  //     hasInputValue(
-  //       descriptionInput,
-  //       'I worked as a front end developer at Google using React and TypeScript'
-  //     )
-  //   ).toBeTruthy();
-  //   expect(hasInputValue(startDateInput, '12/10/2022')).toBeTruthy();
-  //   expect(hasInputValue(endDateInput, '12/11/2022')).toBeTruthy();
-  // });
-
-  // User should be able to save data
-  // Context should be updated
-  // Api request should be made to the database
-  // Response should be received from the database
+    describe('Enter inputs from the pre-filled values', () => {
+      it('should be able to type in the company name field and edit the value', () => {
+        fireEvent.change(companyNameInput, {
+          target: {
+            value: ' edit',
+          },
+        });
+        expect(companyNameInput.value).toBe(
+          `${mockExistingData.company_name} edit`
+        );
+      });
+    });
+  });
 });
