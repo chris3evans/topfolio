@@ -71,7 +71,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
       //@ts-ignore TO BE FIXED!
       else setDialog({ display: true, title: 'Error', message: response.message });
       setUnsaved(true);
-
+      console.log("API RESPONSE:", response);
     } catch (error) {
       console.error(error, 'front end error');
     }
@@ -265,6 +265,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                         <FormControl fullWidth={true}>
                           <InputLabel htmlFor="youtube">YouTube</InputLabel>
                           <Input
+                            role="textbox"
                             type="text"
                             id="youtube"
                             name="youtube"
@@ -283,7 +284,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                     ''
                   )}
                 </Box>
-                <Button sx={muiStyles.saveButton} variant="contained" type="submit" disabled={unsaved}>
+                <Button sx={muiStyles.saveButton} variant="contained" type="submit" id="contact-submit" disabled={unsaved}>
                   Save
                 </Button>
               </form>
