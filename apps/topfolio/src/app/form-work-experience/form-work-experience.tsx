@@ -83,8 +83,8 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
           company_name: event.target.companyName.value,
           description: event.target.description.value,
           image: '',
-          start_date: startDate,
-          end_date: endDate,
+          start_date: event.target.startDate.value,
+          end_date: event.target.endDate.value,
         };
 
         setUser((current) => {
@@ -138,7 +138,13 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
 
           <Box sx={muiStyles.datesContainer}>
             <Box sx={muiStyles.dateField}>
-              <FormControl>
+              <TextField
+                variant="standard"
+                label="Start Date"
+                name="startDate"
+                defaultValue={props.existingData?.start_date}
+              ></TextField>
+              {/* <FormControl>
                 <LocalizationProvider dateAdapter={AdapterMoment}>
                   <DatePicker
                     value={startDate}
@@ -159,11 +165,17 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
                     inputFormat="DD/MM/YYYY"
                   ></DatePicker>
                 </LocalizationProvider>
-              </FormControl>
+              </FormControl> */}
             </Box>
 
             <Box sx={muiStyles.dateField}>
-              <FormControl>
+              <TextField
+                variant="standard"
+                label="End Date"
+                name="endDate"
+                defaultValue={props.existingData?.end_date}
+              ></TextField>
+              {/* <FormControl>
                 <LocalizationProvider dateAdapter={AdapterMoment}>
                   <DatePicker
                     label="Finish"
@@ -184,7 +196,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
                     inputFormat="DD/MM/YYYY"
                   ></DatePicker>
                 </LocalizationProvider>
-              </FormControl>
+              </FormControl> */}
             </Box>
           </Box>
         </Box>

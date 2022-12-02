@@ -10,6 +10,11 @@
   gap: 2em;
 
 }
+.email-me {
+  color:var(--primary-text);
+  text-decoration: none;
+}
+
 
 .links {
   display: flex;
@@ -22,7 +27,6 @@
 .links  > a{
   color: var(--primary);
   font-size: 1.5em;
-  color: var(--primary);
 }
 
 

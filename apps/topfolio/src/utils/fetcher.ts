@@ -1,11 +1,12 @@
 import { User } from '@topfolio/api-interfaces';
+import { Colors } from '../../../../libs/api-interfaces/src';
 
 export const fetcher = async (
   url: string,
   method: string,
-  body?: User | object,
+  body?: object,
   token?: string
-): Promise<User | object> => {
+): Promise<object> => {
   try {
     const res = await fetch(url, {
       method: `${method}`,
@@ -21,5 +22,25 @@ export const fetcher = async (
     return await res.json();
   } catch (e) {
     return { fetcherError: e };
+  }
+};
+
+export const fetcherColors = async (
+  url: string,
+  method: string,
+  body?: User | object
+): Promise<Colors | object> => {
+  try {
+    const res = await fetch(url, {
+      method: `${method}`,
+      /* credentials: 'include', */
+      mode: 'cors',
+      body: JSON.stringify(body),
+    });
+    return await res.json();
+  } catch (e) {
+    return {
+      fetcherError: e,
+    };
   }
 };

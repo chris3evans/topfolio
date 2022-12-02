@@ -7,6 +7,7 @@ import Layout from '../form-layout/form-layout';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import ListWorkExperience from '../list-work-experience/list-work-experience';
+import FormColorTheme from '../form-color-theme/form-color-theme';
 import Button from '@mui/material/Button';
 
 /* eslint-disable-next-line */
@@ -20,12 +21,19 @@ export function FormContainer(props: FormContainerProps) {
   console.log(userContext);
 
   const preview = () => {
-    window.open('/' + userContext.userDetails?.slug_url, '_blank');
-  }
+    window.open(
+      '/' + userContext.userDetails?.slug_url + '-portfolio',
+      '_blank'
+    );
+  };
 
   return (
     <div className={styles['form-container']}>
-      <div className={styles['preview']}><Button onClick={preview} variant="contained">Go to your Portfolio Page</Button></div>
+      <div className={styles['preview']}>
+        <Button onClick={preview} variant="contained">
+          Go to your Portfolio Page
+        </Button>
+      </div>
 
       {props.sectionName == 'about-me' ? (
         <InfoAboutMe token={props.token}></InfoAboutMe>
@@ -35,7 +43,7 @@ export function FormContainer(props: FormContainerProps) {
       {props.sectionName == 'work-experience' ? (
         /* @ts-ignore */
         userContext.userDetails &&
-          userContext.userDetails.portfolio.work_history.length ? (
+        userContext.userDetails.portfolio.work_history.length ? (
           <ListWorkExperience token={props.token}></ListWorkExperience>
         ) : (
           <FormWorkExperience
@@ -56,6 +64,11 @@ export function FormContainer(props: FormContainerProps) {
       {props.sectionName == 'projects' ? <FormProjects></FormProjects> : ''}
       {props.sectionName == 'layout' ? (
         <Layout token={props.token}></Layout>
+      ) : (
+        ''
+      )}
+      {props.sectionName == 'color-theme' ? (
+        <FormColorTheme token={props.token}></FormColorTheme>
       ) : (
         ''
       )}
