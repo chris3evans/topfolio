@@ -1,15 +1,13 @@
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { expect, describe, it } from '@jest/globals';
 
 import Footer from './footer';
-
-const footer = (
-  <Footer
-    github="https://github.com/"
-    facebook="https://facebook.com/"
-    linkedin="https://www.linkedin.com/"
-  />
-);
+import { UserContext } from '../../utils/UserContext';
+import { mockUserState } from '../mockUser';
+const userDetails = mockUserState;
+const setUser = () => {};
+const footer = <Footer viewMode={true} />;
 describe('Footer', () => {
   it('should render successfully', () => {
     const { baseElement } = render(footer);
@@ -22,8 +20,12 @@ describe('Footer', () => {
     });
     expect(link).toBeTruthy();
   });
-  it('Should display the proper links from props', () => {
-    const { getByRole } = render(footer);
+  it('Should display the proper links from user if in view mode', () => {
+    const { getByRole } = render(
+      <UserContext.Provider value={{ userDetails, setUser }}>
+        <Footer viewMode={true} />
+      </UserContext.Provider>
+    );
     const link = getByRole('link', {
       name: 'Topfolio Facebook link',
     });
@@ -33,8 +35,26 @@ describe('Footer', () => {
     const link3 = getByRole('link', {
       name: 'Topfolio Linkedin link',
     });
-    expect(link).toHaveAttribute('href', 'https://facebook.com/');
-    expect(link2).toHaveAttribute('href', 'https://github.com/');
-    expect(link3).toHaveAttribute('href', 'https://www.linkedin.com/');
+    expect(link).toHaveAttribute(
+      'href',
+      mockUserState.portfolio.contact_me?.social_media.facebook
+    );
+    expect(link2).toHaveAttribute(
+      'href',
+      mockUserState.portfolio.contact_me?.social_media.github
+    );
+    expect(link3).toHaveAttribute(
+      'href',
+      mockUserState.portfolio.contact_me?.social_media.linkedin
+    );
   });
+  // it('Should render Footer or FooterView base on viewMode passed', () => {
+  //   const { footerView } = render(
+  //     <UserContext.Provider value={{ userDetails, setUser }}>
+  //       <Footer viewMode={true} />
+  //     </UserContext.Provider>
+  //   );
+  //   const footerClass = footerView.getElementsByClassName('view-mode');
+  //   expect(footerClass).toBeTruthy();
+  // });
 });
