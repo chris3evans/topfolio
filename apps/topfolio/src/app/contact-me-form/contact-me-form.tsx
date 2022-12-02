@@ -85,9 +85,13 @@ export function ContactMeForm(props: ContactMeFormProps) {
     setDialog({ display: false, title: '', message: '' });
   }
 
+  /* useEffect(() => {
+    setUnsaved(!unsaved);
+  }, [userDetails]) */
+
   return (
     <>
-      {console.log("Phone:", userDetails?.portfolio.contact_me.phone)}
+      {/* console.log("Phone:", userDetails?.portfolio.contact_me.phone) */}
       {userDetails
         ? (
           <>
@@ -109,7 +113,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                           name="phone"
                           type="number"
                           onChange={trackChanges}
-                          defaultValue={userDetails?.portfolio.contact_me.phone}
+                          defaultValue={userDetails.portfolio.contact_me ? userDetails.portfolio.contact_me.phone : null}
                           startAdornment={
                             <InputAdornment position="start">
                               <PhoneIcon sx={muiStyles.contactIcon}></PhoneIcon>
@@ -128,7 +132,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                           name="email"
                           type="email"
                           onChange={trackChanges}
-                          defaultValue={userDetails?.portfolio.contact_me.email}
+                          defaultValue={userDetails.portfolio.contact_me ? userDetails.portfolio.contact_me.email : null}
                           startAdornment={
                             <InputAdornment position="start">
                               <EmailIcon sx={muiStyles.contactIcon}></EmailIcon>
@@ -147,7 +151,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                           name="location"
                           type="location"
                           onChange={trackChanges}
-                          defaultValue={userDetails?.portfolio.contact_me.location}
+                          defaultValue={userDetails.portfolio.contact_me ? userDetails.portfolio.contact_me.location : null}
                           startAdornment={
                             <InputAdornment position="start">
                               <LocationOnIcon
@@ -178,7 +182,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                             type="text"
                             name="github"
                             onChange={trackChanges}
-                            defaultValue={userDetails?.portfolio.contact_me.social_media.github}
+                            defaultValue={userDetails.portfolio.contact_me ? userDetails.portfolio.contact_me.social_media.github : null}
                             startAdornment={
                               <InputAdornment position="start">
                                 <FacebookIcon sx={muiStyles.contactIcon}></FacebookIcon>
@@ -195,7 +199,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                             type="text"
                             name="facebook"
                             onChange={trackChanges}
-                            defaultValue={userDetails?.portfolio.contact_me.social_media.facebook}
+                            defaultValue={userDetails.portfolio.contact_me ? userDetails.portfolio.contact_me.social_media.facebook : null}
                             startAdornment={
                               <InputAdornment position="start">
                                 <FacebookIcon sx={muiStyles.contactIcon}></FacebookIcon>
@@ -212,7 +216,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                             type="text"
                             name="linkedin"
                             onChange={trackChanges}
-                            defaultValue={userDetails?.portfolio.contact_me.social_media.linkedin}
+                            defaultValue={userDetails.portfolio.contact_me ? userDetails.portfolio.contact_me.social_media.linkedin : null}
                             startAdornment={
                               <InputAdornment position="start">
                                 <LinkedInIcon sx={muiStyles.contactIcon}></LinkedInIcon>
@@ -229,7 +233,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                             type="text"
                             name="instagram"
                             onChange={trackChanges}
-                            defaultValue={userDetails?.portfolio.contact_me.social_media.instagram}
+                            defaultValue={userDetails.portfolio.contact_me ? userDetails.portfolio.contact_me.social_media.instagram : null}
                             startAdornment={
                               <InputAdornment position="start">
                                 <InstagramIcon
@@ -248,7 +252,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                             type="text"
                             name="twitter"
                             onChange={trackChanges}
-                            defaultValue={userDetails?.portfolio.contact_me.social_media.twitter}
+                            defaultValue={userDetails.portfolio.contact_me ? userDetails.portfolio.contact_me.social_media.twitter : null}
                             startAdornment={
                               <InputAdornment position="start">
                                 <TwitterIcon sx={muiStyles.contactIcon}></TwitterIcon>
@@ -265,7 +269,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                             id="youtube"
                             name="youtube"
                             onChange={trackChanges}
-                            defaultValue={userDetails?.portfolio.contact_me.social_media.youtube}
+                            defaultValue={userDetails.portfolio.contact_me ? userDetails.portfolio.contact_me.social_media.youtube : null}
                             startAdornment={
                               <InputAdornment position="start">
                                 <YouTubeIcon sx={muiStyles.contactIcon}></YouTubeIcon>
