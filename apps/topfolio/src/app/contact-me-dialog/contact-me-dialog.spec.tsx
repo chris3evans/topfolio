@@ -2,7 +2,6 @@ import { render } from '@testing-library/react';
 import { expect, describe, it } from '@jest/globals';
 import ContactMeDialog from './contact-me-dialog';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 type TestElement = Document | Element | Window | Node;
 function hasInputValue(e: TestElement, inputValue: string) {
   return screen.getByDisplayValue(inputValue) === e;
