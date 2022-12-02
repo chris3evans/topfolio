@@ -7,12 +7,9 @@ import Layout from '../form-layout/form-layout';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import ListWorkExperience from '../list-work-experience/list-work-experience';
-<<<<<<< HEAD
 import ListProjects from '../list-projects/list-projects';
-=======
 import FormColorTheme from '../form-color-theme/form-color-theme';
 import Button from '@mui/material/Button';
->>>>>>> development
 
 /* eslint-disable-next-line */
 export interface FormContainerProps {
@@ -33,14 +30,6 @@ export function FormContainer(props: FormContainerProps) {
 
   return (
     <div className={styles['form-container']}>
-<<<<<<< HEAD
-      {props.sectionName == 'about-me' ? <InfoAboutMe token={props.token}></InfoAboutMe> : ''}
-      {props.sectionName == 'work-experience' ? <ListWorkExperience token={props.token}></ListWorkExperience> : ''
-      }
-      {props.sectionName == 'contact-me' ? <ContactMeForm></ContactMeForm> : ''}
-      {props.sectionName == 'projects' ? <ListProjects token={props.token}></ListProjects>
-        : ""}
-=======
       <div className={styles['preview']}>
         <Button onClick={preview} variant="contained">
           Go to your Portfolio Page
@@ -53,18 +42,7 @@ export function FormContainer(props: FormContainerProps) {
         ''
       )}
       {props.sectionName == 'work-experience' ? (
-        /* @ts-ignore */
-        userContext.userDetails &&
-        userContext.userDetails.portfolio.work_history.length ? (
-          <ListWorkExperience token={props.token}></ListWorkExperience>
-        ) : (
-          <FormWorkExperience
-            existingData={null}
-            token={props.token}
-            key={null}
-            listener={null}
-          ></FormWorkExperience>
-        )
+        <ListWorkExperience token={props.token}></ListWorkExperience>
       ) : (
         ''
       )}
@@ -73,7 +51,11 @@ export function FormContainer(props: FormContainerProps) {
       ) : (
         ''
       )}
-      {props.sectionName == 'projects' ? <FormProjects></FormProjects> : ''}
+      {props.sectionName == 'projects' ? (
+        <ListProjects token={props.token}></ListProjects>
+      ) : (
+        ''
+      )}
       {props.sectionName == 'layout' ? (
         <Layout token={props.token}></Layout>
       ) : (
@@ -84,7 +66,6 @@ export function FormContainer(props: FormContainerProps) {
       ) : (
         ''
       )}
->>>>>>> development
     </div>
   );
 }
