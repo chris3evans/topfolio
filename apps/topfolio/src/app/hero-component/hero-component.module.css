@@ -1,29 +1,46 @@
 .container{
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2em;
   background-size: cover;
-  height: 100%;
-
+  font-size: 1.3em;
+}
+.container h2 {
+  font-size: 1.5em
+}
+.container p {
+  font-size: 0.9em
 }
 .hero-text{
-  padding: 2em;
-  width: 50%;
+  width: 70%;
 }
 .box {
-  height: 150px;
-  width: 150px;
+
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   border-radius: 50%;
 }
-img {
+.box  > img {
   flex-shrink: 0;
   min-width: 100%;
   min-height: 100%;
   object-fit: cover;
-
+  max-width: 100%;
+}
+@media only screen and (max-width: 600px) {
+  .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    background-size: cover;
+    font-size: 0.7em;
+  }.hero-text{
+   margin-top: 5em;
+  }
 }

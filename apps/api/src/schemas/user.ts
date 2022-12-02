@@ -19,11 +19,11 @@ const userSchema = new mongoose.Schema({
     hero_title: String,
     profile_image: String,
     theme: {
-      '1': String,
-      '2': String,
-      '3': String,
-      '4': String,
-      '5': String,
+      background: String,
+      primary: String,
+      secondary: String,
+      tertiary: String,
+      background_secondary: String,
     },
     layout: [String],
     projects: [
@@ -38,7 +38,14 @@ const userSchema = new mongoose.Schema({
     contact_me: {
       phone: String,
       email: String,
-      social_media: [String],
+      social_media: {
+        github: String,
+        facebook: String,
+        linkedin: String,
+        instagram: String,
+        twitter: String,
+        youtube: String
+      },
       location: String,
     },
     work_history: [
@@ -50,11 +57,6 @@ const userSchema = new mongoose.Schema({
         end_date: String,
       },
     ],
-    social_media: {
-      github: String,
-      facebook: String,
-      linkedin: String,
-    },
   },
 });
 

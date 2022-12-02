@@ -31,7 +31,7 @@ export function UploadImageWidget(props: UploadImageWidgetProps) {
   }, [])
   return (
     <Button variant="contained" component="label" onClick={() => widgetRef.current.open()}>
-      Upload Picture
+      Upload profile photo
     </Button>
   );
 }

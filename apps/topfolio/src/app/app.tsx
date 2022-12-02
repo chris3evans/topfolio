@@ -10,11 +10,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { User } from '@topfolio/api-interfaces';
-import PortfolioPage from './portfolio-page/portfolio-page';
+import { PortfolioPage } from './portfolio-page/portfolio-page';
+import { mockUserState } from './mockUser';
 
 export const App = () => {
   // Removed type "object"
-  const [userDetails, setUser] = useState<User | null>(null);
+  const [userDetails, setUser] = useState<User>(mockUserState);
 
   /*   const { isLoading } = useAuth0();
 
@@ -36,14 +37,18 @@ export const App = () => {
             <UserContext.Provider value={{ userDetails, setUser }}>
               <Route path="/" exact component={LandingPage} />
               <Route
+                exact
                 path="/portfolio/"
-                render={(props) => (
-                  <PortfolioPage viewMode={false} {...props} />
-                )}
+                render={(props) => <PortfolioPage viewMode={true} {...props} />}
               />
               <Route exact path="/dashboard" component={DashBoardPage} />
               <Route path="/dashboard/:section" component={DashBoardPage} />
               <Route path="/callback" component={CallbackPage} />
+              <Route
+                exact
+                path="/:slug-portfolio"
+                render={(props) => <PortfolioPage viewMode={true} {...props} />}
+              />
             </UserContext.Provider>
           </Switch>
         </Auth0ProviderWithHistory>

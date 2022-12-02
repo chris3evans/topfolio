@@ -1,24 +1,23 @@
 import { User } from '@topfolio/api-interfaces';
-
 export const mockUserState: User = {
   _id: '1',
   userId: '2',
   slug_url: '',
-  name: 'Marco',
+  name: 'Doge Woofson',
   portfolio: {
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?',
+    bio: 'Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof Woof',
     bio_title: 'hello there',
     hero_image: '../.././assets/hero.jpg',
     hero_title: 'Mock hero title',
-    profile_image: '../../assets/profile-img.jpg',
+    profile_image: '../../assets/hero-transparenty.png',
     theme: {
-      1: '',
-      2: '',
-      3: '',
-      4: '',
-      5: '',
+      background: '#DBD1D1',
+      primary: '#F03E91',
+      secondary: '#94598A',
+      tertiary: '#3D5D80',
+      background_secondary: '#231E37',
     },
-    layout: ['WorkHistory', 'Projects', 'Bio'],
+    layout: ['Work Experience', 'Projects', 'About me'],
     projects: [
       {
         name: 'topfolio',
@@ -46,9 +45,12 @@ export const mockUserState: User = {
       },
     ],
     contact_me: {
-      phone: 'number',
+      phone: '3338973',
       email: 'test@email.com',
       social_media: {
+        instagram: '',
+        twitter: '',
+        youtube: '',
         github: 'github link',
         facebook: 'facebook link',
         linkedin: 'linkedin link',
@@ -57,34 +59,29 @@ export const mockUserState: User = {
     },
     work_history: [
       {
-        company_name: 'google',
+        company_name: 'Google',
         image: '../assets/google.png',
-        description: 'engineer',
+        description: 'Lead Software Engineer',
         start_date: '12/12/2022',
         end_date: '12/12/2022',
-        _id: 'abc',
+        _id: '123',
       },
       {
-        company_name: 'netflix',
+        company_name: 'Netflix',
         image: '../assets/google.png',
-        description: 'engineer',
+        description: 'Junior Software Engineer',
         start_date: '12/12/2022',
         end_date: '12/12/2022',
-        _id: 'def',
+        _id: '456',
       },
       {
-        company_name: 'meta',
+        company_name: 'Meta',
         image: '../assets/google.png',
-        description: 'engineer',
+        description: 'Junior Software Engineer',
         start_date: '12/12/2022',
         end_date: '12/12/2022',
-        _id: 'ghi',
+        _id: '789',
       },
     ],
-    social_media: {
-      github: 'https://github.com/',
-      linkedin: 'https://www.linkedin.com/',
-      facebook: 'https://en-gb.facebook.com/',
-    },
   },
 };

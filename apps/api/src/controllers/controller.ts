@@ -1,10 +1,10 @@
 import express = require('express');
-const { getuser, addUser, updateUser } = require('../models/user');
+const { getuser, addUser, updateUser, getUserByUrl } = require('../models/user');
 
 const userInfo = async (req: express.Request, res: express.Response) => {
   try {
-    const { userId } = req.params;
-    const data = await getuser(userId); //function to try find user with id as param
+    const { slug_url } = req.params;
+    const data = await getUserByUrl(slug_url); //function to try find user by slug_url
 
     if (data) {
       res.status(200);
@@ -19,6 +19,7 @@ const userInfo = async (req: express.Request, res: express.Response) => {
     res.send({ status: 'error', message: error });
   }
 };
+
 
 const createUser = async (req: express.Request, res: express.Response) => {
   try {

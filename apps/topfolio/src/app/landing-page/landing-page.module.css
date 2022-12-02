@@ -1,25 +1,43 @@
   .container {
-    background-color: var(--primary-background);
-    color: var(--primary-text);
+    background-color: var(--primary-background-app);
+    color: var(--primary-text-app);
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding: 2em;
+
   }
   .hero {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 2em;
+    padding: 2em;
+    height: 85%;
+    font-size: 1.3em;
+
   }
-  h1{
-    font-size: 4rem;
+  .hero h1{
+    font-size: 6em;
   }
-  h2 {
-    font-size: 1.5rem;
+  .hero  h2 {
+    font-size: 2em;
     font-weight: 300;
   }
-  Button{
-    transform: scale(1.2)
+  .hero Button{
+    font-size:1.5em;
+    font-weight: 600;
   }
 
+  @media only screen and (max-width: 600px) {
+    .hero h1{
+      font-size: 3em;
+    }
+    .hero  h2 {
+      font-size: 1.7em;
+      font-weight: 300;
+    }
+    .hero Button{
+      font-size:1.2em;
+      font-weight: 600;
+    }
+  }

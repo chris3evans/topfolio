@@ -26,16 +26,16 @@ export interface FormWorkExperienceProps {
 export function FormWorkExperience(props: FormWorkExperienceProps) {
   const { userDetails, setUser } = useContext(UserContext);
   const [img, setImg] = useState<string>('');
-  const getUploadedImage = (img: { url: string, id: string }) => {
+  const getUploadedImage = (img: { url: string; id: string }) => {
     setImg(img.url);
-  }
+  };
 
   // const [startDate, setStartDate] = useState(props.existingData?.start_date);
   // const [endDate, setEndDate] = useState(props.existingData?.end_date);
 
   useEffect(() => {
     if (userDetails) {
-      console.log(userDetails, 'context here!!!')
+      console.log(userDetails, 'context here!!!');
       updateUser(userDetails, props.token).then((response) => {
         console.log(response, 'after context here');
       });
@@ -70,7 +70,10 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
               work_history: [
                 ...current.portfolio.work_history.map(
                   (workExperience: WorkExperience) => {
-                    if (workExperience.company_name === props.existingData?.company_name) {
+                    if (
+                      workExperience.company_name ===
+                      props.existingData?.company_name
+                    ) {
                       return formExistingData;
                     } else {
                       return workExperience;
@@ -90,18 +93,18 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
           description: event.target.description.value,
           image: img,
           start_date: event.target.startDate.value,
-          end_date: event.target.endDate.value
+          end_date: event.target.endDate.value,
         };
 
         setUser((current: any) => {
           return {
-            ...current, portfolio: {
-              ...current.portfolio, work_history: [
-                ...current.portfolio.work_history, formData]
-            }
-          }
-        }
-        )
+            ...current,
+            portfolio: {
+              ...current.portfolio,
+              work_history: [...current.portfolio.work_history, formData],
+            },
+          };
+        });
         // // @ts-ignore
         // const response = await updateUser(userDetails, props.token);
         // console.log(response);

@@ -1,21 +1,86 @@
-import { MyProjects, User } from '@topfolio/api-interfaces';
+import { MyProjects } from '@topfolio/api-interfaces';
 import styles from './single-project.module.css';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { FiGithub } from 'react-icons/fi';
+import { FaAppStore } from 'react-icons/fa';
 
 /* eslint-disable-next-line */
 export interface SingleProjectProps {
   project: MyProjects;
 }
-
 export function SingleProject(props: SingleProjectProps) {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+
   return (
-    <div className={styles['project-container']} id="project-div">
-      <img src={props.project.images[0]} alt={props.project.name} />
-      {/* <div className={styles['infos']}>
-        <p>{props.project.name}</p>
-        <p>{props.project.description}</p>
-        <a href={props.project.github_url}>Github</a>
-        <a href={props.project.app_url}>App</a>
-      </div> */}
+    <div className={styles['projects-cont']} id="project-div">
+      <motion.div
+        className={styles['laptop-bg']}
+        animate={
+          isInView
+            ? {
+                scale: 1,
+                transition: {
+                  type: 'tween',
+                  delay: 1.5,
+                  duration: 1,
+                },
+              }
+            : { scale: 0.8, transition: { delay: 0.5 } }
+        }
+      >
+        <motion.div
+          className={styles['laptop-content-bg']}
+          style={{ backgroundImage: `url(${props.project.images[0]})` }}
+        ></motion.div>
+        <motion.img src="../../assets/laptop.png" alt="laptopFrame" />
+        <motion.div
+          className={styles['infos']}
+          ref={ref}
+          animate={
+            isInView
+              ? {
+                  opacity: 0.95,
+                  transition: {
+                    type: 'spring',
+                    delay: 1.5,
+                    duration: 1,
+                  },
+                }
+              : { opacity: 0, transition: { delay: 0.5 } }
+          }
+        >
+          <p>{props.project.description}</p>
+          <div className={styles['links']}>
+            <motion.a
+              href={props.project.github_url}
+              whileHover={{ scale: 2, color: 'var(--primary)', margin: '1em' }}
+              transition={{
+                type: 'spring',
+                stiffness: 200,
+                damping: 10,
+                duration: 0.5,
+              }}
+            >
+              <FiGithub />
+              Github
+            </motion.a>
+            <motion.a
+              href={props.project.app_url}
+              whileHover={{ scale: 2, color: 'var(--primary)', margin: '1em' }}
+              transition={{
+                type: 'spring',
+                stiffness: 200,
+                damping: 10,
+              }}
+            >
+              <FaAppStore />
+              App
+            </motion.a>
+          </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }

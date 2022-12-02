@@ -1,8 +1,13 @@
 .form-container {
   background-color: var(--primary-background);
   color: white;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: flex-start;
   padding: 5rem;
+}
+
+.preview {
+  padding: 20px;
+  text-align: right;
 }

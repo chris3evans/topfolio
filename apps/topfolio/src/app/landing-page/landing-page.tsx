@@ -3,10 +3,10 @@ import Footer from '../footer/footer';
 import styles from './landing-page.module.css';
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../../utils/UserContext';
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from '@auth0/auth0-react';
 
 /* eslint-disable-next-line */
-export interface LandingPageProps { }
+export interface LandingPageProps {}
 
 export function LandingPage(props: LandingPageProps) {
   //const { user, getAccessTokenSilently } = useAuth0();
@@ -23,7 +23,7 @@ export function LandingPage(props: LandingPageProps) {
         <h2>Easy to create unique portfolios ,free and simple</h2>
         <LoginButton />
       </div>
-      <Footer github="" facebook="" linkedin="" />
+      <Footer viewMode={false} />
     </div>
   );
 }

@@ -1,9 +1,11 @@
 .listItemImage {
-  height: auto;
+  height: 5rem;
+  width: 5rem;
 }
 
 .text {
   color: gray;
+  /* TODO CHANGE DATE COLOR */
 }
 
 .iconButtons {

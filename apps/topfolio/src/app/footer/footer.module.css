@@ -1,6 +1,6 @@
-.container{
+.container {
   bottom: 0;
-  position:absolute;
+  position:relative;
   width: 100%;
   background-color: var(--primary-background);
   color: var(--primary-text);
@@ -8,13 +8,64 @@
   align-items: center;
   flex-direction: column;
   gap: 2em;
-  padding: 2em;
+
 }
+.email-me {
+  color:var(--primary-text);
+  text-decoration: none;
+}
+
+
 .links {
   display: flex;
   gap: 2em;
-}
-a{
-  transform:scale(1.5);
   color: var(--primary);
+  font-size: 1.3em;
+
+
+}
+.links  > a{
+  color: var(--primary);
+  font-size: 1.5em;
+}
+
+
+.view-mode {
+  bottom: 0;
+  position: relative;
+  width: 100%;
+  background-color: var(--primary-background);
+  color: var(--primary-text);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5em;
+  padding: 2em;
+
+}
+
+.contact-me {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6em;
+}
+
+.infos {
+  font-size: 1.2em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+}
+
+.links-vertical {
+  display: flex;
+  gap: 2em;
+flex-direction: column;
+
+}
+.links-vertical a{
+  color: var(--primary);
+  font-size: 1.5em;
 }

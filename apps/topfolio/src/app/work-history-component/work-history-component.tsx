@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import styles from './work-history-component.module.css';
-import { mockUserState } from '../mockUser';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
@@ -11,20 +10,20 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 
 import Typography from '@mui/material/Typography';
-import { display } from '@mui/system';
+import MovingTitleComponent from '../moving-title-component/moving-title-component';
 /* eslint-disable-next-line */
 export interface WorkHistoryComponentProps {
   viewMode: boolean;
 }
 
 export function WorkHistoryComponent(props: WorkHistoryComponentProps) {
-  const { userDetails, setUser } = useContext(UserContext);
+  const { userDetails } = useContext(UserContext);
 
   return (
     <div className={styles['work-container']}>
-      <h3>Work experience</h3>
+      <MovingTitleComponent text={'Work Experience'} alignCenter={false} />
       <Timeline position="alternate">
-        {mockUserState.portfolio.work_history.map((work, index) => (
+        {userDetails.portfolio.work_history.map((work, index) => (
           <TimelineItem
             key={`key${index}`}
             sx={props.viewMode ? { visibility: 'hidden' } : {}}
@@ -32,11 +31,12 @@ export function WorkHistoryComponent(props: WorkHistoryComponentProps) {
           >
             <TimelineOppositeContent color="text.secondary">
               <Typography
-                variant="h6"
+                variant="h4"
                 sx={{ fontSize: 15, fontWeight: 'medium' }}
               >{`${work.start_date} - ${work.end_date}`}</Typography>
+              <Typography variant="h3"></Typography>
             </TimelineOppositeContent>
-            <TimelineSeparator>
+            <TimelineSeparator sx={{ height: 500 }}>
               <TimelineDot color="primary" />
               <TimelineConnector
                 sx={{
@@ -44,21 +44,13 @@ export function WorkHistoryComponent(props: WorkHistoryComponentProps) {
                 }}
               />
             </TimelineSeparator>
-            <TimelineContent
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-              className={index % 2 ? styles['left'] : styles['right']}
-            >
+            <TimelineContent>
               <div className={styles['box']}>
                 {' '}
-                <img src={work.image} alt="logo" />
+                <img src={'../../assets/google.png'} alt="logo" />
+                <Typography variant="h3">{`${work.description}`}</Typography>
+                <Typography variant="h4">{` ${work.company_name}`}</Typography>
               </div>
-              <Typography variant="h6">
-                {`${work.description} at ${work.company_name}`}{' '}
-              </Typography>
             </TimelineContent>
           </TimelineItem>
         ))}

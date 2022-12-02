@@ -19,7 +19,6 @@ export function Dashboard(props: DashboardProps) {
 
   const registerUser = async () => {
     const accessToken = await getAccessTokenSilently();
-    console.log('Token to use in protected API request', accessToken);
     const response = await postUser(
       {
         slug_url: 'my-portfolio-page',
@@ -27,7 +26,6 @@ export function Dashboard(props: DashboardProps) {
       },
       accessToken
     );
-    console.log('API RESPONSE:', response);
     setUser(response as User);
   };
 

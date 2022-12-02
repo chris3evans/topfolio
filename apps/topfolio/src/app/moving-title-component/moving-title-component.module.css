@@ -1,0 +1,12 @@
+
+.span-words{  display: inline-block;
+  margin-right: 0.5em;
+  white-space: nowrap;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+.span-letters{  display: inline-block;
+  white-space: nowrap;
+  font-size: 1.5em;
+  font-weight: 600;
+}
