@@ -34,7 +34,7 @@ const createUser = async (req: express.Request, res: express.Response) => {
       res.status(201);
       res.send(user); //{ status: 'success', data: user }
     } else {
-      res.status(201);
+      res.status(202);
       res.send(data); //{ status: 'Success: user already exists', data }
     }
   } catch (error) {
