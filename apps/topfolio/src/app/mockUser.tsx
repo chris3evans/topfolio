@@ -42,7 +42,7 @@ export const mockUserState: User = {
       },
     ],
     contact_me: {
-      phone: '333333',
+      phone: '3338973',
       email: 'test@email.com',
       social_media: {
         instagram: '',
