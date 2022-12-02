@@ -42,6 +42,12 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
     }
   }, [userDetails]);
 
+  const [companyName, setCompanyName] = useState('');
+
+  const companyChangeHandler = function (event: any) {
+    setCompanyName(event.target.value);
+  };
+
   const closeEditHandler = function () {
     if (props.listener) {
       props.listener('1');
@@ -127,11 +133,14 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
             <FormControl fullWidth={true}>
               <InputLabel htmlFor="company-name">Company Name:</InputLabel>
               <Input
+                value={companyName}
+                onChange={companyChangeHandler}
                 type="text"
                 required
                 id="company name"
                 name="companyName"
                 defaultValue={props.existingData?.company_name}
+                data-testid="test-company-name"
               ></Input>
             </FormControl>
           </Box>
@@ -146,6 +155,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
                 name="description"
                 multiline={true}
                 defaultValue={props.existingData?.description}
+                data-testid="test-description"
               ></Input>
             </FormControl>
           </Box>
@@ -157,6 +167,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
                 label="Start Date"
                 name="startDate"
                 defaultValue={props.existingData?.start_date}
+                data-testid="test-start-date"
               ></TextField>
               {/* <FormControl>
                 <LocalizationProvider dateAdapter={AdapterMoment}>
@@ -188,6 +199,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
                 label="End Date"
                 name="endDate"
                 defaultValue={props.existingData?.end_date}
+                data-testid="test-end-date"
               ></TextField>
               {/* <FormControl>
                 <LocalizationProvider dateAdapter={AdapterMoment}>

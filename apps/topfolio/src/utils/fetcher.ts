@@ -19,7 +19,8 @@ export const fetcher = async (
       },
       body: JSON.stringify(body),
     });
-    return await res.json();
+    const json = await res.json();
+    return json;
   } catch (e) {
     return { fetcherError: e };
   }
