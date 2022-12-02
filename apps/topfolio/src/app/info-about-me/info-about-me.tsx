@@ -63,6 +63,7 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
                 type="text"
                 id="bio_title"
                 name="bio_title"
+                multiline={true}
               ></Input>
             </FormControl>
           </Box>
