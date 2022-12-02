@@ -125,7 +125,7 @@ export function FormProjects(props: FormProjectsProps) {
 
           <Box sx={muiStyles.projectField}>
             <FormControl fullWidth={true}>
-              <InputLabel htmlFor="project-name">Project Name:</InputLabel>
+              <InputLabel htmlFor="project-name" data-testid={'projectNameLabel'}>Project Name:</InputLabel>
               <Input
                 type="text"
                 required
