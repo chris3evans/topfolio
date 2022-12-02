@@ -16,6 +16,8 @@ describe('ContactMeDialog', () => {
       <ContactMeDialog open={true} onClose={mockFn} />
     );
     const children = baseElement.childNodes.length;
+    const form = baseElement.getElementsByTagName('form');
+    expect(form.length).toBeTruthy();
     expect(children).toBe(2);
     expect(baseElement).toBeTruthy();
   });
@@ -24,7 +26,10 @@ describe('ContactMeDialog', () => {
       <ContactMeDialog open={false} onClose={mockFn} />
     );
     const children = baseElement.childNodes.length;
+    const form = baseElement.getElementsByTagName('form');
+    expect(form.length).toBeFalsy();
     expect(children).toBe(1);
     expect(baseElement).toBeTruthy();
   });
+  it('should update inputs on type', () => {});
 });
