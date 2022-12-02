@@ -45,7 +45,9 @@ export function Footer(props: FooterProps) {
           {' '}
           <motion.a
             aria-label="Topfolio Facebook link"
-            href={userDetails?.portfolio.contact_me.social_media.facebook || ''}
+            href={
+              userDetails?.portfolio.contact_me?.social_media.facebook || ''
+            }
             whileHover={{ scale: 2 }}
             transition={transition}
           >
@@ -53,7 +55,7 @@ export function Footer(props: FooterProps) {
           </motion.a>
           <motion.a
             aria-label="Topfolio Github link"
-            href={userDetails?.portfolio.contact_me.social_media.github || ''}
+            href={userDetails?.portfolio.contact_me?.social_media.github || ''}
             whileHover={{ scale: 2 }}
             transition={transition}
           >
@@ -61,7 +63,9 @@ export function Footer(props: FooterProps) {
           </motion.a>
           <motion.a
             aria-label="Topfolio Linkedin link"
-            href={userDetails?.portfolio.contact_me.social_media.linkedin || ''}
+            href={
+              userDetails?.portfolio.contact_me?.social_media.linkedin || ''
+            }
             whileHover={{ scale: 2 }}
             transition={transition}
           >
@@ -79,17 +83,17 @@ export function Footer(props: FooterProps) {
           >
             <FcInvite />
             <motion.a
-              href={`mailto:${userDetails?.portfolio.contact_me.email}`}
+              href={`mailto:${userDetails?.portfolio.contact_me?.email}`}
               className={styles['email-me']}
               whileHover={{ color: 'var(--primary)' }}
               transition={transition}
             >
-              {userDetails?.portfolio.contact_me.email}
+              {userDetails?.portfolio.contact_me?.email}
             </motion.a>
           </motion.div>
           <div style={{ display: 'flex', gap: '0.3em' }}>
             <FcPhoneAndroid />
-            <p>+44 12300011</p>
+            <p>{userDetails?.portfolio.contact_me?.phone}</p>
           </div>
         </div>
       </div>
