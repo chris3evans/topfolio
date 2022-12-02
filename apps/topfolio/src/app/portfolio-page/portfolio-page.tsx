@@ -19,6 +19,7 @@ export function PortfolioPage(props: PortfolioPageProps) {
   const { slug } = useParams<{ slug: string }>();
   const { setUser } = useContext(UserContext);
   const [theme, setTheme] = useState(workExperienceFormTheme);
+  const [loading, setLoading] = useState(false);
 
   const serverCall = async () => {
     const res: any = await getUser(slug);
@@ -30,6 +31,7 @@ export function PortfolioPage(props: PortfolioPageProps) {
       .then((res) => {
         setTheme(themeGenerator(res.data.portfolio.theme));
         setUser({ ...res.data });
+        setLoading(true);
       })
       .catch((e) => console.error(e));
   }, []);
@@ -47,7 +49,7 @@ export function PortfolioPage(props: PortfolioPageProps) {
   return (
     <ThemeProvider theme={theme}>
       <div className={styles['body']}>
-        <HeroComponent />
+        {loading && <HeroComponent />}
         <SectionsComponent viewMode={props.viewMode} />
         <Footer viewMode={props.viewMode} />
       </div>

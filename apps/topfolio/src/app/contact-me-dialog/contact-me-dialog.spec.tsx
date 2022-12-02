@@ -31,5 +31,7 @@ describe('ContactMeDialog', () => {
     expect(children).toBe(1);
     expect(baseElement).toBeTruthy();
   });
-  it('should update inputs on type', () => {});
+  it('should update inputs on type', () => {
+    setup();
+  });
 });
