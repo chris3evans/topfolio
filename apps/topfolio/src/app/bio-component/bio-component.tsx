@@ -15,8 +15,14 @@ export interface BioComponentProps {}
 export function BioComponent(props: BioComponentProps) {
   const { userDetails } = useContext(UserContext);
 
+<<<<<<< HEAD
   const title = userDetails.portfolio.bio_title;
   const bio = userDetails.portfolio.bio;
+=======
+  const title = userDetails.portfolio.bio_title || mockUserState.name;
+  const bio = userDetails.portfolio.bio || mockUserState.portfolio.bio;
+
+>>>>>>> development
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {

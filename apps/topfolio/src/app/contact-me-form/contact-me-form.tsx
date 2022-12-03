@@ -16,12 +16,13 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { updateUser } from '../../utils/ApiService';
 import { User } from '@topfolio/api-interfaces';
 import FormDialog from "../form-dialog/form-dialog";
+import { Alert, AlertColor, Snackbar } from '@mui/material';
 
 /* eslint-disable-next-line */
 export interface ContactMeFormProps {
@@ -40,15 +41,28 @@ export function ContactMeForm(props: ContactMeFormProps) {
   const submitHandler = function (event: any) { };
 
   const { userDetails, setUser } = useContext(UserContext);
+  const [toast, setToast] = useState({ open: false, status: 'success', message: '' });
 
   console.log('USER DETAILS:', userDetails);
+
+  const showToast = (status: string, msg: string) => {
+    setToast({ open: true, status, message: msg });
+  };
+
+  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setToast({ open: false, status: 'success', message: '' });
+  };
 
   const formSubmitHandler = async function (event: any) {
     try {
       event.preventDefault();
 
       setUser((current) => {
-        // @ts-ignore
+
         current.portfolio.contact_me = {
           phone: event.target.phone.value,
           email: event.target.email.value,
@@ -64,14 +78,19 @@ export function ContactMeForm(props: ContactMeFormProps) {
         };
         return current;
       });
-      //@ts-ignore TO BE FIXED!
-      const response = await updateUser(userDetails, props.token);
-      //@ts-ignore TO BE FIXED!
-      if (response.status === 'success') setDialog({ display: true, title: 'Settings saved', message: 'settings were saved correctly' });
-      //@ts-ignore TO BE FIXED!
-      else setDialog({ display: true, title: 'Error', message: response.message });
-      setUnsaved(true);
 
+      const response = await updateUser(userDetails, props.token);
+
+      if (response.error === '') {
+        showToast('success', 'Settings were successfully changed. Now you can preview you portfolio');
+        setUnsaved(true);
+      } else {
+        showToast('error', response.error);
+      }
+      //-----------Keeping this as a reference for future use------------------
+      //setDialog({ display: true, title: 'Error', message: response.message });
+      //-----------------------------------------------------------------------
+      console.log("API RESPONSE:", response);
     } catch (error) {
       console.error(error, 'front end error');
     }
@@ -92,7 +111,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
   return (
     <>
       {/* console.log("Phone:", userDetails?.portfolio.contact_me.phone) */}
-      {userDetails
+      {userDetails.portfolio.contact_me.email != "test@email.com"
         ? (
           <>
             {dialog.display
@@ -100,6 +119,13 @@ export function ContactMeForm(props: ContactMeFormProps) {
               : ''
             }
             <Box sx={muiStyles.form}>
+
+              <Snackbar open={toast.open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+                <Alert onClose={handleClose} severity={toast.status as AlertColor} sx={{ width: '100%', 'font-size': '20px' }}>
+                  {toast.message}
+                </Alert>
+              </Snackbar>
+
               <Typography variant="h2">Contact Me:</Typography>
               <form className={styles['form']} onSubmit={formSubmitHandler}>
                 <Box sx={muiStyles.mainGrid}>
@@ -265,6 +291,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                         <FormControl fullWidth={true}>
                           <InputLabel htmlFor="youtube">YouTube</InputLabel>
                           <Input
+                            role="textbox"
                             type="text"
                             id="youtube"
                             name="youtube"
@@ -283,7 +310,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                     ''
                   )}
                 </Box>
-                <Button sx={muiStyles.saveButton} variant="contained" type="submit" disabled={unsaved}>
+                <Button sx={muiStyles.saveButton} variant="contained" type="submit" id="contact-submit" disabled={unsaved}>
                   Save
                 </Button>
               </form>

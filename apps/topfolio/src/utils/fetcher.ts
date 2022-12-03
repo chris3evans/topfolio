@@ -6,7 +6,7 @@ export const fetcher = async (
   method: string,
   body?: object,
   token?: string
-): Promise<object> => {
+): Promise<{ error: string, data: {} }> => {
   try {
     const res = await fetch(url, {
       method: `${method}`,
@@ -19,10 +19,9 @@ export const fetcher = async (
       },
       body: JSON.stringify(body),
     });
-    const json = await res.json();
-    return json;
-  } catch (e) {
-    return { fetcherError: e };
+    return await res.json();
+  } catch (e: any) {
+    return { error: e, data: {} };
   }
 };
 
