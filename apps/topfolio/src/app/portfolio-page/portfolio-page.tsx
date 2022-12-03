@@ -37,22 +37,26 @@ export function PortfolioPage(props: PortfolioPageProps) {
   }, []);
 
   useLayoutEffect(() => {
-    if (props.viewMode) {
-      const ctx = gsap.context(() => {
-        workHistoryAnimation('#WorkHistory');
-        pageScrollAnimation();
-      });
-      return () => ctx.revert(); // cleanup
-    }
-    return;
+    setTimeout(() => {
+      if (props.viewMode && loading) {
+        const ctx = gsap.context(() => {
+          workHistoryAnimation('#WorkHistory');
+          pageScrollAnimation();
+        });
+        return () => ctx.revert(); // cleanup
+      }
+      return;
+    }, 1000);
   });
   return (
     <ThemeProvider theme={theme}>
-      <div className={styles['body']}>
-        {loading && <HeroComponent />}
-        <SectionsComponent viewMode={props.viewMode} />
-        <Footer viewMode={props.viewMode} />
-      </div>
+      {loading && (
+        <div className={styles['body']}>
+          <HeroComponent />
+          <SectionsComponent viewMode={props.viewMode} />
+          <Footer viewMode={props.viewMode} />
+        </div>
+      )}
     </ThemeProvider>
   );
 }

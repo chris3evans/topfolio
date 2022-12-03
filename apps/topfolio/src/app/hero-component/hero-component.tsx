@@ -15,21 +15,13 @@ export function HeroComponent(props: HeroComponentProps) {
     <div
       className={styles['container']}
       style={{
-        backgroundImage: `linear-gradient(transparent 60%, var(--primary-background)),url(${
-          userDetails.portfolio.hero_image || mockUserState.portfolio.hero_image
-        })`,
+        backgroundImage: `linear-gradient(transparent 60%, var(--primary-background)),url(${userDetails.portfolio.hero_image})`,
       }}
       id="hero-component"
     >
       <div className={styles['box']}>
         {' '}
-        <img
-          src={
-            userDetails.portfolio.profile_image ||
-            mockUserState.portfolio.profile_image
-          }
-          alt="ProfilePic"
-        />
+        <img src={userDetails.portfolio.profile_image} alt="ProfilePic" />
       </div>
       <div className={styles['hero-text']}>
         <MovingTitleComponent
