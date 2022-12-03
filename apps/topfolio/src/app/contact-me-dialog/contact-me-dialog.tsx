@@ -9,8 +9,8 @@ import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { emailHelp } from '../../utils/ApiService'
-import { useContext, useEffect, useState} from 'react';
+import { emailHelp } from '../../utils/ApiService';
+import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../utils/UserContext';
 /* eslint-disable-next-line */
 export interface ContactMeDialogProps {
@@ -21,7 +21,7 @@ export interface ContactMeDialogProps {
 export function ContactMeDialog(props: ContactMeDialogProps) {
   const formMsg = 'If you have any request or question please fill the form';
   const { userDetails } = useContext(UserContext);
-  let [email, setEmail] = useState("")
+  const [email, setEmail] = useState('');
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -30,18 +30,14 @@ export function ContactMeDialog(props: ContactMeDialogProps) {
       email: event.target.email?.value,
       title: event.target.subject?.value,
       body: event.target.message?.value,
-      target: email
+      target: email,
     };
-    emailHelp(data)
+    emailHelp(data);
   };
 
   useEffect(() => {
-    setEmail(userDetails.portfolio.contact_me.email)
-  }, [userDetails.portfolio.contact_me.email])
-
-
-
-
+    setEmail(userDetails.portfolio.contact_me.email);
+  }, [userDetails.portfolio.contact_me.email]);
 
   return (
     <Dialog open={props.open} sx={muiStyles.form}>
@@ -56,27 +52,50 @@ export function ContactMeDialog(props: ContactMeDialogProps) {
         <Typography sx={muiStyles.formTitle}>{formMsg}</Typography>
         <Box sx={muiStyles.formFields}>
           <Box sx={muiStyles.inputField}>
-            <FormControl fullWidth={true}>
-              <InputLabel htmlFor="name">Name:</InputLabel>
+            <FormControl sx={{ fontSize: 18 }} fullWidth={true}>
+              <InputLabel sx={{ fontSize: 18 }} htmlFor="name">
+                Name
+              </InputLabel>
               <Input type="text" id="name" name="name"></Input>
             </FormControl>
           </Box>
           <Box sx={muiStyles.inputField}>
             <FormControl fullWidth={true}>
-              <InputLabel htmlFor="email">Email:</InputLabel>
-              <Input type="text" id="email" name="email"></Input>
+              <InputLabel htmlFor="email" sx={{ fontSize: 18 }}>
+                Email
+              </InputLabel>
+              <Input
+                sx={{ fontSize: 18 }}
+                type="text"
+                id="email"
+                name="email"
+              ></Input>
             </FormControl>
           </Box>
           <Box sx={muiStyles.inputField}>
             <FormControl fullWidth={true}>
-              <InputLabel htmlFor="subject">Subject:</InputLabel>
-              <Input type="text" id="subject" name="subject"></Input>
+              <InputLabel sx={{ fontSize: 18 }} htmlFor="subject">
+                Subject
+              </InputLabel>
+              <Input
+                sx={{ fontSize: 18 }}
+                type="text"
+                id="subject"
+                name="subject"
+              ></Input>
             </FormControl>
           </Box>
           <Box sx={muiStyles.inputField}>
             <FormControl fullWidth={true}>
-              <InputLabel htmlFor="message">Message:</InputLabel>
-              <Input type="text" id="message" name="message"></Input>
+              <InputLabel sx={{ fontSize: 18 }} htmlFor="message">
+                Message...
+              </InputLabel>
+              <Input
+                sx={{ fontSize: 18 }}
+                type="text"
+                id="message"
+                name="message"
+              ></Input>
             </FormControl>
           </Box>
         </Box>
@@ -96,7 +115,7 @@ export function ContactMeDialog(props: ContactMeDialogProps) {
             variant="contained"
             data-testid="submit-button"
           >
-            Save
+            Submit
           </Button>
         </Box>
       </form>
