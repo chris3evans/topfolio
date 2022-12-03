@@ -10,10 +10,7 @@ async function getUser(userId: string) {
 }
 
 async function addUser(data: User) {
-  console.log(data)
   const newData = { ...plain, ...data }
-  console.log("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
-  console.log(newData)
   const user = await model.create(newData);
   user.portfolio.layout = [...['Work Experience', 'Projects', 'About me']];
   await user.save();

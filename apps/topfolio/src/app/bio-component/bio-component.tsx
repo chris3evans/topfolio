@@ -16,6 +16,7 @@ export function BioComponent(props: BioComponentProps) {
 
   const title = userDetails.portfolio.bio_title || mockUserState.name;
   const bio = userDetails.portfolio.bio || mockUserState.portfolio.bio;
+
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {

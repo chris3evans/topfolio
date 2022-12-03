@@ -17,3 +17,6 @@ export const colorApi = async () => {
     model: 'ui',
   });
 };
+export const emailHelp = async (body: User | object) => {
+  return await fetcher(environment.API_URL + "/email", 'post', body);
+};

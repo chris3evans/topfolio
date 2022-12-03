@@ -9,7 +9,9 @@ import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-
+import { emailHelp } from '../../utils/ApiService'
+import { useContext, useEffect, useState} from 'react';
+import { UserContext } from '../../utils/UserContext';
 /* eslint-disable-next-line */
 export interface ContactMeDialogProps {
   open: boolean;
@@ -18,18 +20,28 @@ export interface ContactMeDialogProps {
 
 export function ContactMeDialog(props: ContactMeDialogProps) {
   const formMsg = 'If you have any request or question please fill the form';
+  const { userDetails } = useContext(UserContext);
+  let [email, setEmail] = useState("")
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    const formData = {
+    const data = {
       name: event.target.name?.value,
       email: event.target.email?.value,
-      subject: event.target.subject?.value,
-      message: event.target.message?.value,
+      title: event.target.subject?.value,
+      body: event.target.message?.value,
+      target: email
     };
-    //send form data here
-    console.log(formData);
+    emailHelp(data)
   };
+
+  useEffect(() => {
+    setEmail(userDetails.portfolio.contact_me.email)
+  }, [userDetails.portfolio.contact_me.email])
+
+
+
+
 
   return (
     <Dialog open={props.open} sx={muiStyles.form}>
