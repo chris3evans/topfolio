@@ -20,7 +20,6 @@ img
   position:relative;
   background-position: center center;
   background-repeat: no-repeat;
-
 }
 
 .laptop-bg > .laptop-content-bg
@@ -58,4 +57,23 @@ img
 }
 .links > a{
   color: white;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .projects-cont{
+    flex-shrink: 0;
+    width:100%;
+    margin-top:10em;
+  }
+  .laptop-bg
+{
+  background-size: contain;
+  background-clip: border-box;
+  position:relative;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin-top:7em;
+
+}
 }

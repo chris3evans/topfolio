@@ -5,3 +5,11 @@
   display: flex;
   flex-wrap: nowrap;
 }
+@media only screen and (max-width: 600px) {
+  .projects-cont{
+    width:99vw;
+    overflow-x: hidden;
+    margin-top:10em
+
+  }
+}

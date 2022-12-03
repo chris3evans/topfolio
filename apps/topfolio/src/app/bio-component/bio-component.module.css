@@ -17,6 +17,8 @@
   flex-direction: column;
   padding: 4em;
   gap: 2em;
+  width: 50%;
+  text-align: start;
  }
  .text-cont  h2{
   font-size: 2em;}
@@ -27,3 +29,65 @@
 }
 .button-box > button{
   font-size: 1em;}
+
+  .box {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  .box  > img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    max-width: 100%;
+  }
+
+  .cont-flex{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  @media only screen and (max-width: 600px) {
+    .cont-flex{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      margin: 2em;
+
+    }
+    .text-cont{
+      margin: 1em;
+      padding: 1em;
+      display: flex;
+      flex-direction: column;
+      padding: 1em;
+      gap: 2em;
+      width: 100%;
+      text-align: start;
+     }
+     .container {
+      height: 100vh;
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 1em;
+
+   }
+   .box {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  }

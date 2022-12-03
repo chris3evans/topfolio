@@ -19,10 +19,6 @@ export function HeroComponent(props: HeroComponentProps) {
       }}
       id="hero-component"
     >
-      <div className={styles['box']}>
-        {' '}
-        <img src={userDetails.portfolio.profile_image} alt="ProfilePic" />
-      </div>
       <div className={styles['hero-text']}>
         <MovingTitleComponent
           text={userDetails.name || mockUserState.name}

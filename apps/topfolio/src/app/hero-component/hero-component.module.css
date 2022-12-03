@@ -17,22 +17,7 @@
 .hero-text{
   width: 70%;
 }
-.box {
-  width: 10em;
-  height: 10em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  border-radius: 50%;
-}
-.box  > img {
-  flex-shrink: 0;
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  max-width: 100%;
-}
+
 @media only screen and (max-width: 600px) {
   .container{
     display: flex;
