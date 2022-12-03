@@ -1,7 +1,7 @@
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import type {} from '@mui/x-date-pickers/themeAugmentation';
 import { Theme } from '@topfolio/api-interfaces';
-export const workExperienceFormTheme = createTheme({
+export const mainTheme = createTheme({
   components: {
     MuiDatePicker: {
       styleOverrides: {
