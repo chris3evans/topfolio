@@ -22,6 +22,7 @@ export function TimelineObject(props: TimelineItemProps) {
   const { ref, inView } = useInView({
     threshold: 1,
     triggerOnce: true,
+    rootMargin: '0px 0px 0px 1000px',
   });
   useEffect(() => {
     if (inView) {
@@ -35,12 +36,34 @@ export function TimelineObject(props: TimelineItemProps) {
     ? {
         hidden: {
           opacity: 0,
+          y: '-8em',
         },
         visible: {
+          y: '0em',
           opacity: 1,
           transition: {
-            delay: 0.5,
-            duration: 3,
+            delay: 1,
+            duration: 2,
+            ease: [0.2, 0.65, 0.3, 0.9],
+          },
+        },
+      }
+    : { hidden: {}, visible: {} };
+
+  const dotAnimation = props.viewMode
+    ? {
+        hidden: {
+          scale: 0,
+        },
+        visible: {
+          scale: 2,
+          color: 'var(--primary)',
+          transition: {
+            delay: 1.5,
+            type: 'spring',
+            stiffness: 400,
+            duration: 2.5,
+            bounce: 1,
             ease: [0.2, 0.65, 0.3, 0.9],
           },
         },
@@ -57,12 +80,14 @@ export function TimelineObject(props: TimelineItemProps) {
           <Typography
             ref={ref}
             variant="h4"
-            sx={{ fontSize: 15, fontWeight: 'medium' }}
+            sx={{ fontSize: 18, fontWeight: 'medium' }}
           >{`${props.work.start_date} - ${props.work.end_date}`}</Typography>
           <Typography variant="h3"></Typography>
         </TimelineOppositeContent>
         <TimelineSeparator sx={{ height: 500 }}>
-          <TimelineDot color="primary" />
+          <motion.div animate={controls} variants={dotAnimation}>
+            <TimelineDot color="primary" />
+          </motion.div>
           <TimelineConnector
             sx={{
               height: 300,

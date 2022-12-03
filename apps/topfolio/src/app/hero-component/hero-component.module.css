@@ -5,6 +5,8 @@
   align-items: center;
   background-size: cover;
   font-size: 1.3em;
+  background-position: center;
+
 
 }
 .container h2 {
@@ -23,7 +25,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-size: cover;
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
   }.hero-text{
    margin-top: 5em;
   }

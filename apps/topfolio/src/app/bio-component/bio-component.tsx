@@ -7,6 +7,7 @@ import { useContext, useState } from 'react';
 import ContactMeDialog from '../contact-me-dialog/contact-me-dialog';
 import { UserContext } from '../../utils/UserContext';
 import { mockUserState } from '../mockUser';
+import AnimatedImage from '../animated-image/animated-image';
 
 /* eslint-disable-next-line */
 export interface BioComponentProps {}
@@ -31,10 +32,10 @@ export function BioComponent(props: BioComponentProps) {
           <MovingTitleComponent text={title} alignCenter={false} html={'h2'} />
           <MovingParagraphComponent text={bio} />
         </div>
-        <div className={styles['box']}>
-          {' '}
-          <img src={userDetails.portfolio.profile_image} alt="ProfilePicture" />
-        </div>
+        <AnimatedImage
+          imageUrl={userDetails.portfolio.profile_image}
+          alt="ProfilePicture"
+        />
       </div>
       <motion.div
         className={styles['button-box']}

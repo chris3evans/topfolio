@@ -32,23 +32,6 @@
 .button-box > button{
   font-size: 1em;}
 
-  .box {
-    width: 250px;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    border-radius: 50%;
-  }
-  .box  > img {
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover;
-    max-width: 100%;
-  }
-
   .cont-flex{
     display: flex;
     justify-content: space-evenly;
