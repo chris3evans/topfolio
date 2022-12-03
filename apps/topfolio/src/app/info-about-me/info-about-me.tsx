@@ -14,30 +14,28 @@ import { useState, useEffect } from 'react';
 
 /* eslint-disable-next-line */
 export interface InfoAboutMeProps {
-    token: string;
+  token: string;
 }
 
 export function InfoAboutMe(props: InfoAboutMeProps) {
-
   const { userDetails, setUser } = useContext(UserContext);
   const [img, setImage] = useState('');
 
   const getUploadedImage = (img: any) => {
-     setImage(img.url)
-     };
+    setImage(img.url);
+  };
 
-    
   const formSumbitHandler = async function (event: any) {
     try {
       event.preventDefault();
-     setUser((current: any) => {
+      setUser((current: any) => {
         // @ts-ignore
-       current.portfolio.bio = event.target.bio.value
-       current.portfolio.bio_title = event.target.bio_title.value
-       current.portfolio.hero_image = event.target.hero_image.value
-       current.portfolio.hero_title = event.target.hero_title.value
-       current.portfolio.profile_image = img
-       return current;
+        current.portfolio.bio = event.target.bio.value;
+        current.portfolio.bio_title = event.target.bio_title.value;
+        current.portfolio.hero_image = event.target.hero_image.value;
+        current.portfolio.hero_title = event.target.hero_title.value;
+        current.portfolio.profile_image = img;
+        return current;
       });
       console.log(userDetails, 'data to send backend');
       console.log(props.token, 'token');
@@ -49,36 +47,26 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
     }
   };
 
-   return (
+  return (
     <Box sx={muiStyles.form}>
       <Typography align="center" sx={muiStyles.formTitle} variant="h2">
-      About me
-       </Typography>
+        About me
+      </Typography>
       <form onSubmit={formSumbitHandler} className={styles['form-we']}>
         <Box sx={muiStyles.formFields}>
           <Box sx={muiStyles.titleField}>
             <FormControl fullWidth={true}>
               <InputLabel htmlFor="bio_title">Bio title:</InputLabel>
-              <Input
-                type="text"
-                id="bio_title"
-                name="bio_title"
-              ></Input>
+              <Input type="text" id="bio_title" name="bio_title"></Input>
             </FormControl>
           </Box>
 
           <Box sx={muiStyles.bodyField}>
             <FormControl>
               <InputLabel htmlFor="bio">bio:</InputLabel>
-              <Input
-                type="text"
-                id="bio"
-                name="bio"
-                multiline={true}
-              ></Input>
+              <Input type="text" id="bio" name="bio" multiline={true}></Input>
             </FormControl>
-           </Box>
-           
+          </Box>
 
           <Box sx={muiStyles.bodyField}>
             <FormControl>
@@ -90,9 +78,8 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
                 multiline={true}
               ></Input>
             </FormControl>
-           </Box>
-           
-           
+          </Box>
+
           <Box sx={muiStyles.bodyField}>
             <FormControl>
               <InputLabel htmlFor="hero_title">Hero title:</InputLabel>
@@ -103,22 +90,18 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
                 multiline={true}
               ></Input>
             </FormControl>
-           </Box>
-           
-           
-          <Box sx={muiStyles.bodyField}>
-             <UploadImageWidget callback={getUploadedImage} />
           </Box>
 
-           
-           
+          <Box sx={muiStyles.imageUploadContainer}>
+            <UploadImageWidget callback={getUploadedImage} />
+          </Box>
         </Box>
         <Button sx={muiStyles.saveButton} type="submit" variant="contained">
           Save
         </Button>
       </form>
     </Box>
-   );
+  );
 }
 
 export default InfoAboutMe;

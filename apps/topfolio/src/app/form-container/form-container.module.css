@@ -8,7 +8,7 @@
 .forms {
   justify-content: center;
   align-items: flex-start;
-  padding: 10rem 15rem;
+  padding: 0rem 15rem 2rem 15rem;
 }
 
 .preview {

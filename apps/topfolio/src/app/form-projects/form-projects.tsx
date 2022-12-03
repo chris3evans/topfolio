@@ -19,32 +19,27 @@ export interface FormProjectsProps {
   listener: Function | null;
 }
 
-
 export function FormProjects(props: FormProjectsProps) {
   const { userDetails, setUser } = useContext(UserContext);
   const [imgArray, setImgArray] = useState<string[]>([]);
-  const getUploadedImage = (img: { url: string, id: string }) => {
-    const imgurl = img.url
-    setImgArray(array => {
-      return [
-        ...array,
-        imgurl
-      ]
+  const getUploadedImage = (img: { url: string; id: string }) => {
+    const imgurl = img.url;
+    setImgArray((array) => {
+      return [...array, imgurl];
     });
-
-  }
+  };
 
   useEffect(() => {
     if (userDetails) {
-      console.log(userDetails, 'here!!!')
+      console.log(userDetails, 'here!!!');
       updateUser(userDetails, props.token).then((response) => {
-        setImgArray([])
+        setImgArray([]);
         // @ts-ignore
         // setUser(response.data)
-        console.log(response, 'response is here!!!')
+        console.log(response, 'response is here!!!');
       });
     }
-  }, [userDetails?.portfolio.projects])
+  }, [userDetails?.portfolio.projects]);
 
   const closeEditHandler = function () {
     if (props.listener) {
@@ -63,7 +58,7 @@ export function FormProjects(props: FormProjectsProps) {
           description: event.target.description.value,
           github_url: event.target.gitUrl.value,
           app_url: event.target.appUrl.value,
-          _id: props.existingData._id
+          _id: props.existingData._id,
         };
 
         setUser((current: any) => {
@@ -72,20 +67,18 @@ export function FormProjects(props: FormProjectsProps) {
             portfolio: {
               ...current.portfolio,
               projects: [
-                ...current.portfolio.projects.map(
-                  (projects: MyProjects) => {
-                    if (projects.name === props.existingData?.name) {
-                      return formExistingData;
-                    } else {
-                      return projects;
-                    }
+                ...current.portfolio.projects.map((projects: MyProjects) => {
+                  if (projects.name === props.existingData?.name) {
+                    return formExistingData;
+                  } else {
+                    return projects;
                   }
-                ),
+                }),
               ],
             },
           };
-        }); closeEditHandler();
-
+        });
+        closeEditHandler();
       } else {
         event.preventDefault();
         const formData = {
@@ -97,32 +90,30 @@ export function FormProjects(props: FormProjectsProps) {
         };
         setUser((current: any) => {
           return {
-            ...current, portfolio: {
-              ...current.portfolio, projects: [
-                ...current.portfolio.projects, formData]
-            }
-          }
-        }
-        )
+            ...current,
+            portfolio: {
+              ...current.portfolio,
+              projects: [...current.portfolio.projects, formData],
+            },
+          };
+        });
         closeEditHandler();
       }
-
     } catch (error) {
       console.error(error, 'front end error');
     }
   };
-
-
 
   return (
     <Box sx={muiStyles.form}>
       <Typography align="center" sx={muiStyles.formTitle} variant="h2">
         My Projects
       </Typography>
-      <UploadImageWidget callback={getUploadedImage} />
-      <form onSubmit={formSubmitHandler} className={styles['form-we']}>
+      <Box sx={muiStyles.imageUploadContainer}>
+        <UploadImageWidget callback={getUploadedImage} />
+      </Box>
+      <form onSubmit={formSubmitHandler} className={styles['form-projects']}>
         <Box sx={muiStyles.formFields}>
-
           <Box sx={muiStyles.projectField}>
             <FormControl fullWidth={true}>
               <InputLabel htmlFor="project-name">Project Name:</InputLabel>
@@ -134,10 +125,7 @@ export function FormProjects(props: FormProjectsProps) {
                 defaultValue={props.existingData?.name}
               ></Input>
             </FormControl>
-
           </Box>
-
-
 
           <Box sx={muiStyles.descriptionField}>
             <FormControl fullWidth={true}>
@@ -155,9 +143,9 @@ export function FormProjects(props: FormProjectsProps) {
 
           <Box sx={muiStyles.gitUrlField}>
             <FormControl fullWidth={true}>
-
-
-              <InputLabel htmlFor="git-url">Link to your Github Repo:</InputLabel>
+              <InputLabel htmlFor="git-url">
+                Link to your Github Repo:
+              </InputLabel>
               <Input
                 type="text"
                 required
@@ -186,7 +174,6 @@ export function FormProjects(props: FormProjectsProps) {
             Save
           </Button>
         </Box>
-
       </form>
     </Box>
   );
