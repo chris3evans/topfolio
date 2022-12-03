@@ -38,10 +38,9 @@ export function PortfolioPage(props: PortfolioPageProps) {
 
   useLayoutEffect(() => {
     setTimeout(() => {
-      if (props.viewMode && loading) {
+      if (props.viewMode && loading && window.innerWidth > 600) {
         const ctx = gsap.context(() => {
-          workHistoryAnimation('#WorkHistory');
-          if (window.innerWidth > 600) pageScrollAnimation();
+          pageScrollAnimation();
         });
         return () => ctx.revert(); // cleanup
       }

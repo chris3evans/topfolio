@@ -3,7 +3,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2em;
   background-size: cover;
   font-size: 1.3em;
 
@@ -24,9 +23,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2em;
     background-size: cover;
-    font-size: 0.7em;
   }.hero-text{
    margin-top: 5em;
   }

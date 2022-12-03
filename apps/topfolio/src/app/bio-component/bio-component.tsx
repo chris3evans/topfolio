@@ -14,8 +14,8 @@ export interface BioComponentProps {}
 export function BioComponent(props: BioComponentProps) {
   const { userDetails } = useContext(UserContext);
 
-  const title = userDetails.portfolio.bio_title || mockUserState.name;
-  const bio = userDetails.portfolio.bio || mockUserState.portfolio.bio;
+  const title = userDetails.portfolio.bio_title;
+  const bio = userDetails.portfolio.bio;
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -28,7 +28,7 @@ export function BioComponent(props: BioComponentProps) {
     <div className={styles['container']} id="bio-component">
       <div className={styles['cont-flex']}>
         <div className={styles['text-cont']}>
-          <MovingTitleComponent text={title} alignCenter={false} />
+          <MovingTitleComponent text={title} alignCenter={false} html={'h2'} />
           <MovingParagraphComponent text={bio} />
         </div>
         <div className={styles['box']}>

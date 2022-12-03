@@ -34,7 +34,11 @@ export function ContactMeDialog(props: ContactMeDialogProps) {
   return (
     <Dialog open={props.open} sx={muiStyles.form}>
       <DialogTitle sx={muiStyles.form}>
-        <MovingTitleComponent text={'Contact me'} alignCenter={false} />
+        <MovingTitleComponent
+          text={'Contact me'}
+          alignCenter={false}
+          html={'h2'}
+        />
       </DialogTitle>
       <form onSubmit={handleSubmit} className={styles['form-we']}>
         <Typography sx={muiStyles.formTitle}>{formMsg}</Typography>

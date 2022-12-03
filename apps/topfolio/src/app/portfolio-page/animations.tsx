@@ -9,6 +9,7 @@ export const workHistoryAnimation = (id: string) => {
         trigger: element,
         start: 'top center',
         toggleActions: 'play none none none',
+        markers: true,
       },
       duration: 1.5,
       autoAlpha: 1,
