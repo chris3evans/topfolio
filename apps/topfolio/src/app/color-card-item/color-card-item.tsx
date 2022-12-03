@@ -23,20 +23,15 @@ export function ColorCardItem(props: ColorCardItemProps) {
       ></Box>
       <TextField
         sx={muiStyles['colorInput']}
-        // label="Background Color"
         label={props.colorLabel}
         variant="standard"
         type="color"
-        // name="backgroundColor"
         name={props.colorName}
         value={`#${props.color}`}
-        onChange={
-          (event) => props.changeHandler(event)
-
-          //   (event: any) => {
-          //   setColorBackground(event.target.value.replace('#', ''));
-          // }
-        }
+        onInputCapture={(event: any) => {
+          props.changeHandler(event.target.value.replace('#', ''));
+          console.log('color change');
+        }}
       ></TextField>
     </Box>
   );

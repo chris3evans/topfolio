@@ -1,10 +1,9 @@
 import styles from './form-color-theme.module.css';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import GenerateIcon from '@mui/icons-material/Cached';
 import muiStyles from './styles-form-color-theme';
-import { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import { colorApi } from '../../utils/ApiService';
 import { updateUser } from '../../utils/ApiService';
@@ -79,18 +78,23 @@ export function FormColorTheme(props: FormColorThemeProps) {
         current.portfolio.theme = colorData;
         return current;
       });
-      // @ts-ignore
-      const response = await updateUser(userDetails, props.token);
-      console.log(response, 'form sent');
     } catch (error) {
       console.log(error, 'error in saving color theme to database');
     }
   };
 
+  // const MemoBackgroundColor = React.memo(ColorCardItem);
+
   return (
     <Box sx={muiStyles['colorThemeForm']}>
       <form onSubmit={onSubmitHandler} className={styles['color-theme-form']}>
         <Box sx={muiStyles['colorSelection']}>
+          {/* <MemoBackgroundColor
+            color={colorBackground}
+            colorLabel="Background Color"
+            colorName="backgroundColor"
+            changeHandler={setColorBackground}
+          ></MemoBackgroundColor> */}
           <ColorCardItem
             color={colorBackground}
             colorLabel="Background Color"
@@ -103,33 +107,25 @@ export function FormColorTheme(props: FormColorThemeProps) {
             color={colorPrimary}
             colorLabel="Primary Color"
             colorName="primaryColor"
-            changeHandler={(event: any) => {
-              setColorPrimary(event.target.value.replace('#', ''));
-            }}
+            changeHandler={setColorPrimary}
           ></ColorCardItem>
           <ColorCardItem
             color={colorSecondary}
             colorLabel="Secondary Color"
             colorName="secondaryColor"
-            changeHandler={(event: any) => {
-              setColorSecondary(event.target.value.replace('#', ''));
-            }}
+            changeHandler={setColorSecondary}
           ></ColorCardItem>
           <ColorCardItem
             color={colorTertiary}
             colorLabel="Tertiary Color"
             colorName="tertiaryColor"
-            changeHandler={(event: any) => {
-              setColorTertiary(event.target.value.replace('#', ''));
-            }}
+            changeHandler={setColorTertiary}
           ></ColorCardItem>
           <ColorCardItem
             color={colorBackground2}
             colorLabel="Secondary Background Color"
             colorName="secondaryBackgroundColor"
-            changeHandler={(event: any) => {
-              setColorBackground2(event.target.value.replace('#', ''));
-            }}
+            changeHandler={setColorBackground2}
           ></ColorCardItem>
         </Box>
         <Box sx={muiStyles['buttonSelection']}>
