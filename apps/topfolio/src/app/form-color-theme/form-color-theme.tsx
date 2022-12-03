@@ -65,6 +65,7 @@ export function FormColorTheme(props: FormColorThemeProps) {
   const onSubmitHandler = async function (event: any) {
     try {
       event.preventDefault();
+
       const colorData = {
         background: event.target.backgroundColor.value,
         primary: event.target.primaryColor.value,
@@ -78,6 +79,10 @@ export function FormColorTheme(props: FormColorThemeProps) {
         current.portfolio.theme = colorData;
         return current;
       });
+      // @ts-ignore
+      const response = await updateUser(userDetails, props.token);
+
+      console.log(response, 'form sent');
     } catch (error) {
       console.log(error, 'error in saving color theme to database');
     }
@@ -86,68 +91,64 @@ export function FormColorTheme(props: FormColorThemeProps) {
   // const MemoBackgroundColor = React.memo(ColorCardItem);
 
   return (
-    <Box sx={muiStyles['colorThemeForm']}>
-      <form onSubmit={onSubmitHandler} className={styles['color-theme-form']}>
-        <Box sx={muiStyles['colorSelection']}>
-          {/* <MemoBackgroundColor
+    <form onSubmit={onSubmitHandler} className={styles['color-theme-form']}>
+      <Box sx={muiStyles['colorSelection']}>
+        {/* <MemoBackgroundColor
             color={colorBackground}
             colorLabel="Background Color"
             colorName="backgroundColor"
             changeHandler={setColorBackground}
           ></MemoBackgroundColor> */}
-          <ColorCardItem
-            color={colorBackground}
-            colorLabel="Background Color"
-            colorName="backgroundColor"
-            changeHandler={(event: any) => {
-              setColorBackground(event.target.value.replace('#', ''));
-            }}
-          ></ColorCardItem>
-          <ColorCardItem
-            color={colorPrimary}
-            colorLabel="Primary Color"
-            colorName="primaryColor"
-            changeHandler={setColorPrimary}
-          ></ColorCardItem>
-          <ColorCardItem
-            color={colorSecondary}
-            colorLabel="Secondary Color"
-            colorName="secondaryColor"
-            changeHandler={setColorSecondary}
-          ></ColorCardItem>
-          <ColorCardItem
-            color={colorTertiary}
-            colorLabel="Tertiary Color"
-            colorName="tertiaryColor"
-            changeHandler={setColorTertiary}
-          ></ColorCardItem>
-          <ColorCardItem
-            color={colorBackground2}
-            colorLabel="Secondary Background Color"
-            colorName="secondaryBackgroundColor"
-            changeHandler={setColorBackground2}
-          ></ColorCardItem>
+        <ColorCardItem
+          color={colorBackground}
+          colorLabel="Background Color"
+          colorName="backgroundColor"
+          changeHandler={setColorBackground}
+        ></ColorCardItem>
+        <ColorCardItem
+          color={colorPrimary}
+          colorLabel="Primary Color"
+          colorName="primaryColor"
+          changeHandler={setColorPrimary}
+        ></ColorCardItem>
+        <ColorCardItem
+          color={colorSecondary}
+          colorLabel="Secondary Color"
+          colorName="secondaryColor"
+          changeHandler={setColorSecondary}
+        ></ColorCardItem>
+        <ColorCardItem
+          color={colorTertiary}
+          colorLabel="Tertiary Color"
+          colorName="tertiaryColor"
+          changeHandler={setColorTertiary}
+        ></ColorCardItem>
+        <ColorCardItem
+          color={colorBackground2}
+          colorLabel="Secondary Background Color"
+          colorName="secondaryBackgroundColor"
+          changeHandler={setColorBackground2}
+        ></ColorCardItem>
+      </Box>
+      <Box sx={muiStyles['buttonSelection']}>
+        <Box>
+          <Button
+            variant="outlined"
+            startIcon={<GenerateIcon></GenerateIcon>}
+            type="button"
+            sx={muiStyles['button']}
+            onClick={onGenerateHandler}
+          >
+            Generate
+          </Button>
         </Box>
-        <Box sx={muiStyles['buttonSelection']}>
-          <Box>
-            <Button
-              variant="outlined"
-              startIcon={<GenerateIcon></GenerateIcon>}
-              type="button"
-              sx={muiStyles['button']}
-              onClick={onGenerateHandler}
-            >
-              Generate
-            </Button>
-          </Box>
-          <Box>
-            <Button sx={muiStyles['button']} variant="contained" type="submit">
-              Save
-            </Button>
-          </Box>
+        <Box>
+          <Button sx={muiStyles['button']} variant="contained" type="submit">
+            Save
+          </Button>
         </Box>
-      </form>
-    </Box>
+      </Box>
+    </form>
   );
 }
 
