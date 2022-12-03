@@ -111,7 +111,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
   return (
     <>
       {/* console.log("Phone:", userDetails?.portfolio.contact_me.phone) */}
-      {userDetails
+      {userDetails.portfolio.contact_me.email != "test@email.com"
         ? (
           <>
             {dialog.display

@@ -1,5 +1,6 @@
 import express = require('express');
 const { getUser, addUser, updateUser, getUserByUrl } = require('../models/user');
+const { sendHelp } = require('../models/email');
 
 const userInfo = async (req: express.Request, res: express.Response) => {
   try {
@@ -64,4 +65,16 @@ const saveUser = async (req: express.Request, res: express.Response) => {
   }
 };
 
-module.exports = { userInfo, createUser, saveUser };
+const sendEmail = async (req: express.Request, res: express.Response) => { 
+  try {
+    const { name, email, title, body, target } = req.body;
+  sendHelp(name, email, title, body, target)
+  } catch (e) {
+    console.log('error:'+ e);
+    res.status(500);
+    res.send({ status: 'error', message: e });
+  }
+}
+
+
+module.exports = { userInfo, createUser, saveUser, sendEmail };
