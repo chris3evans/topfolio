@@ -6,7 +6,7 @@ import { UserContext } from '../../utils/UserContext';
 import { Link, useParams } from 'react-router-dom';
 import { User } from '@topfolio/api-interfaces';
 
-export interface DashboardProps {}
+export interface DashboardProps { }
 
 export function Dashboard(props: DashboardProps) {
   const { userDetails, setUser } = useContext(UserContext);
@@ -26,7 +26,7 @@ export function Dashboard(props: DashboardProps) {
       },
       accessToken
     );
-    setUser(response as User);
+    setUser(response.data as User);
   };
 
   return (

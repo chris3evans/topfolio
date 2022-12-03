@@ -34,7 +34,7 @@ export function DashBoardPage(props: DashBoardPageProps) {
       accessToken
     );
     console.log('API RESPONSE:', response);
-    setUser(response as User);
+    setUser(response.data as User);
     setToken(accessToken);
   };
 
