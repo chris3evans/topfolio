@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 import Button from '@mui/material/Button';
 /* eslint-disable-next-line */
 export interface UploadImageWidgetProps {
@@ -13,26 +13,35 @@ export function UploadImageWidget(props: UploadImageWidgetProps) {
   useEffect(() => {
     CloudinaryRef.current = window.cloudinary;
     if (CloudinaryRef.current) {
-      widgetRef.current = CloudinaryRef.current.createUploadWidget({
-        cloudName: "divt6a0ys",
-        uploadPreset: "gqo4iyb7"
-      }, function (error: any, result: any) {
-        if (result.event === 'success') {
-          const imgInfo = {
-            url: result.info.secure_url,
-            id: result.info.public_id
-
+      widgetRef.current = CloudinaryRef.current.createUploadWidget(
+        {
+          cloudName: 'divt6a0ys',
+          uploadPreset: 'gqo4iyb7',
+        },
+        function (error: any, result: any) {
+          if (result.event === 'success') {
+            const imgInfo = {
+              url: result.info.secure_url,
+              id: result.info.public_id,
+            };
+            props.callback(imgInfo);
           }
-          props.callback(imgInfo);
         }
-
-      })
+      );
     }
-
-  }, [])
+  }, []);
   return (
-    <Button variant="contained" component="label" onClick={() => widgetRef.current.open()}>
-      {props.buttonText}
+    <Button
+      variant="contained"
+      component="label"
+      onClick={() => widgetRef.current.open()}
+      sx={{
+        height: '4rem',
+        width: '20rem',
+        fontSize: '1.2rem',
+      }}
+    >
+       {props.buttonText}
     </Button>
   );
 }

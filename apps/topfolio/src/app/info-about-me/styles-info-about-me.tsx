@@ -3,8 +3,6 @@ const muiStyles = {
     backgroundColor: 'white',
     borderRadius: '0.3rem',
     padding: '7.5rem',
-    height: '85%',
-    width: '65%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -14,8 +12,15 @@ const muiStyles = {
     color: 'black',
   },
 
+  imageUploadContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '2rem 0rem 4rem 0rem',
+  },
+
   formFields: {
     fontSize: '2rem',
+    width: '60%',
   },
 
   titleField: {

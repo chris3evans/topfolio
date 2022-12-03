@@ -18,25 +18,22 @@ export interface InfoAboutMeProps {
 }
 
 export function InfoAboutMe(props: InfoAboutMeProps) {
-
   const { userDetails, setUser } = useContext(UserContext);
   const [img, setImage] = useState('');
 
   const getUploadedImage = (img: any) => {
-    setImage(img.url)
+    setImage(img.url);
   };
-
-
   const formSumbitHandler = async function (event: any) {
     try {
       event.preventDefault();
       setUser((current: any) => {
         // @ts-ignore
-        current.portfolio.bio = event.target.bio.value
-        current.portfolio.bio_title = event.target.bio_title.value
-        current.portfolio.hero_image = event.target.hero_image.value
-        current.portfolio.hero_title = event.target.hero_title.value
-        current.portfolio.profile_image = img
+        current.portfolio.bio = event.target.bio.value;
+        current.portfolio.bio_title = event.target.bio_title.value;
+        current.portfolio.hero_image = event.target.hero_image.value;
+        current.portfolio.hero_title = event.target.hero_title.value;
+        current.portfolio.profile_image = img;
         return current;
       });
       console.log(userDetails, 'data to send backend');
@@ -71,15 +68,9 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
           <Box sx={muiStyles.bodyField}>
             <FormControl>
               <InputLabel htmlFor="bio">bio:</InputLabel>
-              <Input
-                type="text"
-                id="bio"
-                name="bio"
-                multiline={true}
-              ></Input>
+              <Input type="text" id="bio" name="bio" multiline={true}></Input>
             </FormControl>
           </Box>
-
 
           <Box sx={muiStyles.bodyField}>
             <FormControl>
@@ -93,7 +84,6 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
             </FormControl>
           </Box>
 
-
           <Box sx={muiStyles.bodyField}>
             <FormControl>
               <InputLabel htmlFor="hero_title">Hero title:</InputLabel>
@@ -106,13 +96,9 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
             </FormControl>
           </Box>
 
-
-          <Box sx={muiStyles.bodyField}>
-            <UploadImageWidget callback={getUploadedImage} buttonText={'Upload Profile image'} />
+          <Box sx={muiStyles.imageUploadContainer}>
+            <UploadImageWidget callback={getUploadedImage} buttonText={'Upload Profile image'}  />
           </Box>
-
-
-
         </Box>
         <Button sx={muiStyles.saveButton} type="submit" variant="contained">
           Save

@@ -31,7 +31,11 @@ export function FormContainer(props: FormContainerProps) {
   return (
     <div className={styles['form-container']}>
       <div className={styles['preview']}>
-        <Button onClick={preview} variant="contained">
+        <Button
+          sx={{ fontSize: '1.4rem' }}
+          onClick={preview}
+          variant="contained"
+        >
           Go to your Portfolio Page
         </Button>
       </div>

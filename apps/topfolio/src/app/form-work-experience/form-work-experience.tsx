@@ -108,9 +108,6 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
             },
           };
         });
-        // // @ts-ignore
-        // const response = await updateUser(userDetails, props.token);
-        // console.log(response);
         closeEditHandler();
       }
     } catch (error) {
@@ -123,7 +120,9 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
       <Typography align="center" sx={muiStyles.formTitle} variant="h2">
         Work Experience
       </Typography>
-      <UploadImageWidget callback={getUploadedImage} buttonText={'Upload a picture'} />
+      <Box sx={muiStyles.imageUploadContainer}>
+        <UploadImageWidget callback={getUploadedImage} buttonText={'Upload a picture'} />
+      </Box>
       <form onSubmit={formSubmitHandler} className={styles['form-we']}>
         <Box sx={muiStyles.formFields}>
           <Box sx={muiStyles.companyField}>
