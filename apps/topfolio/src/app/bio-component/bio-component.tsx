@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import { useContext, useState } from 'react';
 import ContactMeDialog from '../contact-me-dialog/contact-me-dialog';
 import { UserContext } from '../../utils/UserContext';
-import { mockUserState } from '../mockUser';
 import AnimatedImage from '../animated-image/animated-image';
 
 /* eslint-disable-next-line */
@@ -15,14 +14,8 @@ export interface BioComponentProps {}
 export function BioComponent(props: BioComponentProps) {
   const { userDetails } = useContext(UserContext);
 
-<<<<<<< HEAD
   const title = userDetails.portfolio.bio_title;
   const bio = userDetails.portfolio.bio;
-=======
-  const title = userDetails.portfolio.bio_title || mockUserState.name;
-  const bio = userDetails.portfolio.bio || mockUserState.portfolio.bio;
-
->>>>>>> development
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {

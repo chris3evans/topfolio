@@ -28,17 +28,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
     background-position: center;
-    background-size:cover;
-    background-repeat: no-repeat;
-  }.hero-text{
-   margin-top: 5em;
-=======
-    padding: 2em;
     background-size: cover;
-    font-size: 0.7em;
->>>>>>> development
+    background-repeat: no-repeat;
+  }
+
+  .hero-text {
+    margin-top: 5em;
   }
 
   .hero-text {
