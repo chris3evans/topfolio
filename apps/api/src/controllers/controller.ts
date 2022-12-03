@@ -1,5 +1,5 @@
 import express = require('express');
-const { getuser, addUser, updateUser, getUserByUrl } = require('../models/user');
+const { getUser, addUser, updateUser, getUserByUrl } = require('../models/user');
 
 const userInfo = async (req: express.Request, res: express.Response) => {
   try {
@@ -24,11 +24,9 @@ const userInfo = async (req: express.Request, res: express.Response) => {
 const createUser = async (req: express.Request, res: express.Response) => {
   try {
     const userId = req.auth.payload.sub;
-    console.log('USER ID:', userId);
     const newdata = req.body;
     newdata.userId = userId;
-    console.log(req.body, 'req.body');
-    const data = await getuser(userId); //function to try find user with id as param
+    const data = await getUser(userId); //function to try find user with id as param
     if (!data) {
       const user = await addUser(newdata); //create user here with newdata and id for params
       res.status(201);
@@ -47,12 +45,12 @@ const createUser = async (req: express.Request, res: express.Response) => {
 const saveUser = async (req: express.Request, res: express.Response) => {
   try {
     const userId = req.auth.payload.sub;
-    const data = await getuser(userId); //function to try find user with id as param
+    const data = await getUser(userId); //function to try find user with id as param
     if (data) {
       let newdata = req.body;
       newdata.userId = userId;
       await updateUser(newdata, userId); //update user here with newdata and id as params
-      const user = await getuser(userId);
+      const user = await getUser(userId);
       res.status(200);
       res.send({ status: 'success', data: user });
     } else {
