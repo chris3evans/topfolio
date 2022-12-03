@@ -31,12 +31,8 @@ export function FormProjects(props: FormProjectsProps) {
 
   useEffect(() => {
     if (userDetails) {
-      console.log(userDetails, 'here!!!');
       updateUser(userDetails, props.token).then((response) => {
-        setImgArray([]);
-        // @ts-ignore
-        // setUser(response.data)
-        console.log(response, 'response is here!!!');
+        setImgArray([])
       });
     }
   }, [userDetails?.portfolio.projects]);
@@ -110,19 +106,20 @@ export function FormProjects(props: FormProjectsProps) {
         My Projects
       </Typography>
       <Box sx={muiStyles.imageUploadContainer}>
-        <UploadImageWidget callback={getUploadedImage} />
+        <UploadImageWidget callback={getUploadedImage} buttonText={'Upload Project Image'}/>
       </Box>
       <form onSubmit={formSubmitHandler} className={styles['form-projects']}>
         <Box sx={muiStyles.formFields}>
           <Box sx={muiStyles.projectField}>
             <FormControl fullWidth={true}>
-              <InputLabel htmlFor="project-name">Project Name:</InputLabel>
+              <InputLabel htmlFor="project-name" data-testid={'projectNameLabel'}>Project Name:</InputLabel>
               <Input
                 type="text"
                 required
-                id="project name"
+                id="projectname"
                 name="projectName"
                 defaultValue={props.existingData?.name}
+                data-testid={'projectNameInput'}
               ></Input>
             </FormControl>
           </Box>
@@ -137,6 +134,7 @@ export function FormProjects(props: FormProjectsProps) {
                 name="description"
                 multiline={true}
                 defaultValue={props.existingData?.description}
+                data-testid={'descriptionInput'}
               ></Input>
             </FormControl>
           </Box>
@@ -149,10 +147,11 @@ export function FormProjects(props: FormProjectsProps) {
               <Input
                 type="text"
                 required
-                id="git url"
+                id="giturl"
                 name="gitUrl"
                 multiline={true}
                 defaultValue={props.existingData?.github_url}
+                data-testid={'gitUrlInput'}
               ></Input>
             </FormControl>
           </Box>
@@ -163,10 +162,11 @@ export function FormProjects(props: FormProjectsProps) {
               <Input
                 type="text"
                 required
-                id="app url"
+                id="appurl"
                 name="appUrl"
                 multiline={true}
                 defaultValue={props.existingData?.app_url}
+                data-testid={'appUrlInput'}
               ></Input>
             </FormControl>
           </Box>

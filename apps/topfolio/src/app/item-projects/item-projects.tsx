@@ -8,12 +8,16 @@ import EditIcon from '@mui/icons-material/Create';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { UserContext } from '../../utils/UserContext';
 import { useContext } from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
 
 /* eslint-disable-next-line */
 export interface ItemProjectsProps {
   project: MyProjects;
   listener: Function;
-  name: String;
 }
 
 export function ItemProjects(props: ItemProjectsProps) {
@@ -32,67 +36,90 @@ export function ItemProjects(props: ItemProjectsProps) {
           ...current.portfolio,
           projects: [
             ...current.portfolio.projects.filter((projects: MyProjects) => {
-              return projects.name !== props.name
+              return projects.name !== props.project.name
             })
           ]
         }
       }
     })
   }
-
+  //if props.project is empty
   return (
-    <ListItem sx={muiStyles.listItem}>
-      <div className={styles['iconButtons']} >
-        <button onClick={deleteHandler} className={styles['deleteButton']}>
-          <DeleteIcon sx={muiStyles.editIcon}></DeleteIcon>
-        </button>
-        <button onClick={openEditHandler} className={styles['editButton']}>
-          <EditIcon sx={muiStyles.editIcon}></EditIcon>
-        </button>
-      </div>
-      <Box sx={muiStyles.listItemGrid}>
-        <Box sx={muiStyles.listItemGrid2}>
-          <Typography sx={muiStyles.subHeading} variant="h6">
-            Name:{' '}
-            <span className={styles['text']}>{props.project.name}</span>
+    <>
+      <Card sx={{ maxWidth: '50%' }}>
+        <CardMedia
+          component="img"
+          height="auto"
+          image={props.project.images[0]}
+          alt="project image one"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h4" component="div">
+            {props.project.name}
           </Typography>
-          <img
-            className={styles['listItemImage']}
-            src={props.project.images[0]}
-          ></img>
-        </Box>
-
-        <Box sx={muiStyles.description}>
-          <Typography sx={muiStyles.subHeading} variant="h6">
-            Description:{' '}
-            <span className={styles['text']}>{props.project.description}</span>
+          <Typography variant="body2" color="text.secondary">
+            {props.project.description}
           </Typography>
-        </Box>
+        </CardContent>
+        <CardActions>
+          <Button size="small" onClick={deleteHandler} >DELETE</Button>
+          <Button size="small" onClick={openEditHandler}>Edit</Button>
+        </CardActions>
+      </Card>
 
-        <Box sx={muiStyles.listItemGrid3}>
-          <Box>
-            <Typography variant="h6" sx={muiStyles.subHeading}>
-              Github Link:
-              <span className={styles['text']}>
-                {
-                  props.project.github_url
+      {/* <ListItem sx={muiStyles.listItem}>
+        <div className={styles['iconButtons']} >
+          <button onClick={deleteHandler} className={styles['deleteButton']}>
+            <DeleteIcon sx={muiStyles.editIcon}></DeleteIcon>
+          </button>
+          <button onClick={openEditHandler} className={styles['editButton']}>
+            <EditIcon sx={muiStyles.editIcon}></EditIcon>
+          </button>
+        </div>
+        <Box sx={muiStyles.listItemGrid}>
+          <Box sx={muiStyles.listItemGrid2}>
+            <Typography sx={muiStyles.subHeading} variant="h6" >
+              Name:{' '}
+              <span className={styles['text']} data-testid={'projectName'}>{props.project.name}</span>
+            </Typography>
+            <img
+              className={styles['listItemImage']}
+              src={props.project.images[0]}
+            ></img>
+          </Box>
 
-                }
-              </span>
+          <Box sx={muiStyles.description}>
+            <Typography sx={muiStyles.subHeading} variant="h6">
+              Description:{' '}
+              <span className={styles['text']} data-testid={'projectDescription'} >{props.project.description}</span>
             </Typography>
           </Box>
 
-          <Box>
+          <Box sx={muiStyles.listItemGrid3}>
             <Box>
-              <Typography sx={muiStyles.subHeading} variant="h6">
-                App Link:
-                <span className={styles['text']}>{props.project.app_url}</span>
+              <Typography variant="h6" sx={muiStyles.subHeading}>
+                Github Link:
+                <span className={styles['text']} data-testid={'projectGithubUrl'}>
+                  {
+                    props.project.github_url
+
+                  }
+                </span>
               </Typography>
+            </Box>
+
+            <Box>
+              <Box>
+                <Typography sx={muiStyles.subHeading} variant="h6">
+                  App Link:
+                  <span className={styles['text']} data-testid={'projectAppUrl'}>{props.project.app_url}</span>
+                </Typography>
+              </Box>
             </Box>
           </Box>
         </Box>
-      </Box>
-    </ListItem>
+      </ListItem> */}
+    </>
   );
 }
 

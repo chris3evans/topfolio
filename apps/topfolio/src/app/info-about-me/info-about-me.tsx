@@ -24,7 +24,6 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
   const getUploadedImage = (img: any) => {
     setImage(img.url);
   };
-
   const formSumbitHandler = async function (event: any) {
     try {
       event.preventDefault();
@@ -57,7 +56,12 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
           <Box sx={muiStyles.titleField}>
             <FormControl fullWidth={true}>
               <InputLabel htmlFor="bio_title">Bio title:</InputLabel>
-              <Input type="text" id="bio_title" name="bio_title"></Input>
+              <Input
+                type="text"
+                id="bio_title"
+                name="bio_title"
+                multiline={true}
+              ></Input>
             </FormControl>
           </Box>
 
@@ -93,7 +97,7 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
           </Box>
 
           <Box sx={muiStyles.imageUploadContainer}>
-            <UploadImageWidget callback={getUploadedImage} />
+            <UploadImageWidget callback={getUploadedImage} buttonText={'Upload Profile image'}  />
           </Box>
         </Box>
         <Button sx={muiStyles.saveButton} type="submit" variant="contained">
