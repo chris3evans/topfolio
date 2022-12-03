@@ -1,46 +1,43 @@
-.container{
+.container {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2em;
   background-size: cover;
   font-size: 1.3em;
+  background-position: center;
+
+
 }
+
 .container h2 {
   font-size: 1.5em
 }
+
 .container p {
   font-size: 0.9em
 }
-.hero-text{
+
+.hero-text {
   width: 70%;
 }
-.box {
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  border-radius: 50%;
-}
-.box  > img {
-  flex-shrink: 0;
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  max-width: 100%;
-}
 @media only screen and (max-width: 600px) {
-  .container{
+  .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2em;
+    background-position: center;
     background-size: cover;
-    font-size: 0.7em;
-  }.hero-text{
-   margin-top: 5em;
+    background-repeat: no-repeat;
+  }
+
+  .hero-text {
+    margin-top: 5em;
+  }
+
+  .hero-text {
+    margin-top: 5em;
   }
 }

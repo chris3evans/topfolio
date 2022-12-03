@@ -9,22 +9,10 @@ export const workHistoryAnimation = (id: string) => {
         trigger: element,
         start: 'top center',
         toggleActions: 'play none none none',
+        markers: true,
       },
       duration: 1.5,
       autoAlpha: 1,
-    });
-  });
-};
-export const projectsAnimation = (id: string) => {
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.utils.toArray<HTMLElement>(id).forEach((element: any) => {
-    gsap.to(element, {
-      scrollTrigger: {
-        trigger: element,
-        toggleActions: 'play none none none',
-      },
-      xPercent: 80,
-      duration: 2,
     });
   });
 };
@@ -61,18 +49,3 @@ export const pageScrollAnimation = () => {
     },
   });
 };
-// export const buttonRollOnScroll = (buttonClass: string, trigger: string) => {
-//   gsap.registerPlugin(ScrollTrigger);
-//   gsap.to(buttonClass, { x: 200 });
-//   gsap.to(buttonClass, {
-//     scrollTrigger: {
-//       start: 'top center',
-//       toggleActions: 'restart pause reverse pause',
-//       trigger: trigger,
-//     },
-//     x: 200,
-//     rotation: 360,
-//     ease: 'none',
-//     duration: 1,
-//   });
-// };

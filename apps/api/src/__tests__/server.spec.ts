@@ -3,8 +3,8 @@ const router = require('../router')
 const supertest = require('supertest');
 const model = require('../schemas/user');
 const mongoose = require('mongoose');
-const databaseName = 'test';
 import { errorHandler } from "../middleware/error.middleware";
+import { environment } from "../environments/environment"
 
 describe('server intergration tests', () => { 
 
@@ -13,11 +13,9 @@ describe('server intergration tests', () => {
   app.use(router)
   app.use(errorHandler);
   const request = supertest(app)
-  const token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InlHR2c5bmFFWkpISlBaaVFDZ21UNyJ9.eyJpc3MiOiJodHRwczovL2Rldi1vbmJkdDhjM3ozam5tN3JrLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2Mzg3NDMwMzY3YWQzZTA5MDMwY2UyYzQiLCJhdWQiOlsiaHR0cHM6Ly9oZWxsby13b3JsZC5leGFtcGxlLmNvbSIsImh0dHBzOi8vZGV2LW9uYmR0OGMzejNqbm03cmsudXMuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTY2OTk2OTkwMCwiZXhwIjoxNjcwMDU2MzAwLCJhenAiOiJyUWtBWW9QSkt3cnZZUkpJVGxVb09jemxnRUFxTU0wQSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6W119.TZcTU-LWCYGN2LlsqD7E32BbD2DqB5AeOflgFrXwUGstO6y_qoDo9a67PTbeo2IYEqXDfezXlVppJEFZiMorR0pALHE55M-HP7tg92kaLr6fm3uqHaJbiE8Gr5jEhSkghsJbWl7EHEjoJub1lfCZvpXgXUZbr7R5khrp12MLwHt54h9n9wjGfXU7-eXIWHmd6z2_k1qTbQ_kJQ4xIuwv8MfrKN73i29R6_ApUcb0HFWR8eYFHrJkG6BW2mY9IDgXx5-Q4PrUANnvqe3GRCTlSkcl3_M4RQnypXxyNFMXqly7dlwecwy-OLzOtj0kdshbH45TMiZv2DKeFkO0L9BGMg';
 
   beforeAll(async () => { 
-    const url = `mongodb://127.0.0.1/${databaseName}`
-    await mongoose.connect(url, { useNewUrlParser: true })
+    await mongoose.connect(environment.Test_db, { useNewUrlParser: true })
     await model.remove()
   })
 
@@ -25,7 +23,7 @@ describe('server intergration tests', () => {
     await model.remove()
   })
 
-  const headers = {'Authorization': `Bearer ${token}`}
+  const headers = {'Authorization': `Bearer ${environment.Test_token}`}
   const user = {
     userId: "123",
     slug_url: "1234",
