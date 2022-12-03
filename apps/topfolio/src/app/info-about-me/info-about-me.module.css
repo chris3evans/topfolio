@@ -4,3 +4,21 @@
   align-items: center;
   width: 100%;
 }
+
+.pimg {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.himg {
+  max-width: 100%;
+}
+
+.customLabel {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1.4rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  margin-bottom: 15px;
+  margin-left: 10px;
+}

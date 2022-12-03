@@ -1,4 +1,4 @@
-.container{
+.container {
   height: 100%;
   display: flex;
   justify-content: center;
@@ -7,15 +7,19 @@
   background-size: cover;
   font-size: 1.3em;
 }
+
 .container h2 {
   font-size: 1.5em
 }
+
 .container p {
   font-size: 0.9em
 }
-.hero-text{
+
+.hero-text {
   width: 70%;
 }
+
 .box {
 
   display: flex;
@@ -24,15 +28,17 @@
   overflow: hidden;
   border-radius: 50%;
 }
-.box  > img {
+
+.box>img {
   flex-shrink: 0;
   min-width: 100%;
   min-height: 100%;
   object-fit: cover;
   max-width: 100%;
 }
+
 @media only screen and (max-width: 600px) {
-  .container{
+  .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,7 +46,9 @@
     padding: 2em;
     background-size: cover;
     font-size: 0.7em;
-  }.hero-text{
-   margin-top: 5em;
+  }
+
+  .hero-text {
+    margin-top: 5em;
   }
 }
