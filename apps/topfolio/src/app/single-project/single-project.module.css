@@ -44,16 +44,28 @@ img
   padding: 1em;
   width: 30%;
   left:36%;
-  top: 55%;
+  top: 62%;
+
   border-radius: 10px;
   background-color:var(--secondary-background);
   color: white;
+
+}
+.infos h4{
+  font-size: 1.8em;
+  font-weight: 700;
+}
+.infos p{
+  font-size: 1.5em;
+  font-weight: 500;
 
 }
 .links {
   display: flex;
   gap: 1em;
   color: white;
+  font-size: 1.8em;
+  font-weight: 700;
 }
 .links > a{
   color: white;
@@ -62,18 +74,37 @@ img
 
 @media only screen and (max-width: 600px) {
   .projects-cont{
-    flex-shrink: 0;
-    width:100%;
-    margin-top:10em;
+    margin-top:3em;
   }
-  .laptop-bg
-{
-  background-size: contain;
-  background-clip: border-box;
-  position:relative;
-  background-position: center center;
-  background-repeat: no-repeat;
-  margin-top:7em;
+  .infos {
 
+    left:36%;
+    top: 50%;
+
+    border-radius: 10px;
+    background-color:var(--secondary-background);
+    color: white;
+
+  }
+  .infos h4{
+    font-size: 1.1em;
+    font-weight: 700;
+  }
+  .infos p{
+    font-size: 1em;
+    font-weight: 500;
+
+  }
+  .links {
+    display: flex;
+    gap: 1em;
+    color: white;
+    font-size: 1.1em;
+    font-weight: 700;
+  }
+
+.laptop-bg > .laptop-content-bg
+{
+   z-index: 0;
 }
 }

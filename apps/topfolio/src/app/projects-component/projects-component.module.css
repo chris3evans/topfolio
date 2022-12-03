@@ -8,8 +8,8 @@
 @media only screen and (max-width: 600px) {
   .projects-cont{
     width:99vw;
-    overflow-x: hidden;
-    margin-top:10em
+    flex-direction: column;
+    gap:10em
 
   }
 }

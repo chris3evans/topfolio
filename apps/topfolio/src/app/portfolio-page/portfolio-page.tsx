@@ -41,7 +41,7 @@ export function PortfolioPage(props: PortfolioPageProps) {
       if (props.viewMode && loading) {
         const ctx = gsap.context(() => {
           workHistoryAnimation('#WorkHistory');
-          pageScrollAnimation();
+          if (window.innerWidth > 600) pageScrollAnimation();
         });
         return () => ctx.revert(); // cleanup
       }
