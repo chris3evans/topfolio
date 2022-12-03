@@ -25,7 +25,7 @@ export const mockUserState: User = {
         description: 'description',
         github_url: 'https://github.com/chris3evans/topfolio',
         app_url: 'www.google.com',
-        _id: 'asdfa'
+        _id: 'asdfa',
       },
       {
         name: 'coolfolio',
@@ -33,7 +33,7 @@ export const mockUserState: User = {
         description: 'description',
         github_url: 'https://github.com/chris3evans/topfolio',
         app_url: '',
-        _id: 'assdffa'
+        _id: 'assdffa',
       },
       {
         name: 'coolApp',
@@ -41,7 +41,7 @@ export const mockUserState: User = {
         description: 'description',
         github_url: 'https://github.com/chris3evans/topfolio',
         app_url: '',
-        _id: 'qwerr'
+        _id: 'qwerr',
       },
     ],
     contact_me: {
