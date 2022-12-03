@@ -1,4 +1,3 @@
-import styles from './color-theme-section.module.css';
 import FormColorTheme from '../form-color-theme/form-color-theme';
 import CurrentColorTheme from '../current-color-theme/current-color-theme';
 import muiStyles from './styles-color-theme-section';

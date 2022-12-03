@@ -1,4 +1,3 @@
-import styles from './color-card-item.module.css';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import muiStyles from './styles-color-card-item';
@@ -30,7 +29,6 @@ export function ColorCardItem(props: ColorCardItemProps) {
         value={`#${props.color}`}
         onInputCapture={(event: any) => {
           props.changeHandler(event.target.value.replace('#', ''));
-          console.log('color change');
         }}
       ></TextField>
     </Box>

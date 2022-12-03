@@ -1,10 +1,8 @@
-import styles from './current-color-theme.module.css';
 import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
 import muiStyles from './styles-current-color-theme';
 import { useEffect, useContext, useState } from 'react';
 import { UserContext } from '../../utils/UserContext';
-import { Theme } from '@topfolio/api-interfaces';
 
 /* eslint-disable-next-line */
 export interface CurrentColorThemeProps {}
