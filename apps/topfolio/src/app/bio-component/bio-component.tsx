@@ -27,9 +27,15 @@ export function BioComponent(props: BioComponentProps) {
   };
   return (
     <div className={styles['container']} id="bio-component">
-      <div className={styles['text-cont']}>
-        <MovingTitleComponent text={title} alignCenter={false} />
-        <MovingParagraphComponent text={bio} />
+      <div className={styles['cont-flex']}>
+        <div className={styles['text-cont']}>
+          <MovingTitleComponent text={title} alignCenter={false} />
+          <MovingParagraphComponent text={bio} />
+        </div>
+        <div className={styles['box']}>
+          {' '}
+          <img src={userDetails.portfolio.profile_image} alt="ProfilePicture" />
+        </div>
       </div>
       <motion.div
         className={styles['button-box']}

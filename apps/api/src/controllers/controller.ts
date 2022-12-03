@@ -9,15 +9,15 @@ const userInfo = async (req: express.Request, res: express.Response) => {
 
     if (data) {
       res.status(200);
-      res.send({ status: 'success', data: data });
+      res.send({ error: '', data });
     } else {
       res.status(404);
-      res.send({ status: 'error', message: 'User Not found' });
+      res.send({ error: 'User Not found', data: {} });
     }
   } catch (error) {
     console.log('error: ' + error);
     res.status(500);
-    res.send({ status: 'error', message: error });
+    res.send({ error, data: {} });
   }
 };
 
@@ -31,15 +31,15 @@ const createUser = async (req: express.Request, res: express.Response) => {
     if (!data) {
       const user = await addUser(newdata); //create user here with newdata and id for params
       res.status(201);
-      res.send(user); //{ status: 'success', data: user }
+      res.send({ error: '', data: user }); //{ status: 'success', data: user }
     } else {
       res.status(202);
-      res.send(data); //{ status: 'Success: user already exists', data }
+      res.send({ error: '', data }); //{ status: 'Success: user already exists', data:data }
     }
   } catch (error) {
     console.log('error: ' + error);
     res.status(500);
-    res.send({ status: 'error', message: error });
+    res.send({ error, data: {} });
   }
 };
 
@@ -53,15 +53,15 @@ const saveUser = async (req: express.Request, res: express.Response) => {
       await updateUser(newdata, userId); //update user here with newdata and id as params
       const user = await getUser(userId);
       res.status(200);
-      res.send({ status: 'success', data: user });
+      res.send({ error: '', data: user });
     } else {
       res.status(404);
-      res.send({ status: 'error', message: "User doesn't exist" });
+      res.send({ error: "User doesn't exist", data: {} });
     }
   } catch (error) {
     console.log('error: ' + error);
     res.status(500);
-    res.send({ status: 'error', message: error });
+    res.send({ error, data: {} });
   }
 };
 
