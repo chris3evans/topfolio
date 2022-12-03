@@ -2,7 +2,8 @@ import { useEffect, useRef } from "react";
 import Button from '@mui/material/Button';
 /* eslint-disable-next-line */
 export interface UploadImageWidgetProps {
-  callback: (imgInfo: { url: string, id: string }) => void
+  callback: (imgInfo: { url: string, id: string }) => void,
+  buttonText: string
 }
 
 export function UploadImageWidget(props: UploadImageWidgetProps) {
@@ -31,7 +32,7 @@ export function UploadImageWidget(props: UploadImageWidgetProps) {
   }, [])
   return (
     <Button variant="contained" component="label" onClick={() => widgetRef.current.open()}>
-      Upload profile photo
+      {props.buttonText}
     </Button>
   );
 }

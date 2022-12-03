@@ -115,7 +115,7 @@ export function FormProjects(props: FormProjectsProps) {
       <Typography align="center" sx={muiStyles.formTitle} variant="h2">
         My Projects
       </Typography>
-      <UploadImageWidget callback={getUploadedImage} />
+      <UploadImageWidget callback={getUploadedImage} buttonText={'Upload Project Image'} />
       <form onSubmit={formSubmitHandler} className={styles['form-we']}>
         <Box sx={muiStyles.formFields}>
 
