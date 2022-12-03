@@ -13,7 +13,6 @@ import { useContext } from 'react';
 export interface ItemProjectsProps {
   project: MyProjects;
   listener: Function;
-  name: String;
 }
 
 export function ItemProjects(props: ItemProjectsProps) {
@@ -32,7 +31,7 @@ export function ItemProjects(props: ItemProjectsProps) {
           ...current.portfolio,
           projects: [
             ...current.portfolio.projects.filter((projects: MyProjects) => {
-              return projects.name !== props.name
+              return projects.name !== props.project.name
             })
           ]
         }
@@ -52,9 +51,9 @@ export function ItemProjects(props: ItemProjectsProps) {
       </div>
       <Box sx={muiStyles.listItemGrid}>
         <Box sx={muiStyles.listItemGrid2}>
-          <Typography sx={muiStyles.subHeading} variant="h6">
+          <Typography sx={muiStyles.subHeading} variant="h6" >
             Name:{' '}
-            <span className={styles['text']}>{props.project.name}</span>
+            <span className={styles['text']} data-testid={'projectName'}>{props.project.name}</span>
           </Typography>
           <img
             className={styles['listItemImage']}
@@ -65,7 +64,7 @@ export function ItemProjects(props: ItemProjectsProps) {
         <Box sx={muiStyles.description}>
           <Typography sx={muiStyles.subHeading} variant="h6">
             Description:{' '}
-            <span className={styles['text']}>{props.project.description}</span>
+            <span className={styles['text']} data-testid={'projectDescription'} >{props.project.description}</span>
           </Typography>
         </Box>
 
@@ -73,7 +72,7 @@ export function ItemProjects(props: ItemProjectsProps) {
           <Box>
             <Typography variant="h6" sx={muiStyles.subHeading}>
               Github Link:
-              <span className={styles['text']}>
+              <span className={styles['text']} data-testid={'projectGithubUrl'}>
                 {
                   props.project.github_url
 
@@ -86,7 +85,7 @@ export function ItemProjects(props: ItemProjectsProps) {
             <Box>
               <Typography sx={muiStyles.subHeading} variant="h6">
                 App Link:
-                <span className={styles['text']}>{props.project.app_url}</span>
+                <span className={styles['text']} data-testid={'projectAppUrl'}>{props.project.app_url}</span>
               </Typography>
             </Box>
           </Box>

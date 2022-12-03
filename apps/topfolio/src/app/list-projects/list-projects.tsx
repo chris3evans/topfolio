@@ -31,7 +31,6 @@ export function ListProjects(props: ListProjectsProps) {
                 <ItemProjects
                   project={project}
                   listener={setEditItemId}
-                  name={project.name}
                   key={`${project._id} + ${Math.random()}`}
                 ></ItemProjects>
               );

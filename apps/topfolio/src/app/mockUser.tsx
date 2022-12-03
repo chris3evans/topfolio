@@ -24,7 +24,7 @@ export const mockUserState: User = {
         images: ['../assets/project2.jpg'],
         description: 'description',
         github_url: 'https://github.com/chris3evans/topfolio',
-        app_url: '',
+        app_url: 'www.google.com',
         _id: 'asdfa',
       },
       {
