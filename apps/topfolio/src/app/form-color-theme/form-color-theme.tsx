@@ -8,6 +8,7 @@ import { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import { colorApi } from '../../utils/ApiService';
 import { updateUser } from '../../utils/ApiService';
+import ColorCardItem from '../color-card-item/color-card-item';
 
 /* eslint-disable-next-line */
 export interface FormColorThemeProps {
@@ -90,106 +91,46 @@ export function FormColorTheme(props: FormColorThemeProps) {
     <Box sx={muiStyles['colorThemeForm']}>
       <form onSubmit={onSubmitHandler} className={styles['color-theme-form']}>
         <Box sx={muiStyles['colorSelection']}>
-          <Box sx={muiStyles['colorItem']}>
-            <Box
-              sx={{
-                backgroundColor: `#${colorBackground}`,
-                height: '20rem',
-                width: '100%',
-              }}
-            ></Box>
-            <TextField
-              sx={muiStyles['colorInput']}
-              label="Background Color"
-              variant="standard"
-              type="color"
-              name="backgroundColor"
-              value={`#${colorBackground}`}
-              onChange={(event: any) => {
-                setColorBackground(event.target.value.replace('#', ''));
-              }}
-            ></TextField>
-          </Box>
-          <Box sx={muiStyles['colorItem']}>
-            <Box
-              sx={{
-                backgroundColor: `#${colorPrimary}`,
-                height: '20rem',
-                width: '100%',
-              }}
-            ></Box>
-            <TextField
-              label="Primary Color"
-              sx={muiStyles['colorInput']}
-              variant="standard"
-              type="color"
-              name="primaryColor"
-              value={`#${colorPrimary}`}
-              onInputCapture={(event: any) => {
-                setColorPrimary(event.target.value.replace('#', ''));
-              }}
-            ></TextField>
-          </Box>
-          <Box sx={muiStyles['colorItem']}>
-            <Box
-              sx={{
-                backgroundColor: `#${colorSecondary}`,
-                height: '20rem',
-                width: '100%',
-              }}
-            ></Box>
-            <TextField
-              sx={muiStyles['colorInput']}
-              label="Secondary Color"
-              variant="standard"
-              type="color"
-              name="secondaryColor"
-              value={`#${colorSecondary}`}
-              onInputCapture={(event: any) => {
-                setColorSecondary(event.target.value.replace('#', ''));
-              }}
-            ></TextField>
-          </Box>
-          <Box sx={muiStyles['colorItem']}>
-            <Box
-              sx={{
-                backgroundColor: `#${colorTertiary}`,
-                height: '20rem',
-                width: '100%',
-              }}
-            ></Box>
-            <TextField
-              sx={muiStyles['colorInput']}
-              label="Tertiary Color"
-              variant="standard"
-              type="color"
-              name="tertiaryColor"
-              value={`#${colorTertiary}`}
-              onInputCapture={(event: any) => {
-                setColorTertiary(event.target.value.replace('#', ''));
-              }}
-            ></TextField>
-          </Box>
-          <Box sx={muiStyles['colorItem']}>
-            <Box
-              sx={{
-                backgroundColor: `#${colorBackground2}`,
-                height: '20rem',
-                width: '100%',
-              }}
-            ></Box>
-            <TextField
-              sx={muiStyles['colorInput']}
-              label="Secondary Background Color"
-              variant="standard"
-              type="color"
-              name="secondaryBackgroundColor"
-              value={`#${colorBackground2}`}
-              onInputCapture={(event: any) => {
-                setColorBackground2(event.target.value.replace('#', ''));
-              }}
-            ></TextField>
-          </Box>
+          <ColorCardItem
+            color={colorBackground}
+            colorLabel="Background Color"
+            colorName="backgroundColor"
+            changeHandler={(event: any) => {
+              setColorBackground(event.target.value.replace('#', ''));
+            }}
+          ></ColorCardItem>
+          <ColorCardItem
+            color={colorPrimary}
+            colorLabel="Primary Color"
+            colorName="primaryColor"
+            changeHandler={(event: any) => {
+              setColorPrimary(event.target.value.replace('#', ''));
+            }}
+          ></ColorCardItem>
+          <ColorCardItem
+            color={colorSecondary}
+            colorLabel="Secondary Color"
+            colorName="secondaryColor"
+            changeHandler={(event: any) => {
+              setColorSecondary(event.target.value.replace('#', ''));
+            }}
+          ></ColorCardItem>
+          <ColorCardItem
+            color={colorTertiary}
+            colorLabel="Tertiary Color"
+            colorName="tertiaryColor"
+            changeHandler={(event: any) => {
+              setColorTertiary(event.target.value.replace('#', ''));
+            }}
+          ></ColorCardItem>
+          <ColorCardItem
+            color={colorBackground2}
+            colorLabel="Secondary Background Color"
+            colorName="secondaryBackgroundColor"
+            changeHandler={(event: any) => {
+              setColorBackground2(event.target.value.replace('#', ''));
+            }}
+          ></ColorCardItem>
         </Box>
         <Box sx={muiStyles['buttonSelection']}>
           <Box>
