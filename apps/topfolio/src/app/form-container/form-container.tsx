@@ -35,37 +35,38 @@ export function FormContainer(props: FormContainerProps) {
           Go to your Portfolio Page
         </Button>
       </div>
-
-      {props.sectionName == 'about-me' ? (
-        <InfoAboutMe token={props.token}></InfoAboutMe>
-      ) : (
-        ''
-      )}
-      {props.sectionName == 'work-experience' ? (
-        <ListWorkExperience token={props.token}></ListWorkExperience>
-      ) : (
-        ''
-      )}
-      {props.sectionName == 'contact-me' ? (
-        <ContactMeForm token={props.token}></ContactMeForm>
-      ) : (
-        ''
-      )}
-      {props.sectionName == 'projects' ? (
-        <ListProjects token={props.token}></ListProjects>
-      ) : (
-        ''
-      )}
-      {props.sectionName == 'layout' ? (
-        <Layout token={props.token}></Layout>
-      ) : (
-        ''
-      )}
-      {props.sectionName == 'color-theme' ? (
-        <FormColorTheme token={props.token}></FormColorTheme>
-      ) : (
-        ''
-      )}
+      <div className={styles['forms']}>
+        {props.sectionName == 'about-me' ? (
+          <InfoAboutMe token={props.token}></InfoAboutMe>
+        ) : (
+          ''
+        )}
+        {props.sectionName == 'work-experience' ? (
+          <ListWorkExperience token={props.token}></ListWorkExperience>
+        ) : (
+          ''
+        )}
+        {props.sectionName == 'contact-me' ? (
+          <ContactMeForm token={props.token}></ContactMeForm>
+        ) : (
+          ''
+        )}
+        {props.sectionName == 'projects' ? (
+          <ListProjects token={props.token}></ListProjects>
+        ) : (
+          ''
+        )}
+        {props.sectionName == 'layout' ? (
+          <Layout token={props.token}></Layout>
+        ) : (
+          ''
+        )}
+        {props.sectionName == 'color-theme' ? (
+          <FormColorTheme token={props.token}></FormColorTheme>
+        ) : (
+          ''
+        )}
+      </div>
     </div>
   );
 }
