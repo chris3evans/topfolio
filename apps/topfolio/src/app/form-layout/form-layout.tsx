@@ -1,6 +1,6 @@
-import PortfolioPage from '../portfolio-page/portfolio-page';
+import { PortfolioPage } from '../portfolio-page/portfolio-page';
 import styles from './form-layout.module.css';
-import { useContext, useState, useEffect } from 'react';
+import { useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import Button from '@mui/material/Button';
 import { updateUser } from '../../utils/ApiService';
@@ -11,20 +11,23 @@ export interface FormLayoutProps {
 }
 
 export function FormLayout(props: FormLayoutProps) {
-
   const { userDetails, setUser } = useContext(UserContext);
   const saveLayout = async () => {
     if (userDetails) {
       const response = await updateUser(userDetails, props.token);
-      console.log("API RESPONSE:", response);
+      console.log('API RESPONSE:', response);
     }
-  }
+  };
 
   return (
     <div>
       <h1>Layout Preview</h1>
       <div className={styles['layoutPreview']}>
-        Drag & Drop the sections of your portfolio to change the order. Click "Save Layout" to keep the changes. <Button onClick={saveLayout} variant="contained">Save Layout</Button>
+        Drag & Drop the sections of your portfolio to change the order. Click
+        "Save Layout" to keep the changes.{' '}
+        <Button onClick={saveLayout} variant="contained">
+          Save Layout
+        </Button>
       </div>
       <PortfolioPage viewMode={false} {...props} />
     </div>

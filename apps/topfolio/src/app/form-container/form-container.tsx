@@ -7,7 +7,9 @@ import Layout from '../form-layout/form-layout';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import ListWorkExperience from '../list-work-experience/list-work-experience';
+import ListProjects from '../list-projects/list-projects';
 import FormColorTheme from '../form-color-theme/form-color-theme';
+import Button from '@mui/material/Button';
 
 /* eslint-disable-next-line */
 export interface FormContainerProps {
@@ -19,45 +21,56 @@ export function FormContainer(props: FormContainerProps) {
   const userContext = useContext(UserContext);
   console.log(userContext);
 
+  const preview = () => {
+    window.open(
+      '/' + userContext.userDetails?.slug_url + '-portfolio',
+      '_blank'
+    );
+  };
+
   return (
     <div className={styles['form-container']}>
-      {props.sectionName == 'about-me' ? (
-        <InfoAboutMe token={props.token}></InfoAboutMe>
-      ) : (
-        ''
-      )}
-      {props.sectionName == 'work-experience' ? (
-        /* @ts-ignore */
-        userContext.userDetails &&
-        userContext.userDetails.portfolio.work_history.length ? (
+      <div className={styles['preview']}>
+        <Button
+          sx={{ fontSize: '1.4rem' }}
+          onClick={preview}
+          variant="contained"
+        >
+          Go to your Portfolio Page
+        </Button>
+      </div>
+      <div className={styles['forms']}>
+        {props.sectionName == 'about-me' ? (
+          <InfoAboutMe token={props.token}></InfoAboutMe>
+        ) : (
+          ''
+        )}
+        {props.sectionName == 'work-experience' ? (
           <ListWorkExperience token={props.token}></ListWorkExperience>
         ) : (
-          <FormWorkExperience
-            existingData={null}
-            token={props.token}
-            key={null}
-            listener={null}
-          ></FormWorkExperience>
-        )
-      ) : (
-        ''
-      )}
-      {props.sectionName == 'contact-me' ? (
-        <ContactMeForm token={props.token}></ContactMeForm>
-      ) : (
-        ''
-      )}
-      {props.sectionName == 'projects' ? <FormProjects></FormProjects> : ''}
-      {props.sectionName == 'layout' ? (
-        <Layout token={props.token}></Layout>
-      ) : (
-        ''
-      )}
-      {props.sectionName == 'color-theme' ? (
-        <FormColorTheme token={props.token}></FormColorTheme>
-      ) : (
-        ''
-      )}
+          ''
+        )}
+        {props.sectionName == 'contact-me' ? (
+          <ContactMeForm token={props.token}></ContactMeForm>
+        ) : (
+          ''
+        )}
+        {props.sectionName == 'projects' ? (
+          <ListProjects token={props.token}></ListProjects>
+        ) : (
+          ''
+        )}
+        {props.sectionName == 'layout' ? (
+          <Layout token={props.token}></Layout>
+        ) : (
+          ''
+        )}
+        {props.sectionName == 'color-theme' ? (
+          <FormColorTheme token={props.token}></FormColorTheme>
+        ) : (
+          ''
+        )}
+      </div>
     </div>
   );
 }

@@ -5,112 +5,115 @@ import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { updateUser } from '../../utils/ApiService';
 import { UserContext } from '../../utils/UserContext';
 import { useContext, useEffect, useState } from 'react';
-import { Cloudinary } from "@cloudinary/url-gen";
-import { AdvancedImage } from '@cloudinary/react';
-import { fill } from "@cloudinary/url-gen/actions/resize";
 import UploadImageWidget from '../upload-image-widget/upload-image-widget';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
+import { MyProjects } from '@topfolio/api-interfaces';
+// import { Cloudinary } from "@cloudinary/url-gen";
 
-export interface FormProjectsProps { }
+export interface FormProjectsProps {
+  token: string;
+  existingData: MyProjects | null;
+  listener: Function | null;
+}
+
 export function FormProjects(props: FormProjectsProps) {
-  const context = useContext(UserContext);
-  const cld = new Cloudinary({
-    cloud: {
-      cloudName: 'divt6a0ys'
-    }
-  })
-
-  const [imgArray, setImageArray] = useState<{ url: string, id: string }[]>([]);
-  // Instantiate a CloudinaryImage object for the image with the public ID, 'docs/models'.
-  const myImage = cld.image('hefrxnlroorhexwk6gwx');
-  console.log(myImage, "myImage")
-  // // Resize to 250 x 250 pixels using the 'fill' crop mode.
-  // myImage.resize(fill().width(250).height(250));
-  //const imgArray: string[] = [];
-  const getUploadedImage = (img: { url: string, id: string }) => {
-
-    //imgArray.push(url);
-    setImageArray(array => {
-      return [
-        ...array,
-        img
-      ]
+  const { userDetails, setUser } = useContext(UserContext);
+  const [imgArray, setImgArray] = useState<string[]>([]);
+  const getUploadedImage = (img: { url: string; id: string }) => {
+    const imgurl = img.url;
+    setImgArray((array) => {
+      return [...array, imgurl];
     });
-
-  }
-
-  const deleteImage = (id: string) => {
-    setImageArray(array => {
-      return array.filter(img => img.id !== id);
-    });
-  }
+  };
 
   useEffect(() => {
-    console.log("IMAGE ARRAY:", imgArray);
-  }, [imgArray])
+    if (userDetails) {
+      console.log(userDetails, 'here!!!');
+      updateUser(userDetails, props.token).then((response) => {
+        setImgArray([]);
+        // @ts-ignore
+        // setUser(response.data)
+        console.log(response, 'response is here!!!');
+      });
+    }
+  }, [userDetails?.portfolio.projects]);
+
+  const closeEditHandler = function () {
+    if (props.listener) {
+      props.listener('1');
+    }
+  };
 
   const formSubmitHandler = async function (event: any) {
     try {
-      event.preventDefault();
+      if (props.existingData) {
+        event.preventDefault();
 
-      const formData = {
-        company_name: event.target.projectName.value,
-        description: event.target.description.value,
-        start_date: event.target.gitUrl.value,
-        end_date: event.target.appUrl.value,
-      };
+        const formExistingData = {
+          name: event.target.projectName.value,
+          images: imgArray,
+          description: event.target.description.value,
+          github_url: event.target.gitUrl.value,
+          app_url: event.target.appUrl.value,
+          _id: props.existingData._id,
+        };
 
-      const response = await updateUser(formData, '');
-      console.log(response);
+        setUser((current: any) => {
+          return {
+            ...current,
+            portfolio: {
+              ...current.portfolio,
+              projects: [
+                ...current.portfolio.projects.map((projects: MyProjects) => {
+                  if (projects.name === props.existingData?.name) {
+                    return formExistingData;
+                  } else {
+                    return projects;
+                  }
+                }),
+              ],
+            },
+          };
+        });
+        closeEditHandler();
+      } else {
+        event.preventDefault();
+        const formData = {
+          name: event.target.projectName.value,
+          images: imgArray,
+          description: event.target.description.value,
+          github_url: event.target.gitUrl.value,
+          app_url: event.target.appUrl.value,
+        };
+        setUser((current: any) => {
+          return {
+            ...current,
+            portfolio: {
+              ...current.portfolio,
+              projects: [...current.portfolio.projects, formData],
+            },
+          };
+        });
+        closeEditHandler();
+      }
     } catch (error) {
-      console.error(error);
+      console.error(error, 'front end error');
     }
   };
 
   return (
-    //Display all images in array
-    //Allow to delete one of the uploaded images
-    //Remove the deleted image from the image array
-    //send the form with the remaining images
-
     <Box sx={muiStyles.form}>
       <Typography align="center" sx={muiStyles.formTitle} variant="h2">
         My Projects
       </Typography>
-      {/* name: string;
-  images: string[];
-  description: string;
-  github_url: string;
-  app_url: string; */}
-      <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
-        {imgArray.map((img, index) => (
-          <ImageListItem key={index}>
-            <img
-              src={`${img.url}?w=164&h=164&fit=crop&auto=format`}
-              srcSet={`${img.url}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-              loading="lazy"
-              onClick={() => deleteImage(img.id)}
-            />
-          </ImageListItem>
-        ))}
-      </ImageList>
-      {/* <AdvancedImage cldImg={myImage} /> */}
-      {
-        //@ts-ignore
-      }
-      <UploadImageWidget callback={getUploadedImage} />
-      <form onSubmit={formSubmitHandler} className={styles['form-we']}>
+      <Box sx={muiStyles.imageUploadContainer}>
+        <UploadImageWidget callback={getUploadedImage} />
+      </Box>
+      <form onSubmit={formSubmitHandler} className={styles['form-projects']}>
         <Box sx={muiStyles.formFields}>
-
           <Box sx={muiStyles.projectField}>
             <FormControl fullWidth={true}>
               <InputLabel htmlFor="project-name">Project Name:</InputLabel>
@@ -119,12 +122,10 @@ export function FormProjects(props: FormProjectsProps) {
                 required
                 id="project name"
                 name="projectName"
+                defaultValue={props.existingData?.name}
               ></Input>
             </FormControl>
-
           </Box>
-
-
 
           <Box sx={muiStyles.descriptionField}>
             <FormControl fullWidth={true}>
@@ -135,21 +136,23 @@ export function FormProjects(props: FormProjectsProps) {
                 id="description"
                 name="description"
                 multiline={true}
+                defaultValue={props.existingData?.description}
               ></Input>
             </FormControl>
           </Box>
 
           <Box sx={muiStyles.gitUrlField}>
             <FormControl fullWidth={true}>
-
-
-              <InputLabel htmlFor="git-url">Link to your Github Repo:</InputLabel>
+              <InputLabel htmlFor="git-url">
+                Link to your Github Repo:
+              </InputLabel>
               <Input
                 type="text"
                 required
                 id="git url"
                 name="gitUrl"
                 multiline={true}
+                defaultValue={props.existingData?.github_url}
               ></Input>
             </FormControl>
           </Box>
@@ -163,18 +166,14 @@ export function FormProjects(props: FormProjectsProps) {
                 id="app url"
                 name="appUrl"
                 multiline={true}
+                defaultValue={props.existingData?.app_url}
               ></Input>
             </FormControl>
           </Box>
-          <Button variant="contained" component="label">
-            Upload Picture
-            <input hidden accept="image/*" multiple type="file" />
-          </Button>
           <Button sx={muiStyles.saveButton} type="submit" variant="contained">
             Save
           </Button>
         </Box>
-
       </form>
     </Box>
   );

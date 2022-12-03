@@ -1,0 +1,27 @@
+.listItemImage {
+    height: auto;
+
+}
+
+.iconButtons {
+    display: flex;
+    justify-self: right;
+}
+
+.text {
+    color: gray;
+}
+
+.deleteButton {
+    width: 3rem;
+    background-color: transparent;
+    border: none;
+    justify-self: right;
+}
+
+.editButton {
+    width: 3rem;
+    background-color: transparent;
+    border: none;
+    justify-self: right;
+}

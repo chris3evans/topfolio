@@ -5,40 +5,83 @@ import { Box } from '@mui/material';
 import { ListItem } from '@mui/material';
 import { WorkExperience } from '@topfolio/api-interfaces';
 import EditIcon from '@mui/icons-material/Create';
-import convertIsoToDateString from '../../utils/DateFormatterService';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { UserContext } from '../../utils/UserContext';
+import { useContext } from 'react';
 
 /* eslint-disable-next-line */
 export interface ItemWorkExperienceProps {
   workXp: WorkExperience;
   listener: Function;
+  company_name: String;
 }
 
 export function ItemWorkExperience(props: ItemWorkExperienceProps) {
+  const { userDetails, setUser } = useContext(UserContext);
+
   const openEditHandler = function () {
     props.listener(props.workXp._id);
+  };
+  // userDetails?.portfolio.work_history.
+  const deleteHandler = async function () {
+    setUser((current: any) => {
+      return {
+        ...current,
+        portfolio: {
+          ...current.portfolio,
+          work_history: [
+            ...current.portfolio.work_history.filter(
+              (work_history: WorkExperience) => {
+                return work_history.company_name !== props.company_name;
+              }
+            ),
+          ],
+        },
+      };
+    });
+    console.log(userDetails, 'userdetails');
   };
 
   return (
     <ListItem sx={muiStyles.listItem}>
-      <button onClick={openEditHandler} className={styles['editButton']}>
-        <EditIcon sx={muiStyles.editIcon}></EditIcon>
-      </button>
+      <div className={styles['iconButtons']}>
+        <button
+          data-testid="test-delete-button"
+          onClick={deleteHandler}
+          className={styles['deleteButton']}
+        >
+          <DeleteIcon sx={muiStyles.editIcon}></DeleteIcon>
+        </button>
+        <button
+          data-testid="test-edit-button"
+          onClick={openEditHandler}
+          className={styles['editButton']}
+        >
+          <EditIcon sx={muiStyles.editIcon}></EditIcon>
+        </button>
+      </div>
       <Box sx={muiStyles.listItemGrid}>
         <Box sx={muiStyles.listItemGrid2}>
           <Typography sx={muiStyles.subHeading} variant="h6">
-            Company Name:{' '}
-            <span className={styles['text']}>{props.workXp.company_name}</span>
+            Company Name:
+            <span data-testid="test-company-name" className={styles['text']}>
+              {props.workXp.company_name}
+            </span>
           </Typography>
           <img
             className={styles['listItemImage']}
-            src="../assets/google.png"
+            src={props.workXp.image}
+            data-testid="test-work-experience-image"
+            alt={`${props.workXp.company_name} logo`}
           ></img>
         </Box>
 
         <Box sx={muiStyles.description}>
           <Typography sx={muiStyles.subHeading} variant="h6">
-            Description:{' '}
-            <span className={styles['text']}>{props.workXp.description}</span>
+            Description:
+            <span data-testid="test-description" className={styles['text']}>
+              {props.workXp.description}
+            </span>
           </Typography>
         </Box>
 
@@ -46,7 +89,7 @@ export function ItemWorkExperience(props: ItemWorkExperienceProps) {
           <Box>
             <Typography variant="h6" sx={muiStyles.subHeading}>
               Start:
-              <span className={styles['text']}>
+              <span data-testid="test-start-date" className={styles['text']}>
                 {
                   props.workXp.start_date
                   // ? convertIsoToDateString(props.workXp.start_date)
@@ -59,7 +102,9 @@ export function ItemWorkExperience(props: ItemWorkExperienceProps) {
             <Box>
               <Typography sx={muiStyles.subHeading} variant="h6">
                 Finish:
-                <span className={styles['text']}>{props.workXp.end_date}</span>
+                <span data-testid="test-end-date" className={styles['text']}>
+                  {props.workXp.end_date}
+                </span>
               </Typography>
             </Box>
           </Box>

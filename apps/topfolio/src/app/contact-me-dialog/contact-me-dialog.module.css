@@ -1,7 +1,7 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+.form-we {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+}

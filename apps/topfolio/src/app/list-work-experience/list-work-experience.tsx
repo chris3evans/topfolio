@@ -13,34 +13,34 @@ export interface ListWorkExperienceProps {
 }
 
 export function ListWorkExperience(props: ListWorkExperienceProps) {
-  const userContext = useContext(UserContext);
+  const { userDetails, setUser } = useContext(UserContext);
 
   const [editItemId, setEditItemId] = useState('');
 
   return (
     <Box className={styles['container']}>
       <List>
-        {
-          /* @ts-ignore */
-          userContext.userDetails.portfolio.work_history.map(
-            (workExperience: WorkExperience) => {
-              return editItemId === workExperience._id ? (
-                <FormWorkExperience
-                  existingData={workExperience}
-                  token={props.token}
-                  listener={setEditItemId}
-                  key={workExperience._id}
-                ></FormWorkExperience>
-              ) : (
-                <ItemWorkExperience
-                  workXp={workExperience}
-                  listener={setEditItemId}
-                  key={`${workExperience._id} + ${Math.random()}`}
-                ></ItemWorkExperience>
-              );
-            }
-          )
-        }
+        {userDetails
+          ? userDetails.portfolio.work_history.map(
+              (workExperience: WorkExperience) => {
+                return editItemId === workExperience._id ? (
+                  <FormWorkExperience
+                    existingData={workExperience}
+                    token={props.token}
+                    listener={setEditItemId}
+                    key={workExperience.company_name}
+                  ></FormWorkExperience>
+                ) : (
+                  <ItemWorkExperience
+                    workXp={workExperience}
+                    listener={setEditItemId}
+                    company_name={workExperience.company_name}
+                    key={`${workExperience._id} + ${Math.random()}`}
+                  ></ItemWorkExperience>
+                );
+              }
+            )
+          : ''}
         <FormWorkExperience
           existingData={null}
           token={props.token}
