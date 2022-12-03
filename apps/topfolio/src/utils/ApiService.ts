@@ -17,3 +17,6 @@ export const colorApi = async () => {
     model: 'ui',
   });
 };
+export const fontsApi = async () => {
+  return await fetcherColors(environment.GOOGLE_FONT_API, 'GET');
+};

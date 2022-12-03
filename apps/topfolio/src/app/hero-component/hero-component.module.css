@@ -6,6 +6,7 @@
   padding: 2em;
   background-size: cover;
   font-size: 1.3em;
+
 }
 
 .container h2 {
@@ -18,23 +19,6 @@
 
 .hero-text {
   width: 70%;
-}
-
-.box {
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  border-radius: 50%;
-}
-
-.box>img {
-  flex-shrink: 0;
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  max-width: 100%;
 }
 
 @media only screen and (max-width: 600px) {

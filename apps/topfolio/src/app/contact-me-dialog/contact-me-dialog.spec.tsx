@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { expect, describe, it } from '@jest/globals';
+import { expect, describe, it, jest } from '@jest/globals';
 import ContactMeDialog from './contact-me-dialog';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 type TestElement = Document | Element | Window | Node;

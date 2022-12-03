@@ -51,6 +51,7 @@ export function SingleProject(props: SingleProjectProps) {
               : { opacity: 0, transition: { delay: 0.5 } }
           }
         >
+          <h4>{props.project.name}</h4>
           <p>{props.project.description}</p>
           <div className={styles['links']}>
             <motion.a
