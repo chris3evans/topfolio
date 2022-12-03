@@ -57,7 +57,12 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
           <Box sx={muiStyles.titleField}>
             <FormControl fullWidth={true}>
               <InputLabel htmlFor="bio_title">Bio title:</InputLabel>
-              <Input type="text" id="bio_title" name="bio_title"></Input>
+              <Input
+                type="text"
+                id="bio_title"
+                name="bio_title"
+                multiline={true}
+              ></Input>
             </FormControl>
           </Box>
 
