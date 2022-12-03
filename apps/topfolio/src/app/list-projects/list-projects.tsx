@@ -30,16 +30,7 @@ export function ListProjects(props: ListProjectsProps) {
           </Grid>
         )) : ""}
         <Grid item xs={12} sm={6} md={4}>
-          <ItemProjectsBlank></ItemProjectsBlank>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <ItemProjectsBlank></ItemProjectsBlank>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <ItemProjectsBlank></ItemProjectsBlank>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <ItemProjectsBlank></ItemProjectsBlank>
+          <ItemProjectsBlank token={props.token}></ItemProjectsBlank>
         </Grid>
       </Grid>
       {/* <List>

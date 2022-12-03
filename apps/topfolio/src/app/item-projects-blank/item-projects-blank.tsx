@@ -16,7 +16,9 @@ import FormProjects from '../form-projects/form-projects';
 import { mockUserState } from '../mockUser';
 
 /* eslint-disable-next-line */
-export interface ItemProjectsBlankProps { }
+export interface ItemProjectsBlankProps {
+  token: string;
+}
 
 export function ItemProjectsBlank(props: ItemProjectsBlankProps) {
   const [open, setOpen] = useState<boolean>(false);
@@ -50,20 +52,14 @@ export function ItemProjectsBlank(props: ItemProjectsBlankProps) {
           <Button size="medium" onClick={toggleFromModal} >New Project</Button>
         </CardActions>
       </Card>
-      <Dialog open={open} onClose={toggleFromModal}>
-        <DialogTitle>New Project</DialogTitle>
-        <DialogContent>
-          <FormProjects token={" "} existingData={mockUserState.portfolio.projects[0]} listener={function a() { }}></FormProjects>
-          {/* name: string;
-  images: string[];
-  description: string;
-  github_url: string;
-  app_url: string;
-  _id: string; */}
+
+      <Dialog open={open} onClose={toggleFromModal} maxWidth={"sm"} fullWidth>
+        <DialogTitle>Create a Project</DialogTitle>
+        <DialogContent >
+          <FormProjects token={props.token} existingData={null} listener={function a() { }} toggleFromModal={toggleFromModal}></FormProjects>
         </DialogContent>
         <DialogActions>
           <Button onClick={toggleFromModal}>Cancel</Button>
-          <Button onClick={handelSumbit}>Save</Button>
         </DialogActions>
       </Dialog>
     </>

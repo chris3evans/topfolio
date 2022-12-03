@@ -11,12 +11,14 @@ import { UserContext } from '../../utils/UserContext';
 import { useContext, useEffect, useState } from 'react';
 import UploadImageWidget from '../upload-image-widget/upload-image-widget';
 import { MyProjects } from '@topfolio/api-interfaces';
+import TextField from '@mui/material/TextField';
 // import { Cloudinary } from "@cloudinary/url-gen";
 
 export interface FormProjectsProps {
   token: string;
   existingData: MyProjects | null;
   listener: Function | null;
+  toggleFromModal: Function
 }
 
 export function FormProjects(props: FormProjectsProps) {
@@ -44,6 +46,7 @@ export function FormProjects(props: FormProjectsProps) {
   };
 
   const formSubmitHandler = async function (event: any) {
+    console.log("triggered submit")
     try {
       if (props.existingData) {
         event.preventDefault();
@@ -95,6 +98,7 @@ export function FormProjects(props: FormProjectsProps) {
         });
         closeEditHandler();
       }
+      props.toggleFromModal()
     } catch (error) {
       console.error(error, 'front end error');
     }
@@ -113,8 +117,9 @@ export function FormProjects(props: FormProjectsProps) {
               <Input
                 type="text"
                 required
-                id="projectname"
+                id="project-name"
                 name="projectName"
+                multiline={true}
                 defaultValue={props.existingData?.name}
                 data-testid={'projectNameInput'}
               ></Input>
@@ -144,7 +149,7 @@ export function FormProjects(props: FormProjectsProps) {
               <Input
                 type="text"
                 required
-                id="giturl"
+                id="git-url"
                 name="gitUrl"
                 multiline={true}
                 defaultValue={props.existingData?.github_url}
@@ -159,7 +164,7 @@ export function FormProjects(props: FormProjectsProps) {
               <Input
                 type="text"
                 required
-                id="appurl"
+                id="app-url"
                 name="appUrl"
                 multiline={true}
                 defaultValue={props.existingData?.app_url}

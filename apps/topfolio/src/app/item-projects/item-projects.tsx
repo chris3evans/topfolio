@@ -57,7 +57,7 @@ export function ItemProjects(props: ItemProjectsProps) {
   //if props.project is empty
   return (
     <>
-      <Card sx={{ maxWidth: '50%' }}>
+      <Card sx={{ maxWidth: '100%' }}>
         <CardMedia
           component="img"
           height="auto"
