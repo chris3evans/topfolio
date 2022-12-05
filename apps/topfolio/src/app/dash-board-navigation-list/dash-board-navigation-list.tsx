@@ -11,14 +11,7 @@ export interface DashBoardNavigationListProps {}
 export function DashBoardNavigationList(props: DashBoardNavigationListProps) {
   return (
     <List className={styles['dashboardNavigation-list']}>
-      <ListItem
-        className={styles['dashboardNavigation-item']}
-        sx={{
-          '& .MuiTypography-root': {
-            textDecoration: 'none',
-          },
-        }}
-      >
+      <ListItem className={styles['dashboardNavigation-item']}>
         <Link
           className={styles['dashboardNavigation-link']}
           to="/dashboard/about-me"
