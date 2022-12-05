@@ -31,9 +31,9 @@ export function FormProjects(props: FormProjectsProps) {
   };
 
   const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
-    if (reason === 'clickaway') {
-      return;
-    }
+    // if (reason === 'clickaway') {
+    //   return;
+    // }
     setToast({ open: false, status: 'success', message: '' });
   };
 

@@ -30,7 +30,7 @@ export function ListProjects(props: ListProjectsProps) {
   };
 
   useEffect(() => {
-    if (userDetails) {
+    if (userDetails && props.token) {
       updateUser(userDetails, props.token).then((response) => {
         if (response.error === '') {
           showToast('success', 'Settings were successfully changed!');
@@ -38,7 +38,7 @@ export function ListProjects(props: ListProjectsProps) {
         else showToast('error', response.error);
       });
     }
-  }, [userDetails]);
+  }, [userDetails, props.token]);
 
 
   return (
