@@ -127,7 +127,7 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
               <div>
                 <img className={styles['himg']} src={heroImage}></img>
               </div>
-              <UploadImageWidget callback={getUploadedHeroImage} />
+              <UploadImageWidget callback={getUploadedHeroImage} buttonText={"Upload Hero Image"} />
             </FormControl>
           </Box>
 
@@ -152,7 +152,7 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
             <div>
               <img className={styles['pimg']} src={profileImage}></img>
             </div>
-            <UploadImageWidget callback={getUploadedProfileImage} />
+            <UploadImageWidget callback={getUploadedProfileImage} buttonText={"Upload Profile Picture"} />
           </Box>
 
           <Box sx={muiStyles.bodyField}>
@@ -212,9 +212,9 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
             </FormControl>
           </Box>
 
-          <Box sx={muiStyles.imageUploadContainer}>
+          {/* <Box sx={muiStyles.imageUploadContainer}>
             <UploadImageWidget callback={getUploadedHeroImage} />
-          </Box>
+          </Box> */}
         </Box>
         <Button
           sx={muiStyles.saveButton}
