@@ -48,6 +48,7 @@
     "react-parallax-tilt": "^1.7.72",
     "react-router-dom": "^5.3.3",
     "regenerator-runtime": "0.13.7",
+    "sanitize": "^2.1.2",
     "supertest": "^6.3.1",
     "tslib": "^2.3.0",
     "use-debounce": "^9.0.2",

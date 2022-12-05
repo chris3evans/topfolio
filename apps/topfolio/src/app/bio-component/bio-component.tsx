@@ -49,7 +49,7 @@ export function BioComponent(props: BioComponentProps) {
           Contact me
         </Button>{' '}
       </motion.div>
-      <ContactMeDialog open={open} onClose={handleClose} />
+      <ContactMeDialog open={open} closeModal={handleClose} />
     </div>
   );
 }
