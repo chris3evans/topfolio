@@ -31,12 +31,16 @@ export function SkillForm(props: SkillFormProps) {
       if (event.target.skill.value == '') {
         return
       }
-      userDetails.portfolio.skills.map((Skill: Skill) => {
+      const copy = { ...userDetails }
+      let edited = false
+      copy.portfolio.skills.map((Skill: Skill) => {
         if (Skill.skill === event.target.skill.value) {
           Skill.level = level
+          edited = true
         }
       })
-
+    
+      if (edited == false) { 
       const obj: Skill = { skill: event.target.skill.value, level: str }
       const newUserDetails = {...userDetails,
             portfolio: {
@@ -47,6 +51,11 @@ export function SkillForm(props: SkillFormProps) {
       console.log(newUserDetails)
       const response = await updateUser(newUserDetails, props.token);
       setUser(newUserDetails);
+      } else {
+      await updateUser(copy, props.token);
+      setUser(copy);
+      }
+
       event.target.skill.value = ""
       setLevel(50)
     } catch (error) {
