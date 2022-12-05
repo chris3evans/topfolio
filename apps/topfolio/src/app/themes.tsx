@@ -31,17 +31,9 @@ export const mainTheme = createTheme({
 // theme: Theme
 export const themeGenerator = (theme: Theme) => {
   changeCssVariablesByTheme(theme);
-  return createTheme({
-    palette: {
-      primary: {
-        main: theme.primary,
-      },
-      secondary: {
-        main: theme.secondary,
-      },
-      warning: { main: theme.tertiary },
-    },
-  });
+  mainTheme.palette.primary.main = theme.primary;
+  mainTheme.palette.secondary.main = theme.secondary;
+  mainTheme.palette.warning.main = theme.tertiary;
 };
 export const changeCssVariablesByTheme = (theme: Theme) => {
   const root: HTMLElement = document.querySelector(':root')!;

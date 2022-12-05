@@ -22,9 +22,12 @@ async function sendHelp(
     subject: 'Topfolio contact me request',
     html: `<h1>Email recived from: ${name} </h1> <h2> subect: ${title} </h2><h3> body: ${body} </h3> <h4> return email: ${email} </h4>`,
   };
-
-  const res = await transporter.sendMail(mailOptions);
-  return res;
+  try {
+    const res = await transporter.sendMail(mailOptions);
+    return res;
+  } catch (error) {
+    return error;
+  }
 }
 
 export = { sendHelp };
