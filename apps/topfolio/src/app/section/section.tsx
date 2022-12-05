@@ -3,6 +3,7 @@ import { Draggable } from 'react-beautiful-dnd';
 import WorkHistoryComponent from '../work-history-component/work-history-component';
 import ProjectsComponent from '../projects-component/projects-component';
 import BioComponent from '../bio-component/bio-component';
+import SkillsComponent from '../skills-component/skills-component';
 
 /* eslint-disable-next-line */
 export interface SectionProps {
@@ -21,6 +22,12 @@ export function Section(props: SectionProps) {
         return <ProjectsComponent />;
       case 'About me':
         return <BioComponent />;
+      case 'Skills':
+        return (
+          <div>
+            <SkillsComponent />
+          </div>
+        );
       default:
         return;
     }
