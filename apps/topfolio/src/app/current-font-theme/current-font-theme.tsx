@@ -26,7 +26,7 @@ export function CurrentFontTheme(props: CurrentFontThemeProps) {
       'Arial, Helvetica, sans-serif' ? (
         <Box sx={muiStyles['noExistingThemeHeading']}>
           <Typography variant="h6" sx={muiStyles['h6']}>
-            No Custom Font - Default Arial Font Selected
+            Default Arial Font Selected
           </Typography>
           <Typography variant="body1" sx={muiStyles['text']}>
             Click on the text below to generate a random font and then click

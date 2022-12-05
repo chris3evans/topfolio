@@ -2,15 +2,18 @@ const muiStyles = {
   noExistingThemeHeading: {
     display: 'grid',
     gridTemplateRows: 'repeat(2, min-content)',
-    gridRowGap: '2.5rem',
+    gridRowGap: '2rem',
     color: 'black',
+    backgroundColor: 'white',
+    padding: '3rem',
+    borderRadius: '0.5rem',
   },
   h6: {
-    fontSize: '2rem',
+    fontSize: '2.4rem',
     textAlign: 'center',
   },
   text: {
-    fontSize: '1.6rem',
+    fontSize: '1.8rem',
     color: 'black',
     textAlign: 'center',
   },
