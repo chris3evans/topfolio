@@ -3,13 +3,20 @@ import HeroComponent from '../hero-component/hero-component';
 import SectionsComponent from '../sections-component/sections-component';
 import styles from './portfolio-page.module.css';
 import { gsap } from 'gsap';
-import { useContext, useEffect, useLayoutEffect, useState } from 'react';
+import {
+  useCallback,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useState,
+} from 'react';
 import { workHistoryAnimation, pageScrollAnimation } from './animations';
 import { ThemeProvider } from '@emotion/react';
 import { themeGenerator, mainTheme } from '../themes';
 import { getUser } from '../../utils/ApiService';
 import { useParams } from 'react-router-dom';
 import { UserContext } from '../../utils/UserContext';
+import { mockUserState } from '../mockUser';
 
 export interface PortfolioPageProps {
   viewMode: boolean;

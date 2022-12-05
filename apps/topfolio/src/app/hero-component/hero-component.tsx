@@ -24,7 +24,7 @@ export function HeroComponent(props: HeroComponentProps) {
           alignCenter={false}
           html={'h1'}
         />
-        <MovingParagraphComponent text={userDetails.portfolio.hero_title} />
+        <MovingParagraphComponent text={userDetails.portfolio.bio} />
       </div>
     </div>
   );

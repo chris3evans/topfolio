@@ -2,4 +2,7 @@
   display: grid;
   grid-template-rows: repeat(2, min-content);
   grid-row-gap: 2.5rem;
+  padding: 3.5rem;
+  background-color: white;
+  border-radius: 0.5rem;
 }

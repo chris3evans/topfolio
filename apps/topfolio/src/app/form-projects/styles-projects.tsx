@@ -14,12 +14,18 @@ const muiStyles = {
     marginBottom: '2rem',
   },
 
+  imageUploadContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+
   formFields: {
     display: 'flex',
     fontSize: '2rem',
     flexDirection: 'column',
     alignItems: 'center',
-    width: '100%',
+    justifySelf: 'center',
+    width: '60%',
   },
 
   projectField: {
@@ -51,7 +57,7 @@ const muiStyles = {
   appUrlField: {
     padding: '2rem',
     width: '100%',
-  }
+  },
 };
 
 export default muiStyles;
