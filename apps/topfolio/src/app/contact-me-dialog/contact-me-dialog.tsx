@@ -27,17 +27,20 @@ export function ContactMeDialog(props: ContactMeDialogProps) {
   const [pending, setPending] = useState(false);
   const [statusText, setStatusText] = useState('');
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (
-    // event: React.FormEvent<HTMLFormElement> & { name: HTMLInputElement }
-    event: any
-  ) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLElement>) => {
     event.preventDefault();
+    const target = event.target as typeof event.target & {
+      email: { value: string };
+      name: { value: string };
+      subject: { value: string };
+      message: { value: string };
+    };
     setPending(true);
     const data = {
-      name: event.target.name.value,
-      email: event.target.email.value,
-      title: event.target.subject.value,
-      body: event.target.message.value,
+      name: target.name.value,
+      email: target.email.value,
+      title: target.subject.value,
+      body: target.message.value,
       target: email,
     };
     const res = await emailHelp(data);

@@ -1,0 +1,19 @@
+.canvas
+{
+
+
+}
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+  /* Styles */
+  .canvas
+{
+width: 300px;
+height: 300px;
+
+}
+
+
+}
