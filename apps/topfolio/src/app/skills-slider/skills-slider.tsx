@@ -55,7 +55,9 @@ const PrettoSlider = styled(Slider)({
 export function SkillsSLider(props: SkillsSLiderProps) {
   return (
     <div className={styles['container']}>
-      <Typography gutterBottom>{props.skill.skill}</Typography>
+      <Typography gutterBottom sx={{ fontSize: '1.2em', fontWeight: 600 }}>
+        {props.skill.skill}
+      </Typography>
       <PrettoSlider
         valueLabelDisplay="on"
         aria-label={props.skill.skill + 'slider'}
