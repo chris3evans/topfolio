@@ -13,8 +13,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import FormProjects from '../form-projects/form-projects';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import WebAssetIcon from '@mui/icons-material/WebAsset';
+import LinkIcon from '@mui/icons-material/Link';
 import Link from '@mui/material/Link';
+import Divider from '@mui/material/Divider';
 
 /* eslint-disable-next-line */
 export interface ItemProjectsProps {
@@ -54,23 +55,24 @@ export function ItemProjects(props: ItemProjectsProps) {
       <Card sx={{ maxWidth: '100%' }}>
         <CardMedia
           component="img"
-          height="auto"
+          height="180rem"
           image={props.project.images[props.project.images.length - 1]}
           alt="project image one"
         />
         <CardContent>
-          <Typography gutterBottom variant="h4" component="div" style={{ wordWrap: "break-word" }}>
+          <Typography gutterBottom variant="h4" component="div" style={{ wordWrap: "break-word" }} sx={{ minHeight: "5rem" }}>
             {props.project.name}
           </Typography>
-          <Typography gutterBottom variant="body1" >
+          <Divider></Divider>
+          <Typography gutterBottom variant="body1" sx={{ marginTop: '1.2rem' }}>
             <Link href={props.project.github_url} target="_blank" underline="none">
               <GitHubIcon color={'primary'} fontSize={'large'} titleAccess={'GitHub Link'}></GitHubIcon>
             </Link>
             <Link href={props.project.app_url} target="_blank" underline="none" sx={{ marginLeft: '1.2rem' }}>
-              <WebAssetIcon color={'primary'} fontSize={'large'} titleAccess={'GitHub Link'}></WebAssetIcon>
+              <LinkIcon color={'primary'} fontSize={'large'} titleAccess={'Your App Link'}></LinkIcon>
             </Link>
           </Typography>
-          <Typography gutterBottom variant="body2" color="text.secondary" style={{ wordWrap: "break-word" }}>
+          <Typography variant="body2" color="text.secondary" style={{ wordWrap: "break-word" }} sx={{ minHeight: "6.9rem" }}>
             {props.project.description}
           </Typography>
 
