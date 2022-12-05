@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
-
-import CustomText from './custom-text';
+import SkillForm from './skill-form';
+import { expect, describe, it } from '@jest/globals';
 
 describe('CustomText', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<CustomText />);
+    const { baseElement } = render(<SkillForm token={""}/>);
     expect(baseElement).toBeTruthy();
   });
 });
