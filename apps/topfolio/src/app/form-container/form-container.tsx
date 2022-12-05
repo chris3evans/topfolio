@@ -13,7 +13,6 @@ import FormColorTheme from '../form-color-theme/form-color-theme';
 import Button from '@mui/material/Button';
 import FontThemeSection from '../font-theme-section/font-theme-section';
 
-
 import SkillForm from '../skill-form/skill-form';
 
 /* eslint-disable-next-line */
@@ -75,7 +74,7 @@ export function FormContainer(props: FormContainerProps) {
         )}
         {props.sectionName == 'font-theme' ? (
           <FontThemeSection token={props.token}></FontThemeSection>
-          ) : (
+        ) : (
           ''
         )}
         {props.sectionName == 'skills' ? (

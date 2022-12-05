@@ -1,4 +1,5 @@
 .dashboardNavigation-list {
+  background-color: #151619;
 }
 
 .dashboardNavigation-item {
@@ -8,6 +9,11 @@
   cursor: pointer;
   /* Hover effect color */
   background-color: #292a30;
+}
+
+.dashboardNavigation-link {
+  text-decoration: none;
+  width: 100%;
 }
 
 .dashboardNavigation-item-text {

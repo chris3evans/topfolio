@@ -31,6 +31,7 @@ html body {
 }
 body {
   min-height: 100vh;
+  background-color: var(--primary-background-app);
 }
 img {
   border-style: none;
