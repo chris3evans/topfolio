@@ -14,6 +14,9 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import FormProjects from '../form-projects/form-projects';
 import { mockUserState } from '../mockUser';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import WebAssetIcon from '@mui/icons-material/WebAsset';
+import Link from '@mui/material/Link';
 
 /* eslint-disable-next-line */
 export interface ItemProjectsBlankProps {
@@ -27,10 +30,8 @@ export function ItemProjectsBlank(props: ItemProjectsBlankProps) {
 
   }
 
-  const handelSumbit = function () {
 
-  }
-
+  ///might need cloudiany to crop the picture
   return (
     <>
       <Card sx={{ maxWidth: '100%' }}>
@@ -44,8 +45,12 @@ export function ItemProjectsBlank(props: ItemProjectsBlankProps) {
           <Typography gutterBottom variant="h4" component="div">
             Project Name
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            My project is about...
+          <Typography gutterBottom variant="body1" >
+            <GitHubIcon color={'action'} fontSize={'large'} titleAccess={'GitHub Link'}></GitHubIcon>
+            <WebAssetIcon color={'action'} fontSize={'large'} titleAccess={'GitHub Link'} sx={{ marginLeft: '1.2rem' }}></WebAssetIcon>
+          </Typography>
+          <Typography gutterBottom variant="body1" color="text.secondary">
+            My project is about project is about project is about project is about...
           </Typography>
         </CardContent>
         <CardActions>
@@ -56,10 +61,10 @@ export function ItemProjectsBlank(props: ItemProjectsBlankProps) {
       <Dialog open={open} onClose={toggleFromModal} maxWidth={"sm"} fullWidth>
         <DialogTitle>Create a Project</DialogTitle>
         <DialogContent >
-          <FormProjects token={props.token} existingData={null} listener={function a() { }} toggleFromModal={toggleFromModal}></FormProjects>
+          <FormProjects token={props.token} existingData={null} toggleFromModal={toggleFromModal}></FormProjects>
         </DialogContent>
         <DialogActions>
-          <Button onClick={toggleFromModal}>Cancel</Button>
+          <Button onClick={toggleFromModal} >Cancel</Button>
         </DialogActions>
       </Dialog>
     </>

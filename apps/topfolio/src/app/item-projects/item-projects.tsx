@@ -18,28 +18,33 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import FormProjects from '../form-projects/form-projects';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import WebAssetIcon from '@mui/icons-material/WebAsset';
+import Link from '@mui/material/Link';
+import { updateUser } from '../../utils/ApiService';
+import { useEffect } from 'react';
 
 /* eslint-disable-next-line */
 export interface ItemProjectsProps {
   project: MyProjects;
-  listener: Function;
+  token: string;
 }
 
 export function ItemProjects(props: ItemProjectsProps) {
   const { userDetails, setUser } = useContext(UserContext);
-  const [modal, setModal] = useState<boolean>(false);
-  const openEditHandler = function () {
-    props.listener(props.project._id);
-  };
+  const [open, setOpen] = useState<boolean>(false);
+
 
   const toggleFromModal = function () {
-    setModal(!modal)
+    setOpen(!open)
 
   }
 
+
   const deleteHandler = async function () {
-    // console.log(props.name, 'props.editItemId')
-    // console.log(props.project._id, 'props.project._id')
+    // console.log(projects.name, 'projects.name')
+    console.log(props.project.name, 'props.project.name')
     setUser((current: any) => {
       return {
         ...current,
@@ -61,22 +66,45 @@ export function ItemProjects(props: ItemProjectsProps) {
         <CardMedia
           component="img"
           height="auto"
-          image={props.project.images[0]}
+          image={props.project.images[props.project.images.length - 1]}
           alt="project image one"
         />
         <CardContent>
-          <Typography gutterBottom variant="h4" component="div">
+          <Typography gutterBottom variant="h4" component="div" style={{ wordWrap: "break-word" }}>
             {props.project.name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography gutterBottom variant="body1" >
+            <Link href={props.project.github_url} target="_blank" underline="none">
+              <GitHubIcon color={'primary'} fontSize={'large'} titleAccess={'GitHub Link'}></GitHubIcon>
+            </Link>
+            <Link href={props.project.app_url} target="_blank" underline="none" sx={{ marginLeft: '1.2rem' }}>
+              <WebAssetIcon color={'primary'} fontSize={'large'} titleAccess={'GitHub Link'}></WebAssetIcon>
+            </Link>
+          </Typography>
+          <Typography gutterBottom variant="body2" color="text.secondary" style={{ wordWrap: "break-word" }}>
             {props.project.description}
           </Typography>
+
         </CardContent>
         <CardActions>
-          <Button size="small" onClick={deleteHandler} >DELETE</Button>
-          <Button size="small" onClick={toggleFromModal}>Edit</Button>
+          <Button size="medium" onClick={deleteHandler} >DELETE</Button>
+          <Button size="medium" onClick={toggleFromModal}>Edit</Button>
         </CardActions>
       </Card>
+
+      <Dialog open={open} onClose={toggleFromModal} maxWidth={"sm"} fullWidth>
+        <DialogTitle>Edit Your Project</DialogTitle>
+        <DialogContent >
+          <FormProjects
+            token={props.token}
+            existingData={props.project}
+            toggleFromModal={toggleFromModal}
+          ></FormProjects>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={toggleFromModal}>Cancel</Button>
+        </DialogActions>
+      </Dialog>
 
 
 

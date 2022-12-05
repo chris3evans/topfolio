@@ -24,8 +24,8 @@ export function ListProjects(props: ListProjectsProps) {
           <Grid item xs={12} sm={6} md={4}>
             <ItemProjects
               project={project}
-              listener={setEditItemId}
               key={project._id}
+              token={props.token}
             ></ItemProjects>
           </Grid>
         )) : ""}

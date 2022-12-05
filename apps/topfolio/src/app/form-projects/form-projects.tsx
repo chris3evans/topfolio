@@ -17,7 +17,6 @@ import TextField from '@mui/material/TextField';
 export interface FormProjectsProps {
   token: string;
   existingData: MyProjects | null;
-  listener: Function | null;
   toggleFromModal: Function
 }
 
@@ -33,20 +32,15 @@ export function FormProjects(props: FormProjectsProps) {
 
   useEffect(() => {
     if (userDetails) {
+      console.log(userDetails, "userDetails")
       updateUser(userDetails, props.token).then((response) => {
+        console.log(response, "response")
         setImgArray([])
       });
     }
-  }, [userDetails?.portfolio.projects]);
-
-  const closeEditHandler = function () {
-    if (props.listener) {
-      props.listener('1');
-    }
-  };
+  }, [userDetails]);
 
   const formSubmitHandler = async function (event: any) {
-    console.log("triggered submit")
     try {
       if (props.existingData) {
         event.preventDefault();
@@ -77,7 +71,6 @@ export function FormProjects(props: FormProjectsProps) {
             },
           };
         });
-        closeEditHandler();
       } else {
         event.preventDefault();
         const formData = {
@@ -96,7 +89,6 @@ export function FormProjects(props: FormProjectsProps) {
             },
           };
         });
-        closeEditHandler();
       }
       props.toggleFromModal()
     } catch (error) {
