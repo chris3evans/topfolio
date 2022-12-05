@@ -107,24 +107,121 @@ export function ContactMeForm(props: ContactMeFormProps) {
   return (
     <>
       {/* console.log("Phone:", userDetails?.portfolio.contact_me.phone) */}
-      {userDetails.portfolio.contact_me.email != "test@email.com"
-        ? (
-          <>
-            {dialog.display
-              ? <FormDialog title={dialog.title} message={dialog.message} closeDialog={closeDialog} />
-              : ''
-            }
-            <Box sx={muiStyles.form}>
+      {userDetails.portfolio.contact_me &&
+        userDetails.portfolio.contact_me.email !== 'test@email.com' ? (
+        <>
+          {dialog.display ? (
+            <FormDialog
+              title={dialog.title}
+              message={dialog.message}
+              closeDialog={closeDialog}
+            />
+          ) : (
+            ''
+          )}
+          <Box sx={muiStyles.form}>
 
-              <Snackbar open={toast.open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
-                <Alert onClose={handleClose} severity={toast.status as AlertColor} sx={{ width: '100%', 'font-size': '20px' }}>
-                  {toast.message}
-                </Alert>
-              </Snackbar>
+            <Snackbar
+              open={toast.open}
+              autoHideDuration={6000}
+              onClose={handleClose}
+              anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            >
+              <Alert
+                onClose={handleClose}
+                severity={toast.status as AlertColor}
+                sx={{ width: '100%', 'font-size': '20px' }}
+              >
+                {toast.message}
+              </Alert>
+            </Snackbar>
+            <Typography variant="h2">Contact Me:</Typography>
+            <form className={styles['form']} onSubmit={formSubmitHandler}>
+              <Box sx={muiStyles.mainGrid}>
+                <Box sx={muiStyles.socialsGrid}>
+                  <Box>
+                    <FormControl fullWidth={true}>
+                      <InputLabel htmlFor="phone">Phone Number</InputLabel>
+                      <Input
+                        required={true}
+                        id="phone"
+                        name="phone"
+                        type="number"
+                        onChange={trackChanges}
+                        defaultValue={
+                          userDetails.portfolio.contact_me
+                            ? userDetails.portfolio.contact_me.phone
+                            : null
+                        }
+                        startAdornment={
+                          <InputAdornment position="start">
+                            <PhoneIcon sx={muiStyles.contactIcon}></PhoneIcon>
+                          </InputAdornment>
+                        }
+                      ></Input>
+                    </FormControl>
+                  </Box>
 
-              <Typography variant="h2">Contact Me:</Typography>
-              <form className={styles['form']} onSubmit={formSubmitHandler}>
-                <Box sx={muiStyles.mainGrid}>
+                  <Box>
+                    <FormControl fullWidth={true}>
+                      <InputLabel htmlFor="email">Email</InputLabel>
+                      <Input
+                        required={true}
+                        id="email"
+                        name="email"
+                        type="email"
+                        onChange={trackChanges}
+                        defaultValue={
+                          userDetails.portfolio.contact_me
+                            ? userDetails.portfolio.contact_me.email
+                            : null
+                        }
+                        startAdornment={
+                          <InputAdornment position="start">
+                            <EmailIcon sx={muiStyles.contactIcon}></EmailIcon>
+                          </InputAdornment>
+                        }
+                      ></Input>
+                    </FormControl>
+                  </Box>
+
+                  <Box>
+                    <FormControl fullWidth={true}>
+                      <InputLabel htmlFor="location">Location</InputLabel>
+                      <Input
+                        required={true}
+                        id="location"
+                        name="location"
+                        type="location"
+                        onChange={trackChanges}
+                        defaultValue={
+                          userDetails.portfolio.contact_me
+                            ? userDetails.portfolio.contact_me.location
+                            : null
+                        }
+                        startAdornment={
+                          <InputAdornment position="start">
+                            <LocationOnIcon
+                              sx={muiStyles.contactIcon}
+                            ></LocationOnIcon>
+                          </InputAdornment>
+                        }
+                      ></Input>
+                    </FormControl>
+                  </Box>
+                </Box>
+
+                <Box sx={muiStyles.switchContainer}>
+                  <FormControlLabel
+                    label="Add Social Media"
+                    labelPlacement="start"
+                    control={
+                      <Switch onClick={toggleSocialsFormHandler}></Switch>
+                    }
+                  ></FormControlLabel>
+                </Box>
+
+                {showSocials ? (
                   <Box sx={muiStyles.socialsGrid}>
                     <Box>
                       <FormControl fullWidth={true}>
@@ -272,25 +369,25 @@ export function ContactMeForm(props: ContactMeFormProps) {
                       </FormControl>
                     </Box>
                   </Box>
-                  ) : (
+                ) : (
                   ''
                 )}
-                </Box>
-                <Button
-                  sx={muiStyles.saveButton}
-                  variant="contained"
-                  type="submit"
-                  id="contact-submit"
-                  disabled={unsaved}
-                >
-                  Save
-                </Button>
-              </form>
-            </Box>
-          </>
-        ) : (
-          ''
-        )}
+              </Box>
+              <Button
+                sx={muiStyles.saveButton}
+                variant="contained"
+                type="submit"
+                id="contact-submit"
+                disabled={unsaved}
+              >
+                Save
+              </Button>
+            </form>
+          </Box>
+        </>
+      ) : (
+        ''
+      )}
     </>
   );
 }
