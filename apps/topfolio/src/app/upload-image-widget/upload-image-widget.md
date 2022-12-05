@@ -3,7 +3,7 @@
  import UploadImageWidget from '../upload-image-widget/upload-image-widget';
 ## 2: Use it as a component on your page, like:
 ```javascript
- <UploadImageWidget callback={getUploadedImage} />
+ <UploadImageWidget callback={getUploadedImage} buttonText={"<The text you want to display on the button>"}/>
 ``` 
 ## 3: By calling the getUploadedImage function, you will get an img object like this for every time you upload a picture:
 ```javascript
