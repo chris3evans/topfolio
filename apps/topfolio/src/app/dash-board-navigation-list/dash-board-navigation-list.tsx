@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import muiStyles from './styles-dash-board-navigation-list';
 
 /* eslint-disable-next-line */
-export interface DashBoardNavigationListProps {}
+export interface DashBoardNavigationListProps { }
 
 export function DashBoardNavigationList(props: DashBoardNavigationListProps) {
   return (
