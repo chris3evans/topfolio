@@ -23,6 +23,7 @@ export function SkillForm(props: SkillFormProps) {
 
   const { userDetails, setUser } = useContext(UserContext);
   const [level, setLevel] = useState<any>(50);
+  const [skill, setSkill] = useState("");
 
   const formSumbitHandler = async function (event: any) {
     try {
@@ -77,7 +78,12 @@ export function SkillForm(props: SkillFormProps) {
     }
   };
 
-  
+  const handleEdit = (item: any) => () => { 
+    console.log(typeof item.skill)
+    setSkill(item.skill)
+    setLevel(item.level)
+  }
+
   const handleDelete = (chosenSkill: Skill) => async () => {
      setUser((current: any) => {
           return {
@@ -102,7 +108,9 @@ export function SkillForm(props: SkillFormProps) {
           <Box sx={muiStyles.skillField}>
             <FormControl>
               <InputLabel htmlFor="skill">Skill:</InputLabel>
-              <Input
+               <Input
+                 key={skill}
+                defaultValue={skill}
                 type="text"
                 id="skill"
                 name="skill"
@@ -137,7 +145,7 @@ export function SkillForm(props: SkillFormProps) {
        <Box sx={muiStyles.chips}>
          
          {userDetails.portfolio.skills.map((skill) => {
-           return <Chip key={skill.skill} sx={muiStyles.chip} color="primary" onDelete={handleDelete(skill)} label={skill.skill + '  |  value: ' + skill.level}/>
+           return <Chip key={skill.skill} sx={muiStyles.chip} onClick={handleEdit(skill)} color="primary" onDelete={handleDelete(skill)} label={skill.skill + '    |    value: ' + skill.level}/>
          })}
 </Box> 
 
