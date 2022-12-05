@@ -97,7 +97,7 @@ export function TimelineObject(props: TimelineItemProps) {
         <TimelineContent>
           <div className={styles['box']}>
             {' '}
-            <img src={'../../assets/google.png'} alt="logo" />
+            <img src={props.work.image} alt="logo" />
             <Typography variant="h3">{`${props.work.description}`}</Typography>
             <Typography variant="h4">{` ${props.work.company_name}`}</Typography>
           </div>
