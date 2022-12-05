@@ -7,16 +7,19 @@ const muiStyles = {
     alignItems: 'center',
     flexDirection: 'column',
   },
-  formTitle: {},
-
-  formFields: {
-    fontSize: '2rem',
+  formTitle: {
+    fontSize: '1.6em',
+    padding: '0 2em 0 2em',
+    textAlign: 'left',
   },
+
+  formFields: {},
 
   inputField: {
     display: 'flex',
     flexDirection: 'column',
     padding: '2rem',
+    width: '100%',
   },
 
   buttons: {

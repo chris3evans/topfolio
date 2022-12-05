@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { useContext, useState } from 'react';
 import ContactMeDialog from '../contact-me-dialog/contact-me-dialog';
 import { UserContext } from '../../utils/UserContext';
-import { mockUserState } from '../mockUser';
+import AnimatedImage from '../animated-image/animated-image';
 
 /* eslint-disable-next-line */
 export interface BioComponentProps {}
@@ -14,8 +14,8 @@ export interface BioComponentProps {}
 export function BioComponent(props: BioComponentProps) {
   const { userDetails } = useContext(UserContext);
 
-  const title = userDetails.portfolio.bio_title || mockUserState.name;
-  const bio = userDetails.portfolio.bio || mockUserState.portfolio.bio;
+  const title = userDetails.portfolio.bio_title;
+  const bio = userDetails.portfolio.bio;
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -26,9 +26,15 @@ export function BioComponent(props: BioComponentProps) {
   };
   return (
     <div className={styles['container']} id="bio-component">
-      <div className={styles['text-cont']}>
-        <MovingTitleComponent text={title} alignCenter={false} />
-        <MovingParagraphComponent text={bio} />
+      <div className={styles['cont-flex']}>
+        <div className={styles['text-cont']}>
+          <MovingTitleComponent text={title} alignCenter={false} html={'h2'} />
+          <MovingParagraphComponent text={bio} />
+        </div>
+        <AnimatedImage
+          imageUrl={userDetails.portfolio.profile_image}
+          alt="ProfilePicture"
+        />
       </div>
       <motion.div
         className={styles['button-box']}

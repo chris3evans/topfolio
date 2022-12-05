@@ -1,6 +1,7 @@
 import styles from './form-container.module.css';
 import FormWorkExperience from '../form-work-experience/form-work-experience';
 import FormProjects from '../form-projects/form-projects';
+import ColorThemeSection from '../color-theme-section/color-theme-section';
 import InfoAboutMe from '../info-about-me/info-about-me';
 import ContactMeForm from '../contact-me-form/contact-me-form';
 import Layout from '../form-layout/form-layout';
@@ -66,7 +67,7 @@ export function FormContainer(props: FormContainerProps) {
           ''
         )}
         {props.sectionName == 'color-theme' ? (
-          <FormColorTheme token={props.token}></FormColorTheme>
+          <ColorThemeSection token={props.token}></ColorThemeSection>
         ) : (
           ''
         )}

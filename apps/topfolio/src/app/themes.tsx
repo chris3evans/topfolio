@@ -1,7 +1,7 @@
 import { createTheme, ThemeProvider, styled, responsiveFontSizes } from '@mui/material/styles';
 import type { } from '@mui/x-date-pickers/themeAugmentation';
 import { Theme } from '@topfolio/api-interfaces';
-export let workExperienceFormTheme = createTheme({
+export let mainTheme = createTheme({
   components: {
     MuiDatePicker: {
       styleOverrides: {
@@ -26,7 +26,7 @@ export let workExperienceFormTheme = createTheme({
     },
   },
 });
-workExperienceFormTheme = responsiveFontSizes(workExperienceFormTheme);
+mainTheme = responsiveFontSizes(mainTheme);
 // theme: Theme
 export const themeGenerator = (theme: Theme) => {
   changeCssVariablesByTheme(theme);

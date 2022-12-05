@@ -1,11 +1,8 @@
 import styles from './footer.module.css';
 import { FaFacebook, FaLinkedin } from 'react-icons/fa';
 import { FiGithub } from 'react-icons/fi';
-
-import { mockUserState } from '../mockUser';
 import { FcPhoneAndroid, FcInvite } from 'react-icons/fc';
 import { motion } from 'framer-motion';
-import { User } from '@topfolio/api-interfaces';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 /* eslint-disable-next-line */
@@ -39,7 +36,6 @@ export function Footer(props: FooterProps) {
   );
   const FooterView = () => (
     <>
-      <h3>Contact me</h3>
       <div className={styles['contact-me']}>
         <div className={styles['links-vertical']}>
           {' '}

@@ -2,11 +2,11 @@ import styles from './moving-title-component.module.css';
 import { useEffect } from 'react';
 import { useAnimation, motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { flexbox } from '@mui/system';
 /* eslint-disable-next-line */
 export interface MovingTitleComponentProps {
   text: string;
   alignCenter: boolean;
+  html: string;
 }
 
 export function MovingTitleComponent(props: MovingTitleComponentProps) {
@@ -27,12 +27,13 @@ export function MovingTitleComponent(props: MovingTitleComponentProps) {
   const characterAnimation = {
     hidden: {
       margin: '1px',
-
       opacity: 0,
       y: `0.25em`,
+      x: '-3em',
     },
     visible: {
       opacity: 1,
+      x: '0em',
       y: `0em`,
       transition: {
         duration: 3,
@@ -44,6 +45,94 @@ export function MovingTitleComponent(props: MovingTitleComponentProps) {
     hidden: {},
     visible: {},
   };
+  const h1 = (
+    <h1>
+      {props.text.split(' ').map((word, index) => {
+        return (
+          <motion.span
+            className={styles['span-words']}
+            ref={ref}
+            aria-hidden="true"
+            key={index}
+            initial="hidden"
+            animate={animation}
+            variants={wordAnimation}
+            transition={{
+              delayChildren: index * 0.25,
+              staggerChildren: 0.05,
+            }}
+          >
+            {word.split('').map((character, index) => {
+              return (
+                <motion.span
+                  className={styles['span-letters']}
+                  aria-hidden="true"
+                  key={index}
+                  variants={characterAnimation}
+                  whileHover={{
+                    scale: 1.3,
+                    color: 'var(--primary)',
+                  }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 400,
+                    duration: 1,
+                    bounce: 1,
+                  }}
+                >
+                  {character}
+                </motion.span>
+              );
+            })}
+          </motion.span>
+        );
+      })}
+    </h1>
+  );
+  const h2 = (
+    <h2>
+      {props.text.split(' ').map((word, index) => {
+        return (
+          <motion.span
+            className={styles['span-words']}
+            ref={ref}
+            aria-hidden="true"
+            key={index}
+            initial="hidden"
+            animate={animation}
+            variants={wordAnimation}
+            transition={{
+              delayChildren: index * 0.25,
+              staggerChildren: 0.05,
+            }}
+          >
+            {word.split('').map((character, index) => {
+              return (
+                <motion.span
+                  className={styles['span-letters']}
+                  aria-hidden="true"
+                  key={index}
+                  variants={characterAnimation}
+                  whileHover={{
+                    scale: 1.3,
+                    color: 'var(--primary)',
+                  }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 400,
+                    duration: 1,
+                    bounce: 1,
+                  }}
+                >
+                  {character}
+                </motion.span>
+              );
+            })}
+          </motion.span>
+        );
+      })}
+    </h2>
+  );
   return (
     <div
       className={styles['text']}
@@ -52,48 +141,7 @@ export function MovingTitleComponent(props: MovingTitleComponentProps) {
         props.alignCenter ? { display: 'flex', justifyContent: 'center' } : {}
       }
     >
-      <h2>
-        {props.text.split(' ').map((word, index) => {
-          return (
-            <motion.span
-              className={styles['span-words']}
-              ref={ref}
-              aria-hidden="true"
-              key={index}
-              initial="hidden"
-              animate={animation}
-              variants={wordAnimation}
-              transition={{
-                delayChildren: index * 0.25,
-                staggerChildren: 0.05,
-              }}
-            >
-              {word.split('').map((character, index) => {
-                return (
-                  <motion.span
-                    className={styles['span-letters']}
-                    aria-hidden="true"
-                    key={index}
-                    variants={characterAnimation}
-                    whileHover={{
-                      scale: 1.3,
-                      color: 'var(--primary)',
-                    }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 400,
-                      duration: 1,
-                      bounce: 1,
-                    }}
-                  >
-                    {character}
-                  </motion.span>
-                );
-              })}
-            </motion.span>
-          );
-        })}
-      </h2>
+      {props.html === 'h1' ? h1 : h2}{' '}
     </div>
   );
 }

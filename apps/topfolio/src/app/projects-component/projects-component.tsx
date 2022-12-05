@@ -11,14 +11,18 @@ export function ProjectsComponent(props: ProjectsComponentProps) {
   const projects = [...userDetails.portfolio.projects];
 
   return (
-    <>
-      <MovingTitleComponent text={'My Projects'} alignCenter={true} />
+    <div style={{ marginTop: '2em' }}>
+      <MovingTitleComponent
+        text={'My Projects'}
+        alignCenter={true}
+        html={'h2'}
+      />
       <div className={styles['projects-cont']} id="projects-cont">
         {projects.map((project, index) => (
           <SingleProject project={project} key={`key${index}`} />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

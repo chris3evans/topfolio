@@ -3,13 +3,20 @@ import HeroComponent from '../hero-component/hero-component';
 import SectionsComponent from '../sections-component/sections-component';
 import styles from './portfolio-page.module.css';
 import { gsap } from 'gsap';
-import { useContext, useEffect, useLayoutEffect, useState } from 'react';
+import {
+  useCallback,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useState,
+} from 'react';
 import { workHistoryAnimation, pageScrollAnimation } from './animations';
 import { ThemeProvider } from '@emotion/react';
-import { themeGenerator, workExperienceFormTheme } from '../themes';
+import { themeGenerator, mainTheme } from '../themes';
 import { getUser } from '../../utils/ApiService';
 import { useParams } from 'react-router-dom';
 import { UserContext } from '../../utils/UserContext';
+import { mockUserState } from '../mockUser';
 
 export interface PortfolioPageProps {
   viewMode: boolean;
@@ -18,7 +25,7 @@ export interface PortfolioPageProps {
 export function PortfolioPage(props: PortfolioPageProps) {
   const { slug } = useParams<{ slug: string }>();
   const { setUser } = useContext(UserContext);
-  const [theme, setTheme] = useState(workExperienceFormTheme);
+  const [theme, setTheme] = useState(mainTheme);
   const [loading, setLoading] = useState(false);
 
   const serverCall = async () => {
@@ -37,22 +44,25 @@ export function PortfolioPage(props: PortfolioPageProps) {
   }, []);
 
   useLayoutEffect(() => {
-    if (props.viewMode) {
-      const ctx = gsap.context(() => {
-        workHistoryAnimation('#WorkHistory');
-        pageScrollAnimation();
-      });
-      return () => ctx.revert(); // cleanup
-    }
-    return;
+    setTimeout(() => {
+      if (props.viewMode && loading && window.innerWidth > 600) {
+        const ctx = gsap.context(() => {
+          pageScrollAnimation();
+        });
+        return () => ctx.revert(); // cleanup
+      }
+      return;
+    }, 1000);
   });
   return (
     <ThemeProvider theme={theme}>
-      <div className={styles['body']}>
-        {loading && <HeroComponent />}
-        <SectionsComponent viewMode={props.viewMode} />
-        <Footer viewMode={props.viewMode} />
-      </div>
+      {loading && (
+        <div className={styles['body']}>
+          <HeroComponent />
+          <SectionsComponent viewMode={props.viewMode} />
+          <Footer viewMode={props.viewMode} />
+        </div>
+      )}
     </ThemeProvider>
   );
 }
