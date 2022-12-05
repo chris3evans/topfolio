@@ -1,0 +1,21 @@
+.font-theme-form {
+  display: grid;
+  grid-template-rows: repeat(2, min-content);
+  grid-row-gap: 2.5rem;
+  padding: 3.5rem;
+  background-color: white;
+  border-radius: 0.5rem;
+}
+
+.font-input {
+  background-color: transparent;
+  border: none;
+  width: 80%;
+  text-align: center;
+  color: white;
+  font-size: 2.8rem;
+}
+
+.font-input:focus {
+  outline: none;
+}
