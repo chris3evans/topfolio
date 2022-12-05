@@ -121,7 +121,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
         Work Experience
       </Typography>
       <Box sx={muiStyles.imageUploadContainer}>
-        <UploadImageWidget callback={getUploadedImage} />
+        <UploadImageWidget callback={getUploadedImage} buttonText={'Upload a picture'} />
       </Box>
       <form onSubmit={formSubmitHandler} className={styles['form-we']}>
         <Box sx={muiStyles.formFields}>
