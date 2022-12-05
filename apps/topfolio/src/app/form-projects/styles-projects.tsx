@@ -2,12 +2,12 @@ const muiStyles = {
   form: {
     backgroundColor: 'white',
     borderRadius: '0.3rem',
-    padding: '7.5rem',
-    height: '85%',
+    height: '100%',
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
+    marginTop: '2rem'
   },
   formTitle: {
     color: 'black',
@@ -25,7 +25,7 @@ const muiStyles = {
     flexDirection: 'column',
     alignItems: 'center',
     justifySelf: 'center',
-    width: '60%',
+    width: '100%',
   },
 
   projectField: {
@@ -37,12 +37,6 @@ const muiStyles = {
   descriptionField: {
     padding: '2rem',
     width: '100%',
-  },
-  deleteButton: {
-    fontSize: '1.6rem',
-    height: '3.5rem',
-    width: '10rem',
-    marginTop: '2rem',
   },
   saveButton: {
     fontSize: '1.6rem',

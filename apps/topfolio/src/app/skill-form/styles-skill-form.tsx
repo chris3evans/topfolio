@@ -1,14 +1,14 @@
 const muiStyles = {
   form: {
     backgroundColor: 'white',
-    borderRadius: '0.3rem',
-    padding: '7.5rem',
-    height: '85%',
-    width: '65%',
+    borderRadius: '0.5rem',
+    padding: '5rem',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
+    marginBottom: '5rem',
+    width: '100%',
   },
   formTitle: {
     color: 'black',
@@ -16,26 +16,31 @@ const muiStyles = {
 
   formFields: {
     fontSize: '2rem',
-  },
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',  },
 
-  titleField: {
+  skillField: {
     display: 'flex',
-    alignItems: 'center',
     padding: '2rem',
     width: '100%',
-  },
-
-  bodyField: {
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '2rem',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   saveButton: {
     fontSize: '1.6rem',
-    height: '3.5rem',
-    width: '10rem',
+    height: 'fit',
+    width: 'fit',
   },
+
+  chips: {
+    padding: '2rem',
+  },
+
+  chip: {
+     margin: '1rem'
+  }
 };
 
 export default muiStyles;

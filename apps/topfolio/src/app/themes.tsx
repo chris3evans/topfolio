@@ -1,7 +1,14 @@
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import {
+  createTheme,
+  ThemeProvider,
+  styled,
+  responsiveFontSizes,
+} from '@mui/material/styles';
 import type {} from '@mui/x-date-pickers/themeAugmentation';
 import { Theme } from '@topfolio/api-interfaces';
-export const mainTheme = createTheme({
+import WebFont from 'webfontloader';
+
+export let mainTheme = createTheme({
   components: {
     MuiDatePicker: {
       styleOverrides: {
@@ -26,25 +33,25 @@ export const mainTheme = createTheme({
     },
   },
 });
+mainTheme = responsiveFontSizes(mainTheme);
 // theme: Theme
 export const themeGenerator = (theme: Theme) => {
   changeCssVariablesByTheme(theme);
-  return createTheme({
-    palette: {
-      primary: {
-        main: theme.primary,
-      },
-      secondary: {
-        main: theme.secondary,
-      },
-      warning: { main: theme.tertiary },
-    },
-  });
+  mainTheme.palette.primary.main = theme.primary;
+  mainTheme.palette.secondary.main = theme.secondary;
+  mainTheme.palette.warning.main = theme.tertiary;
 };
 export const changeCssVariablesByTheme = (theme: Theme) => {
   const root: HTMLElement = document.querySelector(':root')!;
+  const body: HTMLElement = document.querySelector('body')!;
+  // WebFont.load({
+  //   google: {
+  //     families: [...theme.family],
+  //   },
+  // });
   root.style.setProperty('--primary-background', theme.background);
   root.style.setProperty('--secondary-background', theme.background_secondary);
   root.style.setProperty('--primary-text', '#151619');
   root.style.setProperty('--primary', theme.primary);
+  // body.style.setProperty('font-family', theme.family.join(','));
 };

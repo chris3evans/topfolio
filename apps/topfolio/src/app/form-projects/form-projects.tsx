@@ -5,7 +5,6 @@ import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
-import Typography from '@mui/material/Typography';
 import { updateUser } from '../../utils/ApiService';
 import { UserContext } from '../../utils/UserContext';
 import { useContext, useEffect, useState } from 'react';
@@ -16,12 +15,12 @@ import { MyProjects } from '@topfolio/api-interfaces';
 export interface FormProjectsProps {
   token: string;
   existingData: MyProjects | null;
-  listener: Function | null;
+  toggleFromModal: Function
 }
 
 export function FormProjects(props: FormProjectsProps) {
   const { userDetails, setUser } = useContext(UserContext);
-  const [imgArray, setImgArray] = useState<string[]>([]);
+  const [imgArray, setImgArray] = useState<string[]>(props.existingData?.images || []);
   const getUploadedImage = (img: { url: string; id: string }) => {
     const imgurl = img.url;
     setImgArray((array) => {
@@ -31,21 +30,10 @@ export function FormProjects(props: FormProjectsProps) {
 
   useEffect(() => {
     if (userDetails) {
-      console.log(userDetails, 'here!!!');
       updateUser(userDetails, props.token).then((response) => {
-        setImgArray([]);
-        // @ts-ignore
-        // setUser(response.data)
-        console.log(response, 'response is here!!!');
       });
     }
-  }, [userDetails?.portfolio.projects]);
-
-  const closeEditHandler = function () {
-    if (props.listener) {
-      props.listener('1');
-    }
-  };
+  }, [userDetails]);
 
   const formSubmitHandler = async function (event: any) {
     try {
@@ -78,7 +66,6 @@ export function FormProjects(props: FormProjectsProps) {
             },
           };
         });
-        closeEditHandler();
       } else {
         event.preventDefault();
         const formData = {
@@ -97,8 +84,8 @@ export function FormProjects(props: FormProjectsProps) {
             },
           };
         });
-        closeEditHandler();
       }
+      props.toggleFromModal()
     } catch (error) {
       console.error(error, 'front end error');
     }
@@ -106,11 +93,9 @@ export function FormProjects(props: FormProjectsProps) {
 
   return (
     <Box sx={muiStyles.form}>
-      <Typography align="center" sx={muiStyles.formTitle} variant="h2">
-        My Projects
-      </Typography>
+      <img src={imgArray[0]}></img>
       <Box sx={muiStyles.imageUploadContainer}>
-        <UploadImageWidget callback={getUploadedImage} />
+        <UploadImageWidget callback={getUploadedImage} buttonText={'Upload Project Image'} />
       </Box>
       <form onSubmit={formSubmitHandler} className={styles['form-projects']}>
         <Box sx={muiStyles.formFields}>
@@ -125,8 +110,9 @@ export function FormProjects(props: FormProjectsProps) {
               <Input
                 type="text"
                 required
-                id="projectname"
+                id="project-name"
                 name="projectName"
+                multiline={true}
                 defaultValue={props.existingData?.name}
                 data-testid={'projectNameInput'}
               ></Input>
@@ -156,7 +142,7 @@ export function FormProjects(props: FormProjectsProps) {
               <Input
                 type="text"
                 required
-                id="giturl"
+                id="git-url"
                 name="gitUrl"
                 multiline={true}
                 defaultValue={props.existingData?.github_url}
@@ -171,7 +157,7 @@ export function FormProjects(props: FormProjectsProps) {
               <Input
                 type="text"
                 required
-                id="appurl"
+                id="app-url"
                 name="appUrl"
                 multiline={true}
                 defaultValue={props.existingData?.app_url}

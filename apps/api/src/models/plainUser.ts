@@ -19,11 +19,19 @@ export = {
     layout: [],
     projects: [],
     contact_me: {
-      phone: '',
-      email: '',
-      social_media: {},
-      location: '',
+      phone: "",
+      email: "",
+      social_media:{
+            github: '',
+            facebook: '',
+            linkedin:  '',
+            instagram:  '',
+            twitter: '',
+            youtube: '',
+          },
+      location: "",
     },
     work_history: [],
+    skills: []
   },
 };

@@ -1,0 +1,29 @@
+ .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom:10em;
+  margin-top:-8em;
+  height: 50vh;
+  }
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+  /* Styles */
+  .canvas
+{
+width: 300px;
+height: 300px;
+
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom:0em;
+  margin-top:-8em;
+  height: 50vh;
+  }
+
+}
