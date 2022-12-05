@@ -24,6 +24,7 @@ const userSchema = new mongoose.Schema({
       secondary: String,
       tertiary: String,
       background_secondary: String,
+      font: Array,
     },
     layout: [String],
     projects: [
@@ -44,7 +45,7 @@ const userSchema = new mongoose.Schema({
         linkedin: String,
         instagram: String,
         twitter: String,
-        youtube: String
+        youtube: String,
       },
       location: String,
     },

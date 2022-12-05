@@ -4,9 +4,11 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
-import { fontsApi } from '../../utils/ApiService';
-import { useState, useEffect } from 'react';
+import { fontsApi, updateUser } from '../../utils/ApiService';
+import { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../../utils/UserContext';
 import WebFont from 'webfontloader';
+import { valueToPercent } from '@mui/base';
 
 /* eslint-disable-next-line */
 export interface FormFontThemeProps {
@@ -16,6 +18,8 @@ export interface FormFontThemeProps {
 export function FormFontTheme(props: FormFontThemeProps) {
   const [fontSelection, setFontSelection] = useState([]);
   const [chosenFont, setChosenFont] = useState('');
+
+  const { userDetails, setUser } = useContext(UserContext);
 
   useEffect(() => {
     getFontThemes();
@@ -50,7 +54,29 @@ export function FormFontTheme(props: FormFontThemeProps) {
     });
   };
 
-  const onSubmitHandler = function (event: any) {};
+  const onSubmitHandler = async function (event: any) {
+    try {
+      event.preventDefault();
+      const newState = {
+        ...userDetails,
+        portfolio: {
+          ...userDetails.portfolio,
+          theme: {
+            ...userDetails.portfolio.theme,
+            font: chosenFont,
+          },
+        },
+      };
+
+      // @ts-ignore
+      setUser(newState);
+      console.log(userDetails, 'updated font theme');
+      const response = await updateUser(newState, props.token);
+      console.log(response, 'response');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <form className={styles['font-theme-form']} onSubmit={onSubmitHandler}>
