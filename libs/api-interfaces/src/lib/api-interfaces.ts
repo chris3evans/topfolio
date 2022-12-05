@@ -25,6 +25,7 @@ export interface Portfolio {
   projects: MyProjects[];
   contact_me: ContactMe;
   work_history: WorkExperience[];
+  skills: string[]
 }
 // TODO CHANGE COLORS NAME
 export interface Theme {
