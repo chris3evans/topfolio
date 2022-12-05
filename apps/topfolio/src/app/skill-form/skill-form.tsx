@@ -30,8 +30,11 @@ export function SkillForm(props: SkillFormProps) {
       if (event.target.skill.value == '') {
         return;
       }
-      userDetails.portfolio.skills.map((Skill: Skill) => {
+      const copy = { ...userDetails }
+      let edited = false
+      copy.portfolio.skills.map((Skill: Skill) => {
         if (Skill.skill === event.target.skill.value) {
+<<<<<<< HEAD
           Skill.level = level;
         }
       });
@@ -42,13 +45,36 @@ export function SkillForm(props: SkillFormProps) {
         portfolio: {
           ...userDetails.portfolio,
           skills: [...userDetails.portfolio.skills, obj],
+=======
+          Skill.level = level
+          edited = true
+        }
+      })
+    
+      if (edited == false) { 
+      const obj: Skill = { skill: event.target.skill.value, level: str }
+      const newUserDetails = {...userDetails,
+            portfolio: {
+              ...userDetails.portfolio,
+              skills: [...userDetails.portfolio.skills, obj]
+>>>>>>> 470837115a1e537c0b824befbf8851f26d31a92b
         },
       };
       console.log(newUserDetails);
       const response = await updateUser(newUserDetails, props.token);
       setUser(newUserDetails);
+<<<<<<< HEAD
       event.target.skill.value = '';
       setLevel(50);
+=======
+      } else {
+      await updateUser(copy, props.token);
+      setUser(copy);
+      }
+
+      event.target.skill.value = ""
+      setLevel(50)
+>>>>>>> 470837115a1e537c0b824befbf8851f26d31a92b
     } catch (error) {
       console.error('error: ', error);
     }
