@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer';
 /* eslint-disable-next-line */
 export interface MovingParagraphComponentProps {
   text: string;
+  alignCenter: boolean;
 }
 
 export function MovingParagraphComponent(props: MovingParagraphComponentProps) {
@@ -41,7 +42,13 @@ export function MovingParagraphComponent(props: MovingParagraphComponentProps) {
     visible: {},
   };
   return (
-    <div className={styles['text']} aria-label={props.text}>
+    <div
+      className={styles['text']}
+      aria-label={props.text}
+      style={
+        props.alignCenter ? { display: 'flex', justifyContent: 'center' } : {}
+      }
+    >
       <p>
         {props.text.split(' ').map((word, index) => {
           return (

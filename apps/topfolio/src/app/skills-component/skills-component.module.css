@@ -4,6 +4,7 @@
   height: 100vh;
   width: 100%;
   padding: 1em;
+
   }
  .flex {
   display: flex;
@@ -26,5 +27,10 @@ and (max-device-width : 480px) {
   justify-content: center;
   flex-direction: column;
   }
+  .container {
+    text-align: center;
+
+    }
+
 
 }

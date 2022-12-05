@@ -84,7 +84,7 @@ export function TimelineObject(props: TimelineItemProps) {
           >{`${props.work.start_date} - ${props.work.end_date}`}</Typography>
           <Typography variant="h3"></Typography>
         </TimelineOppositeContent>
-        <TimelineSeparator sx={{ height: 500 }}>
+        <TimelineSeparator sx={{ height: 400 }}>
           <motion.div animate={controls} variants={dotAnimation}>
             <TimelineDot color="primary" />
           </motion.div>

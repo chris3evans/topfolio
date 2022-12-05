@@ -56,7 +56,10 @@ export function SingleProject(props: SingleProjectProps) {
           <div className={styles['links']}>
             <motion.a
               href={props.project.github_url}
-              whileHover={{ scale: 2, color: 'var(--primary)', margin: '1em' }}
+              whileHover={{
+                scale: 2,
+                color: 'var(--primary)',
+              }}
               transition={{
                 type: 'spring',
                 stiffness: 200,
@@ -69,7 +72,10 @@ export function SingleProject(props: SingleProjectProps) {
             </motion.a>
             <motion.a
               href={props.project.app_url}
-              whileHover={{ scale: 2, color: 'var(--primary)', margin: '1em' }}
+              whileHover={{
+                scale: 2,
+                color: 'var(--primary)',
+              }}
               transition={{
                 type: 'spring',
                 stiffness: 200,

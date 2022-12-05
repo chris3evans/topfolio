@@ -52,6 +52,7 @@ export const changeCssVariablesByTheme = (theme: Theme) => {
   root.style.setProperty('--primary-background', theme.background);
   root.style.setProperty('--secondary-background', theme.background_secondary);
   root.style.setProperty('--primary-text', '#151619');
+  root.style.setProperty('--secondary', theme.secondary);
   root.style.setProperty('--primary', theme.primary);
   body.style.setProperty('font-family', theme.font.join(','));
 };
