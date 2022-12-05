@@ -1,9 +1,10 @@
 const model = require('../schemas/user');
-import { User } from '../../../../libs/api-interfaces/src/lib/api-interfaces';
+import { Skill, User } from '@topfolio/api-interfaces';
 import plain from './plainUser';
 async function getUserByUrl(url: string) {
   const user = await model.findOne({ slug_url: url });
-
+  user.portfolio.skills.sort((a: Skill, b: Skill) => b.level - a.level);
+  user.save();
   return user;
 }
 

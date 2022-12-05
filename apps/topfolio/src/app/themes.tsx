@@ -42,6 +42,7 @@ export const themeGenerator = (theme: Theme) => {
   mainTheme.palette.warning.main = theme.tertiary;
 };
 export const changeCssVariablesByTheme = (theme: Theme) => {
+  if (!theme.font.length) theme.font = ['Arial'];
   const root: HTMLElement = document.querySelector(':root')!;
   const body: HTMLElement = document.querySelector('body')!;
   WebFont.load({

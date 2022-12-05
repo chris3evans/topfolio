@@ -85,12 +85,12 @@ export const mockUserState: User = {
       },
     ],
     skills: [
-      {skill: "javascript",level: '90'}, 
-      {skill: "css",level: '5'}, 
-      {skill:"react",level: '45'}, 
-      {skill:"mongoDB",level: '23'}, 
-      {skill:"postGRES",level: '67'}, 
-      {skill:"angular", level: '23'}
-    ]
+      { skill: 'javascript', level: 90 },
+      { skill: 'css', level: 90 },
+      { skill: 'react', level: 90 },
+      { skill: 'mongoDB', level: 90 },
+      { skill: 'postGRES', level: 90 },
+      { skill: 'angular', level: 90 },
+    ],
   },
 };

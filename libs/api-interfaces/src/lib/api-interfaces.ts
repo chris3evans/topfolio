@@ -25,12 +25,12 @@ export interface Portfolio {
   projects: MyProjects[];
   contact_me: ContactMe;
   work_history: WorkExperience[];
-  skills: Skill[]
+  skills: Skill[];
 }
 // TODO CHANGE COLORS NAME
 export interface Skill {
   skill: string;
-  level: string;
+  level: number;
 }
 export interface Theme {
   background: string;

@@ -3,9 +3,10 @@ import { useTheme } from '@mui/material';
 import { motion, useAnimation } from 'framer-motion';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { Skill } from '@topfolio/api-interfaces';
 /* eslint-disable-next-line */
 export interface SkillsSphereProps {
-  skills: string[];
+  skills: Skill[];
 }
 
 export function SkillsSphere(props: SkillsSphereProps) {
@@ -76,14 +77,14 @@ export function SkillsSphere(props: SkillsSphereProps) {
       <div id="tags" style={{ display: 'none' }}>
         <ul>
           {props.skills.map((tag, i) => (
-            <li key={tag + i}>
+            <li key={tag.skill + i}>
               <a
                 data-weight="25"
                 href={`https://en.wikipedia.org/wiki/${tag}`}
                 target="_blank"
                 rel="noreferrer"
               >
-                {tag}
+                {tag.skill}
               </a>
             </li>
           ))}

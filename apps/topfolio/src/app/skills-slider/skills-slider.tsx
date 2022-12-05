@@ -1,9 +1,5 @@
 import styles from './skills-slider.module.css';
-import Slider, {
-  SliderThumb,
-  SliderValueLabelProps,
-} from '@mui/material/Slider';
-import Tooltip from '@mui/material/Tooltip';
+import Slider from '@mui/material/Slider';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material';
 

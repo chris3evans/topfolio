@@ -58,10 +58,12 @@ const userSchema = new mongoose.Schema({
         end_date: String,
       },
     ],
-    skills: [{
-  skill: String,
-  level: String
-}]
+    skills: [
+      {
+        skill: String,
+        level: Number,
+      },
+    ],
   },
 });
 

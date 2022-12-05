@@ -1,20 +1,26 @@
 import styles from './skills-component.module.css';
 import SkillsSphere from '../skills-sphere/skills-sphere';
 import SkillsSlider from '../skills-slider/skills-slider';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import MovingTitleComponent from '../moving-title-component/moving-title-component';
+import { Skill } from '@topfolio/api-interfaces';
 
 /* eslint-disable-next-line */
 export interface SkillsComponentProps {}
 
 export function SkillsComponent(props: SkillsComponentProps) {
   const { userDetails } = useContext(UserContext);
-  const mainSkills = [
-    { skill: 'Angular', level: 90 },
-    { skill: 'React', level: 70 },
-    { skill: 'Sql', level: 20 },
-  ];
+  const [mainSkills, setMainSkills] = useState<Skill[]>();
+
+  useEffect(() => {
+    if (window.innerWidth < 720) {
+      setMainSkills([...userDetails.portfolio.skills.slice(0, 3)]);
+      return;
+    }
+    setMainSkills([...userDetails.portfolio.skills.slice(0, 5)]);
+    return;
+  }, []);
   return (
     <div className={styles['container']}>
       <MovingTitleComponent
@@ -24,9 +30,10 @@ export function SkillsComponent(props: SkillsComponentProps) {
       />
       <div className={styles['flex']}>
         <div className={styles['skills']}>
-          {mainSkills.map((skill, i) => (
-            <SkillsSlider skill={skill} key={skill.skill + i + skill.level} />
-          ))}
+          {mainSkills &&
+            mainSkills.map((skill, i) => (
+              <SkillsSlider skill={skill} key={skill.skill + i + skill.level} />
+            ))}
         </div>
         <SkillsSphere skills={userDetails.portfolio.skills} />
       </div>
