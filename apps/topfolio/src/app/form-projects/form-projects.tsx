@@ -10,6 +10,8 @@ import { UserContext } from '../../utils/UserContext';
 import { useContext, useEffect, useState } from 'react';
 import UploadImageWidget from '../upload-image-widget/upload-image-widget';
 import { MyProjects } from '@topfolio/api-interfaces';
+import { Typography } from '@mui/material';
+import { Alert, AlertColor, Snackbar } from '@mui/material';
 // import { Cloudinary } from "@cloudinary/url-gen";
 
 export interface FormProjectsProps {
@@ -21,22 +23,64 @@ export interface FormProjectsProps {
 export function FormProjects(props: FormProjectsProps) {
   const { userDetails, setUser } = useContext(UserContext);
   const [imgArray, setImgArray] = useState<string[]>(props.existingData?.images || []);
+  const [unsaved, setUnsaved] = useState(true);
+  const [toast, setToast] = useState({ open: false, status: 'success', message: '' });
+
+  const showToast = (status: string, msg: string) => {
+    setToast({ open: true, status, message: msg });
+  };
+
+  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setToast({ open: false, status: 'success', message: '' });
+  };
+
+  const trackChanges = () => {
+
+    if (imgArray.length > 0) setUnsaved(false);
+  }
+
   const getUploadedImage = (img: { url: string; id: string }) => {
     const imgurl = img.url;
     setImgArray((array) => {
       return [...array, imgurl];
     });
+    // trackChanges();
   };
 
   useEffect(() => {
-    if (userDetails) {
+    trackChanges();
+
+  }, [imgArray])
+
+  useEffect(() => {
+    if (userDetails && unsaved === false) {
+      console.log(userDetails, "userDetails")
       updateUser(userDetails, props.token).then((response) => {
+        if (response.error === '') {
+          showToast('success', 'Settings were successfully changed!');
+          setUnsaved(true);
+          props.toggleFromModal();
+        }
+        else showToast('error', response.error);
       });
     }
   }, [userDetails]);
 
+  const checkUniqueName = (name: string) => {
+    return userDetails.portfolio.projects.some(project => project.name === name)
+  }
+
   const formSubmitHandler = async function (event: any) {
     try {
+      if (checkUniqueName(event.target.projectName.value) === true) {
+        //display error
+        event.preventDefault();
+        console.log("ALREADY EXISTS!!!!!------------------------------<");
+        throw 'Project name already exists!';
+      }
       if (props.existingData) {
         event.preventDefault();
 
@@ -85,15 +129,27 @@ export function FormProjects(props: FormProjectsProps) {
           };
         });
       }
-      props.toggleFromModal()
-    } catch (error) {
+      //props.toggleFromModal()
+    } catch (error: any) {
       console.error(error, 'front end error');
+      showToast('error', error);
     }
   };
 
   return (
     <Box sx={muiStyles.form}>
-      <img src={imgArray[0]}></img>
+
+      <Snackbar open={toast.open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+        <Alert onClose={handleClose} severity={toast.status as AlertColor} sx={{ width: '100%', 'font-size': '20px' }}>
+          {toast.message}
+        </Alert>
+      </Snackbar>
+
+      {imgArray.length > 0
+        ? <img src={imgArray[imgArray.length - 1]}></img>
+        : <Typography gutterBottom variant="h4" sx={{ textAlign: 'center' }}>Please select an image (*required)</Typography>
+      }
+
       <Box sx={muiStyles.imageUploadContainer}>
         <UploadImageWidget callback={getUploadedImage} buttonText={'Upload Project Image'} />
       </Box>
@@ -115,6 +171,7 @@ export function FormProjects(props: FormProjectsProps) {
                 multiline={true}
                 defaultValue={props.existingData?.name}
                 data-testid={'projectNameInput'}
+                onChange={trackChanges}
               ></Input>
             </FormControl>
           </Box>
@@ -130,6 +187,7 @@ export function FormProjects(props: FormProjectsProps) {
                 multiline={true}
                 defaultValue={props.existingData?.description}
                 data-testid={'descriptionInput'}
+                onChange={trackChanges}
               ></Input>
             </FormControl>
           </Box>
@@ -147,6 +205,7 @@ export function FormProjects(props: FormProjectsProps) {
                 multiline={true}
                 defaultValue={props.existingData?.github_url}
                 data-testid={'gitUrlInput'}
+                onChange={trackChanges}
               ></Input>
             </FormControl>
           </Box>
@@ -162,10 +221,11 @@ export function FormProjects(props: FormProjectsProps) {
                 multiline={true}
                 defaultValue={props.existingData?.app_url}
                 data-testid={'appUrlInput'}
+                onChange={trackChanges}
               ></Input>
             </FormControl>
           </Box>
-          <Button sx={muiStyles.saveButton} type="submit" variant="contained">
+          <Button sx={muiStyles.saveButton} type="submit" variant="contained" disabled={unsaved}>
             Save
           </Button>
         </Box>

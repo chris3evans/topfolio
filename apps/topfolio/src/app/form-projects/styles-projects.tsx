@@ -17,6 +17,7 @@ const muiStyles = {
   imageUploadContainer: {
     display: 'flex',
     justifyContent: 'center',
+    marginTop: '1.5rem'
   },
 
   formFields: {

@@ -44,7 +44,7 @@ export function ItemProjectsBlank(props: ItemProjectsBlankProps) {
             <WebAssetIcon color={'action'} fontSize={'large'} titleAccess={'GitHub Link'} sx={{ marginLeft: '1.2rem' }}></WebAssetIcon>
           </Typography>
           <Typography gutterBottom variant="body1" color="text.secondary">
-            My project is about project is about project is about project is about...
+            My project is about...
           </Typography>
         </CardContent>
         <CardActions>
