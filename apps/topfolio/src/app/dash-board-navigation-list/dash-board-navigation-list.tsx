@@ -42,6 +42,14 @@ export function DashBoardNavigationList(props: DashBoardNavigationListProps) {
           ></ListItemText>
         </Link>
       </ListItem>
+        <ListItem className={styles['dashboardNavigation-item']}>
+        <Link to="/dashboard/skills">
+          <ListItemText
+            className={styles['dashboardNavigation-item-text']}
+            primary="Skills"
+          ></ListItemText>
+        </Link>
+      </ListItem>
       <ListItem className={styles['dashboardNavigation-item']}>
         <Link to="/dashboard/layout">
           <ListItemText
