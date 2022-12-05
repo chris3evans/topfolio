@@ -84,7 +84,7 @@ export function TimelineObject(props: TimelineItemProps) {
           >{`${props.work.start_date} - ${props.work.end_date}`}</Typography>
           <Typography variant="h3"></Typography>
         </TimelineOppositeContent>
-        <TimelineSeparator sx={{ height: 500 }}>
+        <TimelineSeparator sx={{ height: 400 }}>
           <motion.div animate={controls} variants={dotAnimation}>
             <TimelineDot color="primary" />
           </motion.div>
@@ -97,7 +97,7 @@ export function TimelineObject(props: TimelineItemProps) {
         <TimelineContent>
           <div className={styles['box']}>
             {' '}
-            <img src={'../../assets/google.png'} alt="logo" />
+            <img src={props.work.image} alt="logo" />
             <Typography variant="h3">{`${props.work.description}`}</Typography>
             <Typography variant="h4">{` ${props.work.company_name}`}</Typography>
           </div>

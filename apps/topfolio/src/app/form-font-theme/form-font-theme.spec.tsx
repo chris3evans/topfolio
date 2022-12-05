@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import CustomText from './custom-text';
+import FormFontTheme from './form-font-theme';
 
-describe('CustomText', () => {
+describe('FormFontTheme', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<CustomText />);
+    const { baseElement } = render(<FormFontTheme />);
     expect(baseElement).toBeTruthy();
   });
 });

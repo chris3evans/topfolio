@@ -19,12 +19,16 @@ export function HeroComponent(props: HeroComponentProps) {
       id="hero-component"
     >
       <div className={styles['hero-text']}>
+        <div className={styles['hero-text-background']}></div>
         <MovingTitleComponent
           text={userDetails.name}
           alignCenter={false}
           html={'h1'}
         />
-        <MovingParagraphComponent text={userDetails.portfolio.hero_title} />
+        <MovingParagraphComponent
+          text={userDetails.portfolio.bio}
+          alignCenter={true}
+        />
       </div>
     </div>
   );

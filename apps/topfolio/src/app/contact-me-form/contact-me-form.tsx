@@ -21,48 +21,47 @@ import { UserContext } from '../../utils/UserContext';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { updateUser } from '../../utils/ApiService';
 import { User } from '@topfolio/api-interfaces';
-import FormDialog from "../form-dialog/form-dialog";
+import FormDialog from '../form-dialog/form-dialog';
 import { Alert, AlertColor, Snackbar } from '@mui/material';
-
 /* eslint-disable-next-line */
 export interface ContactMeFormProps {
   token: string;
 }
-
 export function ContactMeForm(props: ContactMeFormProps) {
   const [showSocials, setShowSocials] = useState(false);
   const [unsaved, setUnsaved] = useState(true);
-  const [dialog, setDialog] = useState({ display: false, title: '', message: '' });
-
+  const [dialog, setDialog] = useState({
+    display: false,
+    title: '',
+    message: '',
+  });
   const toggleSocialsFormHandler = function () {
     setShowSocials(!showSocials);
   };
-
   const submitHandler = function (event: any) { };
-
   const { userDetails, setUser } = useContext(UserContext);
-  const [toast, setToast] = useState({ open: false, status: 'success', message: '' });
-
+  const [toast, setToast] = useState({
+    open: false,
+    status: 'success',
+    message: '',
+  });
   console.log('USER DETAILS:', userDetails);
-
   const showToast = (status: string, msg: string) => {
     setToast({ open: true, status, message: msg });
   };
-
-  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
     if (reason === 'clickaway') {
       return;
     }
-
     setToast({ open: false, status: 'success', message: '' });
   };
-
   const formSubmitHandler = async function (event: any) {
     try {
       event.preventDefault();
-
       setUser((current) => {
-
         current.portfolio.contact_me = {
           phone: event.target.phone.value,
           email: event.target.email.value,
@@ -78,11 +77,12 @@ export function ContactMeForm(props: ContactMeFormProps) {
         };
         return current;
       });
-
       const response = await updateUser(userDetails, props.token);
-
       if (response.error === '') {
-        showToast('success', 'Settings were successfully changed. Now you can preview you portfolio');
+        showToast(
+          'success',
+          'Settings were successfully changed. Now you can preview you portfolio'
+        );
         setUnsaved(true);
       } else {
         showToast('error', response.error);
@@ -90,24 +90,20 @@ export function ContactMeForm(props: ContactMeFormProps) {
       //-----------Keeping this as a reference for future use------------------
       //setDialog({ display: true, title: 'Error', message: response.message });
       //-----------------------------------------------------------------------
-      console.log("API RESPONSE:", response);
+      console.log('API RESPONSE:', response);
     } catch (error) {
       console.error(error, 'front end error');
     }
   };
-
   const trackChanges = () => {
     setUnsaved(false);
-  }
-
+  };
   const closeDialog = () => {
     setDialog({ display: false, title: '', message: '' });
-  }
-
+  };
   /* useEffect(() => {
     setUnsaved(!unsaved);
   }, [userDetails]) */
-
   return (
     <>
       {/* console.log("Phone:", userDetails?.portfolio.contact_me.phone) */}
@@ -132,194 +128,170 @@ export function ContactMeForm(props: ContactMeFormProps) {
                   <Box sx={muiStyles.socialsGrid}>
                     <Box>
                       <FormControl fullWidth={true}>
-                        <InputLabel htmlFor="phone">Phone Number</InputLabel>
+                        <InputLabel htmlFor="github">GitHub</InputLabel>
                         <Input
-                          required={true}
-                          id="phone"
-                          name="phone"
-                          type="number"
+                          id="github"
+                          type="text"
+                          name="github"
                           onChange={trackChanges}
-                          defaultValue={userDetails.portfolio.contact_me ? userDetails.portfolio.contact_me.phone : null}
-                          startAdornment={
-                            <InputAdornment position="start">
-                              <PhoneIcon sx={muiStyles.contactIcon}></PhoneIcon>
-                            </InputAdornment>
+                          defaultValue={
+                            userDetails.portfolio.contact_me
+                              ? userDetails.portfolio.contact_me.social_media
+                                .github
+                              : null
                           }
-                        ></Input>
-                      </FormControl>
-                    </Box>
-
-                    <Box>
-                      <FormControl fullWidth={true}>
-                        <InputLabel htmlFor="email">Email</InputLabel>
-                        <Input
-                          required={true}
-                          id="email"
-                          name="email"
-                          type="email"
-                          onChange={trackChanges}
-                          defaultValue={userDetails.portfolio.contact_me ? userDetails.portfolio.contact_me.email : null}
                           startAdornment={
                             <InputAdornment position="start">
-                              <EmailIcon sx={muiStyles.contactIcon}></EmailIcon>
-                            </InputAdornment>
-                          }
-                        ></Input>
-                      </FormControl>
-                    </Box>
-
-                    <Box>
-                      <FormControl fullWidth={true}>
-                        <InputLabel htmlFor="location">Location</InputLabel>
-                        <Input
-                          required={true}
-                          id="location"
-                          name="location"
-                          type="location"
-                          onChange={trackChanges}
-                          defaultValue={userDetails.portfolio.contact_me ? userDetails.portfolio.contact_me.location : null}
-                          startAdornment={
-                            <InputAdornment position="start">
-                              <LocationOnIcon
+                              <FacebookIcon
                                 sx={muiStyles.contactIcon}
-                              ></LocationOnIcon>
+                              ></FacebookIcon>
+                            </InputAdornment>
+                          }
+                        ></Input>
+                      </FormControl>
+                    </Box>
+                    <Box>
+                      <FormControl fullWidth={true}>
+                        <InputLabel htmlFor="facebook">Facebook</InputLabel>
+                        <Input
+                          id="facebook"
+                          type="text"
+                          name="facebook"
+                          onChange={trackChanges}
+                          defaultValue={
+                            userDetails.portfolio.contact_me
+                              ? userDetails.portfolio.contact_me.social_media
+                                .facebook
+                              : null
+                          }
+                          startAdornment={
+                            <InputAdornment position="start">
+                              <FacebookIcon
+                                sx={muiStyles.contactIcon}
+                              ></FacebookIcon>
+                            </InputAdornment>
+                          }
+                        ></Input>
+                      </FormControl>
+                    </Box>
+                    <Box>
+                      <FormControl fullWidth={true}>
+                        <InputLabel htmlFor="facebook">Linkedin</InputLabel>
+                        <Input
+                          id="linkedin"
+                          type="text"
+                          name="linkedin"
+                          onChange={trackChanges}
+                          defaultValue={
+                            userDetails.portfolio.contact_me
+                              ? userDetails.portfolio.contact_me.social_media
+                                .linkedin
+                              : null
+                          }
+                          startAdornment={
+                            <InputAdornment position="start">
+                              <LinkedInIcon
+                                sx={muiStyles.contactIcon}
+                              ></LinkedInIcon>
+                            </InputAdornment>
+                          }
+                        ></Input>
+                      </FormControl>
+                    </Box>
+                    <Box>
+                      <FormControl fullWidth={true}>
+                        <InputLabel htmlFor="instagram">Instagram</InputLabel>
+                        <Input
+                          id="instagram"
+                          type="text"
+                          name="instagram"
+                          onChange={trackChanges}
+                          defaultValue={
+                            userDetails.portfolio.contact_me
+                              ? userDetails.portfolio.contact_me.social_media
+                                .instagram
+                              : null
+                          }
+                          startAdornment={
+                            <InputAdornment position="start">
+                              <InstagramIcon
+                                sx={muiStyles.contactIcon}
+                              ></InstagramIcon>
+                            </InputAdornment>
+                          }
+                        ></Input>
+                      </FormControl>
+                    </Box>
+                    <Box>
+                      <FormControl fullWidth={true}>
+                        <InputLabel htmlFor="twitter">Twitter</InputLabel>
+                        <Input
+                          id="twitter"
+                          type="text"
+                          name="twitter"
+                          onChange={trackChanges}
+                          defaultValue={
+                            userDetails.portfolio.contact_me
+                              ? userDetails.portfolio.contact_me.social_media
+                                .twitter
+                              : null
+                          }
+                          startAdornment={
+                            <InputAdornment position="start">
+                              <TwitterIcon
+                                sx={muiStyles.contactIcon}
+                              ></TwitterIcon>
+                            </InputAdornment>
+                          }
+                        ></Input>
+                      </FormControl>
+                    </Box>
+                    <Box>
+                      <FormControl fullWidth={true}>
+                        <InputLabel htmlFor="youtube">YouTube</InputLabel>
+                        <Input
+                          role="textbox"
+                          type="text"
+                          id="youtube"
+                          name="youtube"
+                          onChange={trackChanges}
+                          defaultValue={
+                            userDetails.portfolio.contact_me
+                              ? userDetails.portfolio.contact_me.social_media
+                                .youtube
+                              : null
+                          }
+                          startAdornment={
+                            <InputAdornment position="start">
+                              <YouTubeIcon
+                                sx={muiStyles.contactIcon}
+                              ></YouTubeIcon>
                             </InputAdornment>
                           }
                         ></Input>
                       </FormControl>
                     </Box>
                   </Box>
-
-                  <Box sx={muiStyles.switchContainer}>
-                    <FormControlLabel
-                      label="Add Social Media"
-                      labelPlacement="start"
-                      control={<Switch onClick={toggleSocialsFormHandler}></Switch>}
-                    ></FormControlLabel>
-                  </Box>
-
-                  {showSocials ? (
-                    <Box sx={muiStyles.socialsGrid}>
-                      <Box>
-                        <FormControl fullWidth={true}>
-                          <InputLabel htmlFor="github">GitHub</InputLabel>
-                          <Input
-                            id="github"
-                            type="text"
-                            name="github"
-                            onChange={trackChanges}
-                            defaultValue={userDetails.portfolio.contact_me ? userDetails.portfolio.contact_me.social_media.github : null}
-                            startAdornment={
-                              <InputAdornment position="start">
-                                <FacebookIcon sx={muiStyles.contactIcon}></FacebookIcon>
-                              </InputAdornment>
-                            }
-                          ></Input>
-                        </FormControl>
-                      </Box>
-                      <Box>
-                        <FormControl fullWidth={true}>
-                          <InputLabel htmlFor="facebook">Facebook</InputLabel>
-                          <Input
-                            id="facebook"
-                            type="text"
-                            name="facebook"
-                            onChange={trackChanges}
-                            defaultValue={userDetails.portfolio.contact_me ? userDetails.portfolio.contact_me.social_media.facebook : null}
-                            startAdornment={
-                              <InputAdornment position="start">
-                                <FacebookIcon sx={muiStyles.contactIcon}></FacebookIcon>
-                              </InputAdornment>
-                            }
-                          ></Input>
-                        </FormControl>
-                      </Box>
-                      <Box>
-                        <FormControl fullWidth={true}>
-                          <InputLabel htmlFor="facebook">Linkedin</InputLabel>
-                          <Input
-                            id="linkedin"
-                            type="text"
-                            name="linkedin"
-                            onChange={trackChanges}
-                            defaultValue={userDetails.portfolio.contact_me ? userDetails.portfolio.contact_me.social_media.linkedin : null}
-                            startAdornment={
-                              <InputAdornment position="start">
-                                <LinkedInIcon sx={muiStyles.contactIcon}></LinkedInIcon>
-                              </InputAdornment>
-                            }
-                          ></Input>
-                        </FormControl>
-                      </Box>
-                      <Box>
-                        <FormControl fullWidth={true}>
-                          <InputLabel htmlFor="instagram">Instagram</InputLabel>
-                          <Input
-                            id="instagram"
-                            type="text"
-                            name="instagram"
-                            onChange={trackChanges}
-                            defaultValue={userDetails.portfolio.contact_me ? userDetails.portfolio.contact_me.social_media.instagram : null}
-                            startAdornment={
-                              <InputAdornment position="start">
-                                <InstagramIcon
-                                  sx={muiStyles.contactIcon}
-                                ></InstagramIcon>
-                              </InputAdornment>
-                            }
-                          ></Input>
-                        </FormControl>
-                      </Box>
-                      <Box>
-                        <FormControl fullWidth={true}>
-                          <InputLabel htmlFor="twitter">Twitter</InputLabel>
-                          <Input
-                            id="twitter"
-                            type="text"
-                            name="twitter"
-                            onChange={trackChanges}
-                            defaultValue={userDetails.portfolio.contact_me ? userDetails.portfolio.contact_me.social_media.twitter : null}
-                            startAdornment={
-                              <InputAdornment position="start">
-                                <TwitterIcon sx={muiStyles.contactIcon}></TwitterIcon>
-                              </InputAdornment>
-                            }
-                          ></Input>
-                        </FormControl>
-                      </Box>
-                      <Box>
-                        <FormControl fullWidth={true}>
-                          <InputLabel htmlFor="youtube">YouTube</InputLabel>
-                          <Input
-                            role="textbox"
-                            type="text"
-                            id="youtube"
-                            name="youtube"
-                            onChange={trackChanges}
-                            defaultValue={userDetails.portfolio.contact_me ? userDetails.portfolio.contact_me.social_media.youtube : null}
-                            startAdornment={
-                              <InputAdornment position="start">
-                                <YouTubeIcon sx={muiStyles.contactIcon}></YouTubeIcon>
-                              </InputAdornment>
-                            }
-                          ></Input>
-                        </FormControl>
-                      </Box>
-                    </Box>
                   ) : (
-                    ''
-                  )}
+                  ''
+                )}
                 </Box>
-                <Button sx={muiStyles.saveButton} variant="contained" type="submit" id="contact-submit" disabled={unsaved}>
+                <Button
+                  sx={muiStyles.saveButton}
+                  variant="contained"
+                  type="submit"
+                  id="contact-submit"
+                  disabled={unsaved}
+                >
                   Save
                 </Button>
               </form>
             </Box>
           </>
-        ) : ''
-      }
+        ) : (
+          ''
+        )}
     </>
   );
 }
-
 export default ContactMeForm;

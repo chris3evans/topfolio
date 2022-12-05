@@ -6,8 +6,6 @@
   background-size: cover;
   font-size: 1.3em;
   background-position: center;
-
-
 }
 
 .container h2 {
@@ -15,11 +13,29 @@
 }
 
 .container p {
-  font-size: 0.9em
+  font-size: 1.3em;
+  width: 70%;
+
 }
 
 .hero-text {
-  width: 70%;
+  position:relative;
+  width: 100%;
+  text-align: center;
+  padding: 1em;
+  margin: 1em;
+
+}
+.hero-text-background{
+  padding: -1em;
+  margin: -1em;
+  opacity: 0.7;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: radial-gradient(circle,var(--primary-background)25% , transparent  80%);
+
+
 }
 
 @media only screen and (max-width: 600px) {
@@ -40,4 +56,14 @@
   .hero-text {
     margin-top: 5em;
   }
+  .container p {
+    font-size: 0.9em;
+    width: 100%;
+
+  }
+
+.container h2 {
+  font-size: 0.9em
+}
+
 }

@@ -16,6 +16,7 @@ export const mockUserState: User = {
       secondary: '#94598A',
       tertiary: '#3D5D80',
       background_secondary: '#231E37',
+      font: ['Arial, Helvetica, sans-serif'],
     },
     layout: ['Work Experience', 'Projects', 'About me'],
     projects: [
@@ -25,7 +26,7 @@ export const mockUserState: User = {
         description: 'description',
         github_url: 'https://github.com/chris3evans/topfolio',
         app_url: 'www.google.com',
-        _id: 'asdfa'
+        _id: 'asdfa',
       },
       {
         name: 'coolfolio',
@@ -33,7 +34,7 @@ export const mockUserState: User = {
         description: 'description',
         github_url: 'https://github.com/chris3evans/topfolio',
         app_url: '',
-        _id: 'assdffa'
+        _id: 'assdffa',
       },
       {
         name: 'coolApp',
@@ -41,7 +42,7 @@ export const mockUserState: User = {
         description: 'description',
         github_url: 'https://github.com/chris3evans/topfolio',
         app_url: '',
-        _id: 'qwerr'
+        _id: 'qwerr',
       },
     ],
     contact_me: {
@@ -82,6 +83,14 @@ export const mockUserState: User = {
         end_date: '12/12/2022',
         _id: '789',
       },
+    ],
+    skills: [
+      { skill: 'javascript', level: 90 },
+      { skill: 'css', level: 90 },
+      { skill: 'react', level: 90 },
+      { skill: 'mongoDB', level: 90 },
+      { skill: 'postGRES', level: 90 },
+      { skill: 'angular', level: 90 },
     ],
   },
 };

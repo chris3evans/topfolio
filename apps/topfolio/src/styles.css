@@ -31,6 +31,7 @@ html body {
 }
 body {
   min-height: 100vh;
+  background-color: var(--primary-background-app);
 }
 img {
   border-style: none;
@@ -40,10 +41,12 @@ img {
   --primary-background: #151619;
   --secondary-background: #1e1f23;
   --primary-text: #ffffff;
+  --secondary: 'yellow'
   --primary: #1976d3;
 
   --primary-background-app: #151619;
   --secondary-background-app: #1e1f23;
   --primary-text-app: #ffffff;
+   --secondary-app: 'yellow'
   --primary-app: #1976d3;
 }

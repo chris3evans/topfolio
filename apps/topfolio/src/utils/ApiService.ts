@@ -19,7 +19,7 @@ export const colorApi = async () => {
 };
 
 export const emailHelp = async (body: User | object) => {
-  return await fetcher(environment.API_URL + "/email", 'post', body);
+  return await fetcher(environment.API_URL + '/email', 'post', body);
 };
 
 export const fontsApi = async () => {

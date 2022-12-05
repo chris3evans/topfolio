@@ -9,7 +9,8 @@ const muiStyles = {
   },
   formTitle: {
     fontSize: '1.6em',
-    padding: '2em',
+    padding: '0 2em 0 2em',
+    textAlign: 'left',
   },
 
   formFields: {},
@@ -18,6 +19,7 @@ const muiStyles = {
     display: 'flex',
     flexDirection: 'column',
     padding: '2rem',
+    width: '100%',
   },
 
   buttons: {

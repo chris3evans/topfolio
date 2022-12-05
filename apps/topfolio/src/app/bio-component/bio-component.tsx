@@ -29,7 +29,7 @@ export function BioComponent(props: BioComponentProps) {
       <div className={styles['cont-flex']}>
         <div className={styles['text-cont']}>
           <MovingTitleComponent text={title} alignCenter={false} html={'h2'} />
-          <MovingParagraphComponent text={bio} />
+          <MovingParagraphComponent text={bio} alignCenter={false} />
         </div>
         <AnimatedImage
           imageUrl={userDetails.portfolio.profile_image}
@@ -49,7 +49,7 @@ export function BioComponent(props: BioComponentProps) {
           Contact me
         </Button>{' '}
       </motion.div>
-      <ContactMeDialog open={open} onClose={handleClose} />
+      <ContactMeDialog open={open} closeModal={handleClose} />
     </div>
   );
 }
