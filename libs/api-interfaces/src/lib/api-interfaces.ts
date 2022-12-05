@@ -34,6 +34,7 @@ export interface Theme {
   secondary: string;
   tertiary: string;
   background_secondary: string;
+  font: string[];
 }
 export interface MyProjects {
   name: string;

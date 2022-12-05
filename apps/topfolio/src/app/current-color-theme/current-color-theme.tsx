@@ -25,7 +25,7 @@ export function CurrentColorTheme(props: CurrentColorThemeProps) {
         <>
           <Box sx={muiStyles['existingThemeHeading']}>
             <Typography variant="h6" sx={muiStyles['h6']}>
-              Your Current Portfolio Theme
+              Your Current Color Theme
             </Typography>
           </Box>
           <Box sx={muiStyles['existingColorTheme']}>

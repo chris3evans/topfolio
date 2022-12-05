@@ -11,7 +11,6 @@ export interface ColorCardItemProps {
 }
 
 export function ColorCardItem(props: ColorCardItemProps) {
-  console.log('color card item');
   return (
     <Box sx={muiStyles['colorItem']}>
       <Box
