@@ -65,12 +65,12 @@ const saveUser = async (req: express.Request, res: express.Response) => {
   }
 };
 
-const sendEmail = async (req: express.Request, res: express.Response) => { 
+const sendEmail = async (req: express.Request, res: express.Response) => {
   try {
     const { name, email, title, body, target } = req.body;
-  sendHelp(name, email, title, body, target)
+    sendHelp(name, email, title, body, target)
   } catch (e) {
-    console.log('error:'+ e);
+    console.log('error:' + e);
     res.status(500);
     res.send({ status: 'error', message: e });
   }
