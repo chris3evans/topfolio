@@ -127,7 +127,10 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
               <div>
                 <img className={styles['himg']} src={heroImage}></img>
               </div>
-              <UploadImageWidget callback={getUploadedHeroImage} buttonText={"Upload Hero Image"} />
+              <UploadImageWidget
+                callback={getUploadedHeroImage}
+                buttonText={'Upload Hero Image'}
+              />
             </FormControl>
           </Box>
 
@@ -152,7 +155,10 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
             <div>
               <img className={styles['pimg']} src={profileImage}></img>
             </div>
-            <UploadImageWidget callback={getUploadedProfileImage} buttonText={"Upload Profile Picture"} />
+            <UploadImageWidget
+              callback={getUploadedProfileImage}
+              buttonText={'Upload Profile Picture'}
+            />
           </Box>
 
           <Box sx={muiStyles.bodyField}>

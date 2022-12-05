@@ -36,13 +36,15 @@ export let mainTheme = createTheme({
 mainTheme = responsiveFontSizes(mainTheme);
 // theme: Theme
 export const themeGenerator = (theme: Theme) => {
+  if (!theme.font.length) theme.font = ['Arial'];
+
   changeCssVariablesByTheme(theme);
   mainTheme.palette.primary.main = theme.primary;
   mainTheme.palette.secondary.main = theme.secondary;
   mainTheme.palette.warning.main = theme.tertiary;
+  mainTheme.typography.fontFamily = [...theme.font].join(',');
 };
 export const changeCssVariablesByTheme = (theme: Theme) => {
-  if (!theme.font.length) theme.font = ['Arial'];
   const root: HTMLElement = document.querySelector(':root')!;
   const body: HTMLElement = document.querySelector('body')!;
   WebFont.load({
