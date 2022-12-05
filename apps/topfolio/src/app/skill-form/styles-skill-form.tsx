@@ -40,6 +40,23 @@ const muiStyles = {
 
   chip: {
      margin: '1rem'
+  },
+
+  slider: {
+    width: "30%",
+    padding: '2rem',
+  },
+  numb:{
+    width: "10%",
+    padding: '2rem',
+  },
+
+  levelContainer: {
+   display: 'flex',
+    padding: '2rem',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 };
 

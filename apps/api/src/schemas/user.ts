@@ -57,7 +57,10 @@ const userSchema = new mongoose.Schema({
         end_date: String,
       },
     ],
-    skills: [String]
+    skills: [{
+  skill: String,
+  level: String
+}]
   },
 });
 
