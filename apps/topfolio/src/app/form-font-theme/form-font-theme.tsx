@@ -3,12 +3,10 @@ import muiStyles from './styles-form-font-theme';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import Input from '@mui/material/Input';
 import { fontsApi, updateUser } from '../../utils/ApiService';
 import { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import WebFont from 'webfontloader';
-import { valueToPercent } from '@mui/base';
 
 /* eslint-disable-next-line */
 export interface FormFontThemeProps {
@@ -93,7 +91,9 @@ export function FormFontTheme(props: FormFontThemeProps) {
       <Box sx={muiStyles['current']}>
         <Box>
           <Typography sx={muiStyles['currentFont']} variant="body1">
-            {chosenFont}
+            {chosenFont === ''
+              ? 'Click above to generate a random font'
+              : chosenFont}
           </Typography>
         </Box>
         <Box sx={muiStyles['saveButtonContainer']}>

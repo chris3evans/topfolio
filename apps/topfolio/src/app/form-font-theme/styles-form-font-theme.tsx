@@ -2,7 +2,7 @@ const muiStyles = {
   fontSelection: {
     cursor: 'pointer',
     backgroundColor: 'black',
-    padding: '15rem 7.5rem',
+    padding: '10rem 7.5rem',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
