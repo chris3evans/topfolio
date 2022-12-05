@@ -83,5 +83,13 @@ export const mockUserState: User = {
         _id: '789',
       },
     ],
+    skills: [
+      "javascript", 
+      "css", 
+      "react", 
+      "mongoDB", 
+      "postGRES", 
+      "angular"
+    ]
   },
 };

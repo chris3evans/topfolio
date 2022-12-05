@@ -11,7 +11,7 @@ import ListWorkExperience from '../list-work-experience/list-work-experience';
 import ListProjects from '../list-projects/list-projects';
 import FormColorTheme from '../form-color-theme/form-color-theme';
 import Button from '@mui/material/Button';
-
+import SkillForm from '../skill-form/skill-form';
 /* eslint-disable-next-line */
 export interface FormContainerProps {
   token: string;
@@ -20,8 +20,6 @@ export interface FormContainerProps {
 
 export function FormContainer(props: FormContainerProps) {
   const userContext = useContext(UserContext);
-  console.log(userContext);
-
   const preview = () => {
     window.open(
       '/' + userContext.userDetails?.slug_url + '-portfolio',
@@ -68,6 +66,11 @@ export function FormContainer(props: FormContainerProps) {
         )}
         {props.sectionName == 'color-theme' ? (
           <ColorThemeSection token={props.token}></ColorThemeSection>
+        ) : (
+          ''
+        )}
+        {props.sectionName == 'skills' ? (
+          <SkillForm token={props.token}></SkillForm>
         ) : (
           ''
         )}

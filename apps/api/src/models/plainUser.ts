@@ -24,6 +24,7 @@ export = {
       location: "",
     },
     work_history: [],
+    skills: []
   },
 };
 
