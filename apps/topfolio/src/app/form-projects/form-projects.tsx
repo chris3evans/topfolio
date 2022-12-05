@@ -5,13 +5,11 @@ import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
-import Typography from '@mui/material/Typography';
 import { updateUser } from '../../utils/ApiService';
 import { UserContext } from '../../utils/UserContext';
 import { useContext, useEffect, useState } from 'react';
 import UploadImageWidget from '../upload-image-widget/upload-image-widget';
 import { MyProjects } from '@topfolio/api-interfaces';
-import TextField from '@mui/material/TextField';
 // import { Cloudinary } from "@cloudinary/url-gen";
 
 export interface FormProjectsProps {
@@ -22,7 +20,7 @@ export interface FormProjectsProps {
 
 export function FormProjects(props: FormProjectsProps) {
   const { userDetails, setUser } = useContext(UserContext);
-  const [imgArray, setImgArray] = useState<string[]>([]);
+  const [imgArray, setImgArray] = useState<string[]>(props.existingData?.images || []);
   const getUploadedImage = (img: { url: string; id: string }) => {
     const imgurl = img.url;
     setImgArray((array) => {
@@ -32,10 +30,7 @@ export function FormProjects(props: FormProjectsProps) {
 
   useEffect(() => {
     if (userDetails) {
-      console.log(userDetails, "userDetails")
       updateUser(userDetails, props.token).then((response) => {
-        console.log(response, "response")
-        setImgArray([])
       });
     }
   }, [userDetails]);
@@ -98,6 +93,7 @@ export function FormProjects(props: FormProjectsProps) {
 
   return (
     <Box sx={muiStyles.form}>
+      <img src={imgArray[0]}></img>
       <Box sx={muiStyles.imageUploadContainer}>
         <UploadImageWidget callback={getUploadedImage} buttonText={'Upload Project Image'} />
       </Box>

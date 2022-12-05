@@ -1,6 +1,4 @@
-import styles from './item-projects-blank.module.css';
 import { Typography } from '@mui/material';
-import { UserContext } from '../../utils/UserContext';
 import { useContext, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -10,13 +8,10 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import FormProjects from '../form-projects/form-projects';
-import { mockUserState } from '../mockUser';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import WebAssetIcon from '@mui/icons-material/WebAsset';
-import Link from '@mui/material/Link';
 
 /* eslint-disable-next-line */
 export interface ItemProjectsBlankProps {
@@ -29,7 +24,6 @@ export function ItemProjectsBlank(props: ItemProjectsBlankProps) {
     setOpen(!open)
 
   }
-
 
   ///might need cloudiany to crop the picture
   return (
