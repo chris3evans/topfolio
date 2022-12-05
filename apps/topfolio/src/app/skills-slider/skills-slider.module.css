@@ -1,0 +1,16 @@
+
+ .container {
+  width:30vw;
+  margin: 2em;
+ }
+ @media only screen
+ and (min-device-width : 320px)
+ and (max-device-width : 480px) {
+   /* Styles */
+
+ .container {
+  width:60vw;
+
+   }
+
+ }

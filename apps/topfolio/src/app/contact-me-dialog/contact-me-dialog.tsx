@@ -16,7 +16,7 @@ import { green } from '@mui/material/colors';
 /* eslint-disable-next-line */
 export interface ContactMeDialogProps {
   open: boolean;
-  onClose: any;
+  closeModal: any;
 }
 
 export function ContactMeDialog(props: ContactMeDialogProps) {
@@ -27,14 +27,20 @@ export function ContactMeDialog(props: ContactMeDialogProps) {
   const [pending, setPending] = useState(false);
   const [statusText, setStatusText] = useState('');
 
-  const handleSubmit = async (event: any) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLElement>) => {
     event.preventDefault();
+    const target = event.target as typeof event.target & {
+      email: { value: string };
+      name: { value: string };
+      subject: { value: string };
+      message: { value: string };
+    };
     setPending(true);
     const data = {
-      name: event.target.name?.value,
-      email: event.target.email?.value,
-      title: event.target.subject?.value,
-      body: event.target.message?.value,
+      name: target.name.value,
+      email: target.email.value,
+      title: target.subject.value,
+      body: target.message.value,
       target: email,
     };
     const res = await emailHelp(data);
@@ -46,7 +52,7 @@ export function ContactMeDialog(props: ContactMeDialogProps) {
       : setStatusText('Email Sent!');
 
     setTimeout(() => {
-      props.onClose();
+      props.closeModal();
     }, 4000);
     setTimeout(() => {
       setStatus('none');
@@ -122,7 +128,7 @@ export function ContactMeDialog(props: ContactMeDialogProps) {
             <Box sx={muiStyles.buttons}>
               <Button
                 sx={muiStyles.button}
-                onClick={props.onClose}
+                onClick={props.closeModal}
                 variant="contained"
                 data-testid="close-button"
               >
