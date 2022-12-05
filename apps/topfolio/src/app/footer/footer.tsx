@@ -92,7 +92,7 @@ export function Footer(props: FooterProps) {
           </div>
         </div>
       </div>
-      <p>© 2022 TopFolio. All rights reserved.</p>
+      <p id={styles['credits']}>© 2022 TopFolio. All rights reserved.</p>
     </>
   );
   return (
