@@ -16,6 +16,7 @@ export const mockUserState: User = {
       secondary: '#94598A',
       tertiary: '#3D5D80',
       background_secondary: '#231E37',
+      font: ['Arial, Helvetica, sans-serif'],
     },
     layout: ['Work Experience', 'Projects', 'About me'],
     projects: [

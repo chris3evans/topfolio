@@ -1,19 +1,20 @@
 export = {
-  userId: "",
-  slug_url: "",
-  name: "",
+  userId: '',
+  slug_url: '',
+  name: '',
   portfolio: {
-    bio: "",
-    bio_title: "",
-    hero_image: "",
-    hero_title: "",
-    profile_image: "",
+    bio: '',
+    bio_title: '',
+    hero_image: '',
+    hero_title: '',
+    profile_image: '',
     theme: {
-      background: "",
-      primary: "",
-      secondary: "",
-      tertiary: "",
-      background_secondary: ""
+      background: '',
+      primary: '',
+      secondary: '',
+      tertiary: '',
+      background_secondary: '',
+      font: ['Arial, Helvetica, sans-serif'],
     },
     layout: [],
     projects: [],
@@ -34,4 +35,3 @@ export = {
     skills: []
   },
 };
-

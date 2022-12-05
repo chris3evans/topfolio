@@ -11,7 +11,11 @@ import ListWorkExperience from '../list-work-experience/list-work-experience';
 import ListProjects from '../list-projects/list-projects';
 import FormColorTheme from '../form-color-theme/form-color-theme';
 import Button from '@mui/material/Button';
+import FontThemeSection from '../font-theme-section/font-theme-section';
+
+
 import SkillForm from '../skill-form/skill-form';
+
 /* eslint-disable-next-line */
 export interface FormContainerProps {
   token: string;
@@ -67,6 +71,11 @@ export function FormContainer(props: FormContainerProps) {
         {props.sectionName == 'color-theme' ? (
           <ColorThemeSection token={props.token}></ColorThemeSection>
         ) : (
+          ''
+        )}
+        {props.sectionName == 'font-theme' ? (
+          <FontThemeSection token={props.token}></FontThemeSection>
+          ) : (
           ''
         )}
         {props.sectionName == 'skills' ? (

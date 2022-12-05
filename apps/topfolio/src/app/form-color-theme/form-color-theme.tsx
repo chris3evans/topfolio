@@ -75,21 +75,19 @@ export function FormColorTheme(props: FormColorThemeProps) {
         secondary: event.target.secondaryColor.value,
         tertiary: event.target.tertiaryColor.value,
         background_secondary: event.target.secondaryBackgroundColor.value,
+        font: userDetails.portfolio.theme.font,
       };
 
-      setUser((current) => {
-        // @ts-ignore
-        const newState = {
-          ...current,
-          portfolio: {
-            ...current.portfolio,
-            theme: colorData,
-          },
-        };
-        return newState;
-      });
+      const newState = {
+        ...userDetails,
+        portfolio: {
+          ...userDetails.portfolio,
+          theme: colorData,
+        },
+      };
+      setUser(newState);
       // @ts-ignore
-      const response = await updateUser(userDetails, props.token);
+      const response = await updateUser(newState, props.token);
 
       console.log(response, 'form sent');
     } catch (error) {

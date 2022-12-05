@@ -66,6 +66,14 @@ export function DashBoardNavigationList(props: DashBoardNavigationListProps) {
           ></ListItemText>
         </Link>
       </ListItem>
+      <ListItem className={styles['dashboardNavigation-item']}>
+        <Link to="/dashboard/font-theme">
+          <ListItemText
+            className={styles['dashboardNavigation-item-text']}
+            primary="Font Theme"
+          ></ListItemText>
+        </Link>
+      </ListItem>
     </List>
   );
 }
