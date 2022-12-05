@@ -75,35 +75,16 @@ export function SkillsComponent(props: SkillsComponentProps) {
         className={styles['canvas']}
         width="700px"
         height="700px"
-      >
-        {/* <ul id="tags">{userDetails.portfolio.skills}</ul> */}
-      </canvas>
+      ></canvas>
       <div id="tags" style={{ display: 'none' }}>
         <ul>
-          {[
-            'html',
-            'html',
-            'html',
-            'html',
-            'html',
-            'html',
-            'html',
-            'html',
-            'html',
-            'html',
-            'html',
-            'html',
-            'html',
-            'html',
-            'html',
-            'html',
-          ].map((tag, i) => (
+          {userDetails.portfolio.skills.map((tag, i) => (
             <li key={tag + i + userDetails._id}>
               <a
                 data-weight="25"
-                href="asdasdsad"
+                href={`https://en.wikipedia.org/wiki/${tag}`}
                 target="_blank"
-                style={{ color: 'red' }}
+                rel="noreferrer"
               >
                 {tag}
               </a>
@@ -116,24 +97,3 @@ export function SkillsComponent(props: SkillsComponentProps) {
 }
 
 export default SkillsComponent;
-{
-  /*
-      <ul id="tags">
-        <li><a data-weight="25" href="" target="_blank">JavaScript</a></li>
-        <li><a data-weight="25" href="" target="_blank">JavaScript</a></li>
-        <li><a data-weight="25" href="" target="_blank">JavaScript</a></li>
-        <li><a data-weight="25" href="" target="_blank" >JavaScript</a></li>
-        <li><a data-weight="25" href="" target="_blank">JavaScript</a></li>
-        <li><a data-weight="25" href="" target="_blank">JavaScript</a></li>
-        <li><a data-weight="25" href="" target="_blank">JavaScript</a></li>
-        <li><a data-weight="25" href="" target="_blank">JavaScript</a></li>
-        <li><a data-weight="25" href="" target="_blank">JavaScript</a></li>
-        <li><a data-weight="25" href="" target="_blank">JavaScript</a></li>
-        <li><a data-weight="25" href="" target="_blank">JavaScript</a></li>
-        <li><a data-weight="25" href="" target="_blank">JavaScript</a></li>
-      </ul>
--->
-
-
-    </script>  */
-}
