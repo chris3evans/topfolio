@@ -5,3 +5,10 @@
  * .container {
  * }
 */
+
+.layoutTitle {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
