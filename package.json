@@ -49,7 +49,8 @@
     "react-router-dom": "^5.3.3",
     "regenerator-runtime": "0.13.7",
     "supertest": "^6.3.1",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "use-debounce": "^9.0.2"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.18.6",

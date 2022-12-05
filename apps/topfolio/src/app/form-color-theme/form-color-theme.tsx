@@ -7,7 +7,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import { colorApi } from '../../utils/ApiService';
 import { updateUser } from '../../utils/ApiService';
-import ColorCardItem from '../color-card-item/color-card-item';
+import { useDebounce } from 'use-debounce';
+import ColorCardItemNoMemo from '../color-card-item/color-card-item';
 
 /* eslint-disable-next-line */
 export interface FormColorThemeProps {
@@ -22,6 +23,8 @@ const convertRgbToHex = function (rgbArr: Number[]) {
     .join('');
   return result;
 };
+
+const ColorCardItem = React.memo(ColorCardItemNoMemo);
 
 export function FormColorTheme(props: FormColorThemeProps) {
   const [colorBackground, setColorBackground] = useState('');
@@ -76,8 +79,14 @@ export function FormColorTheme(props: FormColorThemeProps) {
 
       setUser((current) => {
         // @ts-ignore
-        current.portfolio.theme = colorData;
-        return current;
+        const newState = {
+          ...current,
+          portfolio: {
+            ...current.portfolio,
+            theme: colorData,
+          },
+        };
+        return newState;
       });
       // @ts-ignore
       const response = await updateUser(userDetails, props.token);
@@ -88,17 +97,9 @@ export function FormColorTheme(props: FormColorThemeProps) {
     }
   };
 
-  // const MemoBackgroundColor = React.memo(ColorCardItem);
-
   return (
     <form onSubmit={onSubmitHandler} className={styles['color-theme-form']}>
       <Box sx={muiStyles['colorSelection']}>
-        {/* <MemoBackgroundColor
-            color={colorBackground}
-            colorLabel="Background Color"
-            colorName="backgroundColor"
-            changeHandler={setColorBackground}
-          ></MemoBackgroundColor> */}
         <ColorCardItem
           color={colorBackground}
           colorLabel="Background Color"

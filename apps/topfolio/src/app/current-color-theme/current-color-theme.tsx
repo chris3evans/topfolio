@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
 import muiStyles from './styles-current-color-theme';
-import { useEffect, useContext, useState } from 'react';
+import { useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 
 /* eslint-disable-next-line */
