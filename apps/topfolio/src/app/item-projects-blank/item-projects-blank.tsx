@@ -11,7 +11,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import FormProjects from '../form-projects/form-projects';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import WebAssetIcon from '@mui/icons-material/WebAsset';
+import LinkIcon from '@mui/icons-material/Link';
+import Divider from '@mui/material/Divider';
 
 /* eslint-disable-next-line */
 export interface ItemProjectsBlankProps {
@@ -31,19 +32,20 @@ export function ItemProjectsBlank(props: ItemProjectsBlankProps) {
       <Card sx={{ maxWidth: '100%' }}>
         <CardMedia
           component="img"
-          height="auto"
+          height="180rem"
           image={'../../assets/item-project-blank-Kate-Macate.jpg'}
           alt="project image one"
         />
         <CardContent>
-          <Typography gutterBottom variant="h4" component="div">
+          <Typography gutterBottom variant="h4" component="div" sx={{ minHeight: "5rem" }}>
             Project Name
           </Typography>
-          <Typography gutterBottom variant="body1" >
+          <Divider></Divider>
+          <Typography gutterBottom variant="body1" sx={{ marginTop: '1.2rem' }}>
             <GitHubIcon color={'action'} fontSize={'large'} titleAccess={'GitHub Link'}></GitHubIcon>
-            <WebAssetIcon color={'action'} fontSize={'large'} titleAccess={'GitHub Link'} sx={{ marginLeft: '1.2rem' }}></WebAssetIcon>
+            <LinkIcon color={'action'} fontSize={'large'} titleAccess={'GitHub Link'} sx={{ marginLeft: '1.2rem' }}></LinkIcon>
           </Typography>
-          <Typography gutterBottom variant="body1" color="text.secondary">
+          <Typography variant="body1" color="text.secondary" sx={{ minHeight: "6.9rem" }}>
             My project is about...
           </Typography>
         </CardContent>

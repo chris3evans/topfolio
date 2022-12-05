@@ -38,7 +38,6 @@ export function FormProjects(props: FormProjectsProps) {
   };
 
   const trackChanges = () => {
-
     if (imgArray.length > 0) setUnsaved(false);
   }
 
@@ -51,23 +50,24 @@ export function FormProjects(props: FormProjectsProps) {
   };
 
   useEffect(() => {
-    trackChanges();
+    console.log(imgArray, "imgArray")
+    if (imgArray !== props.existingData?.images) setUnsaved(false);
 
   }, [imgArray])
 
-  useEffect(() => {
-    if (userDetails && unsaved === false) {
-      console.log(userDetails, "userDetails")
-      updateUser(userDetails, props.token).then((response) => {
-        if (response.error === '') {
-          showToast('success', 'Settings were successfully changed!');
-          setUnsaved(true);
-          props.toggleFromModal();
-        }
-        else showToast('error', response.error);
-      });
-    }
-  }, [userDetails]);
+  // useEffect(() => {
+  //   if (userDetails && unsaved === false) {
+  //     console.log(userDetails, "userDetails")
+  //     updateUser(userDetails, props.token).then((response) => {
+  //       if (response.error === '') {
+  //         showToast('success', 'Settings were successfully changed!');
+  //         setUnsaved(true);
+  //         props.toggleFromModal();
+  //       }
+  //       else showToast('error', response.error);
+  //     });
+  //   }
+  // }, [userDetails]);
 
   const checkUniqueName = (name: string) => {
     return userDetails.portfolio.projects.some(project => project.name === name)
@@ -75,12 +75,7 @@ export function FormProjects(props: FormProjectsProps) {
 
   const formSubmitHandler = async function (event: any) {
     try {
-      if (checkUniqueName(event.target.projectName.value) === true) {
-        //display error
-        event.preventDefault();
-        console.log("ALREADY EXISTS!!!!!------------------------------<");
-        throw 'Project name already exists!';
-      }
+
       if (props.existingData) {
         event.preventDefault();
 
@@ -111,6 +106,13 @@ export function FormProjects(props: FormProjectsProps) {
           };
         });
       } else {
+        if (checkUniqueName(event.target.projectName.value) === true) {
+          //display error
+          event.preventDefault();
+          setUnsaved(true)
+          console.log("ALREADY EXISTS!!!!!------------------------------<");
+          throw 'Project name already exists!';
+        }
         event.preventDefault();
         const formData = {
           name: event.target.projectName.value,
@@ -129,7 +131,7 @@ export function FormProjects(props: FormProjectsProps) {
           };
         });
       }
-      //props.toggleFromModal()
+      props.toggleFromModal()
     } catch (error: any) {
       console.error(error, 'front end error');
       showToast('error', error);
@@ -140,7 +142,7 @@ export function FormProjects(props: FormProjectsProps) {
     <Box sx={muiStyles.form}>
 
       <Snackbar open={toast.open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
-        <Alert onClose={handleClose} severity={toast.status as AlertColor} sx={{ width: '100%', 'font-size': '20px' }}>
+        <Alert onClose={handleClose} severity={toast.status as AlertColor} sx={{ width: '100%', fontSize: '20px' }}>
           {toast.message}
         </Alert>
       </Snackbar>
