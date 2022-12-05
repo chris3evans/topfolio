@@ -20,7 +20,14 @@ export = {
     contact_me: {
       phone: "",
       email: "",
-      social_media: {},
+      social_media:{
+            github: '',
+            facebook: '',
+            linkedin:  '',
+            instagram:  '',
+            twitter: '',
+            youtube: '',
+          },
       location: "",
     },
     work_history: [],
