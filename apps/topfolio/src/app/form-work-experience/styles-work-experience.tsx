@@ -16,6 +16,12 @@ const muiStyles = {
 
   formFields: {
     fontSize: '2rem',
+    width: '60%',
+  },
+  imageUploadContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '4rem 0rem 2rem 0rem',
   },
 
   companyField: {

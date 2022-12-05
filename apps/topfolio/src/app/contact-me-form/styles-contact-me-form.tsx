@@ -3,8 +3,6 @@ const muiStyles = {
     backgroundColor: 'white',
     borderRadius: '0.3rem',
     padding: '7.5rem',
-    marginTop: '10rem',
-    width: '65%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -17,6 +15,7 @@ const muiStyles = {
     gridTemplateRows: 'repeat(3, min-content)',
     gridRowGap: '2.5rem',
     marginTop: '2.5rem',
+    width: '60%',
   },
 
   contactGrid: {

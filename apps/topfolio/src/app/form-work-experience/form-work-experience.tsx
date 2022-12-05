@@ -30,8 +30,11 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
     setImg(img.url);
   };
 
-  // const [startDate, setStartDate] = useState(props.existingData?.start_date);
-  // const [endDate, setEndDate] = useState(props.existingData?.end_date);
+  const [companyField, setCompanyField] = useState('');
+
+  const onCompanyChangeHandler = function (event: any) {
+    setCompanyField(event.target.value);
+  };
 
   useEffect(() => {
     if (userDetails) {
@@ -41,12 +44,6 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
       });
     }
   }, [userDetails]);
-
-  const [companyName, setCompanyName] = useState('');
-
-  const companyChangeHandler = function (event: any) {
-    setCompanyName(event.target.value);
-  };
 
   const closeEditHandler = function () {
     if (props.listener) {
@@ -111,9 +108,6 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
             },
           };
         });
-        // // @ts-ignore
-        // const response = await updateUser(userDetails, props.token);
-        // console.log(response);
         closeEditHandler();
       }
     } catch (error) {
@@ -126,15 +120,19 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
       <Typography align="center" sx={muiStyles.formTitle} variant="h2">
         Work Experience
       </Typography>
-      <UploadImageWidget callback={getUploadedImage} />
+      <Box sx={muiStyles.imageUploadContainer}>
+        <UploadImageWidget callback={getUploadedImage} />
+      </Box>
       <form onSubmit={formSubmitHandler} className={styles['form-we']}>
         <Box sx={muiStyles.formFields}>
           <Box sx={muiStyles.companyField}>
             <FormControl fullWidth={true}>
               <InputLabel htmlFor="company-name">Company Name:</InputLabel>
               <Input
-                value={companyName}
-                onChange={companyChangeHandler}
+                value={companyField}
+                onChange={(event: any) => {
+                  setCompanyField(event.target.value);
+                }}
                 type="text"
                 required
                 id="company name"
