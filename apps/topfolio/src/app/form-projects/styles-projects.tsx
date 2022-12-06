@@ -43,7 +43,7 @@ const muiStyles = {
     fontSize: '1.6rem',
     height: '3.5rem',
     width: '10rem',
-    marginTop: '2rem',
+    margin: '2rem 3.5rem 2rem 3.5rem',
   },
   gitUrlField: {
     padding: '2rem',

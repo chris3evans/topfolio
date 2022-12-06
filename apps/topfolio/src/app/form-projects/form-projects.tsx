@@ -31,9 +31,6 @@ export function FormProjects(props: FormProjectsProps) {
   };
 
   const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
-    // if (reason === 'clickaway') {
-    //   return;
-    // }
     setToast({ open: false, status: 'success', message: '' });
   };
 
@@ -51,7 +48,13 @@ export function FormProjects(props: FormProjectsProps) {
 
   useEffect(() => {
     console.log(imgArray, "imgArray")
-    if (imgArray !== props.existingData?.images) setUnsaved(false);
+    if (props.existingData) {
+      if (imgArray !== props.existingData.images) setUnsaved(false)
+    }
+    //cuz item-projects-blank has no existingData.
+    else {
+      if (imgArray.length > 0) setUnsaved(false)
+    }
 
   }, [imgArray])
 
@@ -226,10 +229,15 @@ export function FormProjects(props: FormProjectsProps) {
                 onChange={trackChanges}
               ></Input>
             </FormControl>
+          </Box >
+          <Box>
+            <Button onClick={() => { props.toggleFromModal() }} sx={muiStyles.saveButton} type="button" variant="outlined">
+              Cancel
+            </Button>
+            <Button sx={muiStyles.saveButton} type="submit" variant="contained" disabled={unsaved}>
+              Save
+            </Button>
           </Box>
-          <Button sx={muiStyles.saveButton} type="submit" variant="contained" disabled={unsaved}>
-            Save
-          </Button>
         </Box>
       </form>
     </Box>
