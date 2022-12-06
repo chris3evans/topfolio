@@ -49,7 +49,6 @@ export function SkillForm(props: SkillFormProps) {
             skills: [...userDetails.portfolio.skills, obj],
           },
         };
-        console.log(newUserDetails);
         const response = await updateUser(newUserDetails, props.token);
         setUser(newUserDetails);
       } else {
@@ -79,7 +78,6 @@ export function SkillForm(props: SkillFormProps) {
   };
 
   const handleEdit = (item: any) => () => {
-    console.log(typeof item.skill);
     setSkill(item.skill);
     setLevel(item.level);
   };
@@ -154,20 +152,6 @@ export function SkillForm(props: SkillFormProps) {
               color="primary"
               onDelete={handleDelete(skill)}
               label={skill.skill + '    |    value: ' + skill.level}
-            />
-          );
-        })}
-      </Box>
-
-      <Box sx={muiStyles.chips}>
-        {userDetails.portfolio.skills.map((skill) => {
-          return (
-            <Chip
-              key={skill.skill}
-              sx={muiStyles.chip}
-              color="primary"
-              onDelete={handleDelete(skill)}
-              label={skill.skill + '  |  value: ' + skill.level}
             />
           );
         })}
