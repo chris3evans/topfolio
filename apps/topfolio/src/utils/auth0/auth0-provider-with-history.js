@@ -11,7 +11,7 @@ export const Auth0ProviderWithHistory = ({ children }) => {
   const audience = environment.REACT_APP_AUTH0_AUDIENCE;
 
   const onRedirectCallback = (appState) => {
-    history.push('/dashboard');
+    history.push('/dashboard/about-me');
   };
 
   if (!(domain && clientId && audience)) {

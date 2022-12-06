@@ -9,7 +9,7 @@ export const LoginButton = () => {
     await loginWithRedirect({
       prompt: 'login',
       appState: {
-        returnTo: '/dashboard',
+        returnTo: '/dashboard/about-me',
       },
     });
   };

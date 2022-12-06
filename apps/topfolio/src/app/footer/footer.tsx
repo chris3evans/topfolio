@@ -45,7 +45,7 @@ export function Footer(props: FooterProps) {
           <p>{userDetails.portfolio.contact_me.location}</p>
           <motion.div
             style={{ display: 'flex', gap: '0.3em' }}
-            whileHover={{ scale: 2, color: 'var(--primary)', margin: '1em' }}
+            whileHover={{ scale: 2, color: 'var(--primary)' }}
             transition={transition}
           >
             <FcInvite />
