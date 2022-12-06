@@ -83,7 +83,11 @@ export function TimelineObject(props: TimelineItemProps) {
           <Typography
             ref={ref}
             variant="h4"
-            sx={{ fontSize: 18, fontWeight: 'medium' }}
+            sx={{
+              fontSize: 18,
+              fontWeight: 'medium',
+              color: 'var(--secondary)',
+            }}
           >{`${props.work.start_date} - ${props.work.end_date}`}</Typography>
           <Typography variant="h3"></Typography>
         </TimelineOppositeContent>
