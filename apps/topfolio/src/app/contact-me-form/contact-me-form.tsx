@@ -23,6 +23,8 @@ import { updateUser } from '../../utils/ApiService';
 import { User } from '@topfolio/api-interfaces';
 import FormDialog from '../form-dialog/form-dialog';
 import { Alert, AlertColor, Snackbar } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 /* eslint-disable-next-line */
 export interface ContactMeFormProps {
   token: string;
@@ -35,16 +37,24 @@ export function ContactMeForm(props: ContactMeFormProps) {
     title: '',
     message: '',
   });
+
   const toggleSocialsFormHandler = function () {
     setShowSocials(!showSocials);
   };
-  const submitHandler = function (event: any) { };
+
+  const submitHandler = function (event: any) {};
+
   const { userDetails, setUser } = useContext(UserContext);
   const [toast, setToast] = useState({
     open: false,
     status: 'success',
     message: '',
   });
+
+  const mediaQuery1200 = useMediaQuery('(max-width:1200px)');
+  const mediaQuery900 = useMediaQuery('(max-width:900px)');
+  const mediaQuery600 = useMediaQuery('(max-width:600px)');
+
   console.log('USER DETAILS:', userDetails);
   const showToast = (status: string, msg: string) => {
     setToast({ open: true, status, message: msg });
@@ -108,7 +118,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
     <>
       {/* console.log("Phone:", userDetails?.portfolio.contact_me.phone) */}
       {userDetails.portfolio.contact_me &&
-        userDetails.portfolio.contact_me.email !== 'test@email.com' ? (
+      userDetails.portfolio.contact_me.email !== 'test@email.com' ? (
         <>
           {dialog.display ? (
             <FormDialog
@@ -119,8 +129,17 @@ export function ContactMeForm(props: ContactMeFormProps) {
           ) : (
             ''
           )}
-          <Box sx={muiStyles.form}>
-
+          <Box
+            sx={
+              mediaQuery600
+                ? muiStyles['form-600']
+                : mediaQuery900
+                ? muiStyles['form-900']
+                : mediaQuery1200
+                ? muiStyles['form-1200']
+                : muiStyles['form']
+            }
+          >
             <Snackbar
               open={toast.open}
               autoHideDuration={6000}
@@ -137,8 +156,20 @@ export function ContactMeForm(props: ContactMeFormProps) {
             </Snackbar>
             <Typography variant="h2">Contact Me:</Typography>
             <form className={styles['form']} onSubmit={formSubmitHandler}>
-              <Box sx={muiStyles.mainGrid}>
-                <Box sx={muiStyles.socialsGrid}>
+              <Box
+                sx={
+                  mediaQuery1200
+                    ? muiStyles['mainGrid-1200']
+                    : muiStyles['mainGrid']
+                }
+              >
+                <Box
+                  sx={
+                    mediaQuery600
+                      ? muiStyles['contactGrid-600']
+                      : muiStyles['contactGrid']
+                  }
+                >
                   <Box>
                     <FormControl fullWidth={true}>
                       <InputLabel htmlFor="phone">Phone Number</InputLabel>
@@ -153,9 +184,26 @@ export function ContactMeForm(props: ContactMeFormProps) {
                             ? userDetails.portfolio.contact_me.phone
                             : null
                         }
+                        sx={
+                          mediaQuery600
+                            ? muiStyles['textInput-600']
+                            : mediaQuery900
+                            ? muiStyles['textInput-900']
+                            : mediaQuery1200
+                            ? muiStyles['textInput-1200']
+                            : {}
+                        }
                         startAdornment={
                           <InputAdornment position="start">
-                            <PhoneIcon sx={muiStyles.contactIcon}></PhoneIcon>
+                            <PhoneIcon
+                              sx={
+                                mediaQuery600
+                                  ? muiStyles['contactIcon-600']
+                                  : mediaQuery900
+                                  ? muiStyles['contactIcon-900']
+                                  : muiStyles['contactIcon']
+                              }
+                            ></PhoneIcon>
                           </InputAdornment>
                         }
                       ></Input>
@@ -176,9 +224,26 @@ export function ContactMeForm(props: ContactMeFormProps) {
                             ? userDetails.portfolio.contact_me.email
                             : null
                         }
+                        sx={
+                          mediaQuery600
+                            ? muiStyles['textInput-600']
+                            : mediaQuery900
+                            ? muiStyles['textInput-900']
+                            : mediaQuery1200
+                            ? muiStyles['textInput-1200']
+                            : {}
+                        }
                         startAdornment={
                           <InputAdornment position="start">
-                            <EmailIcon sx={muiStyles.contactIcon}></EmailIcon>
+                            <EmailIcon
+                              sx={
+                                mediaQuery600
+                                  ? muiStyles['contactIcon-600']
+                                  : mediaQuery900
+                                  ? muiStyles['contactIcon-900']
+                                  : muiStyles['contactIcon']
+                              }
+                            ></EmailIcon>
                           </InputAdornment>
                         }
                       ></Input>
@@ -199,10 +264,25 @@ export function ContactMeForm(props: ContactMeFormProps) {
                             ? userDetails.portfolio.contact_me.location
                             : null
                         }
+                        sx={
+                          mediaQuery600
+                            ? muiStyles['textInput-600']
+                            : mediaQuery900
+                            ? muiStyles['textInput-900']
+                            : mediaQuery1200
+                            ? muiStyles['textInput-1200']
+                            : {}
+                        }
                         startAdornment={
                           <InputAdornment position="start">
                             <LocationOnIcon
-                              sx={muiStyles.contactIcon}
+                              sx={
+                                mediaQuery600
+                                  ? muiStyles['contactIcon-600']
+                                  : mediaQuery900
+                                  ? muiStyles['contactIcon-900']
+                                  : muiStyles['contactIcon']
+                              }
                             ></LocationOnIcon>
                           </InputAdornment>
                         }
@@ -222,7 +302,13 @@ export function ContactMeForm(props: ContactMeFormProps) {
                 </Box>
 
                 {showSocials ? (
-                  <Box sx={muiStyles.socialsGrid}>
+                  <Box
+                    sx={
+                      mediaQuery600
+                        ? muiStyles['socialsGrid-600']
+                        : muiStyles['socialsGrid']
+                    }
+                  >
                     <Box>
                       <FormControl fullWidth={true}>
                         <InputLabel htmlFor="github">GitHub</InputLabel>
@@ -234,13 +320,28 @@ export function ContactMeForm(props: ContactMeFormProps) {
                           defaultValue={
                             userDetails.portfolio.contact_me
                               ? userDetails.portfolio.contact_me.social_media
-                                .github
+                                  .github
                               : null
+                          }
+                          sx={
+                            mediaQuery600
+                              ? muiStyles['textInput-600']
+                              : mediaQuery900
+                              ? muiStyles['textInput-900']
+                              : mediaQuery1200
+                              ? muiStyles['textInput-1200']
+                              : {}
                           }
                           startAdornment={
                             <InputAdornment position="start">
                               <FacebookIcon
-                                sx={muiStyles.contactIcon}
+                                sx={
+                                  mediaQuery600
+                                    ? muiStyles['contactIcon-600']
+                                    : mediaQuery900
+                                    ? muiStyles['contactIcon-900']
+                                    : muiStyles['contactIcon']
+                                }
                               ></FacebookIcon>
                             </InputAdornment>
                           }
@@ -258,13 +359,28 @@ export function ContactMeForm(props: ContactMeFormProps) {
                           defaultValue={
                             userDetails.portfolio.contact_me
                               ? userDetails.portfolio.contact_me.social_media
-                                .facebook
+                                  .facebook
                               : null
+                          }
+                          sx={
+                            mediaQuery600
+                              ? muiStyles['textInput-600']
+                              : mediaQuery900
+                              ? muiStyles['textInput-900']
+                              : mediaQuery1200
+                              ? muiStyles['textInput-1200']
+                              : {}
                           }
                           startAdornment={
                             <InputAdornment position="start">
                               <FacebookIcon
-                                sx={muiStyles.contactIcon}
+                                sx={
+                                  mediaQuery600
+                                    ? muiStyles['contactIcon-600']
+                                    : mediaQuery900
+                                    ? muiStyles['contactIcon-900']
+                                    : muiStyles['contactIcon']
+                                }
                               ></FacebookIcon>
                             </InputAdornment>
                           }
@@ -282,13 +398,28 @@ export function ContactMeForm(props: ContactMeFormProps) {
                           defaultValue={
                             userDetails.portfolio.contact_me
                               ? userDetails.portfolio.contact_me.social_media
-                                .linkedin
+                                  .linkedin
                               : null
+                          }
+                          sx={
+                            mediaQuery600
+                              ? muiStyles['textInput-600']
+                              : mediaQuery900
+                              ? muiStyles['textInput-900']
+                              : mediaQuery1200
+                              ? muiStyles['textInput-1200']
+                              : {}
                           }
                           startAdornment={
                             <InputAdornment position="start">
                               <LinkedInIcon
-                                sx={muiStyles.contactIcon}
+                                sx={
+                                  mediaQuery600
+                                    ? muiStyles['contactIcon-600']
+                                    : mediaQuery900
+                                    ? muiStyles['contactIcon-900']
+                                    : muiStyles['contactIcon']
+                                }
                               ></LinkedInIcon>
                             </InputAdornment>
                           }
@@ -306,13 +437,28 @@ export function ContactMeForm(props: ContactMeFormProps) {
                           defaultValue={
                             userDetails.portfolio.contact_me
                               ? userDetails.portfolio.contact_me.social_media
-                                .instagram
+                                  .instagram
                               : null
+                          }
+                          sx={
+                            mediaQuery600
+                              ? muiStyles['textInput-600']
+                              : mediaQuery900
+                              ? muiStyles['textInput-900']
+                              : mediaQuery1200
+                              ? muiStyles['textInput-1200']
+                              : {}
                           }
                           startAdornment={
                             <InputAdornment position="start">
                               <InstagramIcon
-                                sx={muiStyles.contactIcon}
+                                sx={
+                                  mediaQuery600
+                                    ? muiStyles['contactIcon-600']
+                                    : mediaQuery900
+                                    ? muiStyles['contactIcon-900']
+                                    : muiStyles['contactIcon']
+                                }
                               ></InstagramIcon>
                             </InputAdornment>
                           }
@@ -330,13 +476,28 @@ export function ContactMeForm(props: ContactMeFormProps) {
                           defaultValue={
                             userDetails.portfolio.contact_me
                               ? userDetails.portfolio.contact_me.social_media
-                                .twitter
+                                  .twitter
                               : null
+                          }
+                          sx={
+                            mediaQuery600
+                              ? muiStyles['textInput-600']
+                              : mediaQuery900
+                              ? muiStyles['textInput-900']
+                              : mediaQuery1200
+                              ? muiStyles['textInput-1200']
+                              : {}
                           }
                           startAdornment={
                             <InputAdornment position="start">
                               <TwitterIcon
-                                sx={muiStyles.contactIcon}
+                                sx={
+                                  mediaQuery600
+                                    ? muiStyles['contactIcon-600']
+                                    : mediaQuery900
+                                    ? muiStyles['contactIcon-900']
+                                    : muiStyles['contactIcon']
+                                }
                               ></TwitterIcon>
                             </InputAdornment>
                           }
@@ -355,13 +516,28 @@ export function ContactMeForm(props: ContactMeFormProps) {
                           defaultValue={
                             userDetails.portfolio.contact_me
                               ? userDetails.portfolio.contact_me.social_media
-                                .youtube
+                                  .youtube
                               : null
+                          }
+                          sx={
+                            mediaQuery600
+                              ? muiStyles['textInput-600']
+                              : mediaQuery900
+                              ? muiStyles['textInput-900']
+                              : mediaQuery1200
+                              ? muiStyles['textInput-1200']
+                              : {}
                           }
                           startAdornment={
                             <InputAdornment position="start">
                               <YouTubeIcon
-                                sx={muiStyles.contactIcon}
+                                sx={
+                                  mediaQuery600
+                                    ? muiStyles['contactIcon-600']
+                                    : mediaQuery900
+                                    ? muiStyles['contactIcon-900']
+                                    : muiStyles['contactIcon']
+                                }
                               ></YouTubeIcon>
                             </InputAdornment>
                           }

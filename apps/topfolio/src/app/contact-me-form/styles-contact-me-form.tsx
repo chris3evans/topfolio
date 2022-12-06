@@ -1,8 +1,38 @@
 const muiStyles = {
   form: {
     backgroundColor: 'white',
-    borderRadius: '0.3rem',
+    borderRadius: '0.5rem',
     padding: '7.5rem',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    color: 'black',
+  },
+  'form-1200': {
+    padding: '2.5rem 1rem',
+    backgroundColor: 'white',
+    borderRadius: '0.5rem',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    color: 'black',
+  },
+  'form-900': {
+    padding: '1rem',
+    backgroundColor: 'white',
+    borderRadius: '0.5rem',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    color: 'black',
+  },
+  'form-600': {
+    padding: '1rem 0rem',
+    backgroundColor: 'white',
+    borderRadius: '0.5rem',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -15,13 +45,26 @@ const muiStyles = {
     gridTemplateRows: 'repeat(3, min-content)',
     gridRowGap: '2.5rem',
     marginTop: '2.5rem',
-    width: '60%',
+    width: '80%',
+  },
+  'mainGrid-1200': {
+    width: '90%',
+    display: 'grid',
+    gridTemplateRows: 'repeat(3, min-content)',
+    gridRowGap: '2.5rem',
+    marginTop: '2.5rem',
   },
 
   contactGrid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
     gridColumnGap: '5rem',
+    gridRowGap: '2.5rem',
+  },
+  'contactGrid-600': {
+    display: 'grid',
+    gridTemplateRows: 'repeat(3, min-content)',
+    gridRowGap: '2rem',
   },
 
   switchContainer: {
@@ -38,9 +81,30 @@ const muiStyles = {
     gridTemplateColumns: 'repeat(2, 1fr)',
     gridGap: '5rem',
   },
+  'socialsGrid-600': {
+    display: 'grid',
+    gridTemplateRows: 'repeat(6, min-content)',
+    gridGap: '2rem',
+  },
+
+  'textInput-1200': {
+    fontSize: '1.8rem',
+  },
+  'textInput-900': {
+    fontSize: '1.6rem',
+  },
+  'textInput-600': {
+    fontSize: '1.4rem',
+  },
 
   contactIcon: {
     fontSize: '3rem',
+  },
+  'contactIcon-900': {
+    fontSize: '2.5rem',
+  },
+  'contactIcon-600': {
+    fontSize: '2rem',
   },
 
   saveButton: {
