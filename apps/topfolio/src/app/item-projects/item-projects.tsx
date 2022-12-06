@@ -27,17 +27,11 @@ export interface ItemProjectsProps {
 export function ItemProjects(props: ItemProjectsProps) {
   const { userDetails, setUser } = useContext(UserContext);
   const [open, setOpen] = useState<boolean>(false);
-
-
-
-
   const toggleFromModal = function () {
     setOpen(!open)
-
   }
 
   const deleteHandler = async function () {
-
     setUser((current: any) => {
       return {
         ...current,
@@ -51,7 +45,6 @@ export function ItemProjects(props: ItemProjectsProps) {
         }
       }
     })
-
   }
 
   return (

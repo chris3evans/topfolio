@@ -25,7 +25,7 @@ export function FormProjects(props: FormProjectsProps) {
   const [imgArray, setImgArray] = useState<string[]>(props.existingData?.images || []);
   const [unsaved, setUnsaved] = useState(true);
   const [toast, setToast] = useState({ open: false, status: 'success', message: '' });
-
+  //For handling error inside the form
   const showToast = (status: string, msg: string) => {
     setToast({ open: true, status, message: msg });
   };
@@ -57,20 +57,6 @@ export function FormProjects(props: FormProjectsProps) {
     }
 
   }, [imgArray])
-
-  // useEffect(() => {
-  //   if (userDetails && unsaved === false) {
-  //     console.log(userDetails, "userDetails")
-  //     updateUser(userDetails, props.token).then((response) => {
-  //       if (response.error === '') {
-  //         showToast('success', 'Settings were successfully changed!');
-  //         setUnsaved(true);
-  //         props.toggleFromModal();
-  //       }
-  //       else showToast('error', response.error);
-  //     });
-  //   }
-  // }, [userDetails]);
 
   const checkUniqueName = (name: string) => {
     return userDetails.portfolio.projects.some(project => project.name === name)
@@ -113,7 +99,6 @@ export function FormProjects(props: FormProjectsProps) {
           //display error
           event.preventDefault();
           setUnsaved(true)
-          console.log("ALREADY EXISTS!!!!!------------------------------<");
           throw 'Project name already exists!';
         }
         event.preventDefault();
@@ -136,14 +121,12 @@ export function FormProjects(props: FormProjectsProps) {
       }
       props.toggleFromModal()
     } catch (error: any) {
-      console.error(error, 'front end error');
       showToast('error', error);
     }
   };
 
   return (
     <Box sx={muiStyles.form}>
-
       <Snackbar open={toast.open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
         <Alert onClose={handleClose} severity={toast.status as AlertColor} sx={{ width: '100%', fontSize: '20px' }}>
           {toast.message}
