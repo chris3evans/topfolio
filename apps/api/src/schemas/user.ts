@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
       secondary: String,
       tertiary: String,
       background_secondary: String,
-      font: Array,
+      font: String,
     },
     layout: [String],
     projects: [
