@@ -14,7 +14,7 @@ window.IntersectionObserver = jest
 describe('MovingParagraphComponent', () => {
   it('should render successfully', () => {
     const { baseElement } = render(
-      <MovingParagraphComponent text={'Hello World'} />
+      <MovingParagraphComponent text={'Hello World'} alignCenter={false} />
     );
     expect(baseElement).toBeTruthy();
   });

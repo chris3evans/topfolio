@@ -9,5 +9,5 @@ export interface UserContextType {
 export const UserContext = createContext<UserContextType>({
   userDetails: mockUserState,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setUser: () => {},
+  setUser: () => { },
 });

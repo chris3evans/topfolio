@@ -45,7 +45,6 @@ export function AnimatedImage(props: AnimatedImageProps) {
         tiltMaxAngleY={40}
         perspective={800}
         transitionSpeed={1500}
-        gyroscope={true}
       >
         <div className={styles['box']}>
           <img src={props.imageUrl} alt={props.alt} />

@@ -13,6 +13,7 @@ import FormProjects from '../form-projects/form-projects';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkIcon from '@mui/icons-material/Link';
 import Divider from '@mui/material/Divider';
+import Fade from '@mui/material/Fade';
 
 /* eslint-disable-next-line */
 export interface ItemProjectsBlankProps {
@@ -29,40 +30,40 @@ export function ItemProjectsBlank(props: ItemProjectsBlankProps) {
   ///might need cloudiany to crop the picture
   return (
     <>
-      <Card sx={{ maxWidth: '100%' }}>
-        <CardMedia
-          component="img"
-          height="180rem"
-          image={'../../assets/item-project-blank-Kate-Macate.jpg'}
-          alt="project image one"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h4" component="div" sx={{ minHeight: "5rem" }}>
-            Project Name
-          </Typography>
-          <Divider></Divider>
-          <Typography gutterBottom variant="body1" sx={{ marginTop: '1.2rem' }}>
-            <GitHubIcon color={'action'} fontSize={'large'} titleAccess={'GitHub Link'}></GitHubIcon>
-            <LinkIcon color={'action'} fontSize={'large'} titleAccess={'GitHub Link'} sx={{ marginLeft: '1.2rem' }}></LinkIcon>
-          </Typography>
-          <Typography variant="body1" color="text.secondary" sx={{ minHeight: "6.9rem" }}>
-            My project is about...
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="medium" onClick={toggleFromModal} >New Project</Button>
-        </CardActions>
-      </Card>
+      <Fade in={true} timeout={350}>
+        <Card sx={{ maxWidth: '100%', backgroundColor: '#F5F5F5', '&:hover': { boxShadow: '-1px 5px 15px 0px rgba(230,230,230,0.4)' } }}>
+          <CardMedia
+            component="img"
+            height="190rem"
+            image={'../../assets/item-project-blank-Kate-Macate.jpg'}
+            alt="project image one"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h4" component="div" sx={{ minHeight: "5rem" }}>
+              Project Name
+            </Typography>
+            <Divider></Divider>
+            <Typography gutterBottom variant="body1" sx={{ marginTop: '1.2rem' }}>
+              <GitHubIcon color={'action'} fontSize={'large'} titleAccess={'GitHub Link'}></GitHubIcon>
+              <LinkIcon color={'action'} fontSize={'large'} titleAccess={'GitHub Link'} sx={{ marginLeft: '1.2rem' }}></LinkIcon>
+            </Typography>
+            <Typography variant="body1" color="text.secondary" sx={{ minHeight: "6.9rem", fontSize: "1.5rem" }}>
+              My project is about...
+            </Typography>
 
+          </CardContent>
+
+          <CardActions>
+            <Button size="large" onClick={toggleFromModal} variant={'outlined'}>New Project</Button>
+          </CardActions>
+        </Card>
+      </Fade>
       <Dialog open={open} onClose={toggleFromModal} maxWidth={"sm"} fullWidth>
-        <DialogTitle>Create a Project</DialogTitle>
         <DialogContent >
           <FormProjects token={props.token} existingData={null} toggleFromModal={toggleFromModal}></FormProjects>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={toggleFromModal} >Cancel</Button>
-        </DialogActions>
       </Dialog>
+
     </>
   );
 }

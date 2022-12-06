@@ -37,10 +37,10 @@ export function ContactMeDialog(props: ContactMeDialogProps) {
     };
     setPending(true);
     const data = {
-      name: target.name.value,
-      email: target.email.value,
-      title: target.subject.value,
-      body: target.message.value,
+      name: target.name?.value,
+      email: target.email?.value,
+      title: target.subject?.value,
+      body: target.message?.value,
       target: email,
     };
     const res = await emailHelp(data);

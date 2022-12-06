@@ -22,7 +22,8 @@
  }
  .text-cont  h2{
   font-size: 2em;}
-
+  .text-cont  p{
+    font-size: 1.3em;}
 .button-box {
   display: flex;
   justify-content: center;
