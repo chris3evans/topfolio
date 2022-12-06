@@ -8,3 +8,7 @@
   background-color: var(--primary-background);
   color: white;
 }
+
+.headerLogo {
+  width: 45px;
+}

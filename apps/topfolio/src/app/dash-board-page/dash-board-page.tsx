@@ -9,7 +9,7 @@ import { postUser } from '../../utils/ApiService';
 import { User } from '@topfolio/api-interfaces';
 import { styled, useTheme } from '@mui/material/styles';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { Toolbar } from '@mui/material';
 import { IconButton } from '@mui/material';
 import { Drawer } from '@mui/material';
@@ -21,7 +21,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 // NOTE: the component's structure below was modified from the original which can be found at: https://mui.com/material-ui/react-drawer/#responsive-drawer
 
 /* eslint-disable-next-line */
-export interface DashBoardPageProps {}
+export interface DashBoardPageProps { }
 
 const drawerWidth = 240;
 
@@ -76,6 +76,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 const DashboardPageDrawerNavigation = function () {
   const [token, setToken] = useState('');
   const { userDetails, setUser } = useContext(UserContext);
+  const preview = () => {
+    window.open(
+      '/' + userDetails?.slug_url + '-portfolio',
+      '_blank'
+    );
+  };
 
   const { user, getAccessTokenSilently } = useAuth0();
 
@@ -116,6 +122,8 @@ const DashboardPageDrawerNavigation = function () {
         <Toolbar
           sx={{
             backgroundColor: '#151619',
+            display: 'flex',
+            justifyContent: 'space-between'
           }}
         >
           <IconButton
@@ -130,9 +138,14 @@ const DashboardPageDrawerNavigation = function () {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Navigate Your Topfolio
-          </Typography>
+          <div><img className={styles['headerLogo']} src="https://i.ibb.co/N3J0xJG/Untitled-150-150-px.png"></img></div>
+          <Button
+            sx={{ fontSize: '1.4rem' }}
+            onClick={preview}
+            variant="contained"
+          >
+            Preview your Portfolio
+          </Button>
         </Toolbar>
       </AppBar>
 
@@ -144,6 +157,7 @@ const DashboardPageDrawerNavigation = function () {
             width: drawerWidth,
             boxSizing: 'border-box',
             backgroundColor: '#151619',
+            borderRight: '1px solid #6C6C6D'
           },
         }}
         variant="persistent"
