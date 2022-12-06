@@ -71,4 +71,13 @@ describe('server intergration tests', () => {
     expect(data.body.message).toEqual("User doesn't exist")
   })
   
+
+  it('should be able to send email to user', async () => {
+    const email = {
+      name: "sven", email: "b@gmail.com", title: "testing", body: "hey", target: "bt@gmail.com"
+    }
+    const data = await request.post('/user/email').send(email)
+    expect(data.body.data).toEqual("success")
+  })
+ 
 })
