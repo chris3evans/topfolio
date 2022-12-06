@@ -1,9 +1,5 @@
-import { useTheme } from '@emotion/react';
-import { motion, useAnimation, useInView } from 'framer-motion';
 import { useEffect } from 'react';
-import { mainTheme } from '../themes';
 import styles from './credits-ring.module.css';
-import { FcPhoneAndroid, FcInvite, FcBusinessman } from 'react-icons/fc';
 
 /* eslint-disable-next-line */
 export interface CreditsRingProps {}
@@ -37,8 +33,9 @@ export function CreditsRing(props: CreditsRingProps) {
         pinchZoom: false,
       });
     } catch (e) {
-      console.log('error');
+      return;
     }
+    return;
   }, []);
   return (
     <div className={styles['container']}>

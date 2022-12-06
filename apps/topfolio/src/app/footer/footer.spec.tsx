@@ -16,7 +16,7 @@ describe('Footer', () => {
   it('Should find links base on name', () => {
     const { getByRole } = render(footer);
     const link = getByRole('link', {
-      name: 'Topfolio Facebook link',
+      name: 'Facebook link',
     });
     expect(link).toBeTruthy();
   });
@@ -27,13 +27,13 @@ describe('Footer', () => {
       </UserContext.Provider>
     );
     const link = getByRole('link', {
-      name: 'Topfolio Facebook link',
+      name: 'Facebook link',
     });
     const link2 = getByRole('link', {
-      name: 'Topfolio Github link',
+      name: 'Github link',
     });
     const link3 = getByRole('link', {
-      name: 'Topfolio Linkedin link',
+      name: 'Linkedin link',
     });
     expect(link).toHaveAttribute(
       'href',

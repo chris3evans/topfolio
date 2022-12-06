@@ -12,23 +12,9 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { User } from '@topfolio/api-interfaces';
 import { PortfolioPage } from './portfolio-page/portfolio-page';
 import { mockUserState } from './mockUser';
-import {ErrorPage} from './error-page/error-page';
+import { ErrorPage } from './error-page/error-page';
 export const App = () => {
-  // Removed type "object"
   const [userDetails, setUser] = useState<User>(mockUserState);
-
-  /*   const { isLoading } = useAuth0();
-
-    if (isLoading) {
-      return (
-        <>
-          <div>
-            Diplaying here a loading component...
-          </div>
-        </>
-      );
-    } */
-
   return (
     <div>
       <BrowserRouter>
