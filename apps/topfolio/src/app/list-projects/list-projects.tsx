@@ -15,6 +15,7 @@ export interface ListProjectsProps {
 //This is the top level of the project form
 export function ListProjects(props: ListProjectsProps) {
   const { userDetails, setUser } = useContext(UserContext);
+  const [counter, setCounter] = useState<number>(0)
 
   const [toast, setToast] = useState({ open: false, status: 'success', message: '' });
 
@@ -30,15 +31,19 @@ export function ListProjects(props: ListProjectsProps) {
   };
 
   useEffect(() => {
-    if (userDetails && props.token) {
+    console.log(userDetails.portfolio.projects, "userDetails.portfolio.projects")
+    if (userDetails.portfolio.projects && props.token && counter > 1) {
       updateUser(userDetails, props.token).then((response) => {
         if (response.error === '') {
           showToast('success', 'Settings were successfully changed!');
         }
-        else showToast('error', response.error);
-      });
+        else { showToast('error', response.error); }
+
+      }).catch(error => { showToast('error', error) });
     }
-  }, [userDetails, props.token]);
+    setCounter(counter + 1)
+
+  }, [userDetails.portfolio.projects, props.token]);
 
 
   return (
