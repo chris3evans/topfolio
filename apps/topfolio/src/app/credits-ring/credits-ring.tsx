@@ -39,12 +39,12 @@ export function CreditsRing(props: CreditsRingProps) {
   }, []);
   return (
     <div className={styles['container']}>
-      {/* <canvas
+      <canvas
         id="canvas"
         className={styles['canvas']}
         width="350px"
         height="300px"
-      ></canvas> */}
+      ></canvas>
       <div id="tags" style={{ display: 'none' }}>
         <ul>
           {creators.map((tag, i) => (
