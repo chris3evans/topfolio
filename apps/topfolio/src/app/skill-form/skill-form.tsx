@@ -158,20 +158,6 @@ export function SkillForm(props: SkillFormProps) {
           );
         })}
       </Box>
-
-      <Box sx={muiStyles.chips}>
-        {userDetails.portfolio.skills.map((skill) => {
-          return (
-            <Chip
-              key={skill.skill}
-              sx={muiStyles.chip}
-              color="primary"
-              onDelete={handleDelete(skill)}
-              label={skill.skill + '  |  value: ' + skill.level}
-            />
-          );
-        })}
-      </Box>
     </Box>
   );
 }
