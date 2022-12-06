@@ -61,14 +61,13 @@ export function FormFontTheme(props: FormFontThemeProps) {
           ...userDetails.portfolio,
           theme: {
             ...userDetails.portfolio.theme,
-            font: chosenFont,
+            font: `${chosenFont}, Arial, Helvetica, sans-serif`,
           },
         },
       };
 
       // @ts-ignore
       setUser(newState);
-      console.log(userDetails, 'updated font theme');
       const response = await updateUser(newState, props.token);
       console.log(response, 'response');
     } catch (error) {

@@ -13,9 +13,11 @@ export function CurrentFontTheme(props: CurrentFontThemeProps) {
   const { userDetails, setUser } = useContext(UserContext);
 
   useEffect(() => {
+    // @ts-ignore
+    const fonts = userDetails.portfolio.theme.font[0].split(',');
     WebFont.load({
       google: {
-        families: userDetails.portfolio.theme.font,
+        families: fonts,
       },
     });
   }, [userDetails.portfolio.theme.font]);
@@ -42,7 +44,7 @@ export function CurrentFontTheme(props: CurrentFontThemeProps) {
           </Box>
           <Box sx={muiStyles['existingThemeHeading']}>
             <Typography variant="body1" sx={muiStyles['currentFont']}>
-              {userDetails.portfolio.theme.font}
+              {userDetails.portfolio.theme.font[0].split(',')[0]}
             </Typography>
             <Typography
               variant="body2"
@@ -52,7 +54,7 @@ export function CurrentFontTheme(props: CurrentFontThemeProps) {
                 color: 'black',
               }}
             >
-              {userDetails.portfolio.theme.font}
+              {userDetails.portfolio.theme.font[0].split(',')[0]}
             </Typography>
           </Box>
         </Box>
