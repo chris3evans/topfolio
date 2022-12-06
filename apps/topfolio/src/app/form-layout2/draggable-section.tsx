@@ -23,8 +23,14 @@ export default function DraggableSection(props: DraggableSectionProps) {
         'About me': '../assets/contacts.png',
         'Skills': '../assets/skills.png',
     }
+    const descr = {
+        'Work Experience': 'List all your work experiences in a timeline',
+        'Projects': 'Showcase your projects with images and links to your repos or websites',
+        'About me': 'Present yourself: bio, picture, contact links',
+        'Skills': 'List all your skills and highlight the strongest ones',
+    }
     return (
-        <Card sx={{ display: 'flex', maxWidth: '400px', alignItems: 'center' }}>
+        <Card sx={{ display: 'flex', width: '100%', maxWidth: '75%', alignItems: 'center' }}>
             <CardMedia
                 component="img"
                 sx={{ height: 60, width: 60, marginLeft: '10px' }}
@@ -37,7 +43,7 @@ export default function DraggableSection(props: DraggableSectionProps) {
                         {props.title}
                     </Typography>
                     <Typography variant="h5" color="text.secondary" component="div">
-                        {props.descr}
+                        {descr[props.title as keyof typeof descr]}
                     </Typography>
                 </CardContent>
             </Box>

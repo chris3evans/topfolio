@@ -37,13 +37,16 @@ export function FormLayout2(props: FormLayout2Props) {
     return result;
   };
 
-  const grid = 8;
+  const grid = 10;
 
   const getItemStyle = (isDragging: any, draggableStyle: any) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: "none",
     padding: '0',
     margin: `0 0 ${grid}px 0`,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
 
     // change background colour if dragging
     background: isDragging ? "none" : "none",
@@ -105,7 +108,6 @@ export function FormLayout2(props: FormLayout2Props) {
   console.log("state", state)
   return (
     <>
-      <h1 className={styles['layoutTitle']}>Drag & Drop each section to change the display order on your portfolio</h1>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="droppable">
           {(provided, snapshot) => (
@@ -139,8 +141,6 @@ export function FormLayout2(props: FormLayout2Props) {
           )}
         </Droppable>
       </DragDropContext>
-      <h1 className={styles['layoutTitle']}>Customize theme Colors</h1>
-      <FormColorTheme token={props.token}></FormColorTheme>
     </>
   );
 }
