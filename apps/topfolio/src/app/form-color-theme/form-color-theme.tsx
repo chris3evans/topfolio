@@ -7,8 +7,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import { colorApi } from '../../utils/ApiService';
 import { updateUser } from '../../utils/ApiService';
-import { useDebounce } from 'use-debounce';
 import ColorCardItemNoMemo from '../color-card-item/color-card-item';
+import { useMediaQuery } from '@mui/material';
 
 /* eslint-disable-next-line */
 export interface FormColorThemeProps {
@@ -38,6 +38,9 @@ export function FormColorTheme(props: FormColorThemeProps) {
   }, []);
 
   const { userDetails, setUser } = useContext(UserContext);
+
+  const mediaQuery900 = useMediaQuery('(max-width:900px)');
+  const mediaQuery600 = useMediaQuery('(max-width:600px)');
 
   const changeColorSelection = async function () {
     try {
@@ -97,7 +100,13 @@ export function FormColorTheme(props: FormColorThemeProps) {
 
   return (
     <form onSubmit={onSubmitHandler} className={styles['color-theme-form']}>
-      <Box sx={muiStyles['colorSelection']}>
+      <Box
+        sx={
+          mediaQuery900
+            ? muiStyles['colorSelection-900']
+            : muiStyles['colorSelection']
+        }
+      >
         <ColorCardItem
           color={colorBackground}
           colorLabel="Background Color"
@@ -129,20 +138,44 @@ export function FormColorTheme(props: FormColorThemeProps) {
           changeHandler={setColorBackground2}
         ></ColorCardItem>
       </Box>
-      <Box sx={muiStyles['buttonSelection']}>
+      <Box
+        sx={
+          mediaQuery600
+            ? muiStyles['buttonSelection-600']
+            : mediaQuery900
+            ? muiStyles['buttonSelection-900']
+            : muiStyles['buttonSelection']
+        }
+      >
         <Box>
           <Button
             variant="outlined"
             startIcon={<GenerateIcon></GenerateIcon>}
             type="button"
-            sx={muiStyles['button']}
+            sx={
+              mediaQuery600
+                ? muiStyles['button-600']
+                : mediaQuery900
+                ? muiStyles['button-900']
+                : muiStyles['button']
+            }
             onClick={onGenerateHandler}
           >
             Generate
           </Button>
         </Box>
         <Box>
-          <Button sx={muiStyles['button']} variant="contained" type="submit">
+          <Button
+            sx={
+              mediaQuery600
+                ? muiStyles['button-600']
+                : mediaQuery900
+                ? muiStyles['button-900']
+                : muiStyles['button']
+            }
+            variant="contained"
+            type="submit"
+          >
             Save
           </Button>
         </Box>

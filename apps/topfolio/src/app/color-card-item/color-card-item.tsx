@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import muiStyles from './styles-color-card-item';
+import { useMediaQuery } from '@mui/material';
 
 /* eslint-disable-next-line */
 export interface ColorCardItemProps {
@@ -11,17 +12,29 @@ export interface ColorCardItemProps {
 }
 
 export function ColorCardItem(props: ColorCardItemProps) {
+  const mediaQuery900 = useMediaQuery('(max-width:900px)');
+
   return (
     <Box sx={muiStyles['colorItem']}>
       <Box
-        sx={{
-          backgroundColor: `#${props.color}`,
-          height: '20rem',
-          width: '100%',
-        }}
+        sx={
+          mediaQuery900
+            ? {
+                backgroundColor: `#${props.color}`,
+                height: '7.5rem',
+                width: '100%',
+              }
+            : {
+                backgroundColor: `#${props.color}`,
+                height: '20rem',
+                width: '100%',
+              }
+        }
       ></Box>
       <TextField
-        sx={muiStyles['colorInput']}
+        sx={
+          mediaQuery900 ? muiStyles['colorInput-900'] : muiStyles['colorInput']
+        }
         label={props.colorLabel}
         variant="standard"
         type="color"

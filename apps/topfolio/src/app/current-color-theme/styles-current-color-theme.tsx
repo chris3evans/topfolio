@@ -4,6 +4,11 @@ const muiStyles = {
     padding: '1rem 3rem 3rem 3rem',
     borderRadius: '0.5rem',
   },
+  'existingThemeContainer-900': {
+    backgroundColor: 'white',
+    padding: '0rem 1.5rem 1.5rem 1.5rem',
+    borderRadius: '0.5rem',
+  },
 
   existingThemeHeading: {
     color: 'black',

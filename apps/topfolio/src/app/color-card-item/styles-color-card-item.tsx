@@ -8,12 +8,15 @@ const muiStyles = {
   color: {
     height: '20rem',
     width: '100%',
-    backgroundColor: 'red',
   },
 
   colorInput: {
     fontSize: '1rem',
     width: '80%',
+  },
+  'colorInput-900': {
+    fontSize: '1rem',
+    width: '100%',
   },
 };
 
