@@ -47,7 +47,7 @@ export function SkillsSphere(props: SkillsSphereProps) {
         textColour: theme.palette.primary.main,
         outlineColour: 'transparent',
         reverse: true,
-        depth: 0.6,
+        depth: 0.4,
         maxSpeed: 0.05,
         weight: true,
         noSelect: true,

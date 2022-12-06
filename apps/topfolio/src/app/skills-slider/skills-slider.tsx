@@ -30,7 +30,8 @@ const PrettoSlider = styled(Slider)({
   },
   '& .MuiSlider-valueLabel': {
     position: 'absolute',
-    top: '1.6em',
+    top: '1.5em',
+    left: '0.3em',
     lineHeight: 1.2,
     fontSize: 20,
     padding: 0,

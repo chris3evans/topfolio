@@ -76,7 +76,10 @@ export function TimelineObject(props: TimelineItemProps) {
       variants={animation}
     >
       <TimelineItem key={`key${props.index}`} id="WorkHistory">
-        <TimelineOppositeContent color="text.secondary">
+        <TimelineOppositeContent
+          color="text.secondary"
+          className={styles['date']}
+        >
           <Typography
             ref={ref}
             variant="h4"
@@ -86,11 +89,13 @@ export function TimelineObject(props: TimelineItemProps) {
         </TimelineOppositeContent>
         <TimelineSeparator sx={{ height: 400 }}>
           <motion.div animate={controls} variants={dotAnimation}>
-            <TimelineDot color="primary" />
+            <TimelineDot color="secondary" />
           </motion.div>
           <TimelineConnector
             sx={{
               height: 300,
+              width: 5,
+              backgroundColor: 'var(--primary)',
             }}
           />
         </TimelineSeparator>
