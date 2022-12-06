@@ -40,7 +40,8 @@ const muiStyles = {
 
   chip: {
     margin: '1rem',
-    fontSize: '1.3rem',
+    padding: '1rem',
+    fontSize: '1.6rem',
   },
 
   slider: {
