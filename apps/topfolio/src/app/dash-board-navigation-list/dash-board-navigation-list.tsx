@@ -73,12 +73,12 @@ export function DashBoardNavigationList(props: DashBoardNavigationListProps) {
       </ListItem>
       <ListItem className={styles['dashboardNavigation-item']}>
         <Link
-          to="/dashboard/layout"
+          to="/dashboard/theme"
           className={styles['dashboardNavigation-link']}
         >
           <ListItemText
             className={styles['dashboardNavigation-item-text']}
-            primary="Layout"
+            primary="Theme"
             sx={muiStyles['navigationItemLink']}
           ></ListItemText>
         </Link>

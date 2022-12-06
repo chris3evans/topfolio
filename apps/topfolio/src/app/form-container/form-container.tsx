@@ -4,7 +4,7 @@ import FormProjects from '../form-projects/form-projects';
 import ColorThemeSection from '../color-theme-section/color-theme-section';
 import InfoAboutMe from '../info-about-me/info-about-me';
 import ContactMeForm from '../contact-me-form/contact-me-form';
-import Layout from '../form-layout2/form-layout2';
+import Theme from '../theme-page/theme-page';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import ListWorkExperience from '../list-work-experience/list-work-experience';
@@ -62,8 +62,8 @@ export function FormContainer(props: FormContainerProps) {
         ) : (
           ''
         )}
-        {props.sectionName == 'layout' ? (
-          <Layout token={props.token}></Layout>
+        {props.sectionName == 'theme' ? (
+          <Theme token={props.token}></Theme>
         ) : (
           ''
         )}
