@@ -46,7 +46,7 @@ export function FormLayout2(props: FormLayout2Props) {
     margin: `0 0 ${grid}px 0`,
 
     // change background colour if dragging
-    background: isDragging ? "lightgrey" : "none",
+    background: isDragging ? "none" : "none",
 
     // styles we need to apply on draggables
     ...draggableStyle
