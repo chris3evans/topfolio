@@ -114,7 +114,7 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
           ? muiStyles['form-900']
           : mediaQuery1200
           ? muiStyles['form-1200']
-          : {}
+          : muiStyles['form']
       }
     >
       <Snackbar
