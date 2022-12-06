@@ -136,9 +136,7 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
 
           <Box sx={muiStyles.bodyField}>
             <FormControl>
-              <InputLabel htmlFor="hero_title">
-                Full Name: (userDetails.name)
-              </InputLabel>
+              <InputLabel htmlFor="name">Full Name: (userDetails.name)</InputLabel>
               <Input
                 type="text"
                 id="name"
@@ -183,9 +181,7 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
 
           <Box sx={muiStyles.titleField}>
             <FormControl fullWidth={true}>
-              <InputLabel htmlFor="bio_title">
-                Biografy title: (portfolio.bio_title)
-              </InputLabel>
+              <InputLabel htmlFor="bio_title">Biography title: (portfolio.bio_title)</InputLabel>
               <Input
                 type="text"
                 id="bio_title"
@@ -202,9 +198,7 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
 
           <Box sx={muiStyles.bodyField}>
             <FormControl>
-              <InputLabel htmlFor="bio">
-                Biografy description: (portfolio.bio)
-              </InputLabel>
+              <InputLabel htmlFor="bio">Biography description: (portfolio.bio)</InputLabel>
               <Input
                 type="text"
                 id="bio"

@@ -38,7 +38,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
   const toggleSocialsFormHandler = function () {
     setShowSocials(!showSocials);
   };
-  const submitHandler = function (event: any) {};
+  const submitHandler = function (event: any) { };
   const { userDetails, setUser } = useContext(UserContext);
   const [toast, setToast] = useState({
     open: false,
@@ -108,7 +108,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
     <>
       {/* console.log("Phone:", userDetails?.portfolio.contact_me.phone) */}
       {userDetails.portfolio.contact_me &&
-      userDetails.portfolio.contact_me.email !== 'test@email.com' ? (
+        userDetails.portfolio.contact_me.email !== 'test@email.com' ? (
         <>
           {dialog.display ? (
             <FormDialog
@@ -120,7 +120,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
             ''
           )}
           <Box sx={muiStyles.form}>
-            ​
+
             <Snackbar
               open={toast.open}
               autoHideDuration={6000}
@@ -135,7 +135,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                 {toast.message}
               </Alert>
             </Snackbar>
-            ​<Typography variant="h2">Contact Me:</Typography>
+            <Typography variant="h2">Contact Me:</Typography>
             <form className={styles['form']} onSubmit={formSubmitHandler}>
               <Box sx={muiStyles.mainGrid}>
                 <Box sx={muiStyles.socialsGrid}>
@@ -161,7 +161,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                       ></Input>
                     </FormControl>
                   </Box>
-                  ​
+
                   <Box>
                     <FormControl fullWidth={true}>
                       <InputLabel htmlFor="email">Email</InputLabel>
@@ -184,7 +184,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                       ></Input>
                     </FormControl>
                   </Box>
-                  ​
+
                   <Box>
                     <FormControl fullWidth={true}>
                       <InputLabel htmlFor="location">Location</InputLabel>
@@ -210,7 +210,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                     </FormControl>
                   </Box>
                 </Box>
-                ​
+
                 <Box sx={muiStyles.switchContainer}>
                   <FormControlLabel
                     label="Add Social Media"
@@ -220,7 +220,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                     }
                   ></FormControlLabel>
                 </Box>
-                ​
+
                 {showSocials ? (
                   <Box sx={muiStyles.socialsGrid}>
                     <Box>
@@ -234,7 +234,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                           defaultValue={
                             userDetails.portfolio.contact_me
                               ? userDetails.portfolio.contact_me.social_media
-                                  .github
+                                .github
                               : null
                           }
                           startAdornment={
@@ -258,7 +258,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                           defaultValue={
                             userDetails.portfolio.contact_me
                               ? userDetails.portfolio.contact_me.social_media
-                                  .facebook
+                                .facebook
                               : null
                           }
                           startAdornment={
@@ -282,7 +282,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                           defaultValue={
                             userDetails.portfolio.contact_me
                               ? userDetails.portfolio.contact_me.social_media
-                                  .linkedin
+                                .linkedin
                               : null
                           }
                           startAdornment={
@@ -306,7 +306,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                           defaultValue={
                             userDetails.portfolio.contact_me
                               ? userDetails.portfolio.contact_me.social_media
-                                  .instagram
+                                .instagram
                               : null
                           }
                           startAdornment={
@@ -330,7 +330,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                           defaultValue={
                             userDetails.portfolio.contact_me
                               ? userDetails.portfolio.contact_me.social_media
-                                  .twitter
+                                .twitter
                               : null
                           }
                           startAdornment={
@@ -355,7 +355,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
                           defaultValue={
                             userDetails.portfolio.contact_me
                               ? userDetails.portfolio.contact_me.social_media
-                                  .youtube
+                                .youtube
                               : null
                           }
                           startAdornment={
