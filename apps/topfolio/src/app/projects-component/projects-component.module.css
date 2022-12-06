@@ -4,6 +4,7 @@
   overflow-x: hidden;
   display: flex;
   flex-wrap: nowrap;
+  padding-bottom: 4em;
 }
 @media only screen and (max-width: 600px) {
   .projects-cont{
