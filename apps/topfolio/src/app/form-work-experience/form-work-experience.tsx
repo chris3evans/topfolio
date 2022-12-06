@@ -5,9 +5,6 @@ import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { updateUser } from '../../utils/ApiService';
@@ -15,6 +12,7 @@ import { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import { WorkExperience } from '@topfolio/api-interfaces';
 import UploadImageWidget from '../upload-image-widget/upload-image-widget';
+import { useMediaQuery } from '@mui/material';
 
 /* eslint-disable-next-line */
 export interface FormWorkExperienceProps {
@@ -44,6 +42,10 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
       });
     }
   }, [userDetails]);
+
+  const mediaQuery1200 = useMediaQuery('(max-width:1200px)');
+  const mediaQuery900 = useMediaQuery('(max-width:900px)');
+  const mediaQuery600 = useMediaQuery('(max-width:600px)');
 
   const closeEditHandler = function () {
     if (props.listener) {
@@ -116,16 +118,49 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
   };
 
   return (
-    <Box sx={muiStyles.form}>
+    <Box
+      sx={
+        mediaQuery600
+          ? muiStyles['form-600']
+          : mediaQuery900
+          ? muiStyles['form-900']
+          : mediaQuery1200
+          ? muiStyles['form-1200']
+          : muiStyles['form']
+      }
+    >
       <Typography align="center" sx={muiStyles.formTitle} variant="h2">
         Work Experience
       </Typography>
-      <Box sx={muiStyles.imageUploadContainer}>
-        <UploadImageWidget callback={getUploadedImage} buttonText={'Upload a picture'} />
+      <Box
+        sx={
+          mediaQuery900
+            ? muiStyles['imageUploadContainer-900']
+            : muiStyles['imageUploadContainer']
+        }
+      >
+        <UploadImageWidget
+          callback={getUploadedImage}
+          buttonText={'Upload a picture'}
+        />
       </Box>
       <form onSubmit={formSubmitHandler} className={styles['form-we']}>
-        <Box sx={muiStyles.formFields}>
-          <Box sx={muiStyles.companyField}>
+        <Box
+          sx={
+            mediaQuery600
+              ? muiStyles['formFields-600']
+              : mediaQuery900
+              ? muiStyles['formFields-900']
+              : muiStyles['formFields']
+          }
+        >
+          <Box
+            sx={
+              mediaQuery600
+                ? muiStyles['companyField-600']
+                : muiStyles['companyField']
+            }
+          >
             <FormControl fullWidth={true}>
               <InputLabel htmlFor="company-name">Company Name:</InputLabel>
               <Input
@@ -143,7 +178,13 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
             </FormControl>
           </Box>
 
-          <Box sx={muiStyles.descriptionField}>
+          <Box
+            sx={
+              mediaQuery600
+                ? muiStyles['descriptionField-600']
+                : muiStyles['descriptionField']
+            }
+          >
             <FormControl>
               <InputLabel htmlFor="description">Description:</InputLabel>
               <Input
@@ -158,69 +199,33 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
             </FormControl>
           </Box>
 
-          <Box sx={muiStyles.datesContainer}>
-            <Box sx={muiStyles.dateField}>
+          <Box
+            sx={
+              mediaQuery600
+                ? muiStyles['datesContainer-600']
+                : muiStyles['datesContainer']
+            }
+          >
+            <Box>
               <TextField
+                sx={muiStyles.dateField}
                 variant="standard"
                 label="Start Date"
                 name="startDate"
                 defaultValue={props.existingData?.start_date}
                 data-testid="test-start-date"
               ></TextField>
-              {/* <FormControl>
-                <LocalizationProvider dateAdapter={AdapterMoment}>
-                  <DatePicker
-                    value={startDate}
-                    onChange={(newValue: any) => {
-                      console.log(newValue);
-                      setStartDate(newValue);
-                    }}
-                    renderInput={(props: any) => (
-                      <TextField
-                        required
-                        type="date"
-                        name="startDate"
-                        variant="standard"
-                        {...props}
-                      />
-                    )}
-                    label="Start"
-                    inputFormat="DD/MM/YYYY"
-                  ></DatePicker>
-                </LocalizationProvider>
-              </FormControl> */}
             </Box>
 
-            <Box sx={muiStyles.dateField}>
+            <Box>
               <TextField
+                sx={muiStyles.dateField}
                 variant="standard"
                 label="End Date"
                 name="endDate"
                 defaultValue={props.existingData?.end_date}
                 data-testid="test-end-date"
               ></TextField>
-              {/* <FormControl>
-                <LocalizationProvider dateAdapter={AdapterMoment}>
-                  <DatePicker
-                    label="Finish"
-                    value={endDate}
-                    onChange={(newValue: any) => {
-                      console.log(newValue);
-                      setEndDate(newValue._d);
-                    }}
-                    renderInput={(props: any) => (
-                      <TextField
-                        type="date"
-                        required
-                        name="finishDate"
-                        variant="standard"
-                        {...props}
-                      />
-                    )}
-                    inputFormat="DD/MM/YYYY"
-                  ></DatePicker>
-                </LocalizationProvider>
-              </FormControl> */}
             </Box>
           </Box>
         </Box>
