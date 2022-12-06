@@ -13,7 +13,7 @@ window.IntersectionObserver = jest
   .mockImplementation(intersectionObserverMock);
 describe('SectionsComponent', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<SectionsComponent />);
+    const { baseElement } = render(<SectionsComponent viewMode={false} />);
     expect(baseElement).toBeTruthy();
   });
 });

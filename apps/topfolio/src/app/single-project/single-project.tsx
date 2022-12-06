@@ -41,7 +41,7 @@ export function SingleProject(props: SingleProjectProps) {
           animate={
             isInView
               ? {
-                  opacity: 0.95,
+                  opacity: 1,
                   transition: {
                     type: 'spring',
                     delay: 1.5,
@@ -55,6 +55,7 @@ export function SingleProject(props: SingleProjectProps) {
           <p>{props.project.description}</p>
           <div className={styles['links']}>
             <motion.a
+              target="_blank"
               href={props.project.github_url}
               whileHover={{
                 scale: 2,
@@ -71,6 +72,7 @@ export function SingleProject(props: SingleProjectProps) {
               Github
             </motion.a>
             <motion.a
+              target="_blank"
               href={props.project.app_url}
               whileHover={{
                 scale: 2,

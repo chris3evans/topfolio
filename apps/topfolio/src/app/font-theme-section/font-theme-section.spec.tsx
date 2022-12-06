@@ -4,7 +4,7 @@ import FontThemeSection from './font-theme-section';
 
 describe('FontThemeSection', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<FontThemeSection />);
+    const { baseElement } = render(<FontThemeSection token={''} />);
     expect(baseElement).toBeTruthy();
   });
 });
