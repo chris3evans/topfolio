@@ -5,6 +5,7 @@ const {
   addUser,
   updateUser,
   getUserByUrl,
+  sortTags
 } = require('../models/user');
 const { sendHelp } = require('../models/email');
 
@@ -12,8 +13,8 @@ const userInfo = async (req: express.Request, res: express.Response) => {
   try {
     const { slug_url } = req.params;
     const data = await getUserByUrl(slug_url); //function to try find user by slug_url
-
     if (data) {
+      await sortTags(data)
       res.status(200);
       res.send({ error: '', data });
     } else {
@@ -23,7 +24,7 @@ const userInfo = async (req: express.Request, res: express.Response) => {
   } catch (error) {
     console.log('error: ' + error);
     res.status(500);
-    res.send({ error, data: {} });
+    res.send({error: error, data: {} });
   }
 };
 

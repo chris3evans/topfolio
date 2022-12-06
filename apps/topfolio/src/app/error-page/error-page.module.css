@@ -20,3 +20,23 @@
 p {
   font-size: 1.5vw;
 }
+
+button{
+  background-color: blue;
+  border-radius: 2;
+}
+
+button {
+  background-color: #344bbe;
+  border-radius: 6px;
+  border-width: 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 100%;
+  height: 7%;
+  line-height: 1.15;
+  margin: 12px 0 0;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+}
