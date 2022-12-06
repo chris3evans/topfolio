@@ -1,3 +1,4 @@
+import styles from './item-work-experience-blank.module.css';
 import { Typography } from '@mui/material';
 import { useContext, useState } from 'react';
 import Card from '@mui/material/Card';
@@ -9,18 +10,19 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import FormProjects from '../form-projects/form-projects';
+import FormWorkExperience from '../form-work-experience/form-work-experience';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkIcon from '@mui/icons-material/Link';
 import Divider from '@mui/material/Divider';
 import Fade from '@mui/material/Fade';
+import Box from '@mui/material/Box'
 
 /* eslint-disable-next-line */
-export interface ItemProjectsBlankProps {
+export interface ItemWorkExperienceBlankProps {
   token: string;
 }
 
-export function ItemProjectsBlank(props: ItemProjectsBlankProps) {
+export function ItemWorkExperienceBlank(props: ItemWorkExperienceBlankProps) {
   const [open, setOpen] = useState<boolean>(false);
   const toggleFromModal = function () {
     setOpen(!open)
@@ -35,32 +37,31 @@ export function ItemProjectsBlank(props: ItemProjectsBlankProps) {
           <CardMedia
             component="img"
             height="190rem"
-            image={'../../assets/item-project-blank-Kate-Macate.jpg'}
-            alt="project image one"
+            image={'../../assets/item-work-experience-blank.jpg'}
+            alt="work experience image one"
           />
           <CardContent>
             <Typography gutterBottom variant="h4" component="div" sx={{ minHeight: "5rem" }}>
-              Project Name
+              My First Job
             </Typography>
             <Divider></Divider>
-            <Typography gutterBottom variant="body1" sx={{ marginTop: '1.2rem' }}>
-              <GitHubIcon color={'action'} fontSize={'large'} titleAccess={'GitHub Link'}></GitHubIcon>
-              <LinkIcon color={'action'} fontSize={'large'} titleAccess={'GitHub Link'} sx={{ marginLeft: '1.2rem' }}></LinkIcon>
-            </Typography>
-            <Typography variant="body1" color="text.secondary" sx={{ minHeight: "6.9rem", fontSize: "1.5rem" }}>
-              My project is about...
-            </Typography>
 
+            <Typography gutterBottom variant="body1" sx={{ marginTop: '1.2rem' }} >
+              From: .....  To: .....
+            </Typography>
+            <Typography variant="body1" color="text.secondary" sx={{ minHeight: "6.9rem", fontSize: "1.25rem" }}>
+              I worked for...
+            </Typography>
           </CardContent>
 
           <CardActions>
-            <Button size="large" onClick={toggleFromModal} variant={'outlined'}>New Project</Button>
+            <Button size="large" onClick={toggleFromModal} variant={'outlined'}>New Work Experience</Button>
           </CardActions>
         </Card>
       </Fade>
       <Dialog open={open} onClose={toggleFromModal} maxWidth={"sm"} fullWidth>
         <DialogContent >
-          <FormProjects token={props.token} existingData={null} toggleFromModal={toggleFromModal}></FormProjects>
+          <FormWorkExperience token={props.token} existingData={null} toggleFromModal={toggleFromModal}></FormWorkExperience>
         </DialogContent>
       </Dialog>
 
@@ -68,4 +69,4 @@ export function ItemProjectsBlank(props: ItemProjectsBlankProps) {
   );
 }
 
-export default ItemProjectsBlank;
+export default ItemWorkExperienceBlank;
