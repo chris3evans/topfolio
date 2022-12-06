@@ -5,6 +5,7 @@
 .dashboardNavigation-item {
   transition: all 0.4s;
 }
+
 .dashboardNavigation-item:hover {
   cursor: pointer;
   /* Hover effect color */
@@ -18,4 +19,8 @@
 
 .dashboardNavigation-item-text {
   color: var(--primary-text-app);
+}
+
+.current {
+  background-color: #292a30;
 }
