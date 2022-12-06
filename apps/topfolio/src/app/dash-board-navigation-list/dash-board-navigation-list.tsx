@@ -84,30 +84,6 @@ export function DashBoardNavigationList(props: DashBoardNavigationListProps) {
           ></ListItemText>
         </Link>
       </ListItem>
-      <ListItem className={styles['dashboardNavigation-item'] + (section === 'color-theme' ? ' ' + styles['current'] : '')}>
-        <Link
-          to="/dashboard/color-theme"
-          className={styles['dashboardNavigation-link']}
-        >
-          <ListItemText
-            className={styles['dashboardNavigation-item-text']}
-            primary="Color Theme"
-            sx={muiStyles['navigationItemLink']}
-          ></ListItemText>
-        </Link>
-      </ListItem>
-      <ListItem className={styles['dashboardNavigation-item'] + (section === 'font-theme' ? ' ' + styles['current'] : '')}>
-        <Link
-          to="/dashboard/font-theme"
-          className={styles['dashboardNavigation-link']}
-        >
-          <ListItemText
-            className={styles['dashboardNavigation-item-text']}
-            primary="Font Theme"
-            sx={muiStyles['navigationItemLink']}
-          ></ListItemText>
-        </Link>
-      </ListItem>
     </List>
   );
 }

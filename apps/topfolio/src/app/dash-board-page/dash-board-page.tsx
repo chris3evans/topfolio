@@ -132,13 +132,14 @@ const DashboardPageDrawerNavigation = function () {
             onClick={handleDrawerOpen}
             edge="start"
             sx={{
+              color: 'white',
               mr: 2,
               ...(open && { display: 'none' }),
             }}
           >
-            <MenuIcon />
+            <MenuIcon sx={{ fontSize: '40px' }} />
           </IconButton>
-          <div><img className={styles['headerLogo']} src="https://i.ibb.co/N3J0xJG/Untitled-150-150-px.png"></img></div>
+          <div></div>
           <Button
             sx={{ fontSize: '1.4rem' }}
             onClick={preview}

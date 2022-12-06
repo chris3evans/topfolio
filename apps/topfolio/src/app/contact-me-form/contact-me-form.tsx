@@ -16,6 +16,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import { useContext, useState } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -240,9 +241,9 @@ export function ContactMeForm(props: ContactMeFormProps) {
                           }
                           startAdornment={
                             <InputAdornment position="start">
-                              <FacebookIcon
+                              <GitHubIcon
                                 sx={muiStyles.contactIcon}
-                              ></FacebookIcon>
+                              ></GitHubIcon>
                             </InputAdornment>
                           }
                         ></Input>
