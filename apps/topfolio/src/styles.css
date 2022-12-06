@@ -38,18 +38,18 @@ img {
 }
 
 :root {
-  --primary-background: #151619;
+  --primary-background: #1f2125;
   --secondary-background: #1e1f23;
   --primary-text: #ffffff;
   --secondary: 'yellow'
-  --primary: #1976d3;
+  --primary: #39CBD7;
   --font: "Roboto","Helvetica","Arial",sans-serif;
 
-  --primary-background-app: #151619;
+  --primary-background-app: #1f2125;
   --secondary-background-app: #1e1f23;
   --primary-text-app: #ffffff;
    --secondary-app: 'yellow'
-  --primary-app: #1976d3;
-  --font-app: "Roboto","Helvetica","Arial",sans-serif;
+  --primary-app: #39CBD7;
+  --font: "Roboto","Helvetica","Arial",sans-serif;
 
 }

@@ -8,6 +8,9 @@
   align-items: center;
   flex-direction: column;
   gap: 2em;
+  padding-bottom: 2em;
+  margin-bottom: 2em;
+
 }
 .credit {
   display: flex;

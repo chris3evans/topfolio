@@ -5,7 +5,7 @@ import { FcPhoneAndroid, FcInvite, FcBusinessman } from 'react-icons/fc';
 import { motion } from 'framer-motion';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
-import { Divider } from '@mui/material';
+import CreditsRing from '../credits-ring/credits-ring';
 /* eslint-disable-next-line */
 export interface FooterProps {
   viewMode: boolean;
@@ -32,19 +32,8 @@ export function Footer(props: FooterProps) {
           <FiGithub />
         </a>
       </div>
-      <div className={styles['credit']}>
-        <span>Created by</span>
-        <FcBusinessman />
-        <a href="a">Fabrizio</a>
-        <FcBusinessman />
-        <a href="a">Noah</a>
-        <FcBusinessman />
-        <a href="a">Chris</a>
-        <FcBusinessman />
-        <a href="a">Chenhao</a>
-        <FcBusinessman />
-        <a href="a">Marco</a>
-      </div>
+      <span style={{ fontSize: '2em' }}>Created by</span>
+      <CreditsRing />
       <p style={{ fontSize: '2em' }}>© 2022 TopFolio. All rights reserved.</p>
     </>
   );

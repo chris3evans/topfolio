@@ -8,6 +8,11 @@ import type {} from '@mui/x-date-pickers/themeAugmentation';
 import { Theme } from '@topfolio/api-interfaces';
 
 export let mainTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#39CBD7',
+    },
+  },
   components: {
     MuiDatePicker: {
       styleOverrides: {
@@ -33,7 +38,6 @@ export let mainTheme = createTheme({
   },
 });
 mainTheme = responsiveFontSizes(mainTheme);
-// theme: Theme
 export const themeGenerator = (theme: Theme) => {
   changeCssVariablesByTheme(theme);
   mainTheme.palette.primary.main = theme.primary;
@@ -50,8 +54,6 @@ export const themeGenerator = (theme: Theme) => {
   mainTheme.typography.h4.fontFamily = [...theme.font].join(',');
   mainTheme.typography.h5.fontFamily = [...theme.font].join(',');
   mainTheme.typography.h6.fontFamily = [...theme.font].join(',');
-
-  console.log(mainTheme);
 };
 export const changeCssVariablesByTheme = (theme: Theme) => {
   const root: HTMLElement = document.querySelector(':root')!;
@@ -61,7 +63,6 @@ export const changeCssVariablesByTheme = (theme: Theme) => {
   root.style.setProperty('--primary-text', '#151619');
   root.style.setProperty('--secondary', theme.secondary);
   root.style.setProperty('--primary', theme.primary);
-  console.log([...theme.font].join(','));
   root.style.setProperty('--font', [...theme.font].join(','));
   body.style.setProperty('font-family', theme.font.join(','));
   body.style.setProperty('font-family', theme.font.join(','));
