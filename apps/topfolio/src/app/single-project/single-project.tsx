@@ -41,7 +41,7 @@ export function SingleProject(props: SingleProjectProps) {
           animate={
             isInView
               ? {
-                  opacity: 0.95,
+                  opacity: 1,
                   transition: {
                     type: 'spring',
                     delay: 1.5,

@@ -124,7 +124,7 @@ export function FormColorTheme(props: FormColorThemeProps) {
         ></ColorCardItem>
         <ColorCardItem
           color={colorBackground2}
-          colorLabel="Secondary Background Color"
+          colorLabel="Text Color"
           colorName="secondaryBackgroundColor"
           changeHandler={setColorBackground2}
         ></ColorCardItem>
