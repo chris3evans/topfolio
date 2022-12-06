@@ -18,7 +18,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-// NOTE: the component's structure below was modified from the original which can be found at: https://mui.com/material-ui/react-drawer/#responsive-drawer
+// NOTE: the component's structure below was modified from the original documentation which can be found at: https://mui.com/material-ui/react-drawer/#responsive-drawer
 
 /* eslint-disable-next-line */
 export interface DashBoardPageProps {}

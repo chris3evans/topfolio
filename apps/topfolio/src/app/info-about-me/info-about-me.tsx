@@ -12,6 +12,7 @@ import { UserContext } from '../../utils/UserContext';
 import UploadImageWidget from '../upload-image-widget/upload-image-widget';
 import { useState, useEffect } from 'react';
 import { Alert, AlertColor, Grid, Snackbar } from '@mui/material';
+import { useMediaQuery } from '@mui/material';
 
 /* eslint-disable-next-line */
 export interface InfoAboutMeProps {
@@ -36,6 +37,10 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
     message: '',
   });
   const [unsaved, setUnsaved] = useState(true);
+
+  const mediaQuery1200 = useMediaQuery('(max-width:1200px)');
+  const mediaQuery900 = useMediaQuery('(max-width:900px)');
+  const mediaQuery600 = useMediaQuery('(max-width:600px)');
 
   const trackChanges = () => {
     setUnsaved(false);
@@ -100,7 +105,18 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
   };
 
   return (
-    <Box sx={muiStyles.form}>
+    // <Box sx={muiStyles.form}>
+    <Box
+      sx={
+        mediaQuery600
+          ? muiStyles['form-600']
+          : mediaQuery900
+          ? muiStyles['form-900']
+          : mediaQuery1200
+          ? muiStyles['form-1200']
+          : {}
+      }
+    >
       <Snackbar
         open={toast.open}
         autoHideDuration={6000}
@@ -120,23 +136,37 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
         About me
       </Typography>
       <form onSubmit={formSumbitHandler} className={styles['form-we']}>
-        <Box sx={muiStyles.formFields}>
+        <Box
+          sx={
+            mediaQuery1200
+              ? muiStyles['formFields-1200']
+              : muiStyles['formFields']
+          }
+        >
           <Box sx={muiStyles.bodyField}>
             <FormControl>
-              <div className={styles['customLabel']}>Hero image</div>
-              <div>
-                <img className={styles['himg']} src={heroImage}></img>
+              <div className={styles['hero-image-container']}>
+                <div className={styles['customLabel']}>Hero image</div>
+                <div className={styles['himg-container']}>
+                  <img className={styles['himg']} src={heroImage}></img>
+                </div>
+                <UploadImageWidget
+                  callback={getUploadedHeroImage}
+                  buttonText={'Upload Hero Image'}
+                />
               </div>
-              <UploadImageWidget
-                callback={getUploadedHeroImage}
-                buttonText={'Upload Hero Image'}
-              />
             </FormControl>
           </Box>
 
-          <Box sx={muiStyles.bodyField}>
-            <FormControl>
-              <InputLabel htmlFor="name">Full Name: (userDetails.name)</InputLabel>
+          <Box
+            sx={
+              mediaQuery1200
+                ? muiStyles['bodyField-1200']
+                : muiStyles['bodyField']
+            }
+          >
+            <FormControl fullWidth={true}>
+              <InputLabel htmlFor="name">Full Name:</InputLabel>
               <Input
                 type="text"
                 id="name"
@@ -144,13 +174,28 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
                 onChange={trackChanges}
                 defaultValue={userDetails.name ? userDetails.name : null}
                 multiline={false}
+                sx={
+                  mediaQuery600
+                    ? muiStyles['textInput-600']
+                    : mediaQuery900
+                    ? muiStyles['textInput-900']
+                    : mediaQuery1200
+                    ? muiStyles['textInput-1200']
+                    : {}
+                }
               ></Input>
             </FormControl>
           </Box>
 
-          <Box sx={muiStyles.bodyField}>
+          <Box
+            sx={
+              mediaQuery1200
+                ? muiStyles['bodyField-1200']
+                : muiStyles['bodyField']
+            }
+          >
             <div className={styles['customLabel']}>Profile picture</div>
-            <div>
+            <div className={styles['pimg-container']}>
               <img className={styles['pimg']} src={profileImage}></img>
             </div>
             <UploadImageWidget
@@ -159,10 +204,16 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
             />
           </Box>
 
-          <Box sx={muiStyles.bodyField}>
-            <FormControl>
+          <Box
+            sx={
+              mediaQuery1200
+                ? muiStyles['bodyField-1200']
+                : muiStyles['bodyField']
+            }
+          >
+            <FormControl fullWidth={true}>
               <InputLabel htmlFor="hero_title">
-                Hero banner description: (portfolio.hero_title)
+                Hero banner description:
               </InputLabel>
               <Input
                 type="text"
@@ -175,13 +226,28 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
                     : null
                 }
                 multiline={true}
+                sx={
+                  mediaQuery600
+                    ? muiStyles['textInput-600']
+                    : mediaQuery900
+                    ? muiStyles['textInput-900']
+                    : mediaQuery1200
+                    ? muiStyles['textInput-1200']
+                    : {}
+                }
               ></Input>
             </FormControl>
           </Box>
 
-          <Box sx={muiStyles.titleField}>
+          <Box
+            sx={
+              mediaQuery1200
+                ? muiStyles['bodyField-1200']
+                : muiStyles['bodyField']
+            }
+          >
             <FormControl fullWidth={true}>
-              <InputLabel htmlFor="bio_title">Biography title: (portfolio.bio_title)</InputLabel>
+              <InputLabel htmlFor="bio_title">Biography title:</InputLabel>
               <Input
                 type="text"
                 id="bio_title"
@@ -192,13 +258,28 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
                     ? userDetails.portfolio.bio_title
                     : null
                 }
+                sx={
+                  mediaQuery600
+                    ? muiStyles['textInput-600']
+                    : mediaQuery900
+                    ? muiStyles['textInput-900']
+                    : mediaQuery1200
+                    ? muiStyles['textInput-1200']
+                    : {}
+                }
               ></Input>
             </FormControl>
           </Box>
 
-          <Box sx={muiStyles.bodyField}>
-            <FormControl>
-              <InputLabel htmlFor="bio">Biography description: (portfolio.bio)</InputLabel>
+          <Box
+            sx={
+              mediaQuery1200
+                ? muiStyles['bodyField-1200']
+                : muiStyles['bodyField']
+            }
+          >
+            <FormControl fullWidth={true}>
+              <InputLabel htmlFor="bio">Biography description:</InputLabel>
               <Input
                 type="text"
                 id="bio"
@@ -208,13 +289,18 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
                   userDetails.portfolio.bio ? userDetails.portfolio.bio : null
                 }
                 multiline={true}
+                sx={
+                  mediaQuery600
+                    ? muiStyles['textInput-600']
+                    : mediaQuery900
+                    ? muiStyles['textInput-900']
+                    : mediaQuery1200
+                    ? muiStyles['textInput-1200']
+                    : {}
+                }
               ></Input>
             </FormControl>
           </Box>
-
-          {/* <Box sx={muiStyles.imageUploadContainer}>
-            <UploadImageWidget callback={getUploadedHeroImage} />
-          </Box> */}
         </Box>
         <Button
           sx={muiStyles.saveButton}
