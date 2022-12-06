@@ -10,6 +10,36 @@ const muiStyles = {
     marginBottom: '5rem',
     width: '100%',
   },
+  'form-1200': {
+    padding: '2.5rem 1rem',
+    backgroundColor: 'white',
+    borderRadius: '0.5rem',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    marginBottom: '5rem',
+  },
+  'form-900': {
+    padding: '1rem',
+    backgroundColor: 'white',
+    borderRadius: '0.5rem',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    marginBottom: '5rem',
+  },
+  'form-600': {
+    padding: '1rem',
+    backgroundColor: 'white',
+    borderRadius: '0.5rem',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    marginBottom: '5rem',
+  },
   formTitle: {
     color: 'black',
   },
@@ -18,7 +48,8 @@ const muiStyles = {
     fontSize: '2rem',
     width: '100%',
     justifyContent: 'center',
-    alignItems: 'center',  },
+    alignItems: 'center',
+  },
 
   skillField: {
     display: 'flex',
@@ -44,21 +75,43 @@ const muiStyles = {
   },
 
   slider: {
-    width: "30%",
+    width: '50%',
     padding: '2rem',
   },
-  numb:{
-    width: "10%",
+  'slider-1200': {
+    width: '60%',
+    padding: '1rem',
+  },
+  'slider-900': {
+    width: '60%',
+    padding: '0rem',
+  },
+  numb: {
+    width: '10%',
     padding: '2rem',
+  },
+  'numb-1200': {
+    width: '5%',
+    padding: '0rem',
+  },
+  'numb-900': {
+    width: '10%',
+    padding: '0rem',
   },
 
   levelContainer: {
-   display: 'flex',
+    display: 'flex',
     padding: '2rem',
     width: '100%',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
-  }
+  },
+  'levelContainer-600': {
+    display: 'grid',
+    gridTemplateRows: 'repeat(2, min-content)',
+    justifyItems: 'center',
+    marginBottom: '2rem',
+  },
 };
 
 export default muiStyles;

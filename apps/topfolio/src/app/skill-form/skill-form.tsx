@@ -13,6 +13,7 @@ import Chip from '@mui/material/Chip';
 import Slider from '@mui/material/Slider';
 import { Skill } from '@topfolio/api-interfaces';
 import Grid from '@mui/material/Grid';
+import { useMediaQuery } from '@mui/material';
 
 /* eslint-disable-next-line */
 export interface SkillFormProps {
@@ -23,6 +24,10 @@ export function SkillForm(props: SkillFormProps) {
   const { userDetails, setUser } = useContext(UserContext);
   const [level, setLevel] = useState<any>(50);
   const [skill, setSkill] = useState('');
+
+  const mediaQuery1200 = useMediaQuery('(max-width:1200px)');
+  const mediaQuery900 = useMediaQuery('(max-width:900px)');
+  const mediaQuery600 = useMediaQuery('(max-width:600px)');
 
   const formSumbitHandler = async function (event: any) {
     try {
@@ -101,14 +106,24 @@ export function SkillForm(props: SkillFormProps) {
   };
 
   return (
-    <Box sx={muiStyles.form}>
+    <Box
+      sx={
+        mediaQuery600
+          ? muiStyles['form-600']
+          : mediaQuery900
+          ? muiStyles['form-900']
+          : mediaQuery1200
+          ? muiStyles['form-1200']
+          : muiStyles['form']
+      }
+    >
       <Typography align="center" sx={muiStyles.formTitle} variant="h2">
         Skills
       </Typography>
       <form onSubmit={formSumbitHandler} className={styles['form-we']}>
         <Box sx={muiStyles.formFields}>
           <Box sx={muiStyles.skillField}>
-            <FormControl>
+            <FormControl fullWidth={true}>
               <InputLabel htmlFor="skill">Skill:</InputLabel>
               <Input
                 key={skill}
@@ -121,11 +136,33 @@ export function SkillForm(props: SkillFormProps) {
             </FormControl>
           </Box>
           <Box>
-            <Box sx={muiStyles.levelContainer}>
-              <Box sx={muiStyles.slider}>
+            <Box
+              sx={
+                mediaQuery600
+                  ? muiStyles['levelContainer-600']
+                  : muiStyles['levelContainer']
+              }
+            >
+              <Box
+                sx={
+                  mediaQuery900
+                    ? muiStyles['slider-900']
+                    : mediaQuery1200
+                    ? muiStyles['slider-1200']
+                    : muiStyles['slider']
+                }
+              >
                 <Slider value={level} onChange={changeValue} />
               </Box>
-              <Box sx={muiStyles.numb}>
+              <Box
+                sx={
+                  mediaQuery900
+                    ? muiStyles['numb-900']
+                    : mediaQuery1200
+                    ? muiStyles['numb-1200']
+                    : muiStyles['numb']
+                }
+              >
                 <Input
                   size="small"
                   value={level}
