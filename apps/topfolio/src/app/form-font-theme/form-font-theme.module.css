@@ -1,7 +1,7 @@
 .font-theme-form {
   display: grid;
   grid-template-rows: repeat(2, min-content);
-  grid-row-gap: 2.5rem;
+  grid-row-gap: 1rem;
   padding: 3.5rem;
   background-color: white;
   border-radius: 0.5rem;
@@ -18,4 +18,21 @@
 
 .font-input:focus {
   outline: none;
+}
+
+@media only screen and (max-width: 900px) {
+  .font-theme-form {
+    padding: 1.5rem;
+  }
+
+  .font-input {
+    width: 100%;
+    font-size: 2.8rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .font-input {
+    font-size: 1.8rem;
+  }
 }

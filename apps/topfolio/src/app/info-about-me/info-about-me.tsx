@@ -105,7 +105,6 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
   };
 
   return (
-    // <Box sx={muiStyles.form}>
     <Box
       sx={
         mediaQuery600

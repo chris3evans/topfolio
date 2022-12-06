@@ -7,6 +7,7 @@ import { fontsApi, updateUser } from '../../utils/ApiService';
 import { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import WebFont from 'webfontloader';
+import { useMediaQuery } from '@mui/material';
 
 /* eslint-disable-next-line */
 export interface FormFontThemeProps {
@@ -22,6 +23,10 @@ export function FormFontTheme(props: FormFontThemeProps) {
   useEffect(() => {
     getFontThemes();
   }, []);
+
+  const mediaQuery1200 = useMediaQuery('(max-width:1200px)');
+  const mediaQuery900 = useMediaQuery('(max-width:900px)');
+  const mediaQuery600 = useMediaQuery('(max-width:600px)');
 
   const getFontThemes = async function () {
     try {
@@ -77,7 +82,14 @@ export function FormFontTheme(props: FormFontThemeProps) {
 
   return (
     <form className={styles['font-theme-form']} onSubmit={onSubmitHandler}>
-      <Box sx={muiStyles['fontSelection']} onClick={selectRandomFont}>
+      <Box
+        sx={
+          mediaQuery900
+            ? muiStyles['fontSelection-900']
+            : muiStyles['fontSelection']
+        }
+        onClick={selectRandomFont}
+      >
         <input
           type="text"
           defaultValue="You can change this text!"
