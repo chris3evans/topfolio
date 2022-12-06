@@ -20,7 +20,7 @@ export function LandingPage(props: LandingPageProps) {
     <div className={styles['container']}>
       <div className={styles['hero']}>
         <h1>Create a professional Portfolio</h1>
-        <h2>Easy to create unique portfolios ,free and simple</h2>
+        <h2>Easy to create unique portfolios,free and simple.</h2>
         <LoginButton />
       </div>
       <Footer viewMode={false} />

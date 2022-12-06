@@ -43,10 +43,13 @@ img {
   --primary-text: #ffffff;
   --secondary: 'yellow'
   --primary: #1976d3;
+  --font: "Roboto","Helvetica","Arial",sans-serif;
 
   --primary-background-app: #151619;
   --secondary-background-app: #1e1f23;
   --primary-text-app: #ffffff;
    --secondary-app: 'yellow'
   --primary-app: #1976d3;
+  --font-app: "Roboto","Helvetica","Arial",sans-serif;
+
 }
