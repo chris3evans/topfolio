@@ -1,6 +1,6 @@
 import styles from './footer.module.css';
-import { FaFacebook, FaLinkedin } from 'react-icons/fa';
-import { FiGithub } from 'react-icons/fi';
+import { FaFacebook, FaLinkedin, FaYoutube, FaInstagram } from 'react-icons/fa';
+import { FiGithub, FiTwitter } from 'react-icons/fi';
 import { FcPhoneAndroid, FcInvite } from 'react-icons/fc';
 import { motion } from 'framer-motion';
 import { useContext } from 'react';
@@ -17,18 +17,13 @@ const transition = {
 
 export function Footer(props: FooterProps) {
   const { userDetails } = useContext(UserContext);
+  const user = userDetails.portfolio.contact_me.social_media;
   const Footer = () => (
     <>
-      <h3 style={{ fontSize: '2em' }}>TopFolio</h3>
       <div className={styles['links']}>
-        <a aria-label="Topfolio Facebook link" href={''}>
-          <FaFacebook />
-        </a>
+        <h3 style={{ fontSize: '2em' }}>TopFolio</h3>
         <a aria-label="Topfolio Github link" href={''}>
           <FiGithub />
-        </a>
-        <a aria-label="Topfolio Linkedin link" href={''}>
-          <FaLinkedin />
         </a>
       </div>
       <p style={{ fontSize: '2em' }}>© 2022 TopFolio. All rights reserved.</p>
@@ -39,34 +34,72 @@ export function Footer(props: FooterProps) {
       <div className={styles['contact-me']}>
         <div className={styles['links-vertical']}>
           {' '}
-          <motion.a
-            aria-label="Topfolio Facebook link"
-            href={
-              userDetails?.portfolio.contact_me?.social_media.facebook || ''
-            }
-            whileHover={{ scale: 2 }}
-            transition={transition}
-          >
-            <FaFacebook />
-          </motion.a>
-          <motion.a
-            aria-label="Topfolio Github link"
-            href={userDetails?.portfolio.contact_me?.social_media.github || ''}
-            whileHover={{ scale: 2 }}
-            transition={transition}
-          >
-            <FiGithub />
-          </motion.a>
-          <motion.a
-            aria-label="Topfolio Linkedin link"
-            href={
-              userDetails?.portfolio.contact_me?.social_media.linkedin || ''
-            }
-            whileHover={{ scale: 2 }}
-            transition={transition}
-          >
-            <FaLinkedin />
-          </motion.a>
+          {user.facebook !== '' && (
+            <motion.a
+              target="_blank"
+              aria-label="Facebook link"
+              href={user.facebook}
+              whileHover={{ scale: 2 }}
+              transition={transition}
+            >
+              <FaFacebook />
+            </motion.a>
+          )}
+          {user.github !== '' && (
+            <motion.a
+              target="_blank"
+              aria-label="Github link"
+              href={user.github}
+              whileHover={{ scale: 2 }}
+              transition={transition}
+            >
+              <FiGithub />
+            </motion.a>
+          )}
+          {user.linkedin !== '' && (
+            <motion.a
+              target="_blank"
+              aria-label="Linkedin link"
+              href={user.linkedin}
+              whileHover={{ scale: 2 }}
+              transition={transition}
+            >
+              <FaLinkedin />
+            </motion.a>
+          )}
+          {user.instagram !== '' && (
+            <motion.a
+              target="_blank"
+              aria-label="Instagram link"
+              href={user.instagram}
+              whileHover={{ scale: 2 }}
+              transition={transition}
+            >
+              <FaInstagram />
+            </motion.a>
+          )}
+          {user.twitter !== '' && (
+            <motion.a
+              target="_blank"
+              aria-label="Twitter link"
+              href={user.twitter}
+              whileHover={{ scale: 2 }}
+              transition={transition}
+            >
+              <FiTwitter />
+            </motion.a>
+          )}
+          {user.youtube !== '' && (
+            <motion.a
+              target="_blank"
+              aria-label="Youtube link"
+              href={user.youtube}
+              whileHover={{ scale: 2 }}
+              transition={transition}
+            >
+              <FaYoutube />
+            </motion.a>
+          )}
         </div>
         <div className={styles['infos']}>
           <p>{userDetails.name}</p>
@@ -78,17 +111,18 @@ export function Footer(props: FooterProps) {
           >
             <FcInvite />
             <motion.a
+              target="_blank"
               href={`mailto:${userDetails?.portfolio.contact_me?.email}`}
               className={styles['email-me']}
               whileHover={{ color: 'var(--primary)' }}
               transition={transition}
             >
-              {userDetails?.portfolio.contact_me?.email}
+              {userDetails.portfolio.contact_me.email}
             </motion.a>
           </motion.div>
           <div style={{ display: 'flex', gap: '0.3em' }}>
             <FcPhoneAndroid />
-            <p>{userDetails?.portfolio.contact_me?.phone || ''}</p>
+            <p>{userDetails.portfolio.contact_me.phone || ''}</p>
           </div>
         </div>
       </div>
