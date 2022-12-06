@@ -12,7 +12,6 @@ import { UserContext } from '../../utils/UserContext';
 import Chip from '@mui/material/Chip';
 import Slider from '@mui/material/Slider';
 import { Skill } from '@topfolio/api-interfaces';
-import Grid from '@mui/material/Grid';
 
 /* eslint-disable-next-line */
 export interface SkillFormProps {
@@ -126,6 +125,8 @@ export function SkillForm(props: SkillFormProps) {
               <Box sx={muiStyles.numb}>
                 <Input
                   size="small"
+                  id='level'
+                  name='level'
                   value={level}
                   onChange={handleInputChange}
                   inputProps={{
