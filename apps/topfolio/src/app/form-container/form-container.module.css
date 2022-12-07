@@ -1,14 +1,13 @@
 .form-container {
   background-color: var(--primary-background);
   color: white;
-  justify-content: center;
-  align-items: flex-start;
 }
 
 .forms {
+  padding: 0rem 10rem 2rem 10rem;
+  display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 0rem 10rem 2rem 10rem;
 }
 
 .preview {
