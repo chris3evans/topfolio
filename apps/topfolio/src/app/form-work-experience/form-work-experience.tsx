@@ -5,14 +5,11 @@ import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
-import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { updateUser } from '../../utils/ApiService';
 import { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import { WorkExperience } from '@topfolio/api-interfaces';
 import UploadImageWidget from '../upload-image-widget/upload-image-widget';
-import { useMediaQuery } from '@mui/material';
 import { Alert, AlertColor, Snackbar } from '@mui/material';
 
 /* eslint-disable-next-line */
@@ -65,16 +62,6 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
     else {
       if (img.length > 0) setUnsaved(false);
     }
-
-    // const mediaQuery1200 = useMediaQuery('(max-width:1200px)');
-    // const mediaQuery900 = useMediaQuery('(max-width:900px)');
-    // const mediaQuery600 = useMediaQuery('(max-width:600px)');
-
-    // const closeEditHandler = function () {
-    //   if (props.listener) {
-    //     props.listener('1');
-    //   }
-    // };
   }, [img]);
 
   const checkUniqueName = (company_name: string) => {
@@ -152,34 +139,6 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
     }
   };
 
-  // <Box
-  //   sx={
-  //     mediaQuery600
-  //       ? muiStyles['form-600']
-  //       : mediaQuery900
-  //       ? muiStyles['form-900']
-  //       : mediaQuery1200
-  //       ? muiStyles['form-1200']
-  //       : muiStyles['form']
-  //   }
-  // >
-  //   <Typography align="center" sx={muiStyles.formTitle} variant="h2">
-  //     Work Experience
-  //   </Typography>
-  //   <Box
-  //     sx={
-  //       mediaQuery900
-  //         ? muiStyles['imageUploadContainer-900']
-  //         : muiStyles['imageUploadContainer']
-  //     }
-  //   >
-  //     <UploadImageWidget
-  //       callback={getUploadedImage}
-  //       buttonText={'Upload a picture'}
-  //     />
-  {
-    /*  */
-  }
   return (
     <Box sx={muiStyles.form}>
       <Snackbar
@@ -214,20 +173,8 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
       </Box>
       <form onSubmit={formSubmitHandler} className={styles['form-we']}>
         <Box
-        // sx={
-        //   mediaQuery600
-        //     ? muiStyles['formFields-600']
-        //     : mediaQuery900
-        //     ? muiStyles['formFields-900']
-        //     : muiStyles['formFields']
-        // }
         >
           <Box
-          // sx={
-          //   mediaQuery600
-          //     ? muiStyles['companyField-600']
-          //     : muiStyles['companyField']
-          // }
           >
             <FormControl fullWidth={true}>
               <InputLabel htmlFor="company-name">Company Name:</InputLabel>
@@ -243,16 +190,6 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
               ></Input>
             </FormControl>
           </Box>
-
-          {/* <Box
-            sx={
-              mediaQuery600
-                ? muiStyles['descriptionField-600']
-                : muiStyles['descriptionField']
-            }
-          >
-            <FormControl> */}
-          {/*  */}
           <Box sx={muiStyles.descriptionField}>
             <FormControl fullWidth={true}>
               {/*  */}
@@ -269,19 +206,6 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
               ></Input>
             </FormControl>
           </Box>
-          {/*
-          <Box
-            sx={
-              mediaQuery600
-                ? muiStyles['datesContainer-600']
-                : muiStyles['datesContainer']
-            }
-          >
-            <Box>
-              <TextField
-                sx={muiStyles.dateField}
-                variant="standard"
-                label="Start Date" */}
           <Box sx={muiStyles.datesContainer}>
             <FormControl sx={muiStyles.dateField}>
               <InputLabel htmlFor="start-date">Start Date:</InputLabel>
@@ -292,17 +216,6 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
                 name="startDate"
                 multiline={true}
                 defaultValue={props.existingData?.start_date}
-                // <<<<<<< HEAD
-                //                 data-testid="test-start-date"
-                //               ></TextField>
-                //             </Box>
-
-                //             <Box>
-                //               <TextField
-                //                 sx={muiStyles.dateField}
-                //                 variant="standard"
-                //                 label="End Date"
-                // =======
                 data-testid={'test-start-date'}
                 onChange={trackChanges}
               ></Input>
@@ -313,15 +226,8 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
                 type="text"
                 required
                 id="end-date"
-                // {/* >>>>>>> development */}
                 name="endDate"
                 multiline={true}
-                //                 defaultValue={props.existingData?.end_date}
-                // <<<<<<< HEAD
-                //                 data-testid="test-end-date"
-                //               ></TextField>
-                //             </Box>
-                // =======
                 data-testid={'test-end-date'}
                 onChange={trackChanges}
               ></Input>
@@ -347,7 +253,6 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
             >
               Save
             </Button>
-            {/* >>>>>>> development */}
           </Box>
         </Box>
       </form>

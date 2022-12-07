@@ -20,12 +20,12 @@ export function ColorCardItem(props: ColorCardItemProps) {
         sx={
           mediaQuery900
             ? {
-                backgroundColor: `#${props.color}`,
+                backgroundColor: `${props.color}`,
                 height: '7.5rem',
                 width: '100%',
               }
             : {
-                backgroundColor: `#${props.color}`,
+                backgroundColor: `${props.color}`,
                 height: '20rem',
                 width: '100%',
               }
@@ -39,7 +39,7 @@ export function ColorCardItem(props: ColorCardItemProps) {
         variant="standard"
         type="color"
         name={props.colorName}
-        value={`#${props.color}`}
+        value={`${props.color}`}
         onInputCapture={(event: any) => {
           props.changeHandler(event.target.value.replace('#', ''));
         }}
