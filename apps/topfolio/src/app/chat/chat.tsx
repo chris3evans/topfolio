@@ -17,38 +17,37 @@ export function Chat(props: ChatProps) {
   const { userDetails } = useContext(UserContext);
   const [messages, setMessages] = useState<Messages[]>([]);
 
-  useEffect(() => {
-    const scrollToElement = document.getElementById(
-      'standard-text'
-    ) as HTMLElement;
-    const store = localStorage.getItem(`store${userDetails.slug_url}`);
-    if (!store || !store.length) setMessages([]);
-    else {
-      const value = JSON.parse(store);
-      setMessages([...value]);
-    }
-    scrollToElement.scrollIntoView({ behavior: 'smooth' });
-  }, []);
+  // useEffect(() => {
+  //   const scrollToElement = document.getElementById(
+  //     'standard-text'
+  //   ) as HTMLElement;
+  //   const store = localStorage.getItem(`store${userDetails.slug_url}`);
+  //   if (!store || !store.length) setMessages([]);
+  //   else {
+  //     const value = JSON.parse(store);
+  //     setMessages([...value]);
+  //   }
+  //   scrollToElement.scrollIntoView({ behavior: 'smooth' });
+  // }, []);
 
-  useEffect(() => {
-    const scrollToElement = document.getElementById(
-      'standard-text'
-    ) as HTMLElement;
-    localStorage.setItem(
-      `store${userDetails.slug_url}`,
-      JSON.stringify(messages)
-    );
-    scrollToElement.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
+  // useEffect(() => {
+  //   const scrollToElement = document.getElementById(
+  //     'standard-text'
+  //   ) as HTMLElement;
+  //   localStorage.setItem(
+  //     `store${userDetails.slug_url}`,
+  //     JSON.stringify(messages)
+  //   );
+  //   scrollToElement.scrollIntoView({ behavior: 'smooth' });
+  // }, [messages]);
 
   const mapMessagesForApi = (messages: Messages[]): string => {
     const mappedMsgs = messages.map((message) => {
       if (message.bot) return '\n\nAI Assistant:' + message.text;
-      return '\n\nInterviewer:' + message.text;
+      return '\n\nInterviewer:' + message.text + '\n\nAI Assistant:';
     });
     return mappedMsgs.join('');
   };
-  const mapMessagesFromApi = (messages: Messages[]) => {};
 
   const handleSubmit = async (event: React.FormEvent<HTMLElement>) => {
     event.preventDefault();
@@ -56,22 +55,27 @@ export function Chat(props: ChatProps) {
       message: { value: string };
     };
     if (target.message.value === '') return;
-
-    setMessages([
-      ...messages,
-      {
-        text: target.message.value,
-        bot: false,
-        id: uniqid(),
-        date: moment(Date.now()).format('h:mm'),
-      },
-    ]);
+    const currentMsg = {
+      text: target.message.value,
+      bot: false,
+      id: uniqid(),
+      date: moment(Date.now()).format('h:mm'),
+    };
     target.message.value = '';
 
-    const response = await callMyAI(userDetails, mapMessagesForApi(messages));
+    setMessages([...messages, currentMsg]);
+
+    const response = await callMyAI(
+      userDetails,
+      mapMessagesForApi([...messages, currentMsg])
+    );
+
     if (response !== '') {
+      console.log('worked');
+
       const updatedMessages = [
         ...messages,
+        currentMsg,
         {
           text: response,
           bot: true,
