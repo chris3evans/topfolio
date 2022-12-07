@@ -3,6 +3,8 @@ const muiStyles = {
     backgroundColor: 'white',
     padding: '1rem 3rem 3rem 3rem',
     borderRadius: '0.5rem',
+    width: '90%',
+    margin: '0rem auto',
   },
   'existingThemeContainer-900': {
     backgroundColor: 'white',
