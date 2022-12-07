@@ -6,11 +6,11 @@ import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import Typography from '@mui/material/Typography';
-import { updateUser, getUser } from '../../utils/ApiService';
+import { updateUser } from '../../utils/ApiService';
 import { useContext } from 'react';
 import { UserContext } from '../../utils/UserContext';
 import UploadImageWidget from '../upload-image-widget/upload-image-widget';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Alert, AlertColor, Grid, Snackbar } from '@mui/material';
 import { useMediaQuery } from '@mui/material';
 
@@ -67,10 +67,6 @@ export function InfoAboutMe(props: InfoAboutMeProps) {
   const getUploadedHeroImage = (profileImage: any) => {
     setHeroImage(profileImage.url);
   };
-
-  // const getUploadedImage = (img: any) => {
-  //   setImage(img.url);
-  // };
 
   const formSumbitHandler = async function (event: any) {
     try {

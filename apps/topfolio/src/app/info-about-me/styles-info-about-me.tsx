@@ -7,6 +7,8 @@ const muiStyles = {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
+    width: '80%',
+    margin: '0rem auto',
   },
   'form-1200': {
     padding: '2.5rem 1rem',
@@ -16,6 +18,8 @@ const muiStyles = {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
+    width: '80%',
+    margin: '0rem auto',
   },
   'form-900': {
     padding: '1rem',
@@ -25,6 +29,8 @@ const muiStyles = {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
+    width: '80%',
+    margin: '0rem auto',
   },
   'form-600': {
     padding: '1rem 0rem',
@@ -34,6 +40,7 @@ const muiStyles = {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
+    width: '100%',
   },
 
   formTitle: {
@@ -48,7 +55,7 @@ const muiStyles = {
 
   formFields: {
     fontSize: '2rem',
-    width: '60%',
+    width: '80%',
   },
   'formFields-1200': {
     width: '90%',

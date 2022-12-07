@@ -66,7 +66,7 @@ export function FormFontTheme(props: FormFontThemeProps) {
           ...userDetails.portfolio,
           theme: {
             ...userDetails.portfolio.theme,
-            font: `${chosenFont}, Arial, Helvetica, sans-serif`,
+            font: [`${chosenFont}`, 'Arial', 'Helvetica', 'sans-serif'],
           },
         },
       };

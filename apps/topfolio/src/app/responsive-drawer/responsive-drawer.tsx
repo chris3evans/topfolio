@@ -16,8 +16,6 @@ export interface ResponsiveDrawerProps {
   token: string;
 }
 
-// NOTE: the component's structure below was modified from the original documentation provided which can be found at: https://mui.com/material-ui/react-drawer/#responsive-drawer
-
 const drawerWidth = 240;
 
 export function ResponsiveDrawer(props: ResponsiveDrawerProps) {
