@@ -60,6 +60,13 @@ export function FormColorTheme(props: FormColorThemeProps) {
       setColorTertiary(formattedResults.tertiaryColor);
       setColorBackground2(formattedResults.backgroundColor2);
     } catch (error) {
+      const backUpColorTheme = {
+        backgroundColor: '#1f2125',
+        primaryColor: '#1e1f23',
+        secondaryColor: '#ffffff',
+        tertiaryColor: '#ffff00',
+        backgroundColor2: '#39CBD7',
+      };
       console.log('error with color api ', error);
     }
   };
