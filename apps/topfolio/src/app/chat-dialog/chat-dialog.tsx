@@ -1,7 +1,6 @@
 import styles from './chat-dialog.module.css';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
-import { CgCloseO } from 'react-icons/cg';
+import { TfiClose } from 'react-icons/tfi';
 import Chat from '../chat/chat';
 /* eslint-disable-next-line */
 export interface ChatDialogProps {
@@ -13,19 +12,13 @@ export function ChatDialog(props: ChatDialogProps) {
   return (
     <div style={{ position: 'relative' }}>
       <Dialog open={props.open} sx={{ maxHeight: '60%', top: '20%' }}>
-        <Button
-          sx={{
-            position: 'fixed',
-            color: 'red',
-            height: '50px',
-            fontSize: '3em',
-            left: '10em',
-          }}
+        <button
+          className={styles['button-delete']}
           onClick={props.closeModal}
           data-testid="close-button"
         >
-          <CgCloseO />
-        </Button>{' '}
+          <TfiClose />
+        </button>{' '}
         <Chat closeModal={props.closeModal} />
       </Dialog>
     </div>
