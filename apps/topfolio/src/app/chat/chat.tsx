@@ -17,29 +17,45 @@ export function Chat(props: ChatProps) {
   const { userDetails } = useContext(UserContext);
   const [messages, setMessages] = useState<Messages[]>([]);
 
-  // useEffect(() => {
-  //   const scrollToElement = document.getElementById(
-  //     'standard-text'
-  //   ) as HTMLElement;
-  //   const store = localStorage.getItem(`store${userDetails.slug_url}`);
-  //   if (!store || !store.length) setMessages([]);
-  //   else {
-  //     const value = JSON.parse(store);
-  //     setMessages([...value]);
-  //   }
-  //   scrollToElement.scrollIntoView({ behavior: 'smooth' });
-  // }, []);
+  useEffect(() => {
+    const scrollToElement = document.getElementById(
+      'standard-text'
+    ) as HTMLElement;
+    const store = localStorage.getItem(`store${userDetails.slug_url}`);
+    if (!store || store.length <= 2) {
+      callMyAI(
+        userDetails,
+        '\n\nInterviewer:' + 'Hello' + '\n\nAI Assistant:\n\n'
+      )
+        .then((res: string) => {
+          console.log(res);
+          setMessages([
+            {
+              text: res,
+              bot: true,
+              id: uniqid(),
+              date: moment(Date.now()).format('h:mm'),
+            },
+          ]);
+        })
+        .catch((e) => console.log(e));
+    } else {
+      const value = JSON.parse(store);
+      setMessages([...value]);
+    }
+    scrollToElement.scrollIntoView({ behavior: 'smooth' });
+  }, []);
 
-  // useEffect(() => {
-  //   const scrollToElement = document.getElementById(
-  //     'standard-text'
-  //   ) as HTMLElement;
-  //   localStorage.setItem(
-  //     `store${userDetails.slug_url}`,
-  //     JSON.stringify(messages)
-  //   );
-  //   scrollToElement.scrollIntoView({ behavior: 'smooth' });
-  // }, [messages]);
+  useEffect(() => {
+    const scrollToElement = document.getElementById(
+      'standard-text'
+    ) as HTMLElement;
+    localStorage.setItem(
+      `store${userDetails.slug_url}`,
+      JSON.stringify(messages)
+    );
+    scrollToElement.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
   const mapMessagesForApi = (messages: Messages[]): string => {
     const mappedMsgs = messages.map((message) => {
@@ -71,8 +87,6 @@ export function Chat(props: ChatProps) {
     );
 
     if (response !== '') {
-      console.log('worked');
-
       const updatedMessages = [
         ...messages,
         currentMsg,
