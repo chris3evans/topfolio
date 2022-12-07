@@ -54,20 +54,40 @@ export function FormColorTheme(props: FormColorThemeProps) {
         backgroundColor2: convertRgbToHex(colorResults.result[4]),
       };
 
-      setColorBackground(formattedResults.backgroundColor);
-      setColorPrimary(formattedResults.primaryColor);
-      setColorSecondary(formattedResults.secondaryColor);
-      setColorTertiary(formattedResults.tertiaryColor);
-      setColorBackground2(formattedResults.backgroundColor2);
+      setColorBackground(`#${formattedResults.backgroundColor}`);
+      setColorPrimary(`#${formattedResults.primaryColor}`);
+      setColorSecondary(`#${formattedResults.secondaryColor}`);
+      setColorTertiary(`#${formattedResults.tertiaryColor}`);
+      setColorBackground2(`#${formattedResults.backgroundColor2}`);
     } catch (error) {
-      const backUpColorTheme = {
-        backgroundColor: '#1f2125',
-        primaryColor: '#1e1f23',
-        secondaryColor: '#ffffff',
-        tertiaryColor: '#ffff00',
-        backgroundColor2: '#39CBD7',
-      };
       console.log('error with color api ', error);
+
+      const backUpColorData = {
+        background: '#1f2125',
+        primary: '#1e1f23',
+        secondary: '#ffffff',
+        tertiary: '#ffff00',
+        background_secondary: '#39CBD7',
+        font: userDetails.portfolio.theme.font,
+      };
+
+      setColorBackground(backUpColorData.background);
+      setColorPrimary(backUpColorData.primary);
+      setColorSecondary(backUpColorData.secondary);
+      setColorTertiary(backUpColorData.tertiary);
+      setColorBackground2(backUpColorData.background_secondary);
+
+      const newState = {
+        ...userDetails,
+        portfolio: {
+          ...userDetails.portfolio,
+          theme: backUpColorData,
+        },
+      };
+      setUser(newState);
+      // @ts-ignore
+      const response = await updateUser(newState, props.token);
+      console.log(response, 'error response');
     }
   };
 

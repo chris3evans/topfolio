@@ -63,7 +63,7 @@ export function CurrentFontTheme(props: CurrentFontThemeProps) {
             >
               {
                 // @ts-ignore
-                userDetails.portfolio.theme.font.split(',')[0]
+                userDetails.portfolio.theme.font[0]
               }
             </Typography>
             <Typography
@@ -73,7 +73,7 @@ export function CurrentFontTheme(props: CurrentFontThemeProps) {
                   ? {
                       fontFamily: `${
                         // @ts-ignore
-                        userDetails.portfolio.theme.font.split(',')[0]
+                        userDetails.portfolio.theme.font[0]
                       }`,
                       fontSize: '2.4rem',
                       color: 'black',
@@ -81,7 +81,7 @@ export function CurrentFontTheme(props: CurrentFontThemeProps) {
                   : {
                       fontFamily: `${
                         // @ts-ignore
-                        userDetails.portfolio.theme.font.split(',')[0]
+                        userDetails.portfolio.theme.font[0]
                       }`,
                       fontSize: '3rem',
                       color: 'black',
@@ -90,7 +90,7 @@ export function CurrentFontTheme(props: CurrentFontThemeProps) {
             >
               {
                 // @ts-ignore
-                userDetails.portfolio.theme.font.split(',')[0]
+                userDetails.portfolio.theme.font[0]
               }
             </Typography>
           </Box>
