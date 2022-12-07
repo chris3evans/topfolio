@@ -1,15 +1,21 @@
 
   .container {
+    overflow-y: hidden;
     padding: 2em;
+    height: 80vh;
+
+  }
+  .messages-container{
+      height: 90%;
+      overflow-y: scroll;
   }
   .input {
-    height: 10%;
-    width: 100%;
     display: flex;
     align-items: center;
     font-size: 2em;
 
   }
+
   .input input{
     font-size: 2em;
   }
@@ -20,4 +26,5 @@
     .input  button {
       font-size:1.9em;
     }
+
     }

@@ -73,8 +73,7 @@ export function PortfolioPage(props: PortfolioPageProps) {
           <SectionsComponent viewMode={props.viewMode} />
           <Footer viewMode={props.viewMode} />
           <button className={styles['chat-button']} onClick={handleClickOpen}>
-            <FaQuestion />
-            <SiProbot />
+            <img src="../../assets/bot.png" alt="bot-button" />
           </button>
           <ChatDialog open={open} closeModal={handleClose} />
         </div>

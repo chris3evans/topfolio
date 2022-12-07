@@ -16,11 +16,10 @@ export interface ChatProps {
 export function Chat(props: ChatProps) {
   const { userDetails } = useContext(UserContext);
   const [messages, setMessages] = useState<Messages[]>([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const scrollToElement = document.getElementById(
-      'standard-text'
-    ) as HTMLElement;
+    const scrollToElement = document.getElementById('scroll-to') as HTMLElement;
     const store = localStorage.getItem(`store${userDetails.slug_url}`);
     if (!store || store.length <= 2) {
       callMyAI(
@@ -28,7 +27,6 @@ export function Chat(props: ChatProps) {
         '\n\nInterviewer:' + 'Hello' + '\n\nAI Assistant:\n\n'
       )
         .then((res: string) => {
-          console.log(res);
           setMessages([
             {
               text: res,
@@ -47,9 +45,7 @@ export function Chat(props: ChatProps) {
   }, []);
 
   useEffect(() => {
-    const scrollToElement = document.getElementById(
-      'standard-text'
-    ) as HTMLElement;
+    const scrollToElement = document.getElementById('scroll-to') as HTMLElement;
     localStorage.setItem(
       `store${userDetails.slug_url}`,
       JSON.stringify(messages)
@@ -80,7 +76,7 @@ export function Chat(props: ChatProps) {
     target.message.value = '';
 
     setMessages([...messages, currentMsg]);
-
+    setLoading(true);
     const response = await callMyAI(
       userDetails,
       mapMessagesForApi([...messages, currentMsg])
@@ -97,13 +93,13 @@ export function Chat(props: ChatProps) {
           date: moment(Date.now()).format('h:mm'),
         },
       ];
+      setLoading(false);
       setMessages([...updatedMessages]);
     }
     return;
   };
   return (
     <div className={styles['container']}>
-      <h1>Welcome to Chat!</h1>
       <div className={styles['messages-container']}>
         {messages.map((message) =>
           message.bot ? (
@@ -120,23 +116,27 @@ export function Chat(props: ChatProps) {
             />
           )
         )}
+        {loading && <MessageLeft text={'Typing...'} timeStamp={''} />}
+        <div id="scroll-to"></div>
       </div>
-      <form
-        onSubmit={handleSubmit}
-        className={styles['input']}
-        noValidate
-        autoComplete="off"
-      >
-        <TextField
-          id="standard-text"
-          placeholder="Ask me a question..."
-          sx={{ width: '100%' }}
-          name="message"
-        />
-        <Button type="submit" color="primary" sx={{ fontSize: '3em' }}>
-          <IoIosSend style={{ color: 'var(--secondary)' }} />
-        </Button>
-      </form>
+      <div style={{ height: '10%' }}>
+        <form
+          onSubmit={handleSubmit}
+          noValidate
+          autoComplete="off"
+          className={styles['input']}
+        >
+          <TextField
+            id="standard-text"
+            placeholder="Ask me a question..."
+            sx={{ width: '100%' }}
+            name="message"
+          />
+          <Button type="submit" color="primary" sx={{ fontSize: '3em' }}>
+            <IoIosSend style={{ color: 'var(--secondary)' }} />
+          </Button>
+        </form>
+      </div>
     </div>
   );
 }
