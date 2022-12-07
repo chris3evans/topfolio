@@ -6,11 +6,11 @@ export interface CreditsRingProps {}
 
 export function CreditsRing(props: CreditsRingProps) {
   const creators = [
-    { name: 'Marco', link: 'http://localhost:4200/lupo.marco94-portfolio' },
-    { name: 'Noah', link: '' },
-    { name: 'Fabrizio', link: '' },
-    { name: 'Chenhao', link: '' },
-    { name: 'Cristopher', link: '' },
+    { name: 'Marco', link: '/lupo.marco94-portfolio' },
+    { name: 'Noah', link: 'https://github.com/noah-sinnott' },
+    { name: 'Fabrizio', link: '/fabrizio-t-portfolio' },
+    { name: 'Chenhao', link: 'https://github.com/HuchenhaoArvin' },
+    { name: 'Christopher', link: '' },
   ];
   useEffect(() => {
     //@ts-ignore
@@ -51,7 +51,7 @@ export function CreditsRing(props: CreditsRingProps) {
             <li key={tag.name + i}>
               <a
                 data-weight="25"
-                href={`https://en.wikipedia.org/wiki/${tag}`}
+                href={tag.link}
                 target="_blank"
                 rel="noreferrer"
               >
