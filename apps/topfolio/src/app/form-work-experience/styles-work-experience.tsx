@@ -42,13 +42,9 @@ const muiStyles = {
   datesContainer: {
     display: 'flex',
     fontSize: '2rem',
-    flexDirection: 'row',
     width: '100%',
-  },
-
-  dateField: {
-    margin: '2rem',
-    width: '100%',
+    justifyContent: 'space-between',
+    margin: '2rem 0rem',
   },
 
   saveButton: {

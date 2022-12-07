@@ -28,6 +28,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
     status: 'success',
     message: '',
   });
+
   //For handling error inside the form
   const showToast = (status: string, msg: string) => {
     setToast({ open: true, status, message: msg });
@@ -45,12 +46,6 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
   };
   const getUploadedImage = (img: { url: string; id: string }) => {
     setImg(img.url);
-  };
-
-  const [companyField, setCompanyField] = useState('');
-
-  const onCompanyChangeHandler = function (event: any) {
-    setCompanyField(event.target.value);
   };
 
   useEffect(() => {
@@ -83,6 +78,7 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
           end_date: event.target.endDate.value,
           _id: props.existingData._id,
         };
+        console.log(formExistingData, 'work experience data');
 
         setUser((current: any) => {
           return {
@@ -122,6 +118,8 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
           start_date: event.target.startDate.value,
           end_date: event.target.endDate.value,
         };
+
+        console.log(formData, 'work experience data');
 
         setUser((current: any) => {
           return {
@@ -169,13 +167,10 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
           callback={getUploadedImage}
           buttonText={'Upload Project Image'}
         />
-        {/*  */}
       </Box>
       <form onSubmit={formSubmitHandler} className={styles['form-we']}>
-        <Box
-        >
-          <Box
-          >
+        <Box>
+          <Box sx={muiStyles.companyField}>
             <FormControl fullWidth={true}>
               <InputLabel htmlFor="company-name">Company Name:</InputLabel>
               <Input
@@ -192,7 +187,6 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
           </Box>
           <Box sx={muiStyles.descriptionField}>
             <FormControl fullWidth={true}>
-              {/*  */}
               <InputLabel htmlFor="description">Description:</InputLabel>
               <Input
                 type="text"
@@ -206,32 +200,37 @@ export function FormWorkExperience(props: FormWorkExperienceProps) {
               ></Input>
             </FormControl>
           </Box>
+
           <Box sx={muiStyles.datesContainer}>
-            <FormControl sx={muiStyles.dateField}>
-              <InputLabel htmlFor="start-date">Start Date:</InputLabel>
-              <Input
-                type="text"
-                required
+            <div className={styles['date-field']}>
+              <label className={styles['date-label']} htmlFor="start-date">
+                Start Date:
+              </label>
+              <input
+                defaultValue={props.existingData?.start_date}
+                className={styles['date-input']}
+                type="date"
                 id="start-date"
                 name="startDate"
-                multiline={true}
-                defaultValue={props.existingData?.start_date}
-                data-testid={'test-start-date'}
-                onChange={trackChanges}
-              ></Input>
-            </FormControl>
-            <FormControl sx={muiStyles.dateField}>
-              <InputLabel htmlFor="end-date">End Date:</InputLabel>
-              <Input
-                type="text"
                 required
+                onChange={trackChanges}
+              ></input>
+            </div>
+
+            <div className={styles['date-field']}>
+              <label className={styles['date-label']} htmlFor="end-date">
+                End Date:
+              </label>
+              <input
+                defaultValue={props.existingData?.end_date}
+                className={styles['date-input']}
+                type="date"
                 id="end-date"
                 name="endDate"
-                multiline={true}
-                data-testid={'test-end-date'}
+                required
                 onChange={trackChanges}
-              ></Input>
-            </FormControl>
+              ></input>
+            </div>
           </Box>
 
           <Box>
