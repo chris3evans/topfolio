@@ -30,7 +30,9 @@ const Accordion = styled((props: AccordionProps) => (
 
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
   <MuiAccordionSummary
-    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '1.9rem', color: 'white' }} />}
+    expandIcon={
+      <ArrowForwardIosSharpIcon sx={{ fontSize: '1.9rem', color: 'white' }} />
+    }
     {...props}
   />
 ))(({ theme }) => ({
@@ -62,24 +64,66 @@ export default function Theme(props: ThemeProps) {
 
   return (
     <div>
-      <Accordion sx={{ backgroundColor: 'transparent', marginBottom: '15px' }} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+      <Accordion
+        sx={{
+          backgroundColor: 'transparent',
+          marginBottom: '15px',
+        }}
+        expanded={expanded === 'panel1'}
+        onChange={handleChange('panel1')}
+      >
+        <AccordionSummary
+          aria-controls="panel1d-content"
+          id="panel1d-header"
+          sx={{
+            backgroundColor: '#39CBD7',
+            color: 'black',
+            '& .MuiSvgIcon-root': { fill: 'black' },
+          }}
+        >
           Drag & Drop each section to change the display order on your portfolio
         </AccordionSummary>
         <AccordionDetails>
           <FormLayout2 token={props.token}></FormLayout2>
         </AccordionDetails>
       </Accordion>
-      <Accordion sx={{ backgroundColor: 'transparent', marginBottom: '15px' }} expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-        <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
+      <Accordion
+        sx={{ backgroundColor: 'transparent', marginBottom: '15px' }}
+        expanded={expanded === 'panel2'}
+        onChange={handleChange('panel2')}
+      >
+        <AccordionSummary
+          aria-controls="panel2d-content"
+          id="panel2d-header"
+          sx={{
+            backgroundColor: '#39CBD7',
+            color: 'black',
+            '& .MuiSvgIcon-root': { fill: 'black' },
+          }}
+        >
           Customize theme Colors
         </AccordionSummary>
         <AccordionDetails>
           <ColorThemeSection token={props.token}></ColorThemeSection>
         </AccordionDetails>
       </Accordion>
-      <Accordion sx={{ backgroundColor: 'transparent', marginBottom: '15px' }} expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-        <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+      <Accordion
+        sx={{
+          backgroundColor: 'transparent',
+          marginBottom: '15px',
+        }}
+        expanded={expanded === 'panel3'}
+        onChange={handleChange('panel3')}
+      >
+        <AccordionSummary
+          aria-controls="panel3d-content"
+          id="panel3d-header"
+          sx={{
+            backgroundColor: '#39CBD7',
+            color: 'black',
+            '& .MuiSvgIcon-root': { fill: 'black' },
+          }}
+        >
           Customize theme Font
         </AccordionSummary>
         <AccordionDetails>
