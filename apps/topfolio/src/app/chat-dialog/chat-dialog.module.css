@@ -1,0 +1,15 @@
+.button-delete{
+  top: 19%;
+  right: 63.1%;
+  position: fixed;
+  color: white;
+  background-color:rgb(185, 3, 3);
+  font-size: 3em;
+  transform: scale(0.3);
+  z-index: 2;
+}
+ @media only screen and (max-width: 600px) {
+  .button-delete{
+    right: 80.1%;
+  }
+  }

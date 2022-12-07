@@ -1,6 +1,5 @@
 import { Avatar } from '@mui/material';
 import styles from './message.module.css';
-import { SiProbot } from 'react-icons/si';
 /* eslint-disable-next-line */
 export interface MessageProps {
   text: string;
@@ -10,10 +9,15 @@ export interface MessageProps {
 export const MessageLeft = (props: MessageProps) => {
   return (
     <div className={styles['message-left']}>
-      <Avatar alt={'name'} sx={{ color: 'var(--secondary)', fontSize: '2em' }}>
-        {' '}
-        <SiProbot />
-      </Avatar>
+      <Avatar
+        src={'../../assets/bot.png'}
+        alt={'name'}
+        sx={{
+          color: 'var(--secondary)',
+          fontSize: '2em',
+          backgroundColor: 'var(--secondary)',
+        }}
+      ></Avatar>
       <div>
         <div className={styles['messageBot']}>
           <div>

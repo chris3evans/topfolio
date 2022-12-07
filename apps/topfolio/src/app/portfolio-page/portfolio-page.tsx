@@ -12,9 +12,6 @@ import { useParams } from 'react-router-dom';
 import { UserContext } from '../../utils/UserContext';
 import { useHistory } from 'react-router-dom';
 // import { button } from '@mui/material';
-import { SiProbot } from 'react-icons/si';
-
-import { FaQuestion } from 'react-icons/fa';
 import ChatDialog from '../chat-dialog/chat-dialog';
 
 export interface PortfolioPageProps {
@@ -73,9 +70,8 @@ export function PortfolioPage(props: PortfolioPageProps) {
           <SectionsComponent viewMode={props.viewMode} />
           <Footer viewMode={props.viewMode} />
           <button className={styles['chat-button']} onClick={handleClickOpen}>
-            <FaQuestion />
-            <SiProbot />
-          </button>
+            <img src="../../assets/bot.png" alt="bot-button" />
+          </button>{' '}
           <ChatDialog open={open} closeModal={handleClose} />
         </div>
       )}

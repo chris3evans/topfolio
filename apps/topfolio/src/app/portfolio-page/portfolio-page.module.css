@@ -16,4 +16,26 @@
   bottom:2em ;
   right: 2em;
   z-index: 2;
+  background-color: var(--primary);
+  border-radius: 50%;
+  height: 8em;
+  width: 8em;
+  transform: scale(0.8);
 }
+.chat-button img{
+  max-width: 100%;
+  max-height: 100%;
+
+
+}
+
+@media only screen and (max-width: 600px) {
+  .chat-button{
+  transform: scale(0.4);
+
+}
+.chat-button{
+  bottom:0 ;
+  right: 0em;
+
+}}
