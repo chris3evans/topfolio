@@ -1,6 +1,4 @@
 import { Typography } from '@mui/material';
-import { Box } from '@mui/material';
-import { ListItem } from '@mui/material';
 import { WorkExperience } from '@topfolio/api-interfaces';
 import { UserContext } from '../../utils/UserContext';
 import { useContext, useState, useEffect } from 'react';
@@ -47,8 +45,8 @@ export function ItemWorkExperience(props: ItemWorkExperienceProps) {
 
   return (
     <>
-      <Fade in={true} timeout={350}>
-        <Card sx={{ maxWidth: '100%', backgroundColor: '#F5F5F5', '&:hover': { boxShadow: '-1px 10px 20px 0px rgba(200,200,200,0.3)' } }}>
+      <Fade in={true} timeout={300}>
+        <Card sx={{ maxWidth: '100%', backgroundColor: '#F5F5F5', '&:hover': { boxShadow: '-1px 10px 20px 0px rgba(57, 203, 215, 0.45)' } }}>
           <CardMedia
             component="img"
             height="190rem"
@@ -60,17 +58,17 @@ export function ItemWorkExperience(props: ItemWorkExperienceProps) {
               {props.WorkExperience.company_name}
             </Typography>
             <Divider></Divider>
-            <Typography gutterBottom variant="body1" sx={{ marginTop: '1.2rem' }} >
+            <Typography gutterBottom variant="body1" sx={{ marginTop: '1.2rem', fontSize: "1.4rem" }} >
               From: {props.WorkExperience.start_date}  To: {props.WorkExperience.end_date}
             </Typography>
-            <Typography variant="body2" color="text.secondary" style={{ wordWrap: "break-word", fontSize: "1.25rem" }} sx={{ minHeight: "6.9rem" }}>
+            <Typography variant="body2" color="text.secondary" style={{ wordWrap: "break-word", fontSize: "1.75rem" }} sx={{ minHeight: "6.9rem" }}>
               {props.WorkExperience.description}
             </Typography>
 
           </CardContent>
           <CardActions>
-            <Button size="medium" onClick={deleteHandler} color={'error'}>DELETE</Button>
-            <Button size="medium" onClick={toggleFromModal} >Edit</Button>
+            <Button size="large" onClick={deleteHandler} color={'error'} sx={{ fontSize: '1.35rem' }}>DELETE</Button>
+            <Button size="large" onClick={toggleFromModal} variant={'contained'} sx={{ fontSize: '1.35rem' }}>Edit</Button>
           </CardActions>
         </Card>
       </Fade>
@@ -85,74 +83,6 @@ export function ItemWorkExperience(props: ItemWorkExperienceProps) {
         </DialogContent>
       </Dialog>
     </>
-    // <ListItem sx={muiStyles.listItem}>
-    //   <div className={styles['iconButtons']}>
-    //     <button
-    //       data-testid="test-delete-button"
-    //       onClick={deleteHandler}
-    //       className={styles['deleteButton']}
-    //     >
-    //       <DeleteIcon sx={muiStyles.editIcon}></DeleteIcon>
-    //     </button>
-    //     <button
-    //       data-testid="test-edit-button"
-    //       onClick={openEditHandler}
-    //       className={styles['editButton']}
-    //     >
-    //       <EditIcon sx={muiStyles.editIcon}></EditIcon>
-    //     </button>
-    //   </div>
-    //   <Box sx={muiStyles.listItemGrid}>
-    //     <Box sx={muiStyles.listItemGrid2}>
-    //       <Typography sx={muiStyles.subHeading} variant="h6">
-    //         Company Name:
-    //         <span data-testid="test-company-name" className={styles['text']}>
-    //           {props.workXp.company_name}
-    //         </span>
-    //       </Typography>
-    //       <img
-    //         className={styles['listItemImage']}
-    //         src={props.workXp.image}
-    //         data-testid="test-work-experience-image"
-    //         alt={`${props.workXp.company_name} logo`}
-    //       ></img>
-    //     </Box>
-
-    //     <Box sx={muiStyles.description}>
-    //       <Typography sx={muiStyles.subHeading} variant="h6">
-    //         Description:
-    //         <span data-testid="test-description" className={styles['text']}>
-    //           {props.workXp.description}
-    //         </span>
-    //       </Typography>
-    //     </Box>
-
-    //     <Box sx={muiStyles.listItemGrid3}>
-    //       <Box>
-    //         <Typography variant="h6" sx={muiStyles.subHeading}>
-    //           Start:
-    //           <span data-testid="test-start-date" className={styles['text']}>
-    //             {
-    //               props.workXp.start_date
-    //               // ? convertIsoToDateString(props.workXp.start_date)
-    //             }
-    //           </span>
-    //         </Typography>
-    //       </Box>
-
-    //       <Box>
-    //         <Box>
-    //           <Typography sx={muiStyles.subHeading} variant="h6">
-    //             Finish:
-    //             <span data-testid="test-end-date" className={styles['text']}>
-    //               {props.workXp.end_date}
-    //             </span>
-    //           </Typography>
-    //         </Box>
-    //       </Box>
-    //     </Box>
-    //   </Box>
-    // </ListItem>
   );
 }
 
