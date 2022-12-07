@@ -1,16 +1,17 @@
 import DashBoardNavigation from '../dash-board-navigation/dash-board-navigation';
 import FormContainer from '../form-container/form-container';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import { Box } from '@mui/material';
 import { Toolbar } from '@mui/material';
 import { IconButton } from '@mui/material';
 import { Drawer } from '@mui/material';
-import { Typography } from '@mui/material';
+import Button from '@mui/material/Button';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { UserContext } from '../../utils/UserContext';
 
 export interface PersitentDrawerProps {
   token: string;
@@ -70,8 +71,14 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 const drawerWidth = 240;
 
 const PersistantDrawer = function (props: PersitentDrawerProps) {
+  const { userDetails, setUser } = useContext(UserContext);
+
   const theme = useTheme();
   const [open, setOpen] = useState(false);
+
+  const preview = () => {
+    window.open('/' + userDetails?.slug_url + '-portfolio', '_blank');
+  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -87,6 +94,8 @@ const PersistantDrawer = function (props: PersitentDrawerProps) {
         <Toolbar
           sx={{
             backgroundColor: '#151619',
+            display: 'flex',
+            justifyContent: 'space-between',
           }}
         >
           <IconButton
@@ -99,11 +108,16 @@ const PersistantDrawer = function (props: PersitentDrawerProps) {
               ...(open && { display: 'none' }),
             }}
           >
-            <MenuIcon />
+            <MenuIcon sx={{ fontSize: '40px', color: 'white' }} />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Navigate Your Topfolio
-          </Typography>
+          <div></div>
+          <Button
+            sx={{ fontSize: '1.4rem' }}
+            variant="contained"
+            onClick={preview}
+          >
+            Preview your Portfolio
+          </Button>
         </Toolbar>
       </AppBar>
 
@@ -115,6 +129,7 @@ const PersistantDrawer = function (props: PersitentDrawerProps) {
             width: drawerWidth,
             boxSizing: 'border-box',
             backgroundColor: '#151619',
+            borderRight: '1px solid #6C6C6D',
           },
         }}
         variant="persistent"

@@ -14,7 +14,7 @@ export = {
       secondary: '',
       tertiary: '',
       background_secondary: '',
-      font: 'FontStyle, Arial, Helvetica, sans-serif',
+      font: ['Arial', 'Helvetica', 'sans-serif'],
     },
     layout: ['Skills', 'Work Experience', 'Projects', 'About me'],
     projects: [],

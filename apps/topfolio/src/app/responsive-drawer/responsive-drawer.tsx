@@ -1,13 +1,14 @@
 import DashBoardNavigation from '../dash-board-navigation/dash-board-navigation';
 import FormContainer from '../form-container/form-container';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Box } from '@mui/material';
 import { Toolbar } from '@mui/material';
 import { IconButton } from '@mui/material';
 import { Drawer } from '@mui/material';
-import { Typography } from '@mui/material';
+import Button from '@mui/material/Button';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
+import { UserContext } from '../../utils/UserContext';
 
 /* eslint-disable-next-line */
 export interface ResponsiveDrawerProps {
@@ -20,7 +21,13 @@ export interface ResponsiveDrawerProps {
 const drawerWidth = 240;
 
 export function ResponsiveDrawer(props: ResponsiveDrawerProps) {
+  const { userDetails, setUser } = useContext(UserContext);
+
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const preview = () => {
+    window.open('/' + userDetails?.slug_url + '-portfolio', '_blank');
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -36,7 +43,12 @@ export function ResponsiveDrawer(props: ResponsiveDrawerProps) {
           backgroundColor: '#151619',
         }}
       >
-        <Toolbar>
+        <Toolbar
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+          }}
+        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -44,16 +56,24 @@ export function ResponsiveDrawer(props: ResponsiveDrawerProps) {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
-            <MenuIcon />
+            <MenuIcon sx={{ fontSize: '40px', color: 'white' }} />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Navigate Your Topfolio
-          </Typography>
+          <div></div>
+          <Button
+            sx={{ fontSize: '1.4rem' }}
+            variant="contained"
+            onClick={preview}
+          >
+            Preview your Portfolio
+          </Button>
         </Toolbar>
       </AppBar>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{
+          width: { sm: drawerWidth },
+          flexShrink: { sm: 0 },
+        }}
         aria-label="mailbox folders"
       >
         <Drawer
@@ -69,6 +89,8 @@ export function ResponsiveDrawer(props: ResponsiveDrawerProps) {
               boxSizing: 'border-box',
               width: drawerWidth,
               backgroundColor: '#151619',
+              borderRight: '1px solid #6C6C6D',
+              paddingTop: '1rem',
             },
           }}
         >
