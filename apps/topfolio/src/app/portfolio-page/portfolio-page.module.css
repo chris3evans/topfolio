@@ -11,3 +11,9 @@
   margin: 0;
   font-family: var(--font);
 }
+.chat-button{
+  position:fixed;
+  bottom:2em ;
+  right: 2em;
+  z-index: 2;
+}

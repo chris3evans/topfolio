@@ -82,7 +82,7 @@ export function ContactMeDialog(props: ContactMeDialogProps) {
                   <InputLabel sx={{ fontSize: 18 }} htmlFor="name">
                     Name
                   </InputLabel>
-                  <Input type="text" id="name" name="name"></Input>
+                  <Input type="text" id="name" name="name" required></Input>
                 </FormControl>
               </Box>
               <Box sx={muiStyles.inputField}>
@@ -91,8 +91,9 @@ export function ContactMeDialog(props: ContactMeDialogProps) {
                     Email
                   </InputLabel>
                   <Input
+                    required
                     sx={{ fontSize: 18 }}
-                    type="text"
+                    type="email"
                     id="email"
                     name="email"
                   ></Input>
@@ -104,6 +105,7 @@ export function ContactMeDialog(props: ContactMeDialogProps) {
                     Subject
                   </InputLabel>
                   <Input
+                    required
                     sx={{ fontSize: 18 }}
                     type="text"
                     id="subject"
@@ -117,6 +119,7 @@ export function ContactMeDialog(props: ContactMeDialogProps) {
                     Message...
                   </InputLabel>
                   <Input
+                    required
                     sx={{ fontSize: 18 }}
                     type="text"
                     id="message"
