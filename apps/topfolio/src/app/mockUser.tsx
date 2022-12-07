@@ -16,7 +16,7 @@ export const mockUserState: User = {
       secondary: '',
       tertiary: '',
       background_secondary: '',
-      font: 'Arial, Helvetica, sans-serif',
+      font: ['Arial', 'Helvetica',' sans-serif'],
     },
     layout: [],
     projects: [],

@@ -167,6 +167,11 @@ export function SkillForm(props: SkillFormProps) {
                   name="level"
                   value={level}
                   onChange={handleInputChange}
+                  sx={{
+                    '& .MuiInputBase-input': {
+                      textAlign: 'center',
+                    },
+                  }}
                   inputProps={{
                     min: 0,
                     max: 100,

@@ -14,7 +14,7 @@ export function CurrentFontTheme(props: CurrentFontThemeProps) {
   const { userDetails, setUser } = useContext(UserContext);
 
   useEffect(() => {
-    const fonts = userDetails.portfolio.theme.font[0].split(',');
+    const fonts = userDetails.portfolio.theme.font;
 
     WebFont.load({
       google: {
@@ -29,8 +29,7 @@ export function CurrentFontTheme(props: CurrentFontThemeProps) {
 
   return (
     <Box>
-      {userDetails.portfolio.theme.font[0] ===
-      'Arial, Helvetica, sans-serif' ? (
+      {userDetails.portfolio.theme.font[0] === 'Arial' ? (
         <Box sx={muiStyles['noExistingThemeHeading']}>
           <Typography variant="h6" sx={muiStyles['h6']}>
             Default Arial Font Selected

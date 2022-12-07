@@ -64,6 +64,6 @@ export const changeCssVariablesByTheme = (theme: Theme) => {
   root.style.setProperty('--secondary', theme.secondary);
   root.style.setProperty('--primary', theme.primary);
   root.style.setProperty('--font', [...theme.font].join(','));
-  body.style.setProperty('font-family', [...theme.font].join(','));
-  body.style.setProperty('font-family', [...theme.font].join(','));
+  body.style.setProperty('font-family', theme.font.join(','));
+  body.style.setProperty('font-family', theme.font.join(','));
 };

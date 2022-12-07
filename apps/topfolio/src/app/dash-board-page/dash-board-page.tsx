@@ -17,6 +17,9 @@ export interface DashBoardPageProps {}
 const DashboardPageDrawerNavigation = function () {
   const [token, setToken] = useState('');
   const { userDetails, setUser } = useContext(UserContext);
+  const preview = () => {
+    window.open('/' + userDetails?.slug_url + '-portfolio', '_blank');
+  };
 
   const { user, getAccessTokenSilently } = useAuth0();
 
