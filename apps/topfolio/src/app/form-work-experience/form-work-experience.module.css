@@ -4,3 +4,25 @@
   align-items: center;
   width: 100%;
 }
+
+.date-field {
+  display: grid;
+  grid-template-rows: repeat(2, min-content);
+  justify-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.date-label {
+  font-size: 1.8rem;
+}
+
+.date-input {
+  border: none;
+  padding: 2rem 1rem;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.date-input:focus {
+  outline: none;
+}
