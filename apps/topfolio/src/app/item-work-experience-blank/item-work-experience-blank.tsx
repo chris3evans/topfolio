@@ -32,8 +32,8 @@ export function ItemWorkExperienceBlank(props: ItemWorkExperienceBlankProps) {
   ///might need cloudiany to crop the picture
   return (
     <>
-      <Fade in={true} timeout={350}>
-        <Card sx={{ maxWidth: '100%', backgroundColor: '#F5F5F5', '&:hover': { boxShadow: '-1px 5px 15px 0px rgba(230,230,230,0.4)' } }}>
+      <Fade in={true} timeout={300}>
+        <Card sx={{ maxWidth: '100%', backgroundColor: '#F5F5F5', '&:hover': { boxShadow: '-1px 5px 15px 0px rgba(57, 203, 215, 0.45)' } }}>
           <CardMedia
             component="img"
             height="190rem"
@@ -46,16 +46,16 @@ export function ItemWorkExperienceBlank(props: ItemWorkExperienceBlankProps) {
             </Typography>
             <Divider></Divider>
 
-            <Typography gutterBottom variant="body1" sx={{ marginTop: '1.2rem' }} >
+            <Typography gutterBottom variant="body1" sx={{ marginTop: '1.2rem', fontSize: "1.4rem" }} >
               From: .....  To: .....
             </Typography>
-            <Typography variant="body1" color="text.secondary" sx={{ minHeight: "6.9rem", fontSize: "1.25rem" }}>
+            <Typography variant="body1" color="text.secondary" sx={{ minHeight: "6.9rem", fontSize: "1.75rem" }}>
               I worked for...
             </Typography>
           </CardContent>
 
           <CardActions>
-            <Button size="large" onClick={toggleFromModal} variant={'outlined'}>New Work Experience</Button>
+            <Button size="large" onClick={toggleFromModal} variant={'contained'} sx={{ fontSize: '1.35rem' }}>New Work Experience</Button>
           </CardActions>
         </Card>
       </Fade>
