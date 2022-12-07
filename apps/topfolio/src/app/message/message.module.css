@@ -1,9 +1,5 @@
-.message-left {
-  display: "flex"
-}
+
 .message-right {
-  display: flex;
-  justify-content: flex-end;
 }
 .messageBot{
   position:relative;
@@ -19,12 +15,13 @@
 }
 .messageBot p{
   font-size: 2em;
+  padding: 0.2em;
 }
 
 .messageVisitor {
   position:relative;
-  margin-right: 2em;
-  margin-bottom : 1em;
+  margin-left: 20em;
+  margin-bottom : 2em;
   padding: 1em;
   background-color: var(--primary);
   color: var(--primary-text);
@@ -34,8 +31,9 @@
   position: "relative";
   border-radius: 7px 7px 0px 7px;
 }
-.messageVisito p{
+.messageVisitor p{
   font-size: 2em;
+  padding: 0.2em;
 }
 
 .timestamp {
@@ -60,12 +58,13 @@
   }
 
   .messageVisitor {
+    margin-left: 9em;
 
     width: 60%;
     height: 20%;
 
   }
-  .messageVisito p{
+  .messageVisitor p{
     font-size: 1.3em;
   }
   .timestamp {

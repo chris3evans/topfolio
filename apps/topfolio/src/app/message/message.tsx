@@ -10,7 +10,7 @@ export interface MessageProps {
 export const MessageLeft = (props: MessageProps) => {
   return (
     <div className={styles['message-left']}>
-      <Avatar alt={'name'}>
+      <Avatar alt={'name'} sx={{ color: 'var(--secondary)', fontSize: '2em' }}>
         {' '}
         <SiProbot />
       </Avatar>
