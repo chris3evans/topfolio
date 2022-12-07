@@ -1,5 +1,8 @@
 .form-container {
-  background-color: var(--primary-background);
+  background-image: url('../../assets/background.png');
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
   color: white;
 }
 
