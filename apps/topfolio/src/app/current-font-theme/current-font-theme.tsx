@@ -1,4 +1,3 @@
-import styles from './current-font-theme.module.css';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/material';
 import { useContext, useEffect } from 'react';
@@ -23,12 +22,11 @@ export function CurrentFontTheme(props: CurrentFontThemeProps) {
     });
   }, [userDetails.portfolio.theme.font]);
 
-  const mediaQuery1200 = useMediaQuery('(max-width:1200px)');
   const mediaQuery900 = useMediaQuery('(max-width:900px)');
   const mediaQuery600 = useMediaQuery('(max-width:600px)');
 
   return (
-    <Box>
+    <Box sx={{ width: '90%', margin: '0rem auto' }}>
       {userDetails.portfolio.theme.font[0] === 'Arial' ? (
         <Box sx={muiStyles['noExistingThemeHeading']}>
           <Typography variant="h6" sx={muiStyles['h6']}>

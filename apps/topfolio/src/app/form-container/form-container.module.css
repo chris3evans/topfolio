@@ -5,9 +5,6 @@
 
 .forms {
   padding: 0rem 10rem 2rem 10rem;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
 }
 
 .preview {

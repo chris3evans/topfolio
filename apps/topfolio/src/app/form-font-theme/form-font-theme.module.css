@@ -5,6 +5,8 @@
   padding: 3.5rem;
   background-color: white;
   border-radius: 0.5rem;
+  width: 90%;
+  margin: 0rem auto;
 }
 
 .font-input {
