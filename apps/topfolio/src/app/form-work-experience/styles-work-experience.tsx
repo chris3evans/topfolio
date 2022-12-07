@@ -1,14 +1,13 @@
 const muiStyles = {
   form: {
     backgroundColor: 'white',
-    borderRadius: '0.5rem',
-    padding: '5rem',
+    borderRadius: '0.3rem',
+    height: '100%',
+    width: '100%',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
     flexDirection: 'column',
-    marginBottom: '5rem',
-    width: '100%',
+    marginTop: '2rem',
   },
   'form-1200': {
     padding: '2.5rem 1rem',
@@ -45,12 +44,13 @@ const muiStyles = {
   },
   formTitle: {
     color: 'black',
+    marginBottom: '2rem',
   },
 
-  formFields: {
-    fontSize: '2rem',
-    width: '80%',
-  },
+  // formFields: {
+  //   fontSize: '2rem',
+  //   width: '80%',
+  // },
   'formFields-900': {
     width: '90%',
   },
@@ -61,7 +61,16 @@ const muiStyles = {
   imageUploadContainer: {
     display: 'flex',
     justifyContent: 'center',
-    margin: '4rem 0rem 2rem 0rem',
+    marginTop: '1.5rem',
+  },
+
+  formFields: {
+    display: 'flex',
+    fontSize: '2rem',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifySelf: 'center',
+    width: '100%',
   },
   'imageUploadContainer-900': {
     display: 'flex',
@@ -70,8 +79,6 @@ const muiStyles = {
   },
 
   companyField: {
-    display: 'flex',
-    alignItems: 'center',
     padding: '2rem',
     width: '100%',
   },
@@ -83,9 +90,8 @@ const muiStyles = {
   },
 
   descriptionField: {
-    display: 'flex',
-    flexDirection: 'column',
     padding: '2rem',
+    width: '100%',
   },
   'descriptionField-600': {
     display: 'flex',
@@ -94,10 +100,10 @@ const muiStyles = {
   },
 
   datesContainer: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gridColumnGap: '5rem',
-    padding: '2rem',
+    display: 'flex',
+    fontSize: '2rem',
+    flexDirection: 'row',
+    width: '100%',
   },
   'datesContainer-600': {
     display: 'grid',
@@ -107,6 +113,7 @@ const muiStyles = {
   },
 
   dateField: {
+    margin: '2rem',
     width: '100%',
   },
 
@@ -114,6 +121,7 @@ const muiStyles = {
     fontSize: '1.6rem',
     height: '3.5rem',
     width: '10rem',
+    margin: '2rem 3.5rem 2rem 3.5rem',
   },
 };
 

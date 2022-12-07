@@ -22,7 +22,6 @@ export function TimelineObject(props: TimelineItemProps) {
   const { ref, inView } = useInView({
     threshold: 1,
     triggerOnce: true,
-    rootMargin: '0px 0px 0px 1000px',
   });
   useEffect(() => {
     if (inView) {
@@ -76,21 +75,30 @@ export function TimelineObject(props: TimelineItemProps) {
       variants={animation}
     >
       <TimelineItem key={`key${props.index}`} id="WorkHistory">
-        <TimelineOppositeContent color="text.secondary">
+        <TimelineOppositeContent
+          color="text.secondary"
+          className={styles['date']}
+        >
           <Typography
             ref={ref}
             variant="h4"
-            sx={{ fontSize: 18, fontWeight: 'medium' }}
+            sx={{
+              fontSize: 18,
+              fontWeight: 'medium',
+              color: 'var(--secondary)',
+            }}
           >{`${props.work.start_date} - ${props.work.end_date}`}</Typography>
           <Typography variant="h3"></Typography>
         </TimelineOppositeContent>
         <TimelineSeparator sx={{ height: 400 }}>
           <motion.div animate={controls} variants={dotAnimation}>
-            <TimelineDot color="primary" />
+            <TimelineDot color="secondary" />
           </motion.div>
           <TimelineConnector
             sx={{
               height: 300,
+              width: 5,
+              backgroundColor: 'var(--primary)',
             }}
           />
         </TimelineSeparator>
@@ -98,8 +106,8 @@ export function TimelineObject(props: TimelineItemProps) {
           <div className={styles['box']}>
             {' '}
             <img src={props.work.image} alt="logo" />
-            <Typography variant="h3">{`${props.work.description}`}</Typography>
-            <Typography variant="h4">{` ${props.work.company_name}`}</Typography>
+            <Typography variant="h4">{`${props.work.description}`}</Typography>
+            <Typography variant="h5">{` ${props.work.company_name}`}</Typography>
           </div>
         </TimelineContent>
       </TimelineItem>

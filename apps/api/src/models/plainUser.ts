@@ -16,7 +16,7 @@ export = {
       background_secondary: '',
       font: 'Arial, Helvetica, sans-serif',
     },
-    layout: [],
+    layout: ['Skills', 'Work Experience', 'Projects', 'About me'],
     projects: [],
     contact_me: {
       phone: '',

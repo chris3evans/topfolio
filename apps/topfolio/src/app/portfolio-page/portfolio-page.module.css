@@ -5,4 +5,9 @@
   margin: 0;
   padding: 0;
   font-size: 1.5em;
+
+}
+.MuiTypography-root {
+  margin: 0;
+  font-family: var(--font);
 }

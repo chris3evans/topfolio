@@ -25,15 +25,12 @@ export function FormProjects(props: FormProjectsProps) {
   const [imgArray, setImgArray] = useState<string[]>(props.existingData?.images || []);
   const [unsaved, setUnsaved] = useState(true);
   const [toast, setToast] = useState({ open: false, status: 'success', message: '' });
-
+  //For handling error inside the form
   const showToast = (status: string, msg: string) => {
     setToast({ open: true, status, message: msg });
   };
 
   const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
-    // if (reason === 'clickaway') {
-    //   return;
-    // }
     setToast({ open: false, status: 'success', message: '' });
   };
 
@@ -51,23 +48,15 @@ export function FormProjects(props: FormProjectsProps) {
 
   useEffect(() => {
     console.log(imgArray, "imgArray")
-    if (imgArray !== props.existingData?.images) setUnsaved(false);
+    if (props.existingData) {
+      if (imgArray !== props.existingData.images) setUnsaved(false)
+    }
+    //cuz item-projects-blank has no existingData.
+    else {
+      if (imgArray.length > 0) setUnsaved(false)
+    }
 
   }, [imgArray])
-
-  // useEffect(() => {
-  //   if (userDetails && unsaved === false) {
-  //     console.log(userDetails, "userDetails")
-  //     updateUser(userDetails, props.token).then((response) => {
-  //       if (response.error === '') {
-  //         showToast('success', 'Settings were successfully changed!');
-  //         setUnsaved(true);
-  //         props.toggleFromModal();
-  //       }
-  //       else showToast('error', response.error);
-  //     });
-  //   }
-  // }, [userDetails]);
 
   const checkUniqueName = (name: string) => {
     return userDetails.portfolio.projects.some(project => project.name === name)
@@ -110,7 +99,6 @@ export function FormProjects(props: FormProjectsProps) {
           //display error
           event.preventDefault();
           setUnsaved(true)
-          console.log("ALREADY EXISTS!!!!!------------------------------<");
           throw 'Project name already exists!';
         }
         event.preventDefault();
@@ -133,14 +121,12 @@ export function FormProjects(props: FormProjectsProps) {
       }
       props.toggleFromModal()
     } catch (error: any) {
-      console.error(error, 'front end error');
       showToast('error', error);
     }
   };
 
   return (
     <Box sx={muiStyles.form}>
-
       <Snackbar open={toast.open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
         <Alert onClose={handleClose} severity={toast.status as AlertColor} sx={{ width: '100%', fontSize: '20px' }}>
           {toast.message}
@@ -226,10 +212,15 @@ export function FormProjects(props: FormProjectsProps) {
                 onChange={trackChanges}
               ></Input>
             </FormControl>
+          </Box >
+          <Box>
+            <Button onClick={() => { props.toggleFromModal() }} sx={muiStyles.saveButton} type="button" variant="outlined">
+              Cancel
+            </Button>
+            <Button sx={muiStyles.saveButton} type="submit" variant="contained" disabled={unsaved}>
+              Save
+            </Button>
           </Box>
-          <Button sx={muiStyles.saveButton} type="submit" variant="contained" disabled={unsaved}>
-            Save
-          </Button>
         </Box>
       </form>
     </Box>

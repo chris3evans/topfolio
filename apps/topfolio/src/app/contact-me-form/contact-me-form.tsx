@@ -87,6 +87,7 @@ export function ContactMeForm(props: ContactMeFormProps) {
         };
         return current;
       });
+      console.log('token:', props.token);
       const response = await updateUser(userDetails, props.token);
       if (response.error === '') {
         showToast(

@@ -11,6 +11,8 @@ import { getUser } from '../../utils/ApiService';
 import { useParams } from 'react-router-dom';
 import { UserContext } from '../../utils/UserContext';
 import { ErrorPage } from '../error-page/error-page';
+import { useHistory } from 'react-router-dom';
+
 export interface PortfolioPageProps {
   viewMode: boolean;
 }
@@ -20,14 +22,12 @@ export function PortfolioPage(props: PortfolioPageProps) {
   const { setUser } = useContext(UserContext);
   const [theme] = useState(mainTheme);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const history = useHistory();
 
   const serverCall = async () => {
     const res: any = await getUser(slug);
     if (res.error == 'User Not found') {
-      setError(true);
-    } else {
-      setError(false);
+      history.push('/error');
     }
     return res;
   };
@@ -39,7 +39,7 @@ export function PortfolioPage(props: PortfolioPageProps) {
         setUser({ ...res.data });
         setLoading(true);
       })
-      .catch((e) => console.error(e));
+      .catch((e) => console.log(e));
   }, []);
 
   useLayoutEffect(() => {
@@ -55,16 +55,12 @@ export function PortfolioPage(props: PortfolioPageProps) {
   });
   return (
     <ThemeProvider theme={theme}>
-      {error === true ? (
-        <ErrorPage />
-      ) : (
-        loading && (
-          <div className={styles['body']}>
-            <HeroComponent />
-            <SectionsComponent viewMode={props.viewMode} />
-            <Footer viewMode={props.viewMode} />
-          </div>
-        )
+      {loading && (
+        <div className={styles['body']}>
+          <HeroComponent />
+          <SectionsComponent viewMode={props.viewMode} />
+          <Footer viewMode={props.viewMode} />
+        </div>
       )}
     </ThemeProvider>
   );

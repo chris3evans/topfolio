@@ -54,7 +54,6 @@ export function SkillForm(props: SkillFormProps) {
             skills: [...userDetails.portfolio.skills, obj],
           },
         };
-        console.log(newUserDetails);
         const response = await updateUser(newUserDetails, props.token);
         setUser(newUserDetails);
       } else {
@@ -84,7 +83,6 @@ export function SkillForm(props: SkillFormProps) {
   };
 
   const handleEdit = (item: any) => () => {
-    console.log(typeof item.skill);
     setSkill(item.skill);
     setLevel(item.level);
   };
@@ -165,6 +163,8 @@ export function SkillForm(props: SkillFormProps) {
               >
                 <Input
                   size="small"
+                  id="level"
+                  name="level"
                   value={level}
                   onChange={handleInputChange}
                   inputProps={{
