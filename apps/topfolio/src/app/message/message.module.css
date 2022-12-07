@@ -1,0 +1,81 @@
+
+.message-right {
+}
+.messageBot{
+  position:relative;
+  margin-left: 4em;
+  margin-bottom : 2em;
+  padding: 1em;
+  background-color: var(--secondary);
+  color: var(--primary-text);
+  width: 60%;
+  height: 20%;
+  text-align: left;
+  border-radius: 0px 7px 7px 7px;
+}
+.messageBot p{
+  font-size: 2em;
+  padding: 0.2em;
+}
+
+.messageVisitor {
+  position:relative;
+  margin-left: 20em;
+  margin-bottom : 2em;
+  padding: 1em;
+  background-color: var(--primary);
+  color: var(--primary-text);
+  width: 60%;
+  height: 20%;
+  text-align: left;
+  position: "relative";
+  border-radius: 7px 7px 0px 7px;
+}
+.messageVisitor p{
+  font-size: 2em;
+  padding: 0.2em;
+}
+
+.timestamp {
+  position: absolute;
+  font-size: 1.4em;
+  color: white;
+  font-weight: 300;
+  margin-top: 10px;
+  bottom: 0.6em;
+  right: 1.2em;
+}
+
+@media only screen and (max-width: 600px) {
+  .messageBot{
+    width: 60%;
+    height: 20%;
+
+  }
+  .messageBot p{
+    font-size: 1.3em;
+    padding: 0.4em;
+  }
+
+  .messageVisitor {
+    margin-left: 9em;
+
+    width: 60%;
+    height: 20%;
+
+  }
+  .messageVisitor p{
+    font-size: 1.3em;
+  }
+  .timestamp {
+    padding: 0.2em;
+    position: absolute;
+    font-size: 0.8em;
+    color: white;
+    font-weight: 300;
+    margin-top: 10px;
+    bottom: 0.2em;
+    right: 1.2em;
+  }
+
+}

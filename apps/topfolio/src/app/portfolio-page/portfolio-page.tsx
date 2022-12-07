@@ -10,8 +10,12 @@ import { themeGenerator, mainTheme } from '../themes';
 import { getUser } from '../../utils/ApiService';
 import { useParams } from 'react-router-dom';
 import { UserContext } from '../../utils/UserContext';
-import { ErrorPage } from '../error-page/error-page';
 import { useHistory } from 'react-router-dom';
+// import { button } from '@mui/material';
+import { SiProbot } from 'react-icons/si';
+
+import { FaQuestion } from 'react-icons/fa';
+import ChatDialog from '../chat-dialog/chat-dialog';
 
 export interface PortfolioPageProps {
   viewMode: boolean;
@@ -23,6 +27,14 @@ export function PortfolioPage(props: PortfolioPageProps) {
   const [theme] = useState(mainTheme);
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = (value: string) => {
+    setOpen(false);
+  };
 
   const serverCall = async () => {
     const res: any = await getUser(slug);
@@ -60,6 +72,11 @@ export function PortfolioPage(props: PortfolioPageProps) {
           <HeroComponent />
           <SectionsComponent viewMode={props.viewMode} />
           <Footer viewMode={props.viewMode} />
+          <button className={styles['chat-button']} onClick={handleClickOpen}>
+            <FaQuestion />
+            <SiProbot />
+          </button>
+          <ChatDialog open={open} closeModal={handleClose} />
         </div>
       )}
     </ThemeProvider>

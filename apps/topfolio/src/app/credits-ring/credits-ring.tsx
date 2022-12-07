@@ -10,7 +10,10 @@ export function CreditsRing(props: CreditsRingProps) {
     { name: 'Noah', link: 'https://github.com/noah-sinnott' },
     { name: 'Fabrizio', link: '/fabrizio-t-portfolio' },
     { name: 'Chenhao', link: 'https://github.com/HuchenhaoArvin' },
-    { name: 'Christopher', link: '' },
+    {
+      name: 'Christopher',
+      link: 'https://portfolio-christopher-evans.netlify.app/',
+    },
   ];
   useEffect(() => {
     //@ts-ignore

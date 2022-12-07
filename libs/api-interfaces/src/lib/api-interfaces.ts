@@ -81,3 +81,10 @@ export interface InfoAboutMe {
 export interface Colors {
   result: any;
 }
+
+export interface Messages {
+  text: string;
+  bot: boolean;
+  id: string;
+  date: string;
+}
