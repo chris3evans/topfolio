@@ -7,6 +7,7 @@ import { useContext, useState } from 'react';
 import ContactMeDialog from '../contact-me-dialog/contact-me-dialog';
 import { UserContext } from '../../utils/UserContext';
 import AnimatedImage from '../animated-image/animated-image';
+import ChatDialog from '../chat-dialog/chat-dialog';
 
 /* eslint-disable-next-line */
 export interface BioComponentProps {}
@@ -50,6 +51,10 @@ export function BioComponent(props: BioComponentProps) {
         </Button>{' '}
       </motion.div>
       <ContactMeDialog open={open} closeModal={handleClose} />
+      <button className={styles['chat-button']} onClick={handleClickOpen}>
+        <img src="../../assets/bot.png" alt="bot-button" />
+      </button>{' '}
+      <ChatDialog open={open} closeModal={handleClose} />
     </div>
   );
 }
