@@ -22,14 +22,17 @@ export function Chat(props: ChatProps) {
     const scrollToElement = document.getElementById('scroll-to') as HTMLElement;
     const store = localStorage.getItem(`store${userDetails.slug_url}`);
     if (!store || store.length <= 2) {
+      setLoading(true);
+
       callMyAI(
         userDetails,
         '\n\nInterviewer:' + 'Hello' + '\n\nAI Assistant:\n\n'
       )
         .then((res: string) => {
+          setLoading(false);
           setMessages([
             {
-              text: res,
+              text: mapResponse(res),
               bot: true,
               id: uniqid(),
               date: moment(Date.now()).format('h:mm'),
@@ -60,6 +63,10 @@ export function Chat(props: ChatProps) {
     });
     return mappedMsgs.join('');
   };
+  const mapResponse = (message: string) => {
+    const tempArray = message.split('AI Assistant:');
+    return tempArray.join(' ');
+  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLElement>) => {
     event.preventDefault();
@@ -83,11 +90,12 @@ export function Chat(props: ChatProps) {
     );
 
     if (response !== '') {
+      const mappedResponse = mapResponse(response);
       const updatedMessages = [
         ...messages,
         currentMsg,
         {
-          text: response,
+          text: mappedResponse,
           bot: true,
           id: uniqid(),
           date: moment(Date.now()).format('h:mm'),

@@ -1,5 +1,5 @@
 import { User } from '@topfolio/api-interfaces';
-import { environment } from '../environments/environment';
+import { environment } from '@environments/';
 import { fetcher, fetcherColors } from './fetcher';
 
 // CRUD /user service

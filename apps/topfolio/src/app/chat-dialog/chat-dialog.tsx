@@ -10,18 +10,16 @@ export interface ChatDialogProps {
 
 export function ChatDialog(props: ChatDialogProps) {
   return (
-    <div style={{ position: 'relative' }}>
-      <Dialog open={props.open} sx={{ maxHeight: '60%', top: '20%' }}>
-        <button
-          className={styles['button-delete']}
-          onClick={props.closeModal}
-          data-testid="close-button"
-        >
-          <TfiClose />
-        </button>{' '}
-        <Chat closeModal={props.closeModal} />
-      </Dialog>
-    </div>
+    <Dialog open={props.open} sx={{ maxHeight: '60%', top: '20%' }}>
+      <button
+        className={styles['button-delete']}
+        onClick={props.closeModal}
+        data-testid="close-button"
+      >
+        <TfiClose />
+      </button>{' '}
+      <Chat closeModal={props.closeModal} />
+    </Dialog>
   );
 }
 

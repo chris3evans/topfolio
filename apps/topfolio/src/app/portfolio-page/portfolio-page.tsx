@@ -69,10 +69,6 @@ export function PortfolioPage(props: PortfolioPageProps) {
           <HeroComponent />
           <SectionsComponent viewMode={props.viewMode} />
           <Footer viewMode={props.viewMode} />
-          <button className={styles['chat-button']} onClick={handleClickOpen}>
-            <img src="../../assets/bot.png" alt="bot-button" />
-          </button>{' '}
-          <ChatDialog open={open} closeModal={handleClose} />
         </div>
       )}
     </ThemeProvider>
