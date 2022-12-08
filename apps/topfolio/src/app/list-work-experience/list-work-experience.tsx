@@ -38,7 +38,7 @@ export function ListWorkExperience(props: ListWorkExperienceProps) {
 
   useEffect(() => {
     console.log(userDetails.portfolio.work_history, "userDetails.portfolio.work_history")
-    if (userDetails.portfolio.work_history && props.token && counter > 1) {
+    if (userDetails.portfolio.work_history && props.token && counter > 0) {
       updateUser(userDetails, props.token).then((response) => {
         if (response.error === '') {
           showToast('success', 'Settings were successfully changed!');
