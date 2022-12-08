@@ -16,7 +16,10 @@
     "baseUrl": ".",
     "esModuleInterop": true,
     "paths": {
-      "@topfolio/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@topfolio/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@environments/*": ["apps/topfolio/src/environments/*"],
+      "@environmentsAPI/*": ["apps/api/src/environments/*"]
+
     }
   },
   "exclude": ["node_modules", "tmp"]
