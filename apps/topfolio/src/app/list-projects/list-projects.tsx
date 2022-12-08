@@ -42,7 +42,7 @@ export function ListProjects(props: ListProjectsProps) {
       userDetails.portfolio.projects,
       'userDetails.portfolio.projects'
     );
-    if (userDetails.portfolio.projects && props.token && counter > 1) {
+    if (userDetails.portfolio.projects && props.token && counter > 0) {
       updateUser(userDetails, props.token)
         .then((response) => {
           if (response.error === '') {
@@ -81,13 +81,13 @@ export function ListProjects(props: ListProjectsProps) {
         </Grid>
         {userDetails
           ? userDetails.portfolio.projects.map((project: MyProjects) => (
-              <Grid item xs={12} sm={6} md={4} key={project.name}>
-                <ItemProjects
-                  project={project}
-                  token={props.token}
-                ></ItemProjects>
-              </Grid>
-            ))
+            <Grid item xs={12} sm={6} md={4} key={project.name}>
+              <ItemProjects
+                project={project}
+                token={props.token}
+              ></ItemProjects>
+            </Grid>
+          ))
           : ''}
       </Grid>
     </Box>
