@@ -1,6 +1,5 @@
 import { environment } from '../environments/environment';
 const nodemailer = require('nodemailer');
-
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -22,7 +21,16 @@ async function sendHelp(
     from: environment.email,
     to: target,
     subject: 'Topfolio contact me request',
-    html: `<h1>Email recived from: ${name} </h1> <h2> subect: ${title} </h2><h3> body: ${body} </h3> <h4> return email: ${email} </h4>`,
+    html: `
+    <div style="width: 100%; height: 100%; background-color: white">
+    <img src="logo" alt="Logo">
+<div style="border: 0px solid; margin: auto; width: fit-content; padding: 10%; text-align: center; background-color: WhiteSmoke; color: black; border-radius: 10%;">
+    <h1>Email recived from: ${name} at ${email}</h1>
+     <h2> Subect: ${title} </h2>
+     <h3> Body: ${body} </h3> 
+     </div>
+     </div>
+    `
   };
   try {
     const res = await transporter.sendMail(mailOptions);

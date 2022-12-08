@@ -14,7 +14,6 @@ router.post('/user', validateAccessToken, createUser);
 router.put('/user', validateAccessToken, saveUser);
 router.post(
   '/user/email',
-  body('email').isEmail().normalizeEmail(),
   body('name').not().isEmpty().trim().escape(),
   body('title').not().isEmpty().trim().escape(),
   body('body').not().isEmpty().trim().escape(),
