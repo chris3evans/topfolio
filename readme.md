@@ -42,7 +42,7 @@ Once you have the environment variables set up, you can run the app with the fol
 
 ## Usage
 
-Once the application is up and running, you can start creating your personal portfolio. You will be able to add your skills, work experience and projects, as well as customize the look the link to your portfolio with potential employers, colleagues and friends.
+Once the application is up and running, you can start creating your personal portfolio. You will be able to add your skills, work experience and projects, as well as customize the look and share the link to your portfolio with potential employers, colleagues and friends.
 
 ## Contributing
 
