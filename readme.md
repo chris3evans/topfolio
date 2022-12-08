@@ -40,6 +40,10 @@ Once you have the environment variables set up, you can run the app with the fol
 * For the server: `npm run serve:api`
 * For the client: `npm start`
 
+## Usage
+
+Once the application is up and running, you can start creating your personal portfolio. You will be able to add your skills, work experience and projects, as well as customize the look of your portfolio. You can then share the link to your portfolio with potential employers, colleagues and friends.
+
 ## Contributing
 
 To contribute to TOPFOLIO, please submit a pull request.
