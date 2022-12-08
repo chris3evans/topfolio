@@ -26,12 +26,16 @@ video {
   padding: 0;
   box-sizing: border-box;
 }
+
 html body {
   height: 100vh;
 }
+
 body {
   min-height: 100vh;
+  background-color: var(--primary-background-app);
 }
+
 img {
   border-style: none;
 }
@@ -41,14 +45,14 @@ img {
   --secondary-background: #1e1f23;
   --primary-text: #ffffff;
   --secondary: 'yellow'
-  --primary: #39CBD7;
-  --font: "Roboto","Helvetica","Arial",sans-serif;
+    --primary: #39CBD7;
+  --font: "Roboto", "Helvetica", "Arial", sans-serif;
 
   --primary-background-app: #1f2125;
   --secondary-background-app: #1e1f23;
   --primary-text-app: #ffffff;
-   --secondary-app: 'yellow'
-  --primary-app: #39CBD7;
-  --font: "Roboto","Helvetica","Arial",sans-serif;
+  --secondary-app: 'yellow'
+    --primary-app: #39CBD7;
+  --font: "Roboto", "Helvetica", "Arial", sans-serif;
 
 }
