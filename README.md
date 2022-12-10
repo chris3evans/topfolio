@@ -1,7 +1,7 @@
 # TOPFOLIO - A Professional Portfolio Web App
 
 <p align="center">
-  <img src="images/logoTF.png">
+  <img src="images/canvas.png">
 </p>
 
 
