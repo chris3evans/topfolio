@@ -53,6 +53,13 @@ Once you have the environment variables set up, you can run the app with the fol
 
 Once the application is up and running, you can start creating your personal portfolio. You will be able to add your skills, work experience and projects, as well as customize the look. Finally you can share the link to your portfolio with potential employers, colleagues and friends.
 
+## Tech Stack
+
+* [React](https://reactjs.org/)
+* [Typescript](https://www.typescriptlang.org/)
+* [Express]([https://nestjs.com/](https://expressjs.com/)
+* [Nx](https://nx.dev/)
+
 ## Contributing
 
 To contribute to TOPFOLIO, please submit a pull request.
