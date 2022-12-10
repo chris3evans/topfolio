@@ -1,7 +1,7 @@
 # TOPFOLIO - A Professional Portfolio Web App
 
 <p align="center">
-  <img src="images/canvas.png/>
+  <img src="images/canvas.png>
 </p>
 
 TOPFOLIO is a web app that helps professionals create their personal portfolios, showcase their skills, work experience and projects they've worked on.
