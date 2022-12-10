@@ -1,20 +1,62 @@
-# Thesis project proposal
+# TOPFOLIO - A Professional Portfolio Web App
 
-At this point you know how to build a reliable app, and how to work collaboratively.
+TOPFOLIO is a web app that helps professionals create their personal portfolios, showcase their skills, work experience and projects they've worked on.
 
-It’s time to step it up for your final project. You’re going to be working in team and fully simulate a real-world engineering environment!
+## Getting Started
 
-This app is also going to be the most complete project that you’ll have in your portfolio at the end of the course.
+### Prerequisites
 
-## Getting started
+* [Node.js](https://nodejs.org/en/)
+* [NPM](https://www.npmjs.com/)
 
-To send your project proposal:
+### Environment Variables
 
-1. Form a team with 2 to 4 classmates (sit next to each other if you’re in the same campus, or connect through a video call if you’re working remotely).
-2. Together choose a project that you’d like to work on.
-3. One of you should fork this repo (it doesn’t matter who).
-4. Edit the `proposal.md` file, adding the required data.
-5. Commit your changes.
-6. Send a pull request.
+To run the project, you need to set up environment variables. 
 
-We will review your proposal and give you feedback before the project starts, to make sure it’s aligned with the course learning goals.
+For the **client**, you will need to create a file in `Project_Folder\apps\topfolio\src\environments\environment.ts` with the following variables:
+```
+export const environment = {
+  production: false,
+  API_URL: 'http://localhost:3333/user',
+  REACT_APP_AUTH0_DOMAIN: '',
+  REACT_APP_AUTH0_CLIENT_ID: '',
+  REACT_APP_AUTH0_CALLBACK_URL: 'http://localhost:4200/callback',
+  REACT_APP_AUTH0_AUDIENCE: 'https://hello-world.example.com',
+  GOOGLE_FONT_API:
+    'https://www.googleapis.com/webfonts/v1/webfonts?key=<YOUR KEY GOES HERE>',
+  GPT3_KEY: '',
+};
+```
+For the **server**, you will need to create a file in `Project_Folder\apps\api\src\environments\environment.ts` with the following variables:
+```
+export const environment = {
+  production: false,
+  DB_URI:"MongoDB or Atlas connection link",
+  AUTH0_DOMAIN: '',
+  AUTH0_AUDIENCE: 'https://hello-world.example.com',
+  Test_db: '',
+  Test_token:'',
+  email: '',
+  password: '',
+};
+```
+
+
+### Running the App
+
+Once you have the environment variables set up, you can run the app with the following commands: 
+
+* For the server: `npm run serve:api`
+* For the client: `npm start`
+
+## Usage
+
+Once the application is up and running, you can start creating your personal portfolio. You will be able to add your skills, work experience and projects, as well as customize the look. Finally you can share the link to your portfolio with potential employers, colleagues and friends.
+
+## Contributing
+
+To contribute to TOPFOLIO, please submit a pull request.
+
+## License
+
+TOPFOLIO is released under the MIT license. See [LICENSE](LICENSE) for more details.
