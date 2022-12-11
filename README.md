@@ -45,7 +45,7 @@ export const environment = {
   Test_db: '',
   Test_token:'',
   email: '',
-  password: '',
+  password: ''
 };
 ```
 
