@@ -65,7 +65,7 @@ Once the application is up and running, you can start creating your personal por
 
 * [React](https://reactjs.org/)
 * [Typescript](https://www.typescriptlang.org/)
-* [Express]([https://nestjs.com/](https://expressjs.com/)
+* [Express](https://expressjs.com/)
 * [Nx](https://nx.dev/)
 
 ## Contributing
