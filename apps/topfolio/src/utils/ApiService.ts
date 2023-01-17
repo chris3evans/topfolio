@@ -1,5 +1,6 @@
 import { User } from '@topfolio/api-interfaces';
-import { environment } from '@environments/';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import { environment } from '@environments/environment';
 import { fetcher, fetcherColors } from './fetcher';
 
 // CRUD /user service
